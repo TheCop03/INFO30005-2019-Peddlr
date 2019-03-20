@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Hello!</title>
+</head>
+<body>
+<script>
+function js_new_style() {
+if (document.getElementById("style").innerHTML == "New style") {
+  document.getElementById("text").style.fontFamily = "Impact,Charcoal,sans-serif";
+  document.getElementById("text").style.fontSize = "xx-large";
+  document.getElementById("text").style.color= "#FF00FF";
+  document.getElementById("style").innerHTML = "Previous style";
+} else {
+  document.getElementById("text").style.fontFamily = "";
+  document.getElementById("text").style.fontSize = "";
+  document.getElementById("text").style.color= "";
+  document.getElementById("style").innerHTML = "New style";
+}
+}
+</script>
+<p id="text">JavaScript DOM :: Changing paragraph style</p>
+<div><button id="style" onclick="js_new_style()">New style</button>
+</div>
+</body>
