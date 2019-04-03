@@ -6,7 +6,6 @@ var controller = require('../controllers/userControllers.js');
 // Create new user
 router.post('/api',controller.createUser);
 
-
 // Find one user by id
 router.get('/api/id/:id',controller.findOneUser);
 

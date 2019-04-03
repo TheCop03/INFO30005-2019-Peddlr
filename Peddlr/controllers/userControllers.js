@@ -6,7 +6,8 @@ var createUser = function(req,res){
         "fname":req.body.fname,
         "lname":req.body.lname,
         "address":req.body.address,
-        "photo":req.body.photo
+        "photo":req.body.photo,
+        "phoneNumber":req.body.phoneNumber
     });
     user.save(function(err,newUser){
         if(!err){
@@ -17,6 +18,7 @@ var createUser = function(req,res){
     });
 };
 
+//lame function
 var findOneUser = function(req,res){
     var userInx = req.params.id;
     Users.findById(userInx,function(err,foundUser){
