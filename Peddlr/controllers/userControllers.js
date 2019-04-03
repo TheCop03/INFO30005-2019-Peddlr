@@ -8,9 +8,9 @@ var createUser = function(req,res){
         "address":req.body.address,
         "photo":req.body.photo
     });
-    newUser.save(function(err,newUser){
+    user.save(function(err,newUser){
         if(!err){
-            res.send(newUser);
+            res.send(newUser); //if there are no errors, show the new user 
         }else{
             res.sendStatus(400);
         }
@@ -19,9 +19,9 @@ var createUser = function(req,res){
 
 var findOneUser = function(req,res){
     var userInx = req.params.id;
-    Users.findById(userInx,function(err,user){
+    Users.findById(userInx,function(err,foundUser){
         if(!err){
-            res.send(user);
+            res.send(foundUser); //if no errors, show the found user
         }else{
             res.sendStatus(404);
         }
@@ -40,6 +40,11 @@ var findOneUser = function(req,res){
 //    });
 //};
 
-module.exports.createUser = createUser;
-module.exports.findOneUser = findOneUser;
+//makes the functions public so your routes can access them
+//only export functions you need to use outside of this file
+module.exports = {
+		createUser,
+		findOneUser
+};
+
 //module.exports.findCafeByName = findCafeByName;
