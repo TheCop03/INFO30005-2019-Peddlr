@@ -23,9 +23,9 @@ var showAllListings = function(req, res) {
             res.sendStatus(404);
         }
     });
-}
+};
 
 module.exports = {
-		createListing
+		createListing,
 		showAllListings
 }

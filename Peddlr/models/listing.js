@@ -1,13 +1,12 @@
 var mongoose = require('mongoose');
-var user = require('users.js');
 var listingSchema = mongoose.Schema(
     {
         "title":String,
-        "price":int,
+        "price":Number,
         "interval":String, //look into this
         "description":String,
         "photo":String,
-        "owner":user,
+        "owner":Number,
         "location":String 
     }
 );

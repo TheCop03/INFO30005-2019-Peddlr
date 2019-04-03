@@ -18,4 +18,5 @@ mongoose.connect(dbURI, options).then(
  }
 );
 
-require('./users.js');
+require("./users.js");
+require("./listing.js");

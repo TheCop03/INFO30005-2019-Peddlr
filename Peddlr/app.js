@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 require('./models/db.js');
 
 // Routes setup
-var routes = require('./routes/routes.js');
-app.use('/',routes);
+var listingRoutes = require('./routes/listingRoutes.js');
+var userRoutes = require('./routes/userRoutes.js');
+app.use('/listing',listingRoutes);
+app.use('/users', userRoutes);
 
 // Start the server
 app.listen(3000,function(req,res){
