@@ -1,0 +1,23 @@
+{
+  "name": "info30003-2019-peddlr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "names.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheCop03/INFO30003-2019-Peddlr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheCop03/INFO30003-2019-Peddlr/issues"
+  },
+  "homepage": "https://github.com/TheCop03/INFO30003-2019-Peddlr#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.21"
+  }
+}
