@@ -4,7 +4,7 @@ var Listing = mongoose.model('listing');
 var createListing = function(req,res){
     var listing = new Listing({
         "title":req.body.title,
-        "price":req.body.price,
+        "price":req.body.price
     });
     listing.save(function(err,newListing){
         if(!err){
@@ -25,7 +25,19 @@ var showAllListings = function(req, res) {
     });
 };
 
+var findListingByName = function(req, res) {
+	var Title = req.params.title;
+	Listing.find({title:Title}, function(err, listing) {
+		if(!err){
+            res.send(listing); //if no errors send the listings found
+        }else{
+            res.sendStatus(404);
+        }
+	});
+};
+
 module.exports = {
 		createListing,
-		showAllListings
+		showAllListings,
+		findListingByName
 }

@@ -30,23 +30,23 @@ var findOneUser = function(req,res){
     });
 };
 
-//var findUserByName = function(req, res){
-//    var userFName = req.params.fname;
-//    var userLName = req.params.lname;
-//    Cafe.find({fname:userFName},function(err,user){
-//        if(!err){
-//            res.send(cafeName);
-//        }else{
-//            res.sendStatus(404);
-//        }
-//    });
-//};
+//find user by seaching full first and last name
+var findUserByName = function(req, res){
+    var userFName = req.params.fname;
+    var userLName = req.params.lname;
+    Users.find({fname:userFName, lname: userLName},function(err,results){
+        if(!err){
+            res.send(results);
+        }else{
+            res.sendStatus(404);
+        }
+    });
+};
 
 //makes the functions public so your routes can access them
 //only export functions you need to use outside of this file
 module.exports = {
 		createUser,
-		findOneUser
+		findOneUser,
+		findUserByName
 };
-
-//module.exports.findCafeByName = findCafeByName;

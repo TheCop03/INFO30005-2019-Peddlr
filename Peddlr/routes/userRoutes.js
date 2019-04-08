@@ -10,7 +10,7 @@ router.post('/api',controller.createUser);
 router.get('/api/id/:id',controller.findOneUser);
 
 //Find one user by name
-//router.get('/api/fname/:fname',controller.findUserByName);
+router.get('/api/fname/:fname/lname/:lname',controller.findUserByName);
 
 
 module.exports = router;
