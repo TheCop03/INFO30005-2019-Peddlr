@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Category = mongoose.model('category');
 
+//create a new category
 var createCategory = function(req,res){
     var category = new Category({
         "type":req.body.type
@@ -14,6 +15,7 @@ var createCategory = function(req,res){
     });
 };
 
+//show all the categories 
 var showAllCategories = function(req, res) {
 	Category.find(function(err,category){
         if(!err){
@@ -24,6 +26,7 @@ var showAllCategories = function(req, res) {
     });
 };
 
+//show one category...??? weird function don't think we need this
 var showCategoryByType = function(req, res) {
 	var Type = req.params.type;
 	Category.find({type:Type}, function(err, results) {

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Users = mongoose.model('users');
 
+//create a new user
 var createUser = function(req,res){
     var user = new User({
         "fname":req.body.fname,
@@ -30,7 +31,7 @@ var findOneUser = function(req,res){
     });
 };
 
-//find user by seaching full first and last name
+//find user by searching full first and last name
 var findUserByName = function(req, res){
     var userFName = req.params.fname;
     var userLName = req.params.lname;

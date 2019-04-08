@@ -4,13 +4,13 @@ var router = express.Router();
 var controller = require('../controllers/userControllers.js');
 
 // Create new user
-router.post('/api',controller.createUser);
+router.post('/peddlr',controller.createUser);
 
 // Find one user by id
-router.get('/api/id/:id',controller.findOneUser);
+router.get('/peddlr/id/:id',controller.findOneUser);
 
 //Find one user by name
-router.get('/api/fname/:fname/lname/:lname',controller.findUserByName);
+router.get('/peddlr/fname/:fname/lname/:lname',controller.findUserByName);
 
 
 module.exports = router;

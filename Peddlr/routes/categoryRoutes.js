@@ -4,12 +4,12 @@ var router = express.Router();
 var controller = require('../controllers/categoryController.js');
 
 //create a new category
-router.post('/api',controller.createCategory);
+router.post('/peddlr',controller.createCategory);
 
 //show all the categories
-router.get('/api',controller.showAllCategories);
+router.get('/peddlr',controller.showAllCategories);
 
 //search for a category
-router.get('/api/type/:type', controller.showCategoryByType);
+router.get('/peddlr/type/:type', controller.showCategoryByType);
 
 module.exports = router;
