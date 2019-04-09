@@ -35,6 +35,7 @@ var findOneUser = function(req,res){
 var findUserByName = function(req, res){
     var userFName = req.params.fname;
     var userLName = req.params.lname;
+    console.log(userFName);
     Users.find({fname:userFName, lname: userLName},function(err,results){
         if(!err){
             res.send(results);

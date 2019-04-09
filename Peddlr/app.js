@@ -11,8 +11,10 @@ require('./models/db.js');
 // Routes setup
 var listingRoutes = require('./routes/listingRoutes.js');
 var userRoutes = require('./routes/userRoutes.js');
-app.use('/listing',listingRoutes);
+var categoryRoutes = require('./routes/categoryRoutes.js')
+app.use('/listings',listingRoutes);
 app.use('/users', userRoutes);
+app.use('/categories', categoryRoutes)
 
 // Start the server
 app.listen(3000,function(req,res){
