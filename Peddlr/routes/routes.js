@@ -16,7 +16,7 @@ router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
 router.post('/newListing', controller.createListing);
 
 //login a user
-router.get('/login', controller.loginUser);
+router.post('/login', controller.loginUser);
 
 //create a new user
 router.post('/newUser', controller.createUser);

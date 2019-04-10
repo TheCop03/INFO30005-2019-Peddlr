@@ -7,23 +7,24 @@ var User = mongoose.model('users');
 var showHomepage = function(req, res) {
 	//find all categories
 	Category.find(function(err,category){
-        if(err){
+        if(!err){
+        		Listing.find({$orderby:{listingID: -1}}, function(err,listing){ 
+                if(!err){
+                		res.send();
+                }else{
+                    res.sendStatus(404);
+                } 
+            });
+        } else {
         		res.sendStatus(404);
         }
     });
-	//find all listings
-	Listing.find({$orderby:{listingID: -1}}, function(err,listing){ 
-        if(err){
-        		res.sendStatus(404);
-        }
-    });
-	res.send(results);
 };
 
 //login the user and show their profile
 var loginUser = function(req, res) {
-	var username = req.params.email;
-    var Password = req.params.password;
+	var username = req.body.email;
+    var Password = req.body.password;
     Users.find({email:username, password: Password},function(err,user){
         if(!err){
             res.send(user);
@@ -47,7 +48,6 @@ var loginUser = function(req, res) {
 //create a new listing
 var createListing = function(req,res){
     var listing = new Listing({
-    		//"listingID": default????
     		"title":req.body.title,
         "price":req.body.price,
         "interval":req.body.interval, //look into this
@@ -123,7 +123,7 @@ var createUser = function(req,res){
 var findUserByName = function(req, res){
     var userFName = req.params.fname;
     var userLName = req.params.lname;
-    Users.find({fname:userFName, lname: userLName},function(err,results){
+    User.find({fname:userFName, lname: userLName},function(err,results){
         if(!err){
             res.send(results);
         }else{
@@ -134,12 +134,10 @@ var findUserByName = function(req, res){
 
 module.exports = {
 		createListing,
-		showAllListings,
 		findListingByName,
 		showListingsByCategory,
 		findUserByName,
 		createUser,
-		showAllCategories,
 		showHomepage,
 		loginUser
 }
