@@ -2,9 +2,10 @@
   "name": "info30003-2019-peddlr",
   "version": "1.0.0",
   "description": "",
-  "main": "names.js",
+  "main": "Peddlr/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Peddlr/app.js"
   },
   "repository": {
     "type": "git",
