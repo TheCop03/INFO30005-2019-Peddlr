@@ -9,11 +9,16 @@ router.get('/homepage', controller.showHomepage);
 //show a listings page by finding it by title
 router.get('/listing/title/:title', controller.findListingByName);
 
+//show all listings within a category
+router.get('/listing/category/:category', controller.showListingsByCategory);
+
 //show a users page by finding them by name
 router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
 
 //create a new listing
 router.post('/newListing', controller.createListing);
+
+//delete a listing
 
 //login a user
 router.post('/login', controller.loginUser);

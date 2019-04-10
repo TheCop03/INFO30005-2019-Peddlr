@@ -36,16 +36,6 @@ var loginUser = function(req, res) {
     });
 };
 
-////show all the categories 
-//var showAllCategories = function(req, res) {
-//	Category.find(function(err,category){
-//        if(!err){
-//            res.send(category); //if no errors send all the cats found
-//        }else{
-//            res.sendStatus(404);
-//        }
-//    });
-//};
 
 //create a new listing
 var createListing = function(req,res){
@@ -68,16 +58,6 @@ var createListing = function(req,res){
     });
 };
 
-////show all listings with the latest listing first
-//var showAllListings = function(req, res) {
-//	Listing.find({$orderby:{listingID: -1}}, function(err,listing){ 
-//        if(!err){
-//            res.send(listing); //if no errors send all the listings found
-//        }else{
-//            res.sendStatus(404);
-//        }
-//    });
-//};
 
 //find a listing by searching its title
 var findListingByName = function(req, res) {
@@ -106,11 +86,13 @@ var showListingsByCategory = function(req, res) {
 //create a new user
 var createUser = function(req,res){
     var user = new User({
+    		"email":req.body.email,
         "fname":req.body.fname,
         "lname":req.body.lname,
         "address":req.body.address,
         "photo":req.body.photo,
-        "phoneNumber":req.body.phoneNumber
+        "phoneNumber":req.body.phoneNumber,
+        "password":req.body.password
     });
     user.save(function(err,newUser){
         if(!err){
