@@ -6,23 +6,16 @@ var User = mongoose.model('users');
 
 var showHompage = function(req, res) {
 	//find all categories
-	
 	Category.find(function(err,category){
-        if(!err){
-            
-        }else{
-            res.sendStatus(404);
-        }
+        if(err){
+        		res.sendStatus(404);
     });
 	//find all listings
 	Listing.find({$orderby:{listingID: -1}}, function(err,listing){ 
-        if(!err){
-            
-        }else{
-            res.sendStatus(404);
+        if(err){
+        		res.sendStatus(404);
         }
     });
-	var results = 
 	res.send(results);
 };
 
