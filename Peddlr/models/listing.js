@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var listingSchema = mongoose.Schema(
     {
-    		"title":String,
+            "title":String,
         "price":Number,
         "interval":String, //look into this
         "description":String,

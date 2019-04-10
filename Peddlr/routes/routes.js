@@ -19,11 +19,13 @@ router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
 router.post('/newListing', controller.createListing);
 
 //delete a listing
+router.post('/deleteListing', controller.deleteListing)
 
 //login a user
 router.post('/login', controller.loginUser);
 
 //create a new user
 router.post('/newUser', controller.createUser);
+
 
 module.exports = router;

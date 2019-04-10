@@ -116,8 +116,21 @@ var findUserByName = function(req, res){
     });
 };
 
+var deleteListing = function(req,res){
+    var listingName = req.params.title;
+    Listing.delete({title:listingName}, function(err,results) {
+        if (!err) {
+            res.send(results);
+        } else {
+            res.sendStatus(404);
+        }
+    });
+};
+
+
 module.exports = {
 		createListing,
+        deleteListing,
 		findListingByName,
 		showListingsByCategory,
 		findUserByName,
