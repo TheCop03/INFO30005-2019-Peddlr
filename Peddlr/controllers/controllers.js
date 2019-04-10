@@ -4,11 +4,12 @@ var Listing = mongoose.model('listing');
 var User = mongoose.model('users');
 
 
-var showHompage = function(req, res) {
+var showHomepage = function(req, res) {
 	//find all categories
 	Category.find(function(err,category){
         if(err){
         		res.sendStatus(404);
+        }
     });
 	//find all listings
 	Listing.find({$orderby:{listingID: -1}}, function(err,listing){ 
@@ -19,8 +20,17 @@ var showHompage = function(req, res) {
 	res.send(results);
 };
 
+//login the user and show their profile
 var loginUser = function(req, res) {
-	
+	var username = req.params.email;
+    var Password = req.params.password;
+    Users.find({email:username, password: Password},function(err,user){
+        if(!err){
+            res.send(user);
+        }else{
+            res.sendStatus(404);
+        }
+    });
 };
 
 ////show all the categories 
@@ -113,7 +123,6 @@ var createUser = function(req,res){
 var findUserByName = function(req, res){
     var userFName = req.params.fname;
     var userLName = req.params.lname;
-    console.log(userFName);
     Users.find({fname:userFName, lname: userLName},function(err,results){
         if(!err){
             res.send(results);
@@ -130,5 +139,7 @@ module.exports = {
 		showListingsByCategory,
 		findUserByName,
 		createUser,
-		showAllCategories
+		showAllCategories,
+		showHomepage,
+		loginUser
 }
