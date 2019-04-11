@@ -9,19 +9,20 @@ var showHomepage = function(req, res) {
 	Category.find(function(err,categories){
         if(!err){
         		//find all the listings
-        		Listing.find({$orderby:{listingID: -1}}, function(err,listings){ 
+        		Listing.find({}, function(err,listings){
                 if(!err){
-                		var results = {'listings': listings, 'categories': categories};     
+                		var results = {'listings': listings, 'categories': categories};
                 		res.send(results);
                 }else{
                     res.sendStatus(404);
-                } 
+                }
             });
         } else {
         		res.sendStatus(404);
         }
     });
 };
+
 
 //login the user and show their profile
 var loginUser = function(req, res) {
@@ -39,6 +40,7 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
+
     var listing = new Listing({
     		"title":req.body.title,
         "price":req.body.price,
@@ -46,9 +48,10 @@ var createListing = function(req,res){
         "description":req.body.description,
         "photo":req.body.photo,
         "owner":req.body.owner,
-        "location":req.body.location, 
+        "location":req.body.location,
         "category":req.body.category
     });
+
     listing.save(function(err,newListing){
         if(!err){
             res.send(newListing); //if no errors, show the new listing
@@ -71,6 +74,7 @@ var findListingByName = function(req, res) {
 	});
 };
 
+
 //show all the listings that are in a certain category
 var showListingsByCategory = function(req, res) {
 	var Category = req.params.category;
@@ -82,6 +86,7 @@ var showListingsByCategory = function(req, res) {
 		}
 	});
 };
+
 
 //create a new user
 var createUser = function(req,res){
@@ -96,12 +101,13 @@ var createUser = function(req,res){
     });
     user.save(function(err,newUser){
         if(!err){
-            res.send(newUser); //if there are no errors, show the new user 
+            res.send(newUser); //if there are no errors, show the new user
         }else{
             res.sendStatus(400);
         }
     });
 };
+
 
 //find user by searching full first and last name
 var findUserByName = function(req, res){
@@ -116,11 +122,13 @@ var findUserByName = function(req, res){
     });
 };
 
+
 var deleteListing = function(req,res){
-    var listingName = req.params.title;
-    Listing.delete({title:listingName}, function(err,results) {
+    var listingName = req.body.title;
+		console.log(listingName);
+    Listing.deleteOne({title:listingName}, function(err, results) {
         if (!err) {
-            res.send(results);
+            res.sendStatus(200);
         } else {
             res.sendStatus(404);
         }
@@ -130,7 +138,7 @@ var deleteListing = function(req,res){
 
 module.exports = {
 		createListing,
-        deleteListing,
+    deleteListing,
 		findListingByName,
 		showListingsByCategory,
 		findUserByName,

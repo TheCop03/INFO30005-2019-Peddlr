@@ -3,6 +3,10 @@ var router = express.Router();
 
 var controller = require('../controllers/controllers.js'); //create controllers.js
 
+router.get("/", function(req, res, next){
+  res.send("Peddlr");
+});
+
 //show the homepage with all listings and categories
 router.get('/homepage', controller.showHomepage);
 
