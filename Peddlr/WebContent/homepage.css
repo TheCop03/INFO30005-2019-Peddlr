@@ -1,0 +1,47 @@
+
+body {
+	display:grid;
+	grid-template-rows: 1fr 1fr 0.5fr 2fr 0.5fr 3fr;
+}
+
+h1 {
+	float: left;
+}
+
+.profilebutton {
+	float: right;
+	height: 50px;
+}
+
+.searchzone {
+	margin: 0 auto 0 auto;
+	background-color: orange;
+}
+h2 {
+	display: inline;
+}
+.searchbar {
+	display:inline;
+}
+.categoryzone {
+	display:grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	
+}
+
+.category {
+	margin: 4px;
+	background-color: red;
+	display:inline;
+}
+
+.latestlistingszone {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.listing {
+	background-color: yellow;
+	margin: 4px;
+}
