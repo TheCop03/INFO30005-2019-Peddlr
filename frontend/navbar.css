@@ -1,0 +1,10 @@
+<style>
+body {
+  margin: 0;
+  font-family: 'Allerta Stencil',"Roboto", sans-serif, Arial, Helvetica;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: greenyellow;
+}
+</style>
