@@ -19,6 +19,7 @@
   "homepage": "https://github.com/TheCop03/INFO30003-2019-Peddlr#readme",
   "dependencies": {
     "express": "^4.16.4",
-    "mongoose": "^5.4.21"
+    "mongoose": "^5.4.21",
+    "pug": "^2.0.3"
   }
 }
