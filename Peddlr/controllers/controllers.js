@@ -24,6 +24,17 @@ var showHomepage = function(req, res) {
 };
 
 
+var showListingByID = function(req, res) {
+	var ID = req.params.id;
+	Listing.find({_id:ID}, function(err, listing) {
+		if(!err){
+            res.render('listing', listing); //if no errors send the listings found
+        }else{
+            res.sendStatus(404);
+        }
+	});
+};
+
 //login the user and show their profile
 var loginUser = function(req, res) {
 	var username = req.body.email;
@@ -144,5 +155,6 @@ module.exports = {
 		findUserByName,
 		createUser,
 		showHomepage,
-		loginUser
+		loginUser,
+		showListingByID
 }

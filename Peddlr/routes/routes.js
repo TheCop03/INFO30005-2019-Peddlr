@@ -16,6 +16,9 @@ router.get('/listing/title/:title', controller.findListingByName);
 //show all listings within a category
 router.get('/listing/category/:category', controller.showListingsByCategory);
 
+//show listing by id
+router.get('/listing/id/:id', controller.showListingByID);
+
 //show a users page by finding them by name
 router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
 
