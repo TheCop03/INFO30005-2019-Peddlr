@@ -12,7 +12,7 @@ var showHomepage = function(req, res) {
         		Listing.find({}, function(err,listings){
                 if(!err){
                 		var results = {'listings': listings, 'categories': categories};
-                		res.render('hompage', results);
+                		res.render('homepage', results);
                 }else{
                     res.sendStatus(404);
                 }

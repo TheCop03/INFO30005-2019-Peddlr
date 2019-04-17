@@ -1,0 +1,27 @@
+extends default.pug
+
+block content 
+	div.searchzone
+		h2 Looking for...
+		form.searchbar(action='SEARCHRESULTS')
+		input(type='text', placeholder='Search..', name='search')
+		button(type='submit')
+			i.fa.fa-search
+	
+	h3 Categories
+
+	div.categoryzone
+		each category in categories
+			div.category
+				a(href = './listing/category/$(category.id)') 
+					p.categorytitle #(category.title)
+					img.categoryphoto(href = '#(category.photo)')
+	
+	h3 Latest Listings
+	
+	div.latestlistingszone
+		each listing in listings
+			div.listing
+				a(href = './listing/id/$(listing.id)') 
+					p.listingtitle #(listing.title)
+	
