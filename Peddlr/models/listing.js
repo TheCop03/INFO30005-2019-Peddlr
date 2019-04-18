@@ -6,9 +6,9 @@ var listingSchema = mongoose.Schema(
         "interval":String, //look into this
         "description":String,
         "photo":String,
-        "owner":Number,
+        "owner":String,
         "location":String,
-        "category":Number
+        "category":String
     }
 );
 mongoose.model('listing',listingSchema);

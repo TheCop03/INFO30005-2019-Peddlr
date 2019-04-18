@@ -13,15 +13,15 @@ block content
 	div.categoryzone
 		each category in categories
 			div.category
-				a(href = './listing/category/$(category.id)') 
-					p.categorytitle #(category.title)
-					img.categoryphoto(href = '#(category.photo)')
+				a(href = './listing/category/${category._id}')
+					p.categorytitle #{category.title}
+					p #{category._id}
 	
 	h3 Latest Listings
 	
 	div.latestlistingszone
 		each listing in listings
 			div.listing
-				a(href = './listing/id/$(listing.id)') 
-					p.listingtitle #(listing.title)
+				a(href = './listing/id/${listing.id}') 
+					p.listingtitle #{listing.title}
 	
