@@ -11,7 +11,7 @@ var showHomepage = function(req, res) {
         		//find all the listings
         		Listing.find({}, function(err,listings){
                 if(!err){
-                		var results = {'listings': listings, 'categories': categories};
+                		var results = {title: 'Peddlr', 'listings': listings, 'categories': categories};
                 		res.render('homepage', results);
                 }else{
                     res.sendStatus(404);

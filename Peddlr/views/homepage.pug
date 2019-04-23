@@ -2,26 +2,27 @@ extends default.pug
 
 block content 
 	div.searchzone
-		h2 Looking for...
 		form.searchbar(action='SEARCHRESULTS')
-		input(type='text', placeholder='Search..', name='search')
+		input(type='text', placeholder='Looking for...', name='search')
 		button(type='submit')
 			i.fa.fa-search
 	
-	h3 Categories
+	h3 Categories:
 
 	div.categoryzone
 		each category in categories
 			div.category
 				a(href = './listing/category/${category._id}')
+					img.categoryphoto(src=category.photo alt=category.title)
 					p.categorytitle #{category.title}
-					p #{category._id}
 	
-	h3 Latest Listings
+	h3 Latest Listings:
 	
 	div.latestlistingszone
 		each listing in listings
 			div.listing
 				a(href = './listing/id/${listing.id}') 
+					img.listingphoto(src=listing.photo alt=listing.title)
 					p.listingtitle #{listing.title}
+					p.listingprice $#{listing.price} #{listing.interval}
 	
