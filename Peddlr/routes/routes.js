@@ -22,6 +22,9 @@ router.get('/listing/id/:id', controller.showListingByID);
 //show a users page by finding them by name
 router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
 
+//show the sign up page
+router.get('/signup', controller.showSignUp);
+
 //create a new listing
 router.post('/newListing', controller.createListing);
 
@@ -32,7 +35,7 @@ router.post('/deleteListing', controller.deleteListing)
 router.post('/login', controller.loginUser);
 
 //create a new user
-router.post('/newUser', controller.showSignUp);
+router.post('/newUser', controller.createUser);
 
 
 module.exports = router;
