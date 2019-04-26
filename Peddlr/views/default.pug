@@ -2,13 +2,11 @@ doctype html
 html
 	head
 		title #{title}
-		style
-			include ../public/css/homepage.css
+		block css
 		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	header
 		h1 #{title}
-		button.profilebutton
-			// this button will link to the profile page
+		block user
 	body
 		block content

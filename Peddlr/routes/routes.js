@@ -32,7 +32,7 @@ router.post('/deleteListing', controller.deleteListing)
 router.post('/login', controller.loginUser);
 
 //create a new user
-router.post('/newUser', controller.createUser);
+router.post('/newUser', controller.showSignUp);
 
 
 module.exports = router;

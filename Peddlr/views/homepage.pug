@@ -1,5 +1,15 @@
 extends default.pug
 
+block css
+	style
+		include ../public/css/homepage.css
+
+block user
+	a(href = './newUser')
+		button.signupbutton(type='submit') SIGN UP
+	a(href = './login')
+		button.loginbutton(type='submit') LOG IN
+
 block content 
 	div.searchzone
 		form.searchbar(action='SEARCHRESULTS')

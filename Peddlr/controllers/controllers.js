@@ -23,6 +23,10 @@ var showHomepage = function(req, res) {
     });
 };
 
+var showSignUp = function(req, res) {
+	var results = {title: 'Peddlr'};
+	res.render('signup', results);
+};
 
 var showListingByID = function(req, res) {
 	var ID = req.params.id;
@@ -155,6 +159,7 @@ module.exports = {
 		findUserByName,
 		createUser,
 		showHomepage,
+		showSignUp,
 		loginUser,
 		showListingByID
 }
