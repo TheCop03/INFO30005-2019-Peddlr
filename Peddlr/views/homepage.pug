@@ -6,15 +6,15 @@ block css
 
 block user
 	a(href = './signup')
-		button.signupbutton(type='submit') SIGN UP
-	a(href = './login')
-		button.loginbutton(type='submit') LOG IN
+		button.signupbutton(type='submit') Sign up
+	a(href = './loginpage')
+		button.loginbutton(type='submit') Log In
 
 block content 
 	div.searchzone
 		form.searchbar(action='SEARCHRESULTS')
 		input(type='text', placeholder='Looking for...', name='search')
-		button(type='submit')
+		button.searchbutton(type='submit') Search
 			i.fa.fa-search
 	
 	h3 Categories:

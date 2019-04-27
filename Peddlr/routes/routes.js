@@ -25,6 +25,9 @@ router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
 //show the sign up page
 router.get('/signup', controller.showSignUp);
 
+//show the login up page
+router.get('/loginpage', controller.showLogin);
+
 //create a new listing
 router.post('/newListing', controller.createListing);
 

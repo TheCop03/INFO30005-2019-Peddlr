@@ -1,7 +1,7 @@
-/*@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil")
-*/
+
+html{
+    font-family: 'Montserrat', sans-serif;
+}
 body{
     background-image: url(../../Peddlr/views/images/bike.jpg);
     background-repeat: no-repeat;
@@ -9,11 +9,9 @@ body{
 }
 
 h2 {
-    font-family: Roboto, sans-serif;
     text-align: center;
 }
 p{
-    font-family: Roboto, sans-serif;
     font-weight: lighter;
     text-align: center;
 }
@@ -23,8 +21,6 @@ title{
     height: 73px;
     left: 479px;
     top: 147px;
-
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 50px;

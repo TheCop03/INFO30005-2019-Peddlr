@@ -28,6 +28,11 @@ var showSignUp = function(req, res) {
 	res.render('signup', results);
 };
 
+var showLogin = function(req, res) {
+    var results = {title: 'Peddlr'};
+    res.render('loginpage', results);
+};
+
 var showListingByID = function(req, res) {
 	var ID = req.params.id;
 	Listing.find({_id:ID}, function(err, listing) {
@@ -153,13 +158,14 @@ var deleteListing = function(req,res){
 
 module.exports = {
 		createListing,
-    deleteListing,
+        deleteListing,
 		findListingByName,
 		showListingsByCategory,
 		findUserByName,
 		createUser,
 		showHomepage,
 		showSignUp,
+        showLogin,
 		loginUser,
 		showListingByID
 }
