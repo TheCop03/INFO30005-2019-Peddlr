@@ -84,7 +84,7 @@ input, select {
   width: 15%;
 }
 
-.signupbutton {
+.pagebutton {
   width: 30%;
   margin: 20px;
   border: 0px;
@@ -94,3 +94,20 @@ input, select {
   height: 35px;
   border-radius: 20px;
 }
+
+.signupbutton{
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+    box-sizing: border-box;
+
+    /* font */
+    color: #9EE012;
+
+}
+
+

@@ -1,0 +1,27 @@
+.brk {
+    width: 50%;
+    height: 0px;
+    margin-left:auto;
+    margin-right: auto;
+    background: #C4C4C4;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    transform: rotate(-0.09deg);
+}
+
+.backbutton {
+    color:#4F5445;
+    font-family: "Roboto";
+    display: inline-block;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+
+}
