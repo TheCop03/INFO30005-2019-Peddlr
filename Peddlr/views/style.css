@@ -1,0 +1,21 @@
+/*@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil")
+*/
+body{
+    background-image: url(bike.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+}
+
+h2 {
+    font-family: Roboto, sans-serif;
+    text-align: center;
+}
+p{
+    font-family: Roboto, sans-serif;
+    font-weight: lighter;
+    text-align: center;
+}
+
+

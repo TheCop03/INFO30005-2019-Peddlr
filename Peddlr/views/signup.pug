@@ -2,9 +2,11 @@ extends default.pug
 
 block css
   style
+    include style.css
     include ../public/css/signup.css
 
 block user
+  h1 Peddlr
   a(href = './login')
     button.loginbutton(type='submit') LOG IN
     
@@ -13,7 +15,7 @@ block content
   p.tagline It's simple!
 
   // register form
-  form(method='POST' action='/register')
+  form(method='POST' action='./newUser')
     div.form-group
       input#firstname(type='text', placeholder='First name' name='name', required)
       input#lastname(type='text', placeholder='Last name' name='name', required)
@@ -42,3 +44,5 @@ block content
     div.form-group
       input#pw2(type='password', placeholder='Retype Password' name='confirmPassword', required)
     button.signupbutton(type='submit') SIGN UP
+
+    p.foobar Copyright (c) Peddlr People
