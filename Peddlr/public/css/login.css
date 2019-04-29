@@ -2,19 +2,20 @@
 html{
     font-family: 'Montserrat', sans-serif;
 }
+
 .brk {
     width: 50%;
     height: 0px;
     margin-left:auto;
     margin-right: auto;
-    background: #C4C4C4;
-    border: 1px solid #C4C4C4;
+    background: #F9BE02;
+    border: 1px solid #F9BE02;
     box-sizing: border-box;
     transform: rotate(-0.09deg);
 }
 
 .backbutton {
-    color:#4F5445;
+    color:#F9BE02;
     display: inline-block;
     padding: 15px 32px;
     text-align: center;
@@ -26,5 +27,23 @@ html{
     margin-top: 20px;
     cursor: pointer;
     border-radius: 20px;
+}
 
+.backbutton:hover {
+    background-color: #eff1f2;
+}
+
+.signupbutton {
+    background-color: #7CDBD5;
+    font-size: 20px;
+    color: white;
+    border-width: 2.5px;
+    border-color: #F53240;
+    border-radius: 20px;
+    width: 30%;
+    height: 40px;
+}
+
+.signupbutton:hover {
+    border-color: #c42731;
 }

@@ -1,80 +1,41 @@
-<!DOCTYPE html><html><head><title></title><style>/*@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil")
-*/
-body{
+<!DOCTYPE html><script>function openForm() {
+	document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+	document.getElementById("myForm").style.display = "none";
+}</script><html><head><title></title><style>
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    display: grid;
+    grid-template-rows: 80px 0.5fr 0.25fr auto;
+    border: 0;
+    margin: 0;
+    background-color: #7CDBD5;
     background-image: url(../../Peddlr/views/images/bike.jpg);
     background-repeat: no-repeat;
     background-position: left bottom;
 }
 
-h2 {
-    font-family: Roboto, sans-serif;
-    text-align: center;
-}
-p{
-    font-family: Roboto, sans-serif;
-    font-weight: lighter;
-    text-align: center;
-}
-title{
-    position: absolute;
-    width: 463px;
-    height: 73px;
-    left: 479px;
-    top: 147px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 50px;
-    line-height: 59px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    color: #4F5445;
-}
-
-body {
-	display:grid;
-	grid-template-rows: 80px 0.5fr 0.25fr auto;
-	border: 0;
-	margin: 0;
-	background-color: #F9F6EE;
-}
-
 header {
-	background-color: #D3B492;
+    background-color: white;
 }
 
-h1 {
-	float: left;
-	padding-left: 20px;
-	color: white;
-	font-family: "Allerta Stencil";
-}
-
-.loginbutton {
-	float: right;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-right: 20px;
-	padding: 8px 32px;
-	background-color: inherit;
-	outline: 1px;
-	font-size: 20px;
-	color: white;
-	font-family: "Roboto", "Times New Roman";
-}
 
 h2 {
   margin-bottom: 0px;
   text-align: center;
   font-size: 50px;
   font-weight: normal;
-  font-family: "Roboto";
-  color: #4F5445;
+  color: #F53240;
+
+}
+
+p{
+    font-weight: lighter;
+    text-align: center;
 }
 
 .tagline {
@@ -82,8 +43,7 @@ h2 {
   text-align: center;
   font-size: 25px;
   font-weight: lighter;
-  font-family: "Roboto";
-  color: #4F5445;
+  color: #F9BE02;
 }
 
 form {
@@ -94,7 +54,6 @@ input, select {
   margin: 10px;
   width: 40%;
   text-indent: 5px;
-  font-family: "Roboto";
   font-size: larger;
 }
 
@@ -126,43 +85,44 @@ input, select {
   width: 30%;
   margin: 20px;
   border: 0px;
-  background-color: #9EE012;
+  background-color: #F53240;
   color: white;
   font-size: 20px;
   height: 35px;
   border-radius: 20px;
 }
-
-.signupbutton{
-    width: 30%;
-    margin: 20px;
-    border: 0px;
-    opacity:1;
+.pagebutton:hover{
+    background-color: #c42731;
+}
+.loginbutton {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px 32px;
+    background-color: inherit;
+    outline: 1px;
     font-size: 20px;
-    height: 35px;
-    border-radius: 20px;
-    box-sizing: border-box;
-
-    /* font */
-    color: #9EE012;
-
+    color: white;
 }
 
+html{
+    font-family: 'Montserrat', sans-serif;
+}
 
 .brk {
     width: 50%;
     height: 0px;
     margin-left:auto;
     margin-right: auto;
-    background: #C4C4C4;
-    border: 1px solid #C4C4C4;
+    background: #F9BE02;
+    border: 1px solid #F9BE02;
     box-sizing: border-box;
     transform: rotate(-0.09deg);
 }
 
 .backbutton {
-    color:#4F5445;
-    font-family: "Roboto";
+    color:#F9BE02;
     display: inline-block;
     padding: 15px 32px;
     text-align: center;
@@ -174,5 +134,25 @@ input, select {
     margin-top: 20px;
     cursor: pointer;
     border-radius: 20px;
+}
 
-}</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><button class="backbutton" href="./homepage">Back</button><h2>Login</h2><p class="lead"><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"></div><button class="pagebutton" type="submit">Login</button><div class="brk"></div></form><form role="form" action="signup" method="post"><p>Don't have an account?</p><button class="signupbutton" type="submit" href="./signup">Join the community</button><p class="foobar">Copyright (c) Peddlr People</p></form></p></body></html>
+.backbutton:hover {
+    margin: 0 auto;
+
+    background-color: #eff1f2;
+}
+
+.signupbutton {
+    background-color: #7CDBD5;
+    font-size: 20px;
+    color: white;
+    border-width: 2.5px;
+    border-color: #F53240;
+    border-radius: 20px;
+    width: 30%;
+    height: 40px;
+}
+
+.signupbutton:hover {
+    border-color: #c42731;
+}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><a href="./homepage"><button class="backbutton" href="./homepage">Back</button></a><h2>Login</h2><p class="lead"><form role="form" action="./login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"></div><a href="./homepage"><button class="pagebutton" type="submit">Login</button></a></form><div class="brk"></div><p>Don't have an account?</p><a href="./signup"><button class="signupbutton" type="submit" href="./signup">Join the community</button></a></p><p class="foobar">Copyright (c) Peddlr People</p></body></html>
