@@ -1,80 +1,41 @@
-<!DOCTYPE html><html><head><title></title><style>/*@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
-@import url("https://fonts.googleapis.com/css?family=Allerta+Stencil")
-*/
-bkg{
+<!DOCTYPE html><script>function openForm() {
+	document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+	document.getElementById("myForm").style.display = "none";
+}</script><html><head><title></title><style>
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+body {
+    display: grid;
+    grid-template-rows: 80px 0.5fr 0.25fr auto;
+    border: 0;
+    margin: 0;
+    background-color: #7CDBD5;
     background-image: url(../../Peddlr/views/images/bike.jpg);
     background-repeat: no-repeat;
     background-position: left bottom;
 }
 
-h2 {
-    font-family: Roboto, sans-serif;
-    text-align: center;
-}
-p{
-    font-family: Roboto, sans-serif;
-    font-weight: lighter;
-    text-align: center;
-}
-title{
-    position: absolute;
-    width: 463px;
-    height: 73px;
-    left: 479px;
-    top: 147px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 50px;
-    line-height: 59px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    color: #4F5445;
-}
-
-body {
-	display:grid;
-	grid-template-rows: 80px 0.5fr 0.25fr auto;
-	border: 0;
-	margin: 0;
-	background-color: #F9F6EE;
-}
-
 header {
-	background-color: #D3B492;
+    background-color: white;
 }
 
-h1 {
-	float: left;
-	padding-left: 20px;
-	color: white;
-	font-family: "Allerta Stencil";
-}
-
-.loginbutton {
-	float: right;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-right: 20px;
-	padding: 8px 32px;
-	background-color: inherit;
-	outline: 1px;
-	font-size: 20px;
-	color: white;
-	font-family: "Roboto", "Times New Roman";
-}
 
 h2 {
   margin-bottom: 0px;
   text-align: center;
   font-size: 50px;
   font-weight: normal;
-  font-family: "Roboto";
-  color: #4F5445;
+  color: #F53240;
+
+}
+
+p{
+    font-weight: lighter;
+    text-align: center;
 }
 
 .tagline {
@@ -82,8 +43,7 @@ h2 {
   text-align: center;
   font-size: 25px;
   font-weight: lighter;
-  font-family: "Roboto";
-  color: #4F5445;
+  color: #F9BE02;
 }
 
 form {
@@ -94,7 +54,6 @@ input, select {
   margin: 10px;
   width: 40%;
   text-indent: 5px;
-  font-family: "Roboto";
   font-size: larger;
 }
 
@@ -126,54 +85,24 @@ input, select {
   width: 30%;
   margin: 20px;
   border: 0px;
-  background-color: #9EE012;
+  background-color: #F53240;
   color: white;
   font-size: 20px;
   height: 35px;
   border-radius: 20px;
 }
-
-.signupbutton{
-    width: 30%;
-    margin: 20px;
-    border: 0px;
-    opacity:1;
-    font-size: 20px;
-    height: 35px;
-    border-radius: 20px;
-    box-sizing: border-box;
-
-    /* font */
-    color: #9EE012;
-
+.pagebutton:hover{
+    background-color: #c42731;
 }
-
-.brk {
-    width: 50%;
-    height: 0px;
-    margin-left:auto;
-    margin-right: auto;
-    background: #C4C4C4;
-    border: 1px solid #C4C4C4;
-    box-sizing: border-box;
-    transform: rotate(-0.09deg);
-}
-
-.backbutton {
-    color:#4F5445;
-    font-family: "Roboto";
-    display: inline-block;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    width: 100px;
-    margin-left: 20px;
+.loginbutton {
+    float: right;
     margin-top: 20px;
-    cursor: pointer;
-    border-radius: 20px;
-    image: url(../views/images/arrow.jpg)
-
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px 32px;
+    background-color: inherit;
+    outline: 1px;
+    font-size: 20px;
+    color: white;
 }
-</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1><a href="./login"><button class="loginbutton" type="submit">LOG IN</button></a></header><body><h2>Sign Up</h2><p class="tagline">It's simple!</p><!-- register form--><form method="POST" action="./newUser"><div class="form-group"><input id="firstname" type="text" placeholder="First name" name="name" required><input id="lastname" type="text" placeholder="Last name" name="name" required></div><div class="form-group"><p class="dob">Date of Birth</p><input id="dob" type="date" placeholder="22/07/2018" name="dob" required></div><div class="form-group"><input id="address" type="text" placeholder="Address" name="address" required></div><div class="form-group"><select id="state" type="text" placeholder="State" name="state" required><option>NSW</option><option>QLD</option><option>SA</option><option>TAS</option><option>VIC</option><option>WA</option></select><input id="zip" type="text" placeholder="Zip Code" name="zip" required><select id="country" type="text" placeholder="Country" name="country" required><option>Australia</option></select></div><div class="form-group"><input id="email" type="email" placeholder="Email Address" name="email" required></div><div class="form-group"><input id="confirmemail" type="email" placeholder="Confirm Email Address" name="confirmemail" required></div><div class="form-group"><input id="pw" type="password" placeholder="Password" name="password" required></div><div class="form-group"><input id="pw2" type="password" placeholder="Retype Password" name="confirmPassword" required></div><button class="pagebutton" type="submit">SIGN UP</button><p class="foobar">Copyright (c) Peddlr People</p></form></body></html>
+</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><h2>Sign Up</h2><p class="tagline">It's simple!</p><!-- register form--><form method="POST" action="./newUser"><div class="form-group"><input id="firstname" type="text" placeholder="First name" name="name" required><input id="lastname" type="text" placeholder="Last name" name="name" required></div><div class="form-group"><p class="dob">Date of Birth</p><input id="dob" type="date" placeholder="22/07/2018" name="dob" required></div><div class="form-group"><input id="address" type="text" placeholder="Address" name="address" required></div><div class="form-group"><select id="state" type="text" placeholder="State" name="state" required><option>NSW</option><option>QLD</option><option>SA</option><option>TAS</option><option>VIC</option><option>WA</option></select><input id="zip" type="text" placeholder="Zip Code" name="zip" required><select id="country" type="text" placeholder="Country" name="country" required><option>Australia</option></select></div><div class="form-group"><input id="email" type="email" placeholder="Email Address" name="email" required></div><div class="form-group"><input id="confirmemail" type="email" placeholder="Confirm Email Address" name="confirmemail" required></div><div class="form-group"><input id="pw" type="password" placeholder="Password" name="password" required></div><div class="form-group"><input id="pw2" type="password" placeholder="Retype Password" name="confirmPassword" required></div><a href="./homepage"><button class="pagebutton" type="submit">SIGN UP</button></a><p>Already a part of the community?<a href="/loginpage">Log In</a></p></form><p class="foobar">Copyright (c) Peddlr People</p></body></html>

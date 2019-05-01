@@ -3,6 +3,7 @@ extends default.pug
 block css
 	style
 		include ../public/css/homepage.css
+		include ../public/css/respmenu.css
 
 block user
 	a(href = './signup')
@@ -10,10 +11,11 @@ block user
 	a(href = './loginpage')
 		button.loginbutton(type='submit') Log In
 
-block content 
+block content
+	//form.searchbar(action='SEARCHRESULTS')
 	div.searchzone
-		form.searchbar(action='SEARCHRESULTS')
-		input(type='text', placeholder='Looking for...', name='search')
+		h2 Let's Peddle
+		input(type='text', placeholder='   I am looking for...', name='search')
 		button.searchbutton(type='submit') Search
 			i.fa.fa-search
 	
@@ -25,7 +27,6 @@ block content
 				a(href = `./listing/category/${category._id}`)
 					img.categoryphoto(src=category.photo alt=category.title)
 					p.categorytitle #{category.title}
-	
 	h3 Latest Listings:
 	
 	div.latestlistingszone
