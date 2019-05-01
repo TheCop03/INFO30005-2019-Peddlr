@@ -37,7 +37,7 @@ var showListingByID = function(req, res) {
 	var ID = req.params.id;
 	Listing.find({_id:ID}, function(err, listing) {
 		if(!err){
-            res.render('listing', listing); //if no errors send the listings found
+            res.render('listing', { listing }); //if no errors send the listings found
         }else{
             res.sendStatus(404);
         }
