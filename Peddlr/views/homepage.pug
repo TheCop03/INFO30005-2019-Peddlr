@@ -1,38 +1,39 @@
 extends default.pug
 
 block css
-	style
-		include ../public/css/homepage.css
-		include ../public/css/respmenu.css
+    style
+        include ../public/css/homepage.css
 
 block user
-	a(href = './signup')
-		button.signupbutton(type='submit') Sign up
-	a(href = './loginpage')
-		button.loginbutton(type='submit') Log In
+    a(href = './signup')
+        button.signupbutton(type='submit') Sign up
+    a(href = './loginpage')
+        button.loginbutton(type='submit') Log In
 
 block content
-	//form.searchbar(action='SEARCHRESULTS')
-	div.searchzone
-		h2 Let's Peddle
-		input(type='text', placeholder='   I am looking for...', name='search')
-		button.searchbutton(type='submit') Search
-			i.fa.fa-search
-	
-	h3 Categories:
 
-	div.categoryzone
-		each category in categories
-			div.category
-				a(href = `./listing/category/${category._id}`)
-					img.categoryphoto(src=category.photo alt=category.title)
-					p.categorytitle #{category.title}
-	h3 Latest Listings:
-	
-	div.latestlistingszone
-		each listing in listings
-			div.listing
-				a(href = `./listing/id/${listing._id}`) 
-					img.listingphoto(src=listing.photo alt=listing.title)
-					p.listingtitle #{listing.title}
-					p.listingprice $#{listing.price} #{listing.interval}
+    //form.searchbar(action='SEARCHRESULTS')
+    div.searchzone
+        h2 Let's Peddle
+        input(type='text', placeholder='   I am looking for...', name='search')
+        button.searchbutton(type='submit') Search
+            i.fa.fa-search
+
+    h3 Categories:
+
+    div.categoryzone
+        each category in categories
+            div.category
+                a(href = './listing/category/${category._id}')
+                    img.categoryphoto(src=category.photo alt=category.title)
+                    p.categorytitle #{category.title}
+
+    h3 Latest Listings:
+
+    div.latestlistingszone
+        each listing in listings
+            div.listing
+                a(href = './listing/id/${listing.id}')
+                    img.listingphoto(src=listing.photo alt=listing.title)
+                    p.listingtitle #{listing.title}
+                    p.listingprice $#{listing.price} #{listing.interval}
