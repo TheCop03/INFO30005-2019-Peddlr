@@ -1,22 +1,12 @@
-
 doctype html
-
-script.
-	function openForm() {
-		document.getElementById("myForm").style.display = "block";
-	}
-
-	function closeForm() {
-		document.getElementById("myForm").style.display = "none";
-	}
 html
-	head
-		title #{title}
-		block css
-		link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
-		meta(name="viewport" content="width=device-width, initial-scale=1")
-	header
-		h1 Peddlr
-		block user
-	body
-		block content
+    head
+        title #{title}
+        block css
+        link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+    header
+        h1 Peddlr
+        block user
+    body
+        block content

@@ -2,7 +2,11 @@ extends default.pug
 
 block css
   style
+    include ../public/css/style.css
     include ../public/css/signup.css
+block user
+  a(href = './loginpage')
+    button.loginbutton(type='submit') Log in
 
 block content
   h2 Sign Up
@@ -37,11 +41,6 @@ block content
       input#pw(type='password', placeholder='Password' name='password', required)
     div.form-group
       input#pw2(type='password', placeholder='Retype Password' name='confirmPassword', required)
-    a(href = './homepage')
-      button.pagebutton(type='submit') SIGN UP
+    button.pagebutton(type='submit') SIGN UP
 
-    p
-      | Already a part of the community?
-      a(href="/loginpage") Log In
-
-  p.foobar Copyright (c) Peddlr People
+    p.foobar Copyright (c) Peddlr People

@@ -1,93 +1,24 @@
-
 html{
     font-family: 'Montserrat', sans-serif;
 }
 body {
-    display: grid;
+    display:grid;
     grid-template-rows: 80px 0.5fr 0.25fr auto;
     border: 0;
     margin: 0;
-    background-color: #7CDBD5;
-    background-image: url(../../Peddlr/views/images/bike.jpg);
-    background-repeat: no-repeat;
-    background-position: left bottom;
+    background-color: #F9F6EE;
 }
 
 header {
-    background-color: white;
+    background-color: #D3B492;
 }
 
-
-h2 {
-  margin-bottom: 0px;
-  text-align: center;
-  font-size: 50px;
-  font-weight: normal;
-  color: #F53240;
-
+h1 {
+    float: left;
+    padding-left: 20px;
+    color: white;
 }
 
-p{
-    font-weight: lighter;
-    text-align: center;
-}
-
-.tagline {
-  margin-top: 0px;
-  text-align: center;
-  font-size: 25px;
-  font-weight: lighter;
-  color: #F9BE02;
-}
-
-form {
-  text-align: center;
-}
-
-input, select {
-  margin: 10px;
-  width: 40%;
-  text-indent: 5px;
-  font-size: larger;
-}
-
-.dob {
-  margin-top: 5px;
-  margin-bottom: 0px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-#dob {
-  text-indent: 5px;
-  color: grey;
-}
-
-#firstname, #lastname {
-  width: 19%;
-}
-
-#state, #zip {
-  width: 10%;
-}
-
-#country {
-  width: 15%;
-}
-
-.pagebutton {
-  width: 30%;
-  margin: 20px;
-  border: 0px;
-  background-color: #F53240;
-  color: white;
-  font-size: 20px;
-  height: 35px;
-  border-radius: 20px;
-}
-.pagebutton:hover{
-    background-color: #c42731;
-}
 .loginbutton {
     float: right;
     margin-top: 20px;
@@ -98,4 +29,81 @@ input, select {
     outline: 1px;
     font-size: 20px;
     color: white;
+}
+
+h2 {
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: normal;
+    color: #4F5445;
+}
+
+.tagline {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: lighter;
+    color: #4F5445;
+}
+
+form {
+    text-align: center;
+}
+
+input, select {
+    margin: 10px;
+    width: 40%;
+    text-indent: 5px;
+    font-size: larger;
+}
+
+.dob {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#dob {
+    text-indent: 5px;
+    color: grey;
+}
+
+#firstname, #lastname {
+    width: 19%;
+}
+
+#state, #zip {
+    width: 10%;
+}
+
+#country {
+    width: 15%;
+}
+
+.pagebutton {
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    background-color: #a08a6f;
+    color: white;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.signupbutton{
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+    box-sizing: border-box;
+
+    /* font */
+    color: #010106;
+
 }
