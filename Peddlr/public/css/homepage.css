@@ -1,14 +1,14 @@
-tml{
+html{
 	font-family: 'Montserrat', sans-serif;
 }
 body {
 	display:grid;
-	grid-template-rows: 0.25fr 1fr 0.5fr 1.5fr 0.5fr 2fr;
+	grid-template-rows: 0.25fr 0.75fr 0.15fr 1fr 0.15fr 2fr 0.1fr;
 	border: 0;
-	margin: 0;
 	background-color: #F9F6EE;
 }
-
+/************************************************************************************/
+/* HEADERS */
 header {
 	background-color: #bfa487;
 }
@@ -19,13 +19,30 @@ h1 {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 }
-h2{
+
+h2 {
+	grid-area: h2;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bolder;
+	padding-left: 10px;
 	position: relative;
-	margin-bottom: 0px;
-	margin-left: 20px;
-	top: 20px;
+	font-size: 50px;
 }
 
+h3 {
+	margin: 0px 0px 0px 10px;
+	padding-left: 50px;
+	font-size: 30px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bold;
+}
+
+footer {
+	background-color: #bfa487;
+}
+
+/************************************************************************************/
+/* BUTTONS */
 .signupbutton {
 	float: right;
 	margin-top: 20px;
@@ -63,45 +80,75 @@ h2{
 	border: 0;
 }*/
 
-.searchzone {
-	width: 100%;
-	height: 200px;
-	/*background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg);*/
-	background-image: url(https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80);
+.createbutton {
+	grid-area: createbutton;
+	background-color: #bfa487;
+	height: 44px;
+	font-size: 18px;
+	border-radius: 20px;
+	position: relative;
+	top: 50px;
+	width: 95%;
+	box-shadow: 10px 10px 16px -5px rgba(0,0,0,0.33);
+
 }
 
-input{
+.createbutton:hover{
+	background-color: #9EE012;
+
+}
+
+.searchbutton{
+	grid-area: searchbutton;
+	background-color: #bfa487;
 	position: relative;
+	width: 80%;
+	height: 44px;
+	font-size: 18px;
+	padding-right: 10px;
 	top: 30px;
-	width: 90%;
+	left: 8%;
+	border-radius: 20px;
+}
+.searchbutton:hover {
+	background-color: #9EE012;
+}
+/************************************************************************************/
+/* SEARCH ZONE */
+.searchzone {
+	display: grid;
+	margin: 50px 10px 0px 10px;
+	width: auto;
+	height: 250px;
+	/* background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg); */
+	background-image: url(https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80);
+	grid-template-rows: 45% 55%;
+	grid-template-columns: 80% 20%;
+	grid-template-areas: "h2 createbutton" "input searchbutton";
+}
+input{
+	padding-left: 10px;
+	margin-left: 10px;
+	grid-area: input;
+	width: 97%;
 	height: 40px;
 	font-size: medium;
 	border-radius: 5px;
-}
-.searchbutton{
-	background-color: #bfa487;
 	position: relative;
 	top: 30px;
-	left: 30px;
-	width: 80px;
-	height: 26px;
-	font-size: medium;
-	border-radius: 5px;
-
 }
 
-h3 {
-	padding-left: 50px;
-	font-size: 20px;
-}
-
+/************************************************************************************/
+/* CATEGORY ZONE */
 
 .categoryzone {
+	padding-left: 50px;
+	margin: 0px 10px 0px 10px;
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	grid-template-rows: 100%;
 	column-gap: 50px;
-	padding-left: 20px;
-
+	height: 100%;
 }
 
 .category {
@@ -111,6 +158,8 @@ h3 {
 	border-width: 2px;
 	border-color: #010106;
 	color: black;
+	padding-right: 10px;
+	margin-right:10px;
 }
 
 .categoryphoto {
@@ -125,38 +174,104 @@ h3 {
 	text-decoration-style: dashed;
 	text-decoration-color: initial;
 }
-
+/************************************************************************************/
+/* LATEST LISTING ZONE */
 .latestlistingszone {
+	padding-left: 50px;
+	margin: 0px 10px 0px 10px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 50% 50%;
 	column-gap: 50px;
 	padding-left: 20px;
-	height: 200px;
 }
 
 .listing {
-	width: 100%;
+	margin:50px;
+	width: auto;
 	height: 60%;
 	display: inline;
 }
 
 .listingphoto {
+	padding: 10px 10px 10px 10px;
 	width: 100%;
 	height: 100%;
+	background-color: #F0F8FF	;
+	box-shadow: 10px 10px 16px -5px rgba(0,0,0,0.33);
+
 }
 
 .listingtitle {
 	float: left;
-	width: 50%;
+	width: 65%;
 	text-align: center;
-	background-color: black;
-	color: white;
+	background-color: #F0F8FF	;
+	color: black;
+
 }
 
 .listingprice {
 	float: right;
-	width: 50%;
+	width: 35%;
 	text-align: center;
-	background-color: black;
-	color: white;
+	background-color: #F0F8FF	;
+	color: black;
+
+}
+
+/************************************************************************************/
+/* SCROLL */
+.menu-wrapper {
+	position: relative;
+	margin: 10px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.menu	{
+	height: 80%;
+	background: white;
+	box-sizing: border-box;
+	border-radius: 20px;
+
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+.item {
+	position: relative;
+	top: 70px;
+	display: inline-block;
+	border-right: 1px dotted gray;
+	padding: 10px;
+}
+
+.paddles {
+}
+
+.paddle {
+	position: absolute;
+	top: 35%;
+	height: 80px;
+	width: 80px;
+	font-weight: bolder;
+	font-size: 40px;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #9EE012;
+}
+.left-paddle {
+	left: 0;
+	border-bottom-right-radius:45px ;
+	border-top-right-radius: 45px;
+}
+.right-paddle {
+	right: 0;
+	border-bottom-left-radius:45px ;
+	border-top-left-radius: 45px;
+}
+.hidden {
+	display: none;
 }
