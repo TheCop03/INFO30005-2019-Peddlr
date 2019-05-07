@@ -32,6 +32,16 @@ var showLogin = function(req, res) {
     var results = {title: 'Peddlr'};
     res.render('loginpage', results);
 };
+var showCreateListing = function(req, res) {
+    Category.find(function(err,categories){
+        if(!err){
+            var results = {title: 'Peddlr', 'categories': categories};
+            res.render('createlisting', results);
+        }else{
+            res.sendStatus(404);
+        }
+    });
+};
 
 const showListingByID = function(req, res) {
 	var ID = req.params.id;
@@ -62,7 +72,7 @@ var loginUser = function(req, res) {
 var createListing = function(req,res){
 
     var listing = new Listing({
-    		"title":req.body.title,
+        "title":req.body.title,
         "price":req.body.price,
         "interval":req.body.interval, //look into this
         "description":req.body.description,
@@ -167,5 +177,6 @@ module.exports = {
 		showSignUp,
         showLogin,
 		loginUser,
-		showListingByID
+		showListingByID,
+        showCreateListing
 }
