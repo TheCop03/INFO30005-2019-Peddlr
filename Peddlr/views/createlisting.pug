@@ -8,7 +8,7 @@ block content
     h2 Create a new listing
 
     //create listing form
-    form(method='POST' action='./createListing')
+    form(method='POST' action='/newListing')
         div.form-group
             input#title(type='text', placeholder='Title', name='title', required)
         div.form-group
@@ -30,7 +30,8 @@ block content
             input#description(type = 'text', placeholder='description', name = 'description')
         div.form-group
             p.fieldtitle Please upload a photo
-            input#photo(type='file', placeholder='Choose File', name = 'photoinput')
+            input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
+            img#preview(src="" alt="Image preview...")
         div.form-group
             p.fieldtitle Where can the item be picked up?
             input#address(type='text', placeholder='Address' name='address', required)
@@ -45,5 +46,23 @@ block content
             input#zip(type='text', placeholder='Zip Code' name='zip', required)
             select#country(type='text', placeholder='Country' name='country', required)
                 option Australia
-    a(href = './homepage')
-        button.pagebutton(type='submit') CREATE
+        a(href = '/homepage')
+            button.pagebutton(type='submit') CREATE
+
+    script.
+        //this script function displays the photo the user uploads
+        function previewFile() {
+            var preview = document.querySelector('img');
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.addEventListener("load", function() {
+                preview.src = reader.result.toString();
+                //CANNOT FIGURE OUT HOW TO SET THE PHOTO TO A STRING SO IT WILL SAVE IN DB
+                document.getElementById('photo').value = reader.result.toString();
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }

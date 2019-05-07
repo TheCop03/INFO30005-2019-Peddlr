@@ -70,7 +70,6 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
-
     var listing = new Listing({
         "title":req.body.title,
         "price":req.body.price,
