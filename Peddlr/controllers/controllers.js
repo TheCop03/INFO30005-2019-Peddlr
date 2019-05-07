@@ -37,7 +37,6 @@ var showListingByID = function(req, res) {
 	var ID = req.params.id;
 	Listing.findById(ID, function(err, listing) {
 		if(!err){
-						console.log(listing);
             res.render('listing', {listing: listing}); //if no errors send the listings found
         }else{
             res.sendStatus(404);
@@ -98,13 +97,16 @@ var findListingByName = function(req, res) {
 
 //show all the listings that are in a certain category
 var showListingsByCategory = function(req, res) {
-	var Category = req.params.category;
-	Listing.find({category:Category}, function(err, results) {
-		if (!err) {
-			res.send(results);
-		} else {
-			res.sendStatus(404);
-		}
+	var myCategory = req.params.category;
+	Listing.find({category:myCategory}, function(err, listings) {
+		Category.findById(myCategory, function(err, category){
+			var results = {title: 'Peddlr', category: category.title, 'listings': listings}
+			if (!err) {
+				res.render('category', results);
+			} else {
+				res.sendStatus(404);
+			}
+		});
 	});
 };
 
@@ -113,9 +115,9 @@ var showListingsByCategory = function(req, res) {
 var createUser = function(req,res){
     var user = new User({
     		"email":req.body.email,
-        "fname":req.body.fname,
-        "lname":req.body.lname,
-        "address":req.body.address,
+        "fname":req.body.firstname,
+        "lname":req.body.lastname,
+        "address":req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country),
         "photo":req.body.photo,
         "phoneNumber":req.body.phoneNumber,
         "password":req.body.password
@@ -146,7 +148,6 @@ var findUserByName = function(req, res){
 
 var deleteListing = function(req,res){
     var listingName = req.body.title;
-		console.log(listingName);
     Listing.deleteOne({title:listingName}, function(err, results) {
         if (!err) {
             res.sendStatus(200);
@@ -159,14 +160,14 @@ var deleteListing = function(req,res){
 
 module.exports = {
 		createListing,
-        deleteListing,
+    deleteListing,
 		findListingByName,
 		showListingsByCategory,
 		findUserByName,
 		createUser,
 		showHomepage,
 		showSignUp,
-        showLogin,
+    showLogin,
 		loginUser,
 		showListingByID
 }

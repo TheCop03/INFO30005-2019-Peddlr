@@ -1,0 +1,104 @@
+tml{
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	display:grid;
+	grid-template-rows: 0.25fr 1fr 1fr 8fr;
+	border: 0;
+	margin: 0;
+	background-color: #F9F6EE;
+}
+
+header {
+	background-color: #bfa487;
+}
+
+.signupbutton {
+	float: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	padding: 8px 32px;
+	background-color: #FFFFFF;
+	outline: 5px;
+	font-size: 20px;
+	color: black;
+
+}
+
+.loginbutton {
+	float: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	padding: 8px 32px;
+	background-color: inherit;
+	outline: 1px;
+	font-size: 20px;
+	color: white;
+
+}
+
+.searchzone {
+	width: 100%;
+	height: 200px;
+	background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg);
+	background-color: orange;
+}
+
+input{
+	position: relative;
+	top: 30px;
+	left: 20px;
+	width: 200px;
+	height: 20px;
+	font-size: medium;
+	border-radius: 5px;
+}
+
+.searchbutton{
+	background-color: #bfa487;
+	position: relative;
+	top: 30px;
+	left: 30px;
+	width: 80px;
+	height: 26px;
+	font-size: medium;
+	border-radius: 5px;
+}
+
+.listingzone {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 50px;
+	padding-left: 20px;
+	height: 200px;
+}
+
+.listing {
+	width: 100%;
+	height: 60%;
+	display: inline;
+}
+
+.listingphoto {
+	width: 100%;
+	height: 100%;
+}
+
+.listingtitle {
+	float: left;
+	width: 50%;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+
+.listingprice {
+	float: right;
+	width: 50%;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
