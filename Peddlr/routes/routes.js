@@ -4,7 +4,7 @@ var router = express.Router();
 var controller = require('../controllers/controllers.js'); //create controllers.js
 
 router.get("/", function(req, res, next){
-  res.render('index', {title: 'Peddlr'});
+  res.render('index.pug', {title: 'Peddlr'});
 });
 
 //show the homepage with all listings and categories
