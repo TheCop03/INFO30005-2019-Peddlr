@@ -46,8 +46,8 @@ block content
             input#zip(type='text', placeholder='Zip Code' name='zip', required)
             select#country(type='text', placeholder='Country' name='country', required)
                 option Australia
-        a(href = '/homepage')
-            button.pagebutton(type='submit') CREATE
+        div.form-group
+            input#create(type = 'submit' value = 'CREATE')
 
     script.
         //this script function displays the photo the user uploads
