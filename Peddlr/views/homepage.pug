@@ -1,5 +1,4 @@
 extends default.pug
-
 block css
     style
         include ../public/css/homepage.css
@@ -15,18 +14,26 @@ block content
     //form.searchbar(action='SEARCHRESULTS')
     div.searchzone
         h2 Let's Peddle
+        a(href="/createlisting")
+            button.createbutton(type="button") + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
-        button.searchbutton(type='submit') Search
+        a(href="/search")
+            button.searchbutton(type='submit') Search
             i.fa.fa-search
 
     h3 Categories:
 
-    div.categoryzone
+    div.categoryzone.menu-wrapper.menu
         each category in categories
-            div.category
+            div.category.item
                 a(href = './listing/category/${category._id}')
                     img.categoryphoto(src=category.photo alt=category.title)
                     p.categorytitle #{category.title}
+        div.paddles
+        button(id = 'leftPaddle', onclick = 'scrollleft()').left-paddle.paddle.hidden
+            | <
+        button(id = 'rightPaddle', onclick = 'scrollright()').right-paddle.paddle
+            | >
 
     h3 Latest Listings:
 
