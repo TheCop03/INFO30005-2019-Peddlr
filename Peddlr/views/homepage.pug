@@ -26,7 +26,7 @@ block content
     div.categoryzone.menu-wrapper.menu
         each category in categories
             div.category.item
-                a(href = './listing/category/${category._id}')
+                a(href = `./listing/category/${category._id}`)
                     img.categoryphoto(src=category.photo alt=category.title)
                 p.categorytitle #{category.title}
         //div.paddles
@@ -40,7 +40,7 @@ block content
     div.latestlistingszone
         each listing in listings
             div.listing.dropup
-                a(href = './listing/id/${listing.id}')
+                a(href = `./listing/id/${listing.id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
                     p.listingtitle #{listing.title}
                     div.dropup-content
