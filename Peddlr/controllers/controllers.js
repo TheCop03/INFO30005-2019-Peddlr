@@ -70,7 +70,6 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
-
     var listing = new Listing({
         "title":req.body.title,
         "price":req.body.price,
@@ -84,7 +83,7 @@ var createListing = function(req,res){
 
     listing.save(function(err,newListing){
         if(!err){
-            res.send(newListing); //if no errors, show the new listing
+            showHomepage(req, res); //if no errors, show the new listing
         }else{
             res.sendStatus(400);
         }
@@ -131,7 +130,7 @@ var createUser = function(req,res){
     });
     user.save(function(err,newUser){
         if(!err){
-            res.send(newUser); //if there are no errors, show the new user
+            showHomepage(req,res) //if there are no errors, show the new user
         }else{
             res.sendStatus(400);
         }
