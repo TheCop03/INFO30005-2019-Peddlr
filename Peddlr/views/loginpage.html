@@ -8,6 +8,13 @@ body {
     margin: 0;
     background-color: #F9F6EE;
 }
+
+.headerzone {
+    margin-bottom: 20px;
+    background-image: url(https://images.unsplash.com/photo-1459535653751-d571815e906b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80);
+    background-position: 30%;
+}
+
 /************************************************************************************/
 /* HEADERS */
 header {
@@ -20,24 +27,15 @@ h1 {
     color: white;
 }
 
-.loginbutton {
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 8px 32px;
-    background-color: inherit;
-    outline: 1px;
-    font-size: 20px;
-    color: white;
-}
 
 h2 {
     margin-bottom: 0px;
     text-align: center;
+    color: white;
     font-size: 50px;
-    font-weight: normal;
-    color: #4F5445;
+    font-weight: bold;
+    position: relative;
+    bottom: 40px;
 }
 
 .tagline {
@@ -58,6 +56,8 @@ form {
 }
 
 input, select {
+    border-radius: 20px;
+    height: 40px;
     margin: 10px;
     width: 40%;
     text-indent: 5px;
@@ -123,7 +123,7 @@ input, select {
 
 .backbutton {
     color:#4F5445;
-    display: inline-block;
+    display: inline;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -137,9 +137,30 @@ input, select {
 
 }
 
+.loginbutton {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px 32px;
+    background-color: inherit;
+    outline: 1px;
+    font-size: 20px;
+    color: white;
+    border-radius: 20px;
+}
+
 html{
     font-family: 'Montserrat', sans-serif;
 }
+
+body {
+    grid-template-rows: 0.15fr 0.5fr 1fr;
+    border: 0;
+    margin: 0;
+    background-color: #F9F6EE;
+}
+
 .brk {
     width: 50%;
     height: 0px;
@@ -149,7 +170,22 @@ html{
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     transform: rotate(-0.09deg);
-}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header></header><h1>Peddlr</h1><body><a href="./homepage"><button class="backbutton">Back</button></a><h2>Login</h2><p class="lead"><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"><p id="text">Caps lock is ON.</p><script>var input = document.getElementById("password");
+}
+
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #4F5445;
+    height: 100%;
+    position: relative;
+    bottom: 25px;
+    color: white;
+
+
+}
+</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"><p id="text">Caps lock is ON.</p><script>var input = document.getElementById("password");
 var text = document.getElementById("text");
 input.addEventListener("keyup", function (event) {
 
@@ -158,4 +194,4 @@ input.addEventListener("keyup", function (event) {
     } else {
         text.style.display = "none"
     }
-})</script></div><div><input type="checkbox" name="remember" checked><span>Remember Me</span></div><div><button class="pagebutton" type="submit">Login</button></div><div class="brk"></div></form><form role="form" action="signup" method="post"><p>Don't have an account?</p><button class="signupbutton" type="submit" href="./signup">Join the community</button><p class="foobar">Copyright (c) Peddlr People</p></form></p></body><footer></footer></html>
+})</script></div><div><button class="pagebutton" type="submit">Login</button></div><div class="brk"></div></form><form role="form" action="signup" method="post"><p>Don't have an account?</p><button class="signupbutton" type="submit" href="./signup">Join the community</button><p class="foobar">Copyright (c) Peddlr People</p></form></body><footer></footer></html>

@@ -4,42 +4,37 @@ block css
     style
         include ../public/css/signup.css
         include ../public/css/login.css
+
 block content
+    div.headerzone
+        a(href = './homepage')
+            button.backbutton(type = 'submit') Back
 
-    a(href = './homepage')
-        button.backbutton(type = submit) Back
-
-    block content
         h2 Login
-        p.lead
-            form(role='form', action='/login', method='post')
-                div.form-group
-                    input.form-control(type='text', id='user', name='username', placeholder='Email address')
+    form(role='form', action='/login', method='post')
+        div.form-group
+            input.form-control(type='text', id='user', name='username', placeholder='Email address')
 
-                div.form-group
-                    input.form-control(type='password', id='password', name='password', placeholder='Password')
-                    p(id='text') Caps lock is ON.
-                    script.
-                        var input = document.getElementById("password");
-                        var text = document.getElementById("text");
-                        input.addEventListener("keyup", function (event) {
+        div.form-group
+            input.form-control(type='password', id='password', name='password', placeholder='Password')
+            p(id='text') Caps lock is ON.
+            script.
+                var input = document.getElementById("password");
+                var text = document.getElementById("text");
+                input.addEventListener("keyup", function (event) {
 
-                            if (event.getModifierState("CapsLock")){
-                                text.style.display = "block";
-                            } else {
-                                text.style.display = "none"
-                            }
-                        })
-                div
-                    input(type='checkbox', name='remember', checked=true)
-                    span Remember Me
+                    if (event.getModifierState("CapsLock")){
+                        text.style.display = "block";
+                    } else {
+                        text.style.display = "none"
+                    }
+                })
+        div
+            button.pagebutton(type='submit') Login
 
-                div
-                    button.pagebutton(type='submit') Login
+        div.brk
+    form(role = 'form', action = 'signup', method = 'post')
+         p Don't have an account?
+         button.signupbutton(type='submit', href = './signup') Join the community
 
-                div.brk
-            form(role = 'form', action = 'signup', method = 'post')
-                p Don't have an account?
-                button.signupbutton(type='submit', href = './signup') Join the community
-
-                p.foobar Copyright (c) Peddlr People
+         p.foobar Copyright (c) Peddlr People

@@ -8,6 +8,13 @@ body {
     margin: 0;
     background-color: #F9F6EE;
 }
+
+.headerzone {
+    margin-bottom: 20px;
+    background-image: url(https://images.unsplash.com/photo-1459535653751-d571815e906b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80);
+    background-position: 30%;
+}
+
 /************************************************************************************/
 /* HEADERS */
 header {
@@ -20,24 +27,15 @@ h1 {
     color: white;
 }
 
-.loginbutton {
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 8px 32px;
-    background-color: inherit;
-    outline: 1px;
-    font-size: 20px;
-    color: white;
-}
 
 h2 {
     margin-bottom: 0px;
     text-align: center;
+    color: white;
     font-size: 50px;
-    font-weight: normal;
-    color: #4F5445;
+    font-weight: bold;
+    position: relative;
+    bottom: 40px;
 }
 
 .tagline {
@@ -58,6 +56,8 @@ form {
 }
 
 input, select {
+    border-radius: 20px;
+    height: 40px;
     margin: 10px;
     width: 40%;
     text-indent: 5px;
@@ -123,7 +123,7 @@ input, select {
 
 .backbutton {
     color:#4F5445;
-    display: inline-block;
+    display: inline;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -135,5 +135,18 @@ input, select {
     cursor: pointer;
     border-radius: 20px;
 
+}
+
+.loginbutton {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px 32px;
+    background-color: inherit;
+    outline: 1px;
+    font-size: 20px;
+    color: white;
+    border-radius: 20px;
 }
 

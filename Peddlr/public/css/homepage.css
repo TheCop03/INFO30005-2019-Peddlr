@@ -6,12 +6,13 @@ body {
 	grid-template-rows: 0.15fr 1fr 0.15fr 1fr 0.15fr 2fr 0.1fr;
 	border: 0;
 	background-color: #F9F6EE;
+	-webkit-transition: width 5s; /* Safari */
+	transition: width 2s;
 }
 /************************************************************************************/
 /* HEADERS */
 header {
 	background-color: #125358;
-	position: sticky;
 }
 
 h1 {
@@ -32,12 +33,18 @@ h2 {
 }
 
 h3 {
-	margin: 0px 0px 0px 10px;
-	padding-left: 50px;
+	padding-left: 20px;
 	font-size: 30px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: bold;
+	color: white;
+	margin: 0 10px 0 10px;
+	background-color: #125358;
+	position: relative;
+	padding-top: 10px;
+	border-radius: 10px;
 }
+
 
 footer {
 	background-color: #125358;
@@ -51,12 +58,18 @@ footer {
 	margin-bottom: 20px;
 	margin-right: 20px;
 	padding: 8px 32px;
-	background-color: #FFFFFF;
 	outline: 5px;
 	font-size: 20px;
-	color: black;
-
+	color: white;
+	background-color: inherit;
+	border-radius: 20px;
 }
+
+.signupbutton:hover {
+	box-shadow: 3px 3px 3px rgba(255,255,255, 0.3);
+	transition: box-shadow 0.3s ease-in-out;
+}
+
 
 .loginbutton {
 	float: right;
@@ -68,8 +81,15 @@ footer {
 	outline: 1px;
 	font-size: 20px;
 	color: white;
+	border-radius: 20px;
 
 }
+.loginbutton:hover {
+	box-shadow: 3px 3px 3px rgba(255,255,255, 0.3);
+	transition: box-shadow 0.3s ease-in-out;
+
+}
+
 
 
 /*.profilebutton {
@@ -96,6 +116,7 @@ footer {
 }
 
 .createbutton:hover{
+	transition: border-color 0.3s ease-in-out;
 	border-color: darkcyan;
 	border-width: medium;
 
@@ -115,6 +136,7 @@ footer {
 	border-radius: 20px;
 }
 .searchbutton:hover {
+	transition: border-color 0.3s ease-in-out;
 	border-color: darkcyan;
 	border-width: medium;
 }
@@ -122,9 +144,10 @@ footer {
 /* SEARCH ZONE */
 .searchzone {
 	display: grid;
-	margin: 20px 10px 0px 10px;
+	margin: 20px 10px 0 10px;
 	width: auto;
-	height: 80%;
+	height: 90%;
+	border-radius: 10px;
 	/* background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg); */
 	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
 	background-position: 50%;
@@ -169,6 +192,12 @@ input{
 	color: black;
 	padding-right: 10px;
 	margin-right:10px;
+	transition: transform .2s; /* Animation */
+
+}
+
+.category:hover {
+	transform: scale(1.2);
 }
 
 .categoryphoto {
@@ -189,10 +218,13 @@ input{
 	padding-left: 50px;
 	margin: 0px 10px 0px 10px;
 	display: grid;
-	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 50% 50%;
 	column-gap: 50px;
 	padding-left: 20px;
+	background-color: white;
+	height: 80%;
+	border-radius: 20px;
 }
 
 .listing {
@@ -210,10 +242,6 @@ input{
 	box-shadow: 10px 10px 16px -5px rgba(0,0,0,0.33);
 }
 
-.listingphoto:hover {
-	background-color: darkcyan;
-
-}
 
 
 .listingtitle {
@@ -308,6 +336,7 @@ input{
 	position: absolute;
 	bottom: -10px;
 	background-color: #f1f1f1;
+	opacity: 0.2;
 	width: 100%;
 	height:50%;
 	left: 10px;
@@ -333,7 +362,5 @@ input{
 /* Show the dropup menu on hover */
 .dropup:hover .dropup-content {
 	display: block;
-	transition: transform 0.5s;
-
 
 }
