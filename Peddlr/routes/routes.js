@@ -28,6 +28,9 @@ router.get('/signup', controller.showSignUp);
 //show the login up page
 router.get('/loginpage', controller.showLogin);
 
+//show the create listing page
+router.get('/createListing', controller.showCreateListing);
+
 //create a new listing
 router.post('/newListing', controller.createListing);
 

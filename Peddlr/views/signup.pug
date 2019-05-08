@@ -2,13 +2,14 @@ extends default.pug
 
 block css
   style
-    include ../public/css/style.css
     include ../public/css/signup.css
 block user
   a(href = './loginpage')
     button.loginbutton(type='submit') Log in
 
 block content
+  a(href = './homepage')
+    button.backbutton(type = submit) Back
   h2 Sign Up
   p.tagline It's simple!
 

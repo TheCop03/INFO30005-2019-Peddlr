@@ -14,8 +14,8 @@ block content
     //form.searchbar(action='SEARCHRESULTS')
     div.searchzone
         h2 Let's Peddle
-        a(href="/createlisting")
-            button.createbutton(type="button") + Create listing
+        a(href='./createlisting')
+            button.createbutton(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
         a(href="/search")
             button.searchbutton(type='submit') Search
@@ -29,18 +29,23 @@ block content
                 a(href = './listing/category/${category._id}')
                     img.categoryphoto(src=category.photo alt=category.title)
                     p.categorytitle #{category.title}
-        div.paddles
-        button(id = 'leftPaddle', onclick = 'scrollleft()').left-paddle.paddle.hidden
-            | <
-        button(id = 'rightPaddle', onclick = 'scrollright()').right-paddle.paddle
-            | >
+        //div.paddles
+        //button(id = 'leftPaddle', onclick = 'scrollleft()').left-paddle.paddle.hidden
+        //    | <
+        //button(id = 'rightPaddle', onclick = 'scrollright()').right-paddle.paddle
+        //    | >
 
     h3 Latest Listings:
 
     div.latestlistingszone
         each listing in listings
-            div.listing
+            div.listing.dropup
                 a(href = './listing/id/${listing.id}')
                     img.listingphoto(src=listing.photo alt=listing.title)
                     p.listingtitle #{listing.title}
+                    div.dropup-content
+                        p.listingdescription #{listing.description}
+
                     p.listingprice $#{listing.price} #{listing.interval}
+                        div.dropup-content
+                            p.listingdescription #{listing.description}
