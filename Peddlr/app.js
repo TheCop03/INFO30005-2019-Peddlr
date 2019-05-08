@@ -1,8 +1,10 @@
 //Set up express
 var express = require('express');
+var path = require('path');
 var app = express();
 
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, '/views'));
 
 var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
