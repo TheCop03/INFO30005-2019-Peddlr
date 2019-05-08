@@ -2,10 +2,8 @@ extends default.pug
 
 block css
     style
-        include ../public/css/style.css
         include ../public/css/signup.css
         include ../public/css/login.css
-
 block content
 
     a(href = './homepage')
@@ -20,9 +18,23 @@ block content
 
                 div.form-group
                     input.form-control(type='password', id='password', name='password', placeholder='Password')
+                    p(id='text', style="display: none;") Caps lock is ON.
+                    script.
+                        var input = document.getElementById("password");
+                        var text = document.getElementById("text");
+                        input.addEventListener("keyup", function (event) {
+                            if (event.getModifierState("CapsLock")){
+                                text.style.display = "block";
+                            } else {
+                                text.style.display = "none"
+                            }
+                        })
+                div
+                    input(type='checkbox', name='remember', checked=true)
+                    span Remember Me
 
-
-                button.pagebutton(type='submit') Login
+                div
+                    button.pagebutton(type='submit') Login
 
                 div.brk
             form(role = 'form', action = 'signup', method = 'post')

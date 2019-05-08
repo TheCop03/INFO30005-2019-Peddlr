@@ -2,21 +2,22 @@ extends default.pug
 
 block css
   style
-    include ../public/css/style.css
     include ../public/css/signup.css
 block user
   a(href = './loginpage')
     button.loginbutton(type='submit') Log in
 
 block content
+  a(href = './homepage')
+    button.backbutton(type = submit) Back
   h2 Sign Up
   p.tagline It's simple!
 
   // register form
   form(method='POST' action='./newUser')
     div.form-group
-      input#firstname(type='text', placeholder='First name' name='name', required)
-      input#lastname(type='text', placeholder='Last name' name='name', required)
+      input#firstname(type='text', placeholder='First name' name='fname', required)
+      input#lastname(type='text', placeholder='Last name' name='lname', required)
     div.form-group
       p.dob Date of Birth
       input#dob(type='date', placeholder='22/07/2018' name='dob', required)

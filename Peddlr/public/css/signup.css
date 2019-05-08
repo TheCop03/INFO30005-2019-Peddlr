@@ -8,9 +8,10 @@ body {
     margin: 0;
     background-color: #F9F6EE;
 }
-
+/************************************************************************************/
+/* HEADERS */
 header {
-    background-color: #D3B492;
+    background-color: #125358;
 }
 
 h1 {
@@ -47,6 +48,11 @@ h2 {
     color: #4F5445;
 }
 
+footer {
+    background-color: #125358;
+}
+/************************************************************************************/
+/* FORM */
 form {
     text-align: center;
 }
@@ -81,12 +87,13 @@ input, select {
 #country {
     width: 15%;
 }
-
+/************************************************************************************/
+/* BUTTONS */
 .pagebutton {
     width: 30%;
     margin: 20px;
     border: 0px;
-    background-color: #a08a6f;
+    background-color: #125358;
     color: white;
     font-size: 20px;
     height: 35px;
@@ -107,3 +114,26 @@ input, select {
     color: #010106;
 
 }
+
+.signupbutton:hover {
+    border-color: darkcyan;
+    border-width: medium;
+}
+
+
+.backbutton {
+    color:#4F5445;
+    display: inline-block;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+
+}
+

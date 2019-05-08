@@ -1,0 +1,71 @@
+extends default.pug
+
+block css
+    style
+        include ../public/css/createlisting.css
+
+block content
+    div.h2 Create a new listing
+    div.steps
+        div.bubble 1
+        div.bubble 2
+    div.createlistingzone
+        //create listing form
+        form(method='POST' action='/newListing')
+            div.form-group
+                input#title(type='text', placeholder='Title', name='title', required)
+            div.form-group
+                p.fieldtitle Category:
+                select#category(type = 'text', placeholder = 'Category', name = 'category', required)
+                    each category in categories
+                        option(value=`${category._id}`) #{category.title}
+
+            div.form-group
+                p.fieldtitle Price:
+                input#price(type = 'number', placeholder='$0', name = 'price', required)
+                select#interval(type='text', placeholder='per...', name='interval', required)
+                    option per day
+                    option per week
+                    option per month
+                    option per year
+        div.form-group
+            p.fieldtitle Description:
+            input#description(type = 'text', placeholder='description', name = 'description')
+        div.form-group
+            p.fieldtitle Please upload a photo
+            input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
+            img#preview(src="" alt="Image preview...")
+        div.form-group
+            p.fieldtitle Where can the item be picked up?
+            input#address(type='text', placeholder='Address' name='address', required)
+        div.form-group
+            select#state(type='text', placeholder='State' name='state', required)
+                option NSW
+                option QLD
+                option SA
+                option TAS
+                option VIC
+                option WA
+            input#zip(type='text', placeholder='Zip Code' name='zip', required)
+            select#country(type='text', placeholder='Country' name='country', required)
+                option Australia
+        div.form-group
+            input#create(type = 'submit' value = 'CREATE')
+
+    script.
+        //this script function displays the photo the user uploads
+        function previewFile() {
+            var preview = document.querySelector('img');
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.addEventListener("load", function() {
+                preview.src = reader.result.toString();
+                //CANNOT FIGURE OUT HOW TO SET THE PHOTO TO A STRING SO IT WILL SAVE IN DB
+                document.getElementById('photo').value = reader.result.toString();
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
