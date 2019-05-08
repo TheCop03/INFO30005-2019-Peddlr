@@ -5,29 +5,41 @@ body {
     display:grid;
     grid-template-rows: 0.25fr 0.15fr 0.15fr 4fr 0.25fr ;
     border: 0;
-    background-color: #F9F6EE;
+    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
-/************************************************************************************/
-header {
-    background-color: #125358;
+.headerzone {
+    margin-bottom: 20px;
+    background-image: url(https://images.unsplash.com/photo-1459535653751-d571815e906b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80);
+    background-position: 30%;
 }
-.h2 {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
-    font-size: 50px;
-}
-
 footer {
     position: absolute;
     bottom: 0px;
     background-color: #bfa487;
 }
+/************************************************************************************/
+/* TITLES */
+header {
+    background-color: #125358;
+}
+
+h2 {
+    margin-bottom: 0px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    position: relative;
+    bottom: 30px;
+}
+
+.form-group {
+    font-weight: bolder;
+    font-size: 20px;
+}
 
 .steps{
-    background-color: blue;
-    grid-template-columns: 35% 15% 15% 35%;
-    grid-template-areas: "empty" "bubble""bubble""empty"
+    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 
 }
 
@@ -41,17 +53,28 @@ footer {
     text-align: center;
     background: black;
     display:inline-block;
-    margin-top: 50px;
-
+    vertical-align: middle;
 }
 
 
 .createlistingzone{
-    display: block;
+    padding-left: 20px;
+    display: table;
+    margin: 20px auto;
     background-color: pink;
+    border-radius: 20px;
+    box-shadow: 5px 5px 5px 10px grey;
     position: relative;
-    width: 50%;
+    width: 75%;
     height:100%;
-    margin: 40px 100px 40px 455px;
+    text-align: left;
+}
 
+input, select {
+    border-radius: 20px;
+    height: 40px;
+    margin: 10px;
+    width: 40%;
+    text-indent: 5px;
+    font-size: larger;
 }

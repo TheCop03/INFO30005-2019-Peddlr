@@ -5,7 +5,8 @@ block css
         include ../public/css/createlisting.css
 
 block content
-    div.h2 Create a new listing
+    div.headerzone
+        h2 Create a new listing
     div.steps
         div.bubble 1
         div.bubble 2
@@ -14,24 +15,24 @@ block content
         form(method='POST' action='/newListing')
             div.form-group
                 p.fieldtitle Item:
-                input#title(type='text', placeholder='Title', name='title', required)
+                input#title(type='text', placeholder=' Title', name='title', required)
             div.form-group
                 p.fieldtitle Category:
-                select#category(type = 'text', placeholder = 'Category', name = 'category', required)
+                select#category(type = 'text', name = 'category', required)
                     each category in categories
                         option(value=`${category._id}`) #{category.title}
 
             div.form-group
                 p.fieldtitle Price:
                 input#price(type = 'number', placeholder='$0', name = 'price', required)
-                select#interval(type='text', placeholder='per...', name='interval', required)
+                select#interval(type='text', placeholder='per...', name= 'interval', required)
                     option per day
                     option per week
                     option per month
                     option per year
         div.form-group
             p.fieldtitle Description:
-            input#description(type = 'text', placeholder='description', name = 'description')
+            input#description(type = 'text', placeholder=' Description', name = 'description')
         div.form-group
             p.fieldtitle Please upload a photo
             input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')

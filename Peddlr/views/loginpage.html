@@ -3,22 +3,28 @@
 }
 body {
     display:grid;
-    grid-template-rows: 80px 0.5fr 0.25fr auto;
+    grid-template-rows: 80px 1fr 0.25fr auto;
     border: 0;
     margin: 0;
-    background-color: #F9F6EE;
+    background-image:url(https://unixtitan.net/images/bike-transparent-animated-1.gif), url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
+    background-repeat: no-repeat, repeat;
+    background-position: left, center;
 }
 
 .headerzone {
-    margin-bottom: 20px;
-    background-image: url(https://images.unsplash.com/photo-1459535653751-d571815e906b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80);
+    margin: 5px 10px 0 10px;
     background-position: 30%;
+    border-radius: 10px;
 }
 
 /************************************************************************************/
 /* HEADERS */
 header {
     background-color: #125358;
+    border-radius:10px;
+    box-shadow: 3px 3px 3px dimgrey;
+    padding-right: 20px;
+
 }
 
 h1 {
@@ -31,19 +37,22 @@ h1 {
 h2 {
     margin-bottom: 0px;
     text-align: center;
-    color: white;
+    color: brown;
     font-size: 50px;
     font-weight: bold;
     position: relative;
     bottom: 40px;
+    left: 25%;
 }
 
 .tagline {
-    margin-top: 0px;
+    position:relative;
+    margin-top: 13px;
     text-align: center;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: lighter;
-    color: #4F5445;
+    color: brown;
+    left: 25%;
 }
 
 footer {
@@ -51,8 +60,13 @@ footer {
 }
 /************************************************************************************/
 /* FORM */
+.formzone {
+    position: relative;
+    left: 25%;
+}
 form {
     text-align: center;
+    color: saddlebrown;
 }
 
 input, select {
@@ -100,29 +114,15 @@ input, select {
     border-radius: 20px;
 }
 
-.signupbutton{
-    width: 30%;
-    margin: 20px;
-    border: 0px;
-    opacity:1;
-    font-size: 20px;
-    height: 35px;
-    border-radius: 20px;
-    box-sizing: border-box;
-
-    /* font */
-    color: #010106;
-
+.pagebutton:hover {
+    box-shadow: 2px 2px 2px  grey;
+    transition: box-shadow 0.2s ease-in-out;
 }
 
-.signupbutton:hover {
-    border-color: darkcyan;
-    border-width: medium;
-}
 
 
 .backbutton {
-    color:#4F5445;
+    color:black;
     display: inline;
     padding: 15px 32px;
     text-align: center;
@@ -134,22 +134,97 @@ input, select {
     margin-top: 20px;
     cursor: pointer;
     border-radius: 20px;
+    border-style: inset;
 
 }
 
-.loginbutton {
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
+.backbutton:hover {
+    background-color: rgba(255, 255,255, 0.8);
+    transition: background-color 0.2s ease-in;
+}
+
+/************************************************************************************/
+
+.btn {
+    position: relative;
     padding: 8px 32px;
-    background-color: inherit;
-    outline: 1px;
+    padding-right: 3.1rem;
     font-size: 20px;
     color: white;
+    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
     border-radius: 20px;
+    top:20px;
+
+    cursor: pointer;
+    user-select: none;
+    float: right;
+    z-index: 1;
+    text-align: center;
+
 }
 
+.btn:before, .btn:after {
+    content: '';
+    position: absolute;
+    transition: inherit;
+    z-index: 1;
+}
+
+.btn:hover {
+    color: #125358;
+    transition-delay: .6s;
+}
+
+.btn:hover:before {
+    transition-delay: 0s;
+
+}
+
+.btn:hover:after {
+    background-color: white;
+    opacity: 0.8;
+    transition-delay: .4s;
+    z-index: -1;
+    border-radius: 10px;
+    height: 80%;
+
+
+}
+
+
+.from-middle:before {
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 0;
+    border: 1px solid white;
+    border-left: 0;
+    border-right: 0;
+    z-index: 1;
+
+}
+
+.from-middle:after {
+    bottom: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+
+}
+
+.from-middle:hover:before {
+    left: 0;
+    width: 100%;
+
+}
+
+.from-middle:hover:after {
+    top: 0;
+    height: 100%;
+
+}
 html{
     font-family: 'Montserrat', sans-serif;
 }
@@ -158,9 +233,50 @@ body {
     grid-template-rows: 0.15fr 0.5fr 1fr;
     border: 0;
     margin: 0;
-    background-color: #F9F6EE;
+    background-image: url(https://unixtitan.net/images/bike-transparent-animated-1.gif), url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
+    background-repeat: no-repeat, repeat;
+    background-position: left, center;
+    background-size: 70%, 100%;
 }
 
+header {
+    background-color: #125358;
+    border-radius:10px;
+    box-shadow: 3px 3px 3px dimgrey;
+    padding-right: 20px;
+
+}
+
+.headerzone {
+    margin: 5px 10px 0 10px;
+    border-radius: 10px;
+}
+
+/************************************************************************************/
+/* TEXT */
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #4F5445;
+    height: 100%;
+    position: relative;
+    bottom: 25px;
+    color: brown;
+    left: 25%;
+}
+
+p{
+    text-align: center;
+    position:relative;
+    left: 25%;
+
+
+}
+
+/************************************************************************************/
+/* MISC */
 .brk {
     width: 50%;
     height: 0px;
@@ -172,26 +288,44 @@ body {
     transform: rotate(-0.09deg);
 }
 
+/************************************************************************************/
+/* BUTTONS */
 
-h2 {
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    color: #4F5445;
-    height: 100%;
+.joinbutton{
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+    box-sizing: border-box;
     position: relative;
-    bottom: 25px;
-    color: white;
+    border-style: solid;
+    left: 58%;
 
+    /* font */
+    color: #010106;
 
 }
-</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"><p id="text">Caps lock is ON.</p><script>var input = document.getElementById("password");
+
+.joinbutton:hover {
+    transition: border-color 0.3s ease-in-out;
+    border-color: darkcyan;
+    border-width: medium;
+}
+
+
+/* FORM */
+.formzone {
+    position: relative;
+    left: 25%;
+}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="formzone"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder=" Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder=" Password"><p id="text" style="display: none;">Caps lock is ON.</p><script>var input = document.getElementById("password");
 var text = document.getElementById("text");
 input.addEventListener("keyup", function (event) {
-
-    if (event.getModifierState("CapsLock")){
+    if (event.getModifierState("CapsLock")) {
         text.style.display = "block";
     } else {
         text.style.display = "none"
     }
-})</script></div><div><button class="pagebutton" type="submit">Login</button></div><div class="brk"></div></form><form role="form" action="signup" method="post"><p>Don't have an account?</p><button class="signupbutton" type="submit" href="./signup">Join the community</button><p class="foobar">Copyright (c) Peddlr People</p></form></body><footer></footer></html>
+})</script></div><div><button class="pagebutton" type="submit">Login</button></div><div class="brk"></div></div></form><p>Don't have an account?</p><a href="./signup"><button class="joinbutton" type="submit">Join the community</button></a><p>Copyright (c) Peddlr People</p></body><footer></footer></html>

@@ -3,46 +3,48 @@ extends default.pug
 block css
   style
     include ../public/css/signup.css
+
 block user
   a(href = './loginpage')
-    button.loginbutton(type='submit') Log in
+    div.btn.from-middle Log In
 
 block content
   div.headerzone
     a(href = './homepage')
       button.backbutton(type = 'submit') Back
     h2 Sign Up
-  p.tagline It's simple!
+  p.tagline Time to feel like home
 
   // register form
   form(method='POST' action='./newUser')
-    div.form-group
-      input#firstname(type='text', placeholder='First name' name='fname', required)
-      input#lastname(type='text', placeholder='Last name' name='lname', required)
-    div.form-group
-      p.dob Date of Birth
-      input#dob(type='date', placeholder='22/07/2018' name='dob', required)
-    div.form-group
-      input#address(type='text', placeholder='Address' name='address', required)
-    div.form-group
-      select#state(type='text', placeholder='State' name='state', required)
-        option NSW
-        option QLD
-        option SA
-        option TAS
-        option VIC
-        option WA
-      input#zip(type='text', placeholder='Zip Code' name='zip', required)
-      select#country(type='text', placeholder='Country' name='country', required)
-        option Australia
-    div.form-group
-      input#email(type='email', placeholder='Email Address' name='email', required)
-    div.form-group
-      input#confirmemail(type='email', placeholder='Confirm Email Address' name='confirmemail', required)
-    div.form-group
-      input#pw(type='password', placeholder='Password' name='password', required)
-    div.form-group
-      input#pw2(type='password', placeholder='Retype Password' name='confirmPassword', required)
-    button.pagebutton(type='submit') SIGN UP
+    div.formzone
+      div.form-group
+        input#firstname(type='text', placeholder='First name' name='fname', required)
+        input#lastname(type='text', placeholder='Last name' name='lname', required)
+      div.form-group
+        p.dob Date of Birth
+        input#dob(type='date', placeholder='22/07/2018' name='dob', required)
+      div.form-group
+        input#address(type='text', placeholder='Address' name='address', required)
+      div.form-group
+        select#state(type='text', placeholder='State' name='state', required)
+          option NSW
+          option QLD
+          option SA
+          option TAS
+          option VIC
+          option WA
+        input#zip(type='text', placeholder='Zip Code' name='zip', required)
+        select#country(type='text', placeholder='Country' name='country', required)
+          option Australia
+      div.form-group
+        input#email(type='email', placeholder='Email Address' name='email', required)
+      div.form-group
+        input#confirmemail(type='email', placeholder='Confirm Email Address' name='confirmemail', required)
+      div.form-group
+        input#pw(type='password', placeholder='Password' name='password', required)
+      div.form-group
+        input#pw2(type='password', placeholder='Retype Password' name='confirmPassword', required)
+      button.pagebutton(type='submit') SIGN UP
 
-    p.foobar Copyright (c) Peddlr People
+      p.foobar Copyright (c) Peddlr People

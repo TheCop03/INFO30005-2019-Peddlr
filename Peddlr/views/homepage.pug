@@ -5,9 +5,9 @@ block css
 
 block user
     a(href = './signup')
-        button.signupbutton(type='submit') Sign up
+        div.btn.from-middle Sign Up
     a(href = './loginpage')
-        button.loginbutton(type='submit') Log In
+        div.btn.from-middle Log In
 
 block content
 
@@ -26,7 +26,7 @@ block content
     div.categoryzone.menu-wrapper.menu
         each category in categories
             div.category.item
-                a(href = './listing/category/${category._id}')
+                a(href = `./listing/category/${category._id}`)
                     img.categoryphoto(src=category.photo alt=category.title)
                 p.categorytitle #{category.title}
         //div.paddles
@@ -40,7 +40,7 @@ block content
     div.latestlistingszone
         each listing in listings
             div.listing.dropup
-                a(href = './listing/id/${listing.id}')
+                a(href = `./listing/id/${listing.id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
                     p.listingtitle #{listing.title}
                     div.dropup-content
@@ -49,3 +49,4 @@ block content
                     p.listingprice $#{listing.price} #{listing.interval}
                         div.dropup-content
                             p.listingdescription #{listing.description}
+

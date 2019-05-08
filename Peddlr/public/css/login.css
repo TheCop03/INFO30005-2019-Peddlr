@@ -6,9 +6,50 @@ body {
     grid-template-rows: 0.15fr 0.5fr 1fr;
     border: 0;
     margin: 0;
-    background-color: #F9F6EE;
+    background-image: url(https://unixtitan.net/images/bike-transparent-animated-1.gif), url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
+    background-repeat: no-repeat, repeat;
+    background-position: left, center;
+    background-size: 70%, 100%;
 }
 
+header {
+    background-color: #125358;
+    border-radius:10px;
+    box-shadow: 3px 3px 3px dimgrey;
+    padding-right: 20px;
+
+}
+
+.headerzone {
+    margin: 5px 10px 0 10px;
+    border-radius: 10px;
+}
+
+/************************************************************************************/
+/* TEXT */
+
+h2 {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: #4F5445;
+    height: 100%;
+    position: relative;
+    bottom: 25px;
+    color: brown;
+    left: 25%;
+}
+
+p{
+    text-align: center;
+    position:relative;
+    left: 25%;
+
+
+}
+
+/************************************************************************************/
+/* MISC */
 .brk {
     width: 50%;
     height: 0px;
@@ -20,16 +61,36 @@ body {
     transform: rotate(-0.09deg);
 }
 
+/************************************************************************************/
+/* BUTTONS */
 
-h2 {
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    color: #4F5445;
-    height: 100%;
+.joinbutton{
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+    box-sizing: border-box;
     position: relative;
-    bottom: 25px;
-    color: white;
+    border-style: solid;
+    left: 58%;
+
+    /* font */
+    color: #010106;
+
+}
+
+.joinbutton:hover {
+    transition: border-color 0.3s ease-in-out;
+    border-color: darkcyan;
+    border-width: medium;
+}
 
 
+/* FORM */
+.formzone {
+    position: relative;
+    left: 25%;
 }
