@@ -115,6 +115,12 @@ input, select {
 
 }
 
+.signupbutton:hover {
+    border-color: darkcyan;
+    border-width: medium;
+}
+
+
 .backbutton {
     color:#4F5445;
     display: inline-block;
@@ -130,3 +136,4 @@ input, select {
     border-radius: 20px;
 
 }
+

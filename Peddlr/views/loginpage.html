@@ -8,9 +8,10 @@ body {
     margin: 0;
     background-color: #F9F6EE;
 }
-
+/************************************************************************************/
+/* HEADERS */
 header {
-    background-color: #D3B492;
+    background-color: #125358;
 }
 
 h1 {
@@ -47,6 +48,11 @@ h2 {
     color: #4F5445;
 }
 
+footer {
+    background-color: #125358;
+}
+/************************************************************************************/
+/* FORM */
 form {
     text-align: center;
 }
@@ -81,12 +87,13 @@ input, select {
 #country {
     width: 15%;
 }
-
+/************************************************************************************/
+/* BUTTONS */
 .pagebutton {
     width: 30%;
     margin: 20px;
     border: 0px;
-    background-color: #a08a6f;
+    background-color: #125358;
     color: white;
     font-size: 20px;
     height: 35px;
@@ -107,19 +114,12 @@ input, select {
     color: #010106;
 
 }
-html{
-    font-family: 'Montserrat', sans-serif;
+
+.signupbutton:hover {
+    border-color: darkcyan;
+    border-width: medium;
 }
-.brk {
-    width: 50%;
-    height: 0px;
-    margin-left:auto;
-    margin-right: auto;
-    background: #C4C4C4;
-    border: 1px solid #C4C4C4;
-    box-sizing: border-box;
-    transform: rotate(-0.09deg);
-}
+
 
 .backbutton {
     color:#4F5445;
@@ -135,7 +135,21 @@ html{
     cursor: pointer;
     border-radius: 20px;
 
-}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><a href="./homepage"><button class="backbutton">Back</button></a><h2>Login</h2><p class="lead"><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"><p id="text">Caps lock is ON.</p><script>var input = document.getElementById("password");
+}
+
+html{
+    font-family: 'Montserrat', sans-serif;
+}
+.brk {
+    width: 50%;
+    height: 0px;
+    margin-left:auto;
+    margin-right: auto;
+    background: #C4C4C4;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    transform: rotate(-0.09deg);
+}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header></header><h1>Peddlr</h1><body><a href="./homepage"><button class="backbutton">Back</button></a><h2>Login</h2><p class="lead"><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder="Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder="Password"><p id="text">Caps lock is ON.</p><script>var input = document.getElementById("password");
 var text = document.getElementById("text");
 input.addEventListener("keyup", function (event) {
 

@@ -11,6 +11,7 @@ body {
 /* HEADERS */
 header {
 	background-color: #125358;
+	position: sticky;
 }
 
 h1 {
@@ -188,7 +189,7 @@ input{
 	padding-left: 50px;
 	margin: 0px 10px 0px 10px;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-columns: 20% 20% 20% 20% 20%;
 	grid-template-rows: 50% 50%;
 	column-gap: 50px;
 	padding-left: 20px;
@@ -332,5 +333,7 @@ input{
 /* Show the dropup menu on hover */
 .dropup:hover .dropup-content {
 	display: block;
+	transition: transform 0.5s;
+
 
 }

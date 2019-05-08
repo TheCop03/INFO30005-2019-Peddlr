@@ -25,6 +25,9 @@ footer {
 }
 
 .steps{
+    background-color: blue;
+    grid-template-columns: 35% 15% 15% 35%;
+    grid-template-areas: "empty" "bubble""bubble""empty"
 
 }
 
@@ -38,7 +41,6 @@ footer {
     text-align: center;
     background: black;
     display:inline-block;
-    margin-left: 400px;
     margin-top: 50px;
 
 }
