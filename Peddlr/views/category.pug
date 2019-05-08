@@ -1,0 +1,29 @@
+extends default.pug
+
+block css
+    style
+        include ../public/css/category.css
+
+block user
+    a(href = '/signup')
+        button.signupbutton(type='submit') Sign up
+    a(href = '/loginpage')
+        button.loginbutton(type='submit') Log In
+
+block content
+
+    div.searchzone
+        h2 Let's Peddle
+        input(type='text', placeholder='   Search in the category', name='search')
+        button.searchbutton(type='submit') Search
+            i.fa.fa-search
+
+    h1 #{category}
+
+    div.listingzone
+        each listing in listings
+            div.listing
+                a(href = `/listing/id/${listing.id}`)
+                    img.listingphoto(src=listing.photo alt=listing.title)
+                    p.listingtitle #{listing.title}
+                    p.listingprice $#{listing.price} #{listing.interval}

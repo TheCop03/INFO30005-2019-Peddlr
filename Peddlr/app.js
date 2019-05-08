@@ -23,4 +23,3 @@ app.listen(PORT, () => {
    console.log(process.env.PORT);
    console.log(`Listening on ${ PORT }`);
 });
-
