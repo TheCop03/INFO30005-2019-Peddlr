@@ -6,10 +6,10 @@ block css
 
 block content
     div.headerzone
+        a(href = './homepage')
+            button.backbutton(type = 'submit') Back
         h2 Create a new listing
-    div.steps
-        div.bubble 1
-        div.bubble 2
+
     div.createlistingzone
         //create listing form
         form(method='POST' action='/newListing')
@@ -30,29 +30,33 @@ block content
                     option per week
                     option per month
                     option per year
-        div.form-group
-            p.fieldtitle Description:
-            input#description(type = 'text', placeholder=' Description', name = 'description')
-        div.form-group
-            p.fieldtitle Please upload a photo
-            input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
-            img#preview(src="" alt="Image preview...")
-        div.form-group
-            p.fieldtitle Where can the item be picked up?
-            input#address(type='text', placeholder='Address' name='address', required)
-        div.form-group
-            select#state(type='text', placeholder='State' name='state', required)
-                option NSW
-                option QLD
-                option SA
-                option TAS
-                option VIC
-                option WA
-            input#zip(type='text', placeholder='Zip Code' name='zip', required)
-            select#country(type='text', placeholder='Country' name='country', required)
-                option Australia
-        div.form-group
-            input#create(type = 'submit' value = 'CREATE')
+            div.form-group
+                p.fieldtitle Description:
+                input#description(type = 'text', placeholder=' Description', name = 'description')
+            div.form-group
+                p.fieldtitle Please upload a photo
+                input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
+                img#preview(src=file alt="Image preview...")
+            div.form-group
+                p.fieldtitle Where can the item be picked up?
+                input#address(type='text', placeholder='Address' name='address', required)
+            div.form-group
+                input#zip(type='text', placeholder='Zip Code' name='zip', required)
+
+                select#state(type='text', placeholder='State' name='state', required)
+                    option NSW
+                    option QLD
+                    option SA
+                    option TAS
+                    option VIC
+                    option WA
+                select#country(type='text', placeholder='Country' name='country', required)
+                    option Australia
+
+
+            div
+                a(href = './newlisting/')
+                    button.pagebutton(type='submit') Post
 
     script.
         //this script function displays the photo the user uploads
