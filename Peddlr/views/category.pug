@@ -14,16 +14,24 @@ block content
 
     div.searchzone
         h2 Let's Peddle
-        input(type='text', placeholder='   Search in the category', name='search')
-        button.searchbutton(type='submit') Search
+        a(href='./createlisting')
+            button.createbutton(type='submit') + Create listing
+        input(type='text', placeholder='   Search in this category...', name='search')
+        a(href="/search")
+            button.searchbutton(type='submit') Search
             i.fa.fa-search
 
-    h1 #{category}
+    h3 #{category}
 
-    div.listingzone
+    div.latestlistingszone
         each listing in listings
-            div.listing
+            div.listing.dropup
                 a(href = `/listing/id/${listing.id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
                     p.listingtitle #{listing.title}
+                    div.dropup-content
+                        p.listingdescription #{listing.description}
+
                     p.listingprice $#{listing.price} #{listing.interval}
+                        div.dropup-content
+                            p.listingdescription #{listing.description}
