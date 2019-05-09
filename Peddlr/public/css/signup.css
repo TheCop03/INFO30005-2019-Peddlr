@@ -3,28 +3,15 @@ html{
 }
 body {
     display:grid;
-    grid-template-rows: 80px 1fr 0.25fr auto;
+    grid-template-rows: 80px 0.5fr 0.25fr auto;
     border: 0;
     margin: 0;
-    background-image:url(https://unixtitan.net/images/bike-transparent-animated-1.gif), url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
-    background-repeat: no-repeat, repeat;
-    background-position: left, center;
+    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
-
-.headerzone {
-    margin: 5px 10px 0 10px;
-    background-position: 30%;
-    border-radius: 10px;
-}
-
 /************************************************************************************/
 /* HEADERS */
 header {
     background-color: #125358;
-    border-radius:10px;
-    box-shadow: 3px 3px 3px dimgrey;
-    padding-right: 20px;
-
 }
 
 h1 {
@@ -33,26 +20,20 @@ h1 {
     color: white;
 }
 
-
 h2 {
     margin-bottom: 0px;
     text-align: center;
-    color: brown;
     font-size: 50px;
-    font-weight: bold;
-    position: relative;
-    bottom: 40px;
-    left: 25%;
+    font-weight: normal;
+    color: #4F5445;
 }
 
 .tagline {
-    position:relative;
-    margin-top: 13px;
+    margin-top: 0px;
     text-align: center;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: lighter;
-    color: brown;
-    left: 25%;
+    color: #4F5445;
 }
 
 footer {
@@ -60,18 +41,11 @@ footer {
 }
 /************************************************************************************/
 /* FORM */
-.formzone {
-    position: relative;
-    left: 25%;
-}
 form {
     text-align: center;
-    color: saddlebrown;
 }
 
 input, select {
-    border-radius: 20px;
-    height: 40px;
     margin: 10px;
     width: 40%;
     text-indent: 5px;
@@ -112,18 +86,20 @@ input, select {
     font-size: 20px;
     height: 35px;
     border-radius: 20px;
+
+
 }
 
 .pagebutton:hover {
-    box-shadow: 2px 2px 2px  grey;
-    transition: box-shadow 0.2s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 3px 3px 3px darkslategrey;
+
 }
 
 
-
 .backbutton {
-    color:black;
-    display: inline;
+    color:#4F5445;
+    display: inline-block;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -134,14 +110,30 @@ input, select {
     margin-top: 20px;
     cursor: pointer;
     border-radius: 20px;
-    border-style: inset;
 
 }
 
 .backbutton:hover {
-    background-color: rgba(255, 255,255, 0.8);
-    transition: background-color 0.2s ease-in;
+    opacity: 0.8;
 }
+
+input{
+    border-radius: 20px;
+    margin: 10px;
+    text-indent: 5px;
+    font-size: larger;
+    transition: transform .2s; /* Animation */
+
+}
+input:hover {
+    transform: scale(1.1) ;
+}
+
+input:focus{
+    transform: scale(1.1);
+}
+
+
 
 /************************************************************************************/
 

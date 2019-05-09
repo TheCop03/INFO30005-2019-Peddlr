@@ -67,6 +67,7 @@ footer {
 
 /************************************************************************************/
 /* BUTTONS */
+/*
 .signupbutton {
 	float: right;
 	margin-top: 20px;
@@ -85,7 +86,8 @@ footer {
 	transition: box-shadow 0.3s ease-in-out;
 }
 
-/*
+
+
 .loginbutton {
 	float: right;
 	margin-top: 20px;
@@ -163,8 +165,8 @@ footer {
 	border-radius: 10px;
 
 	/* background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg); */
-	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
-	background-position: 50%;
+	background-image: url(https://media.giphy.com/media/OjAXR19wXcVNK/giphy.gif);
+	background-position: 30%;
 	background-repeat: no-repeat;
 	background-size: 100%;
 	grid-template-rows: 45% 55%;

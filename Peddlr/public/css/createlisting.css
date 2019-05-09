@@ -30,6 +30,13 @@ header {
     color: white;
 }
 
+h1 {
+    float: left;
+    padding-left: 20px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
 h2 {
     text-align: center;
     color: white;
@@ -83,6 +90,8 @@ input:focus{
 }
 
 #title {
+    position:relative;
+    left: 4%;
     width:85%;
     height: 40px;
     font-size: 20px;
@@ -96,6 +105,8 @@ input#title:focus{
 }
 
 #category {
+    position:relative;
+    left: 4%;
     width: 85%;
     height: 40px;
     font-size: 20px;
@@ -104,12 +115,16 @@ input#title:focus{
 }
 
 #price {
+    position:relative;
+    left: 4%;
     width: 45%;
     height: 40px;
     font-size: 20px;
 }
 
 #interval {
+    position:relative;
+    left: 4%;
     width: 37%;
     height: 40px;
     font-size: 20px;
