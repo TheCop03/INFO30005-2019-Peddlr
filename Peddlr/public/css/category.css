@@ -126,12 +126,9 @@ input{
 	top: 30px;
 }
 
-.listingzone {
+.latestlistingszone {
 	padding-left: 50px;
 	margin: 0px 10px 0px 10px;
-	display: grid;
-	grid-template-columns: 20% 20% 20% 20% 20%;
-	grid-template-rows: 50% 50%;
 	column-gap: 50px;
 	padding-left: 20px;
 }
@@ -140,13 +137,13 @@ input{
 	margin:50px;
 	width: auto;
 	height: 60%;
-	display: inline;
+	display: block;
 }
 
 .listingphoto {
 	padding: 10px 10px 10px 10px;
-	width: 100%;
-	height: 100%;
+	width: 100px;
+	height: 100px;
 	background-color: #F0F8FF	;
 	box-shadow: 10px 10px 16px -5px rgba(0,0,0,0.33);
 }
