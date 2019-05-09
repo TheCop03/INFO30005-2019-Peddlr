@@ -3,14 +3,17 @@ html{
 }
 body {
     display:grid;
-    grid-template-rows: 0.25fr 0.15fr 0.15fr 4fr 0.25fr ;
+    grid-template-rows: 0.25fr 0.6fr 4fr 0.25fr ;
     border: 0;
     background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 .headerzone {
-    margin-bottom: 20px;
-    background-image: url(https://images.unsplash.com/photo-1459535653751-d571815e906b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80);
+    margin: 5px 10px 0 10px;
+    border-radius: 10px;
+    background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
     background-position: 30%;
+    height: 100%;
+    background-repeat: repeat;
 }
 footer {
     position: absolute;
@@ -21,47 +24,29 @@ footer {
 /* TITLES */
 header {
     background-color: #125358;
+    border-radius:10px;
+    box-shadow: 3px 3px 3px dimgrey;
+    padding-right: 20px;
+    color: white;
 }
 
 h2 {
-    margin-bottom: 0px;
     text-align: center;
     color: white;
     font-size: 50px;
     font-weight: bold;
     position: relative;
-    bottom: 30px;
-}
-
-.form-group {
-    font-weight: bolder;
-    font-size: 20px;
-}
-
-.steps{
-    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
-
-}
-
-.bubble{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    font-size: 25px;
-    color: white;
-    line-height: 70px;
-    text-align: center;
-    background: black;
-    display:inline-block;
-    vertical-align: middle;
+    bottom: 25px;
 }
 
 
+/************************************************************************************/
+/* FORM */
 .createlistingzone{
     padding-left: 20px;
-    display: table;
+    display: grid;
     margin: 20px auto;
-    background-color: pink;
+    background-color: #125358;
     border-radius: 20px;
     box-shadow: 5px 5px 5px 10px grey;
     position: relative;
@@ -70,11 +55,171 @@ h2 {
     text-align: left;
 }
 
-input, select {
+#create{
+    position: relative;
+    left: 25%;
+}
+
+.form-group {
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+}
+
+input, select{
     border-radius: 20px;
-    height: 40px;
     margin: 10px;
-    width: 40%;
     text-indent: 5px;
     font-size: larger;
+    transition: transform .2s; /* Animation */
+
 }
+input:hover {
+    transform: scale(1.1) ;
+}
+
+input:focus{
+    transform: scale(1.1);
+}
+
+#title {
+    width:85%;
+    height: 40px;
+    font-size: 20px;
+}
+input#title:hover {
+    transform: scale(1.05) ;
+}
+
+input#title:focus{
+    transform: scale(1.05);
+}
+
+#category {
+    width: 85%;
+    height: 40px;
+    font-size: 20px;
+
+
+}
+
+#price {
+    width: 45%;
+    height: 40px;
+    font-size: 20px;
+}
+
+#interval {
+    width: 37%;
+    height: 40px;
+    font-size: 20px;
+}
+#description{
+    position: relative;
+    width: 85%;
+    height: 100px;
+    font-size: 20px;
+    left: 4%;
+}
+
+#photo {
+    position: relative;
+    font-size: 15px;
+    height: 100px;
+}
+
+#preview{
+    font-size: 15px;
+    text-align: left;
+    position: relative;
+    width: 300px;
+    height: 300px;
+    left: 80px;
+
+}
+
+#address {
+    width: 90%;
+    position: relative;
+    left: 2%;
+}
+
+#country {
+    position: relative;
+    left: 13%;
+    width: 30%;
+}
+
+#zip {
+    position: relative;
+    left: 2%;
+    width: 20%;
+}
+#state {
+    position: relative;
+    left: 13%;
+    width:20%;
+}
+
+
+/************************************************************************************/
+/* BUTTON */
+.pagebutton {
+    width: 50%;
+    margin-top: 40px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 50px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+    border-style: solid;
+    left: 23%;
+    font-weight: bold;
+
+    /* font */
+    color: #010106;
+}
+
+.pagebutton:hover {
+    transition: border-color 0.3s ease-in-out;
+    border-color: darkcyan;
+    border-width: medium;
+}
+
+
+input[type=file]{
+    background-color: #4CAF50;
+    max-height: 20px;
+    border: none;
+    color: white;
+    padding: 20px 32px;
+    text-decoration: none;
+    margin: 3px 2px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.backbutton {
+    color:black;
+    display: inline;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    border-style: inset;
+
+}
+
+.backbutton:hover {
+    background-color: rgba(255, 255,255, 0.8);
+    transition: background-color 0.2s ease-in;
+}
+/************************************************************************************/

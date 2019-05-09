@@ -14,7 +14,6 @@ header {
 	border-radius:10px;
 	box-shadow: 3px 3px 3px dimgrey;
 	padding-right: 20px;
-
 }
 
 h1 {
@@ -50,6 +49,15 @@ h3 {
 
 }
 
+.tagline {
+	display:grid;
+	position:relative;
+	margin-top: 100px;
+	font-size: 22px;
+	font-weight: lighter;
+	color: white;
+
+}
 
 footer {
 	background-color: #808000	;
@@ -153,6 +161,7 @@ footer {
 	width: auto;
 	height: 90%;
 	border-radius: 10px;
+
 	/* background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg); */
 	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
 	background-position: 50%;
@@ -371,7 +380,7 @@ input{
 }
 
 /************************************************************************************/
-
+/* HEADER BUTTONS */
 .btn {
 	position: relative;
 	padding: 8px 32px;
