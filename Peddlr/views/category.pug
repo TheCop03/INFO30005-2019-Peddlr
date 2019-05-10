@@ -4,34 +4,20 @@ block css
     style
         include ../public/css/category.css
 
-block user
-    a(href = '/signup')
-        button.signupbutton(type='submit') Sign up
-    a(href = '/loginpage')
-        button.loginbutton(type='submit') Log In
-
 block content
 
-    div.searchzone
-        h2 Let's Peddle
-        a(href='./createlisting')
-            button.createbutton(type='submit') + Create listing
-        input(type='text', placeholder='   Search in this category...', name='search')
-        a(href="/search")
-            button.searchbutton(type='submit') Search
-            i.fa.fa-search
+    div.titlezone
+        a.back(href=`/homepage`)
+            button.backbutton(type='submit') Back
+        h2 #{category}
 
-    h3 #{category}
-
-    div.latestlistingszone
+    div.listingszone
         each listing in listings
-            div.listing.dropup
-                a(href = `/listing/id/${listing.id}`)
+            div.listing
+                a.photo(href = `/listing/id/${listing.id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
+                a.title(href = `/listing/id/${listing.id}`)
                     p.listingtitle #{listing.title}
-                    div.dropup-content
-                        p.listingdescription #{listing.description}
-
-                    p.listingprice $#{listing.price} #{listing.interval}
-                        div.dropup-content
-                            p.listingdescription #{listing.description}
+                p.listinglocation #{listing.location}
+                p.listingprice $#{listing.price} #{listing.interval}
+                p.listingdescription #{listing.description}
