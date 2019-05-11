@@ -16,11 +16,11 @@ block content
   p.tagline Time to feel like home
 
   // register form
-  form(method='POST' action='./newUser')
-    div.formzone
+  div.formzone
+    form(method='POST' action='./newUser')
       div.form-group
-        input#firstname(type='text', placeholder='First name' name='fname', required)
-        input#lastname(type='text', placeholder='Last name' name='lname', required)
+        input#fname(type='text', placeholder='First name' name='fname', required)
+        input#lname(type='text', placeholder='Last name' name='lname', required)
       div.form-group
         p.dob Date of Birth
         input#dob(type='date', placeholder='22/07/2018' name='dob', required)

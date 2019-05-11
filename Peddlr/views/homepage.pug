@@ -4,8 +4,8 @@ block css
         include ../public/css/homepage.css
 
 block user
-    a(href = './aboutUs')
-        div.btn.from-middle About Us
+    a(href = './homepage')
+        div.btn.from-middle.active Home
     a(href = './signup')
         div.btn.from-middle Sign Up
     a(href = './loginpage')
@@ -51,4 +51,15 @@ block content
                     p.listingprice $#{listing.price} #{listing.interval}
                         div.dropup-content
                             p.listingdescription #{listing.description}
+
+
+    script.
+        function respFunction() {
+            var x = document.getElementById("topNav");
+            if (x.className === "header") {
+                x.className += " responsive";
+            } else {
+                x.className = "header";
+            }
+        }
 

@@ -35,10 +35,9 @@ block content
                 p.example e.g "Authentic oak wood patio table. Suitable for parties"
                 input#description(type = 'text', placeholder=' Description', name = 'description')
             div.form-group
-                form( action = '/' method = "post" enctype = "multipart/form-data")
-                    p.fieldtitle Please upload a photo
-                    input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photos')
-                    img#preview(src=file alt="Image preview...")
+                p.fieldtitle Please upload a photo
+                input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
+                img#preview(src=file alt="Image preview...")
             div.form-group
                 p.fieldtitle Where can the item be picked up?
                 input#address(type='text', placeholder='Address' name='address', required)
@@ -70,7 +69,7 @@ block content
             reader.addEventListener("load", function() {
                 preview.src = reader.result.toString();
                 //CANNOT FIGURE OUT HOW TO SET THE PHOTO TO A STRING SO IT WILL SAVE IN DB
-                document.getElementById('photo').value = reader.result.toString();
+                document.getElementById('photoinput').value = reader.result.toString();
             }, false);
 
             if (file) {

@@ -31,6 +31,12 @@ router.get('/loginpage', controller.showLogin);
 //show the about us page
 router.get('/aboutus', controller.showAboutUs);
 
+//show the settings page
+router.get('/settings', controller.showSettings);
+
+//show the homepage when user is logged in
+router.get('/loggedin', controller.showLoggedInHomepage);
+
 //show the create listing page
 router.get('/createListing', controller.showCreateListing);
 
@@ -46,6 +52,5 @@ router.post('/login', controller.loginUser);
 //create a new user
 router.post('/newUser', controller.createUser);
 
-router.post('/:id', upload.array('photos', 200), controller.uploadimage);
 
 module.exports = router;

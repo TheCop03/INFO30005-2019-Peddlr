@@ -16,6 +16,21 @@ header {
 	padding-right: 20px;
 }
 
+/*
+.header a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+.header . icon {
+	display: none;
+}
+
+.active {
+	background-color: inherit;
+}
+*/
+
 h1 {
 	float: left;
 	padding-left: 20px;
@@ -118,6 +133,8 @@ footer {
 	background-color: black;
 	border: 0;
 }*/
+
+
 
 .createbutton {
 	grid-area: createbutton;
