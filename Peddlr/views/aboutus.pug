@@ -1,0 +1,12 @@
+extends default.pug
+block css
+    style
+        include ../public/css/homepage.css
+
+block user
+    a(href = './')
+        div.btn.from-middle About Us
+    a(href = './signup')
+        div.btn.from-middle Sign Up
+    a(href = './loginpage')
+        div.btn.from-middle Log In

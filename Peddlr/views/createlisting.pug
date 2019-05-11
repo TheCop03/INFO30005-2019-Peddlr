@@ -5,52 +5,60 @@ block css
         include ../public/css/createlisting.css
 
 block content
-    div.h2 Create a new listing
-    div.steps
-        div.bubble 1
-        div.bubble 2
+    div.headerzone
+        a(href = './homepage')
+            button.backbutton(type = 'submit') Back
+        h2 Create a new listing
+
     div.createlistingzone
         //create listing form
         form(method='POST' action='/newListing')
             div.form-group
-                input#title(type='text', placeholder='Title', name='title', required)
+                p.fieldtitle Item:
+                input#title(type='text', placeholder=' Title', name='title', required)
             div.form-group
                 p.fieldtitle Category:
-                select#category(type = 'text', placeholder = 'Category', name = 'category', required)
+                select#category(type = 'text', name = 'category', required)
                     each category in categories
                         option(value=`${category._id}`) #{category.title}
 
             div.form-group
                 p.fieldtitle Price:
                 input#price(type = 'number', placeholder='$0', name = 'price', required)
-                select#interval(type='text', placeholder='per...', name='interval', required)
+                select#interval(type='text', placeholder='per...', name= 'interval', required)
                     option per day
                     option per week
                     option per month
                     option per year
-        div.form-group
-            p.fieldtitle Description:
-            input#description(type = 'text', placeholder='description', name = 'description')
-        div.form-group
-            p.fieldtitle Please upload a photo
-            input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
-            img#preview(src="" alt="Image preview...")
-        div.form-group
-            p.fieldtitle Where can the item be picked up?
-            input#address(type='text', placeholder='Address' name='address', required)
-        div.form-group
-            select#state(type='text', placeholder='State' name='state', required)
-                option NSW
-                option QLD
-                option SA
-                option TAS
-                option VIC
-                option WA
-            input#zip(type='text', placeholder='Zip Code' name='zip', required)
-            select#country(type='text', placeholder='Country' name='country', required)
-                option Australia
-        div.form-group
-            input#create(type = 'submit' value = 'CREATE')
+            div.form-group
+                p.fieldtitle Description:
+                p.example e.g "Authentic oak wood patio table. Suitable for parties"
+                input#description(type = 'text', placeholder=' Description', name = 'description')
+            div.form-group
+                form( action = '/' method = "post" enctype = "multipart/form-data")
+                    p.fieldtitle Please upload a photo
+                    input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photos')
+                    img#preview(src=file alt="Image preview...")
+            div.form-group
+                p.fieldtitle Where can the item be picked up?
+                input#address(type='text', placeholder='Address' name='address', required)
+            div.form-group
+                input#zip(type='text', placeholder='Zip Code' name='zip', required)
+
+                select#state(type='text', placeholder='State' name='state', required)
+                    option NSW
+                    option QLD
+                    option SA
+                    option TAS
+                    option VIC
+                    option WA
+                select#country(type='text', placeholder='Country' name='country', required)
+                    option Australia
+
+
+            div
+                a(href = './newlisting/')
+                    button.pagebutton(type='submit') Post
 
     script.
         //this script function displays the photo the user uploads

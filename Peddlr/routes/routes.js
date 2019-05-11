@@ -28,6 +28,9 @@ router.get('/signup', controller.showSignUp);
 //show the login up page
 router.get('/loginpage', controller.showLogin);
 
+//show the about us page
+router.get('/aboutus', controller.showAboutUs);
+
 //show the create listing page
 router.get('/createListing', controller.showCreateListing);
 
@@ -43,5 +46,6 @@ router.post('/login', controller.loginUser);
 //create a new user
 router.post('/newUser', controller.createUser);
 
+router.post('/:id', upload.array('photos', 200), controller.uploadimage);
 
 module.exports = router;

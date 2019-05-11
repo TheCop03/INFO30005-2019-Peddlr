@@ -1,4 +1,7 @@
 var mongoose = require('mongoose');
+var Grid = require("gridfs-stream");
+Grid.mongo = mongo;
+var upload = multer({dest: "./uploads"});
 var Category = mongoose.model('category');
 var Listing = mongoose.model('listing');
 var User = mongoose.model('users');
@@ -26,6 +29,11 @@ var showHomepage = function(req, res) {
 var showSignUp = function(req, res) {
     var results = {title: 'Peddlr'};
     res.render('signup', results);
+};
+
+var showAboutUs = function(req, res) {
+    var results = {title: 'Peddlr'};
+    res.render('aboutus', results);
 };
 
 var showLogin = function(req, res) {
@@ -166,6 +174,20 @@ var deleteListing = function(req,res){
     });
 };
 
+var uploadimage = function(req, res, next) {
+    gfs = Grid(db);
+    var ss = req.files;
+    for(var j=0; j<ss.length; j++){
+        var originalName = ss[j].originalname;
+        var filename = ss[j].filename;
+        var writestream = gfs.createWriteStream({
+            filename: originalName
+        });
+        fs.createReadStream("./uploads/" + filename).pipe(writestream);
+    }
+}
+
+
 
 module.exports = {
     createListing,
@@ -176,8 +198,10 @@ module.exports = {
     createUser,
     showHomepage,
     showSignUp,
+    showAboutUs, 
     showLogin,
     loginUser,
     showListingByID,
-    showCreateListing
+    showCreateListing,
+    uploadimage
 };

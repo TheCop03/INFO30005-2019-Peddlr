@@ -1,6 +1,15 @@
 html{
     font-family: 'Montserrat', sans-serif;
 }
+
+p {
+    position: relative;
+    text-align: center;
+
+}
+
+/************************************************************************************/
+/* MISC */
 .brk {
     width: 50%;
     height: 0px;
@@ -11,3 +20,38 @@ html{
     box-sizing: border-box;
     transform: rotate(-0.09deg);
 }
+
+/************************************************************************************/
+/* BUTTONS */
+
+.joinbutton{
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    position: relative;
+    border-style: solid;
+    left: 33.5%;
+
+    /* font */
+    color: #010106;
+
+}
+
+.joinbutton:hover {
+    transition: border-color 0.3s ease-in-out;
+    border-color: darkcyan;
+    border-width: medium;
+}
+
+
+/* FORM */
+.formzone {
+    position: relative;
+    left: 25%;
+}
+
