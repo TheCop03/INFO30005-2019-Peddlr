@@ -9,24 +9,14 @@ body {
 }
 /************************************************************************************/
 /* HEADERS */
-.header {
+header {
 	background-color: #125358;
 	border-radius:10px;
 	box-shadow: 3px 3px 3px dimgrey;
 	padding-right: 20px;
-	overflow: hidden;
 }
 
-.header a{
-	float: left;
-	display: block;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-}
-
+/*
 .header a:hover {
 	background-color: #ddd;
 	color: black;
@@ -39,6 +29,7 @@ body {
 .active {
 	background-color: inherit;
 }
+*/
 
 h1 {
 	float: left;

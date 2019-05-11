@@ -4,15 +4,12 @@ block css
         include ../public/css/homepage.css
 
 block user
-    div.header(id = "topNav")
-        a(href = './homepage')
-            div.btn.from-middle.active Home
-        a(href = './signup')
-            div.btn.from-middle Sign Up
-        a(href = './loginpage')
-            div.btn.from-middle Log In
-        a(href = "javascript:void(0);" class = "icon" onclick = "respFunction()")
-
+    a(href = './homepage')
+        div.btn.from-middle.active Home
+    a(href = './signup')
+        div.btn.from-middle Sign Up
+    a(href = './loginpage')
+        div.btn.from-middle Log In
 
 block content
 
@@ -58,11 +55,11 @@ block content
 
     script.
         function respFunction() {
-            var x = document.getElementById("myTopnav");
-            if (x.className === "topnav") {
+            var x = document.getElementById("topNav");
+            if (x.className === "header") {
                 x.className += " responsive";
             } else {
-                x.className = "topnav";
+                x.className = "header";
             }
         }
 
