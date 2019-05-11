@@ -135,12 +135,15 @@ input#title:focus{
     height: 100px;
     font-size: 20px;
     left: 4%;
+    bottom: 10px;
 }
 
 #photo {
     position: relative;
     font-size: 15px;
     height: 100px;
+    left: 3%;
+
 }
 
 #preview{
@@ -156,7 +159,7 @@ input#title:focus{
 #address {
     width: 90%;
     position: relative;
-    left: 2%;
+    left: 3%;
 }
 
 #country {
@@ -167,13 +170,22 @@ input#title:focus{
 
 #zip {
     position: relative;
-    left: 2%;
+    left: 3%;
     width: 20%;
 }
 #state {
     position: relative;
     left: 13%;
     width:20%;
+}
+
+.example {
+    font-size: 12px;
+    color: white;
+    font-style: italic;
+    position: relative;
+    bottom: 15px;
+
 }
 
 

@@ -12,27 +12,26 @@ block content
 
         h2 Login
     form(role='form', action='/login', method='post')
-        div.formzone
-            div.form-group
-                input.form-control(type='text', id='user', name='username', placeholder=' Email address')
+        div.form-group
+            input.form-control(type='text', id='user', name='username', placeholder=' Email address')
 
-            div.form-group
-                input.form-control(type='password', id='password', name='password', placeholder=' Password')
-                p(id='text', style="display: none;") Caps lock is ON.
-                script.
-                    var input = document.getElementById("password");
-                    var text = document.getElementById("text");
-                    input.addEventListener("keyup", function (event) {
-                        if (event.getModifierState("CapsLock")) {
-                            text.style.display = "block";
-                        } else {
-                            text.style.display = "none"
-                        }
-                    })
-            div
-                button.pagebutton(type='submit') Login
+        div.form-group
+            input.form-control(type='password', id='password', name='password', placeholder=' Password')
+            p(id='text', style="display: none;") Caps lock is ON.
+            script.
+                var input = document.getElementById("password");
+                var text = document.getElementById("text");
+                input.addEventListener("keyup", function (event) {
+                    if (event.getModifierState("CapsLock")) {
+                        text.style.display = "block";
+                    } else {
+                        text.style.display = "none"
+                    }
+                })
+        div
+            button.pagebutton(type='submit') Login
 
-            div.brk
+        div.brk
     p Don't have an account?
     a(href = './signup')
          button.joinbutton(type='submit') Join the community

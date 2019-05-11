@@ -4,19 +4,18 @@ block css
         include ../public/css/homepage.css
 
 block user
-    a(href = './aboutUs')
-        div.btn.from-middle About Us
-    a(href = './signup')
-        div.btn.from-middle Sign Up
-    a(href = './loginpage')
-        div.btn.from-middle Log In
+    a(href = './Account')
+        div.btn.from-middle Account
 
+    a(href = './ShowMyListings')
+        div.btn.from-middle My Listings
 
 block content
 
     //form.searchbar(action='SEARCHRESULTS')
     div.searchzone
-        h2 Let's Peddle
+        h2 Welcome back
+        //#{users.fname}
         a(href='./createlisting')
             button.createbutton(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')

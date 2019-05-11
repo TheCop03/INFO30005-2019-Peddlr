@@ -3,28 +3,15 @@
 }
 body {
     display:grid;
-    grid-template-rows: 80px 1fr 0.25fr auto;
+    grid-template-rows: 80px 0.5fr 0.25fr auto;
     border: 0;
     margin: 0;
-    background-image:url(https://unixtitan.net/images/bike-transparent-animated-1.gif), url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
-    background-repeat: no-repeat, repeat;
-    background-position: left, center;
+    background-color: #F9F6EE;
 }
-
-.headerzone {
-    margin: 5px 10px 0 10px;
-    background-position: 30%;
-    border-radius: 10px;
-}
-
 /************************************************************************************/
 /* HEADERS */
 header {
     background-color: #125358;
-    border-radius:10px;
-    box-shadow: 3px 3px 3px dimgrey;
-    padding-right: 20px;
-
 }
 
 h1 {
@@ -33,26 +20,32 @@ h1 {
     color: white;
 }
 
+.loginbutton {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    padding: 8px 32px;
+    background-color: inherit;
+    outline: 1px;
+    font-size: 20px;
+    color: white;
+}
 
 h2 {
     margin-bottom: 0px;
     text-align: center;
-    color: brown;
     font-size: 50px;
-    font-weight: bold;
-    position: relative;
-    bottom: 40px;
-    left: 25%;
+    font-weight: normal;
+    color: #4F5445;
 }
 
 .tagline {
-    position:relative;
-    margin-top: 13px;
+    margin-top: 0px;
     text-align: center;
-    font-size: 22px;
+    font-size: 25px;
     font-weight: lighter;
-    color: brown;
-    left: 25%;
+    color: #4F5445;
 }
 
 footer {
@@ -60,18 +53,11 @@ footer {
 }
 /************************************************************************************/
 /* FORM */
-.formzone {
-    position: relative;
-    left: 25%;
-}
 form {
     text-align: center;
-    color: saddlebrown;
 }
 
 input, select {
-    border-radius: 20px;
-    height: 40px;
     margin: 10px;
     width: 40%;
     text-indent: 5px;
@@ -114,16 +100,30 @@ input, select {
     border-radius: 20px;
 }
 
-.pagebutton:hover {
-    box-shadow: 2px 2px 2px  grey;
-    transition: box-shadow 0.2s ease-in-out;
+.signupbutton{
+    width: 30%;
+    margin: 20px;
+    border: 0px;
+    opacity:1;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+    box-sizing: border-box;
+
+    /* font */
+    color: #010106;
+
+}
+
+.signupbutton:hover {
+    border-color: darkcyan;
+    border-width: medium;
 }
 
 
-
 .backbutton {
-    color:black;
-    display: inline;
+    color:#4F5445;
+    display: inline-block;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
@@ -134,14 +134,10 @@ input, select {
     margin-top: 20px;
     cursor: pointer;
     border-radius: 20px;
-    border-style: inset;
 
 }
 
-.backbutton:hover {
-    background-color: rgba(255, 255,255, 0.8);
-    transition: background-color 0.2s ease-in;
-}
+
 
 /************************************************************************************/
 
@@ -229,52 +225,6 @@ html{
     font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    grid-template-rows: 0.15fr 0.5fr 1fr;
-    border: 0;
-    margin: 0;
-    background-image: url(https://unixtitan.net/images/bike-transparent-animated-1.gif), url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
-    background-repeat: no-repeat, repeat;
-    background-position: left, center;
-    background-size: 70%, 100%;
-}
-
-header {
-    background-color: #125358;
-    border-radius:10px;
-    box-shadow: 3px 3px 3px dimgrey;
-    padding-right: 20px;
-
-}
-
-.headerzone {
-    margin: 5px 10px 0 10px;
-    border-radius: 10px;
-}
-
-/************************************************************************************/
-/* TEXT */
-
-h2 {
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    color: #4F5445;
-    height: 100%;
-    position: relative;
-    bottom: 25px;
-    color: brown;
-    left: 25%;
-}
-
-p{
-    text-align: center;
-    position:relative;
-    left: 25%;
-
-
-}
-
 /************************************************************************************/
 /* MISC */
 .brk {
@@ -320,7 +270,7 @@ p{
 .formzone {
     position: relative;
     left: 25%;
-}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="formzone"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder=" Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder=" Password"><p id="text" style="display: none;">Caps lock is ON.</p><script>var input = document.getElementById("password");
+}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder=" Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder=" Password"><p id="text" style="display: none;">Caps lock is ON.</p><script>var input = document.getElementById("password");
 var text = document.getElementById("text");
 input.addEventListener("keyup", function (event) {
     if (event.getModifierState("CapsLock")) {
@@ -328,4 +278,4 @@ input.addEventListener("keyup", function (event) {
     } else {
         text.style.display = "none"
     }
-})</script></div><div><button class="pagebutton" type="submit">Login</button></div><div class="brk"></div></div></form><p>Don't have an account?</p><a href="./signup"><button class="joinbutton" type="submit">Join the community</button></a><p>Copyright (c) Peddlr People</p></body><footer></footer></html>
+})</script></div><div><button class="pagebutton" type="submit">Login</button></div><div class="brk"></div></form><p>Don't have an account?</p><a href="./signup"><button class="joinbutton" type="submit">Join the community</button></a><p>Copyright (c) Peddlr People</p></body><footer></footer></html>
