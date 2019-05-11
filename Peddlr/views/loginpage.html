@@ -6,7 +6,7 @@ body {
     grid-template-rows: 80px 0.5fr 0.25fr auto;
     border: 0;
     margin: 0;
-    background-color: #F9F6EE;
+    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 /************************************************************************************/
 /* HEADERS */
@@ -17,18 +17,6 @@ header {
 h1 {
     float: left;
     padding-left: 20px;
-    color: white;
-}
-
-.loginbutton {
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 8px 32px;
-    background-color: inherit;
-    outline: 1px;
-    font-size: 20px;
     color: white;
 }
 
@@ -98,26 +86,14 @@ input, select {
     font-size: 20px;
     height: 35px;
     border-radius: 20px;
-}
 
-.signupbutton{
-    width: 30%;
-    margin: 20px;
-    border: 0px;
-    opacity:1;
-    font-size: 20px;
-    height: 35px;
-    border-radius: 20px;
-    box-sizing: border-box;
-
-    /* font */
-    color: #010106;
 
 }
 
-.signupbutton:hover {
-    border-color: darkcyan;
-    border-width: medium;
+.pagebutton:hover {
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 3px 3px 3px darkslategrey;
+
 }
 
 
@@ -135,6 +111,26 @@ input, select {
     cursor: pointer;
     border-radius: 20px;
 
+}
+
+.backbutton:hover {
+    opacity: 0.8;
+}
+
+input{
+    border-radius: 20px;
+    margin: 10px;
+    text-indent: 5px;
+    font-size: larger;
+    transition: transform .2s; /* Animation */
+
+}
+input:hover {
+    transform: scale(1.1) ;
+}
+
+input:focus{
+    transform: scale(1.1);
 }
 
 
@@ -225,6 +221,12 @@ html{
     font-family: 'Montserrat', sans-serif;
 }
 
+p {
+    position: relative;
+    text-align: center;
+
+}
+
 /************************************************************************************/
 /* MISC */
 .brk {
@@ -252,7 +254,7 @@ html{
     box-sizing: border-box;
     position: relative;
     border-style: solid;
-    left: 58%;
+    left: 33.5%;
 
     /* font */
     color: #010106;
@@ -270,7 +272,9 @@ html{
 .formzone {
     position: relative;
     left: 25%;
-}</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder=" Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder=" Password"><p id="text" style="display: none;">Caps lock is ON.</p><script>var input = document.getElementById("password");
+}
+
+</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Login</h2></div><form role="form" action="/login" method="post"><div class="form-group"><input class="form-control" type="text" id="user" name="username" placeholder=" Email address"></div><div class="form-group"><input class="form-control" type="password" id="password" name="password" placeholder=" Password"><p id="text" style="display: none;">Caps lock is ON.</p><script>var input = document.getElementById("password");
 var text = document.getElementById("text");
 input.addEventListener("keyup", function (event) {
     if (event.getModifierState("CapsLock")) {

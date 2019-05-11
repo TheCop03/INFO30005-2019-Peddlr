@@ -6,7 +6,7 @@ body {
     grid-template-rows: 80px 0.5fr 0.25fr auto;
     border: 0;
     margin: 0;
-    background-color: #F9F6EE;
+    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 /************************************************************************************/
 /* HEADERS */
@@ -17,18 +17,6 @@ header {
 h1 {
     float: left;
     padding-left: 20px;
-    color: white;
-}
-
-.loginbutton {
-    float: right;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 20px;
-    padding: 8px 32px;
-    background-color: inherit;
-    outline: 1px;
-    font-size: 20px;
     color: white;
 }
 
@@ -98,26 +86,14 @@ input, select {
     font-size: 20px;
     height: 35px;
     border-radius: 20px;
-}
 
-.signupbutton{
-    width: 30%;
-    margin: 20px;
-    border: 0px;
-    opacity:1;
-    font-size: 20px;
-    height: 35px;
-    border-radius: 20px;
-    box-sizing: border-box;
-
-    /* font */
-    color: #010106;
 
 }
 
-.signupbutton:hover {
-    border-color: darkcyan;
-    border-width: medium;
+.pagebutton:hover {
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 3px 3px 3px darkslategrey;
+
 }
 
 
@@ -135,6 +111,26 @@ input, select {
     cursor: pointer;
     border-radius: 20px;
 
+}
+
+.backbutton:hover {
+    opacity: 0.8;
+}
+
+input{
+    border-radius: 20px;
+    margin: 10px;
+    text-indent: 5px;
+    font-size: larger;
+    transition: transform .2s; /* Animation */
+
+}
+input:hover {
+    transform: scale(1.1) ;
+}
+
+input:focus{
+    transform: scale(1.1);
 }
 
 
@@ -221,4 +217,4 @@ input, select {
     height: 100%;
 
 }
-</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1><a href="./loginpage"><div class="btn from-middle">Log In</div></a></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Sign Up</h2></div><p class="tagline">Time to feel like home</p><!-- register form--><form method="POST" action="./newUser"><div class="formzone"><div class="form-group"><input id="firstname" type="text" placeholder="First name" name="fname" required><input id="lastname" type="text" placeholder="Last name" name="lname" required></div><div class="form-group"><p class="dob">Date of Birth</p><input id="dob" type="date" placeholder="22/07/2018" name="dob" required></div><div class="form-group"><input id="address" type="text" placeholder="Address" name="address" required></div><div class="form-group"><select id="state" type="text" placeholder="State" name="state" required><option>NSW</option><option>QLD</option><option>SA</option><option>TAS</option><option>VIC</option><option>WA</option></select><input id="zip" type="text" placeholder="Zip Code" name="zip" required><select id="country" type="text" placeholder="Country" name="country" required><option>Australia</option></select></div><div class="form-group"><input id="email" type="email" placeholder="Email Address" name="email" required></div><div class="form-group"><input id="confirmemail" type="email" placeholder="Confirm Email Address" name="confirmemail" required></div><div class="form-group"><input id="pw" type="password" placeholder="Password" name="password" required></div><div class="form-group"><input id="pw2" type="password" placeholder="Retype Password" name="confirmPassword" required></div><button class="pagebutton" type="submit">SIGN UP</button><p class="foobar">Copyright (c) Peddlr People</p></div></form></body><footer></footer></html>
+</style><link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1"></head><header><h1>Peddlr</h1><a href="./loginpage"><div class="btn from-middle">Log In</div></a></header><body><div class="headerzone"><a href="./homepage"><button class="backbutton" type="submit">Back</button></a><h2>Sign Up</h2></div><p class="tagline">Time to feel like home</p><!-- register form--><div class="formzone"><form method="POST" action="./newUser"><div class="form-group"><input id="fname" type="text" placeholder="First name" name="fname" required><input id="lname" type="text" placeholder="Last name" name="lname" required></div><div class="form-group"><p class="dob">Date of Birth</p><input id="dob" type="date" placeholder="22/07/2018" name="dob" required></div><div class="form-group"><input id="address" type="text" placeholder="Address" name="address" required></div><div class="form-group"><select id="state" type="text" placeholder="State" name="state" required><option>NSW</option><option>QLD</option><option>SA</option><option>TAS</option><option>VIC</option><option>WA</option></select><input id="zip" type="text" placeholder="Zip Code" name="zip" required><select id="country" type="text" placeholder="Country" name="country" required><option>Australia</option></select></div><div class="form-group"><input id="email" type="email" placeholder="Email Address" name="email" required></div><div class="form-group"><input id="confirmemail" type="email" placeholder="Confirm Email Address" name="confirmemail" required></div><div class="form-group"><input id="pw" type="password" placeholder="Password" name="password" required></div><div class="form-group"><input id="pw2" type="password" placeholder="Retype Password" name="confirmPassword" required></div><button class="pagebutton" type="submit">SIGN UP</button><p class="foobar">Copyright (c) Peddlr People</p></form></div></body><footer></footer></html>

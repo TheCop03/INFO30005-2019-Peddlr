@@ -64,7 +64,7 @@ input, select {
     color: grey;
 }
 
-#firstname, #lastname {
+#fname, #lname {
     width: 19%;
 }
 

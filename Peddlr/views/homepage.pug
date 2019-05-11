@@ -4,12 +4,14 @@ block css
         include ../public/css/homepage.css
 
 block user
-    a(href = './aboutUs')
-        div.btn.from-middle About Us
-    a(href = './signup')
-        div.btn.from-middle Sign Up
-    a(href = './loginpage')
-        div.btn.from-middle Log In
+    div.header(id = "topNav")
+        a(href = './homepage')
+            div.btn.from-middle.active Home
+        a(href = './signup')
+            div.btn.from-middle Sign Up
+        a(href = './loginpage')
+            div.btn.from-middle Log In
+        a(href = "javascript:void(0);" class = "icon" onclick = "respFunction()")
 
 
 block content
@@ -52,4 +54,15 @@ block content
                     p.listingprice $#{listing.price} #{listing.interval}
                         div.dropup-content
                             p.listingdescription #{listing.description}
+
+
+    script.
+        function respFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
 
