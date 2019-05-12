@@ -1,0 +1,48 @@
+
+body{
+    height: 1000px;
+}
+.content-box{
+    background-color: rgba(216,212,202,0.65);
+    width: 90%;
+    height: 600px;
+    margin: 5%;
+}
+
+.listing-title{
+    color: black;
+    font-weight: bolder;
+    padding-left: 10px;
+    margin: 20px 0 0 20px;
+    position: relative;
+    font-size: 35px;
+}
+
+.listingphoto{
+    position: relative;
+    width: 80%;
+    height: 60%;
+    top: 5%;
+    left: 9%;
+    padding: 2px;
+    background-color: white	;
+    box-shadow: none;
+    border-radius: 5px;
+}
+.listing-details{
+    font-weight: bolder;
+    padding-left: 10px;
+    position: relative;
+    top: 3px;
+    font-size: 25px;
+    color: black;
+    margin-left: 20px;
+    margin-top: 10px;
+    border-top: #010106;
+    border-top-width: 1px;
+}
+.content-box{
+    width: 90%;
+    height: 110%;
+    border-radius: 5px;
+}

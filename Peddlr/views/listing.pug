@@ -2,7 +2,15 @@ extends default.pug
 
 block css
     style
-        include ../public/css/listing.css
+
         include ../public/css/homepage.css
+        include ../public/css/listing.css
 block content
-    h1 #{listing.title}
+
+    div.content-box
+        p.listing-title #{listing.title}
+        p.listing-details Item price: $#{listing.price} #{listing.interval}
+        img.listingphoto(src=listing.photo alt=listing.title)
+        p.listing-details #{listing.description}
+        p.listing-details #{listing.location}
+        //p.listing.
