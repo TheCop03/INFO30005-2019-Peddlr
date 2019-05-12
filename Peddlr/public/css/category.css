@@ -7,11 +7,36 @@ body {
 	grid-template-rows: 0.15fr 1fr 3.25fr;
 	border: 0;
 	margin: 8px;
+	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 	background-color: #F9F6EE;
 }
 
 header {
 	background-color: #125358;
+}
+
+.signupbutton {
+	float: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	padding: 8px 32px;
+	background-color: #FFFFFF;
+	outline: 5px;
+	font-size: 20px;
+	color: black;
+}
+
+.loginbutton {
+	float: right;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	padding: 8px 32px;
+	background-color: inherit;
+	outline: 1px;
+	font-size: 20px;
+	color: white;
 }
 
 h1 {

@@ -4,6 +4,12 @@ block css
     style
         include ../public/css/category.css
 
+block user
+    a(href = '/signup')
+        button.signupbutton(type='submit') Sign up
+    a(href = '/loginpage')
+        button.loginbutton(type='submit') Log In
+
 block content
 
     div.titlezone
