@@ -6,13 +6,21 @@
 ## Startup
 `nodemon app`
 
+##Sign up user
+This function allows users to sign up to the website and create an account for them to post and rent items. The sign up function can be accessed directly through the homepage header alongside the login button. The user must input the necessary details and submit their information. They will then be redirected to a 'logged in' version of the homepage. 
+
+<br/>url: http://localhost:3000/signup;
+<br/>routes: '/newUser'
+<br/>controllers: createUser
+<br/>views: signup.pug;
+<br/>models: users.js;
 
 
 ## Create listing functionality
-This functionality allows users to create listings. There is a "create listing" button on the homepage which takes them to the create listing page. Here they enter information about the listing; its title, the category it belongs to, the rental price and time period, a description of the listing, upload a photo, and the listings location. Once submitted, a new entry is made in the db under listings.
+This functionality allows users to post their items for rent to the public. This is done through the create listing button on the homepage which redirects users to the 'create listing' page whereby they can enter the necessary information about their item. The user must input the item name, the category it belongs to, the rental price and interval for which the item can be rented out for, a description of the item and it's quality, upload a photo, and the listings location. Once submitted, a new entry is made in the db under listings.
 
 <br/>url: http://localhost:3000/createlisting;
-<br/>routes: router.get('/createListing', controller.showCreateListing);  router.post('/newListing', controller.createListing)
+<br/>routes: '/createListing', '/newListing'
 <br/>controllers: showCreateListing createListing;
 <br/>views: createlisting.pug;
 <br/>models: listing.js;
@@ -22,7 +30,7 @@ This function allows the user to view all the listings in one category. For exam
 
 <br/>url: http://localhost:3000/listing/category/:category
 <br/>views: category.pug
-<br/>routes: router.get('/listing/category/:category', controller.showListingsByCategory);
+<br/>routes: '/listing/category/:category'
 <br/>controllers: showListingsByCategory
 <br/>models: category.js
 
