@@ -54,9 +54,24 @@ var showCreateListing = function(req, res) {
 };
 
 var showLoggedInHomepage = function(req, res) {
-    var results = {title: 'Peddlr'};
-    res.render('loggedin', results);
+    //find all categories
+    Category.find(function(err,categories){
+        if(!err){
+            //find all the listings
+            Listing.find({}, function(err,listings){
+                if(!err){
+                    var results = {title: 'Peddlr', 'listings': listings, 'categories': categories};
+                    res.render('loggedin', results);
+                }else{
+                    res.sendStatus(404);
+                }
+            });
+        } else {
+            res.sendStatus(404);
+        }
+    });
 };
+
 
 const showListingByID = function(req, res) {
     var ID = req.params.id;
