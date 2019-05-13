@@ -6,7 +6,7 @@
 ## Startup
 `nodemon app`
 
-##Sign up user
+## Sign Up User
 This function allows users to sign up to the website and create an account for them to post and rent items. The sign up function can be accessed directly through the homepage header alongside the login button. The user must input the necessary details and submit their information. They will then be redirected to a 'logged in' version of the homepage. 
 
 <br/>url: http://localhost:3000/signup;
