@@ -12,18 +12,18 @@ block user
 
 block content
 
-    div.searchzone
-        h2 Let's Peddle
-        input(type='text', placeholder='   Search in the category', name='search')
-        button.searchbutton(type='submit') Search
-            i.fa.fa-search
+    div.titlezone
+        <!--a.back(href=`/homepage`)
+            button.backbutton(type='submit') Back-->
+        h2 #{category}
 
-    h1 #{category}
-
-    div.listingzone
+    div.listingszone
         each listing in listings
             div.listing
-                a(href = `/listing/id/${listing.id}`)
+                a.photo(href = `/listing/id/${listing.id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
+                a.title(href = `/listing/id/${listing.id}`)
                     p.listingtitle #{listing.title}
-                    p.listingprice $#{listing.price} #{listing.interval}
+                p.listinglocation #{listing.location}
+                p.listingprice $#{listing.price} #{listing.interval}
+                p.listingdescription #{listing.description}

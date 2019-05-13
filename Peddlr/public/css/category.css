@@ -1,17 +1,18 @@
-tml{
+html{
 	font-family: 'Montserrat', sans-serif;
 }
 
 body {
 	display:grid;
-	grid-template-rows: 0.25fr 1fr 1fr 8fr;
+	grid-template-rows: 0.15fr 1fr 3.25fr;
 	border: 0;
-	margin: 0;
+	margin: 8px;
+	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 	background-color: #F9F6EE;
 }
 
 header {
-	background-color: #bfa487;
+	background-color: #125358;
 }
 
 .signupbutton {
@@ -24,7 +25,6 @@ header {
 	outline: 5px;
 	font-size: 20px;
 	color: black;
-
 }
 
 .loginbutton {
@@ -37,68 +37,138 @@ header {
 	outline: 1px;
 	font-size: 20px;
 	color: white;
-
 }
 
-.searchzone {
-	width: 100%;
-	height: 200px;
-	background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg);
-	background-color: orange;
-}
-
-input{
-	position: relative;
-	top: 30px;
-	left: 20px;
-	width: 200px;
-	height: 20px;
-	font-size: medium;
-	border-radius: 5px;
-}
-
-.searchbutton{
-	background-color: #bfa487;
-	position: relative;
-	top: 30px;
-	left: 30px;
-	width: 80px;
-	height: 26px;
-	font-size: medium;
-	border-radius: 5px;
-}
-
-.listingzone {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	column-gap: 50px;
+h1 {
+	float: left;
 	padding-left: 20px;
-	height: 200px;
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.titlezone {
+	display: grid;
+	margin: 20px 10px 0px 10px;
+	width: auto;
+	height: auto;
+	grid-template-columns: 10% 90%;
+	grid-template-areas: "back title";
+	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
+	justify-items: center;
+}
+
+h2 {
+	grid-area: title;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bolder;
+	font-size: 50px;
+	align-self: center;
+	color: white;
+}
+
+a.back {
+	grid-area: back;
+	width: 90%;
+	height: 40%;
+	margin-top: 10%;
+	margin-left: 10%;
+}
+
+.backbutton {
+  color:#4F5445;
+	font-size: 20px;
+  text-align: center;
+  width: 100%;
+	height: 100%;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.listingszone {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+	margin: 20px 20px 20px 20px;
+	grid-row-gap: 10px;
 }
 
 .listing {
-	width: 100%;
-	height: 60%;
-	display: inline;
+	display: grid;
+	height: fit-content;
+	width: 80%;
+	border-width: 0px 0px 2px 0px;
+	border-style: solid;
+	border-color: grey;
+	margin-left: 10%;
+	margin-right: 10%;
+	padding: 10px;
+	background-color: white;
+	grid-template-columns: 20% 80%;
+	grid-column: 1;
+}
+
+a.photo {
+	grid-column: 1;
+	grid-row: 1/5;
+	align-self: center;
+	justify-self: center;
+	padding: 10px 10px 10px 10px;
+	width: 90%;
+	height: 90%;
 }
 
 .listingphoto {
-	width: 100%;
-	height: 100%;
+	align-self: center;
+	justify-self: center;
+	padding: 10px 10px 10px 10px;
+	width: inherit;
+	height: inherit;
+	background-color: #F0F8FF;
+	box-shadow: 10px 10px 16px -5px rgba(0,0,0,0.33);
+}
+
+.listingphoto:hover {
+	background-color: darkcyan;
+}
+
+a.title {
+	grid-column: 2;
+	grid-row: 1;
+	width: fit-content;
+	margin-left: 10%;
+	align-self: center;
 }
 
 .listingtitle {
-	float: left;
-	width: 50%;
-	text-align: center;
-	background-color: black;
-	color: white;
+	font-weight: bold;
+	width: auto;
+	font-size: 150%;
+	align-self: center;
+	color: #2825c4;
+}
+
+.listinglocation {
+	grid-column: 2;
+	grid-row: 2;
+	padding-left: 10%;
+	margin-top: 0;
 }
 
 .listingprice {
-	float: right;
-	width: 50%;
-	text-align: center;
-	background-color: black;
-	color: white;
+	grid-column: 2;
+	grid-row: 3;
+	font-weight: bold;
+	padding-left: 10%;
+	align-self: center;
+	color: black;
+	margin-bottom: 0;
+}
+
+.listingdescription {
+	grid-column: 2;
+	grid-row: 4;
+	padding-left: 10%;
+	align-self: center;
+	color: black;
+	margin-top: 0;
 }
