@@ -9,27 +9,13 @@ body {
 }
 /************************************************************************************/
 /* HEADERS */
+
 header {
 	background-color: #125358;
 	border-radius:10px;
 	box-shadow: 3px 3px 3px dimgrey;
 	padding-right: 20px;
 }
-
-/*
-.header a:hover {
-	background-color: #ddd;
-	color: black;
-}
-
-.header . icon {
-	display: none;
-}
-
-.active {
-	background-color: inherit;
-}
-*/
 
 h1 {
 	float: left;
