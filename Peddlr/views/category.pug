@@ -5,16 +5,16 @@ block css
         include ../public/css/category.css
 
 block user
-    a(href = '/signup')
-        button.signupbutton(type='submit') Sign up
-    a(href = '/loginpage')
-        button.loginbutton(type='submit') Log In
+    div.headerzone
+        a(href = '/signup')
+            div.btn.from-middle Sign Up
+        a(href = '/loginpage')
+            div.btn.from-middle Log In
 
 block content
-
     div.titlezone
-        <!--a.back(href=`/homepage`)
-            button.backbutton(type='submit') Back-->
+        //a(href = './homepage')
+            //button.backbutton(type = 'submit') Back
         h2 #{category}
 
     div.listingszone
@@ -27,3 +27,4 @@ block content
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
                 p.listingdescription #{listing.description}
+

@@ -4,7 +4,7 @@ html{
 
 body {
 	display:grid;
-	grid-template-rows: 0.15fr 1fr 3.25fr;
+	grid-template-rows: 0.15fr 0.6fr 3.25fr;
 	border: 0;
 	margin: 8px;
 	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
@@ -13,30 +13,19 @@ body {
 
 header {
 	background-color: #125358;
-}
-
-.signupbutton {
-	float: right;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-right: 20px;
-	padding: 8px 32px;
-	background-color: #FFFFFF;
-	outline: 5px;
-	font-size: 20px;
-	color: black;
-}
-
-.loginbutton {
-	float: right;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	margin-right: 20px;
-	padding: 8px 32px;
-	background-color: inherit;
-	outline: 1px;
-	font-size: 20px;
+	border-radius:10px;
+	box-shadow: 3px 3px 3px dimgrey;
+	padding-right: 20px;
 	color: white;
+}
+
+.headerzone {
+	margin: 5px 10px 0 10px;
+	border-radius: 10px;
+	background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
+	background-position: 30%;
+	height: 100%;
+	background-repeat: repeat;
 }
 
 h1 {
@@ -45,6 +34,128 @@ h1 {
 	color: white;
 	font-family: 'Montserrat', sans-serif;
 }
+
+h2 {
+	grid-area: title;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: bolder;
+	font-size: 50px;
+	align-self: center;
+	color: white;
+	position: relative;
+	right: 50px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0px;
+	background-color: #bfa487;
+}
+
+/************************************************************************************/
+/* HEADER BUTTONS */
+.btn {
+	position: relative;
+	padding: 8px 32px;
+	padding-right: 3.1rem;
+	font-size: 20px;
+	color: white;
+	transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+	border-radius: 20px;
+	top:20px;
+
+	cursor: pointer;
+	user-select: none;
+	float: right;
+	z-index: 1;
+	text-align: center;
+
+}
+
+.btn:before, .btn:after {
+	content: '';
+	position: absolute;
+	transition: inherit;
+	z-index: 1;
+}
+
+.btn:hover {
+	color: #125358;
+	transition-delay: .6s;
+
+}
+
+.btn:hover:before {
+	transition-delay: 0s;
+
+}
+
+.btn:hover:after {
+	background-color: white;
+	opacity: 0.8;
+	transition-delay: .4s;
+	z-index: -1;
+	border-radius: 10px;
+
+
+}
+
+
+.from-middle:before {
+	top: 0;
+	left: 50%;
+	height: 100%;
+	width: 0;
+	border: 1px solid white;
+	border-left: 0;
+	border-right: 0;
+	z-index: 1;
+
+}
+
+.from-middle:after {
+	bottom: 0;
+	left: 0;
+	height: 0;
+	width: 100%;
+	background-color: white;
+	z-index: 1;
+
+}
+
+.from-middle:hover:before {
+	left: 0;
+	width: 100%;
+
+}
+
+.from-middle:hover:after {
+	top: 1.5px;
+	height: 97%;
+
+}
+
+.backbutton:hover {
+	opacity: 0.8;
+}
+
+.backbutton {
+	color:#4F5445;
+	display: inline-block;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	width: 100px;
+	margin-left: 15px;
+	margin-top: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+}
+
+
+/************************************************************************************/
+/* ZONES */
 
 .titlezone {
 	display: grid;
@@ -55,33 +166,9 @@ h1 {
 	grid-template-areas: "back title";
 	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
 	justify-items: center;
-}
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px dimgrey;
 
-h2 {
-	grid-area: title;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bolder;
-	font-size: 50px;
-	align-self: center;
-	color: white;
-}
-
-a.back {
-	grid-area: back;
-	width: 90%;
-	height: 40%;
-	margin-top: 10%;
-	margin-left: 10%;
-}
-
-.backbutton {
-  color:#4F5445;
-	font-size: 20px;
-  text-align: center;
-  width: 100%;
-	height: 100%;
-  cursor: pointer;
-  border-radius: 20px;
 }
 
 .listingszone {

@@ -12,7 +12,6 @@ block user
         div.btn.from-middle.active Home
 
 block content
-
     //form.searchbar(action='SEARCHRESULTS')
     div.searchzone
         h2 Let's Peddle
@@ -31,11 +30,6 @@ block content
                 a(href = `./listing/category/${category._id}`)
                     img.categoryphoto(src=category.photo alt=category.title)
                 p.categorytitle #{category.title}
-        //div.paddles
-        //button(id = 'leftPaddle', onclick = 'scrollleft()').left-paddle.paddle.hidden
-        //    | <
-        //button(id = 'rightPaddle', onclick = 'scrollright()').right-paddle.paddle
-        //    | >
 
     h3 Latest Listings:
 

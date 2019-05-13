@@ -148,7 +148,7 @@ var createUser = function(req,res){
     });
     user.save(function(err,newUser){
         if(!err){
-            showHomepage(req,res) //if there are no errors, show the new user
+            showLoggedInHomepage(req,res) //if there are no errors, show the new user
         }else{
             res.sendStatus(400);
         }

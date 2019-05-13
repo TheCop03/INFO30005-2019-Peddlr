@@ -14,8 +14,7 @@ block content
 
     //form.searchbar(action='SEARCHRESULTS')
     div.searchzone
-        h2 Welcome back
-        //#{users.fname}
+        h2 Let's Peddle
         a(href='./createlisting')
             button.createbutton(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
@@ -51,4 +50,15 @@ block content
                     p.listingprice $#{listing.price} #{listing.interval}
                         div.dropup-content
                             p.listingdescription #{listing.description}
+
+
+    script.
+        function respFunction() {
+            var x = document.getElementById("topNav");
+            if (x.className === "header") {
+                x.className += " responsive";
+            } else {
+                x.className = "header";
+            }
+        }
 
