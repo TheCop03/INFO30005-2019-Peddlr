@@ -20,6 +20,5 @@ app.use('/',routes);
 
 // Start the server
 app.listen(PORT, () => {
-   console.log(process.env.PORT);
-   console.log(`Listening on ${ PORT }`);
+   console.log(`Listening on port ${ PORT }. Alter environment variable PORT to change this.`);
 });
