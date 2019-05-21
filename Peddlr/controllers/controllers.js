@@ -1,8 +1,11 @@
-var mongoose = require('mongoose');
-var Category = mongoose.model('category');
-var Listing = mongoose.model('listing');
-var User = mongoose.model('users');
+const mongoose = require('mongoose');
+const utils = require('./utils.js');
+const Category = mongoose.model('category');
+const Listing = mongoose.model('listing');
+const User = mongoose.model('users');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 var showHomepage = function(req, res) {
     //find all categories
@@ -40,13 +43,13 @@ var showAboutUs = function(req, res) {
 
 var showLogin = function(req, res) {
     var results = {title: 'Peddlr'};
-    res.render('loginpage', results);
+    res.render('login', results);
 };
 var showCreateListing = function(req, res) {
     Category.find(function(err,categories){
         if(!err){
             var results = {title: 'Peddlr', 'categories': categories};
-            res.render('createlisting', results);
+            res.render('newlisting', results);
         }else{
             res.sendStatus(404);
         }
@@ -86,13 +89,32 @@ const showListingByID = function(req, res) {
 
 //login the user and show their profile
 var loginUser = function(req, res) {
-    var username = req.body.email;
-    var Password = req.body.password;
-    Users.find({email:username, password: Password},function(err,user){
+    var username = req.body.username;
+    var password = req.body.password;
+    User.find({email:username},function(err,user){
         if(!err){
-            res.send(user);
+            if (user.length != 1) {
+                //No user found (or double account error, shouldn't happen anyway), just say wrong user/pass
+                res.sendStatus(401);
+            } else {
+                bcrypt.compare(password, user[0].password, function (err, same) {
+                    if (same) {
+                        let sidrequest = utils.generate_unique_sid();
+                        sidrequest.then(function (sid) {
+                            console.log(sid);
+                            user[0].sessionId = sid;
+                            user[0].save();
+                            res.cookie("sessionId", sid).redirect("/homepage");
+                        });
+                    } else {
+                        res.status(401);
+                        res.send('wrong password'); // Redirect back to login with wrong password bubble
+                    }
+                });
+            }
         }else{
-            res.sendStatus(404);
+            // Redirect back to login with server error bubble
+            res.sendStatus(500);
         }
     });
 };
@@ -152,21 +174,23 @@ var showListingsByCategory = function(req, res) {
 
 //create a new user
 var createUser = function(req,res){
-    var user = new User({
-    	"email":req.body.email,
-        "fname":req.body.firstname,
-        "lname":req.body.lastname,
-        "address":req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country),
-        "photo":req.body.photo,
-        "phoneNumber":req.body.phoneNumber,
-        "password":req.body.password
-    });
-    user.save(function(err,newUser){
-        if(!err){
-            showLoggedInHomepage(req,res) //if there are no errors, show the new user
-        }else{
-            res.sendStatus(400);
-        }
+    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+        let user = new User({
+            "email":req.body.email,
+            "fname":req.body.firstname,
+            "lname":req.body.lastname,
+            "address":req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country),
+            "photo":req.body.photo,
+            "phoneNumber":req.body.phoneNumber,
+            "password":hash
+        });
+        user.save(function(err,newUser){
+            if(!err){
+                showHomepage(req,res) //if there are no errors, show the new user
+            }else{
+                res.sendStatus(400);
+            }
+        });
     });
 };
 
