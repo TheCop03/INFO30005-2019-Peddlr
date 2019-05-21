@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const utils = require('./utils.js');
 const Category = mongoose.model('category');
 const Listing = mongoose.model('listing');
 const User = mongoose.model('users');
@@ -42,13 +43,13 @@ var showAboutUs = function(req, res) {
 
 var showLogin = function(req, res) {
     var results = {title: 'Peddlr'};
-    res.render('loginpage', results);
+    res.render('login', results);
 };
 var showCreateListing = function(req, res) {
     Category.find(function(err,categories){
         if(!err){
             var results = {title: 'Peddlr', 'categories': categories};
-            res.render('createlisting', results);
+            res.render('newlisting', results);
         }else{
             res.sendStatus(404);
         }
@@ -83,10 +84,16 @@ var loginUser = function(req, res) {
             } else {
                 bcrypt.compare(password, user[0].password, function (err, same) {
                     if (same) {
-                        res.send(user);
+                        let sidrequest = utils.generate_unique_sid();
+                        sidrequest.then(function (sid) {
+                            console.log(sid);
+                            user[0].sessionId = sid;
+                            user[0].save();
+                            res.cookie("sessionId", sid).redirect("/homepage");
+                        });
                     } else {
                         res.status(401);
-                        res.send('wrong password');
+                        res.send('wrong password'); // Redirect back to login with wrong password bubble
                     }
                 });
             }

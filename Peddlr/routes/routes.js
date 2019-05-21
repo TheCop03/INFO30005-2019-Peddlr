@@ -8,10 +8,18 @@ router.get("/", function(req, res, next){
 });
 
 //show the homepage with all listings and categories
-router.get('/homepage', controller.showHomepage);
+router.get("/homepage", function(req, res, next){
+  if (req.cookies.sessionId) {
+    controller.showLoggedInHomepage();
+  } else {
+    controller.showHomepage(req, res);
+  }
+});
 
-//show a listings page by finding it by title
-router.get('/listing/title/:title', controller.findListingByName);
+router.get("/logout", function(req, res, next){
+  res.cookie('sessionId', '');
+  res.redirect("/homepage") // You've been logged out
+});
 
 //show all listings within a category
 router.get('/listing/category/:category', controller.showListingsByCategory);
@@ -19,14 +27,17 @@ router.get('/listing/category/:category', controller.showListingsByCategory);
 //show listing by id
 router.get('/listing/id/:id', controller.showListingByID);
 
-//show a users page by finding them by name
-router.get('/user/fname/:fname/lname/:lname', controller.findUserByName);
-
 //show the sign up page
-router.get('/signup', controller.showSignUp);
+router.get('/signup', function(req, res, next){
+  if (req.cookies.sessionId) {
+    res.redirect('/homepage');
+  } else {
+    controller.showSignUp(req, res);
+  }
+});
 
 //show the login up page
-router.get('/loginpage', controller.showLogin);
+router.get('/login', controller.showLogin);
 
 //show the about us page
 router.get('/aboutus', controller.showAboutUs);
@@ -34,11 +45,14 @@ router.get('/aboutus', controller.showAboutUs);
 //show the settings page
 router.get('/settings', controller.showSettings);
 
-//show the homepage when user is logged in
-router.get('/loggedin', controller.showLoggedInHomepage);
-
 //show the create listing page
-router.get('/createListing', controller.showCreateListing);
+router.get('/newListing', function(req, res, next){
+  if (req.cookies.sessionId) {
+    controller.showCreateListing(req, res);
+  } else {
+    res.redirect('/login');
+  }
+});
 
 //create a new listing
 router.post('/newListing', controller.createListing);

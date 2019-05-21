@@ -8,7 +8,7 @@ block user
         div.btn.from-middle.active Home
     a(href = './signup')
         div.btn.from-middle Sign Up
-    a(href = './loginpage')
+    a(href = './login')
         div.btn.from-middle Log In
 
 block content
@@ -16,7 +16,7 @@ block content
     //form.searchbar(action='SEARCHRESULTS')
     div.searchzone
         h2 Let's Peddle
-        a(href='./createlisting')
+        a(href='./newlisting')
             button.createbutton(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
         a(href="/search")

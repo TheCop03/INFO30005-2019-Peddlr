@@ -1,5 +1,6 @@
-//Set up express
+//Set up express and critical middleware
 var express = require('express');
+var cookieParser = require('cookie-parser');
 var path = require('path');
 var app = express();
 
@@ -8,6 +9,7 @@ app.set('views', path.join(__dirname, '/views'));
 
 var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
