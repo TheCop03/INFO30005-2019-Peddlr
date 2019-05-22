@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Database setup
 require('./models/db.js');

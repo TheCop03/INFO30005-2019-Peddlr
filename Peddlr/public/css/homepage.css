@@ -5,7 +5,7 @@ body {
 	display: grid;
 	grid-template-rows: 0.15fr 1fr 0.15fr 1fr 0.15fr 2fr 0.2fr;
 	border: 0;
-	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
+	background-image: url('../images/home-bg.jpg');
 }
 /************************************************************************************/
 /* HEADERS */
