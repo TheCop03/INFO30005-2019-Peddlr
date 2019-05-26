@@ -4,11 +4,15 @@ block css
         include ../public/css/homepage.css
 
 block user
+    a(href = '/logout')
+        div.btn.from-middle Logout
+
     a(href = './Account')
         div.btn.from-middle Account
 
-    a(href = './ShowMyListings')
+    a(href = './mylistings')
         div.btn.from-middle My Listings
+
 
 block content
 
@@ -61,4 +65,3 @@ block content
                 x.className = "header";
             }
         }
-
