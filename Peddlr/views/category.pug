@@ -2,14 +2,18 @@ extends default.pug
 
 block css
     style
+        include ../public/css/homepage.css
         include ../public/css/category.css
 
 block user
-    div.headerzone
-        a(href = '/signup')
-            div.btn.from-middle Sign Up
-        a(href = '/login')
-            div.btn.from-middle Log In
+    a(href = '/logout')
+        div.btn.from-middle Logout
+
+    a(href = './Account')
+        div.btn.from-middle Account
+
+    a(href = './ShowMyListings')
+        div.btn.from-middle My Listings
 
 block content
     div.titlezone
@@ -27,4 +31,3 @@ block content
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
                 p.listingdescription #{listing.description}
-

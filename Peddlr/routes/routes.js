@@ -10,7 +10,7 @@ router.get("/", function(req, res, next){
 //show the homepage with all listings and categories
 router.get("/homepage", function(req, res, next){
   if (req.cookies.sessionId) {
-    controller.showLoggedInHomepage();
+    controller.showLoggedInHomepage(req, res);
   } else {
     controller.showHomepage(req, res);
   }
@@ -21,11 +21,26 @@ router.get("/logout", function(req, res, next){
   res.redirect("/homepage") // You've been logged out
 });
 
+// Show listings of current logged-in user
+router.get('/mylistings', controller.showListingsByUser);
+
 //show all listings within a category
-router.get('/listing/category/:category', controller.showListingsByCategory);
+router.get('/listing/category/:category', function(req, res){
+    if (req.cookies.sessionId) {
+      controller.showListingsByCategory(req, res);
+    } else {
+      controller.showLogin(req, res);
+    }
+});
 
 //show listing by id
-router.get('/listing/id/:id', controller.showListingByID);
+router.get('/listing/id/:id', function(req, res){
+    if (req.cookies.sessionId) {
+      controller.showListingByID(req, res);
+    } else {
+      controller.showLogin(req, res);
+    }
+});
 
 //show the sign up page
 router.get('/signup', function(req, res, next){

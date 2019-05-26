@@ -80,7 +80,15 @@ const showListingByID = function(req, res) {
     var ID = req.params.id;
     Listing.findById(ID, function(err, listing) {
         if(!err){
-            res.render('listing', {listing: listing}); //if no errors send the listings found
+            User.findById(listing.owner, function(err, owner){
+              if (!err){
+                var results = {listing: listing, owner: owner};
+                res.render('listing', results);
+              }else{
+                res.sendStatus(404);
+              }
+            });
+            //res.render('listing', {listing: listing}); //if no errors send the listings found
         }else{
             res.sendStatus(404);
         }
@@ -135,7 +143,16 @@ var createListing = function(req,res){
 
     listing.save(function(err,newListing){
         if(!err){
-            showHomepage(req, res); //if no errors, show the new listing
+            var sid = req.cookies.sessionId;
+            User.find({sessionId:sid}, function(err, user){
+                if (!err){
+                    user[0].listings.push(listing.id);
+                    user[0].save();
+                    showHomepage(req, res);
+                } else {
+                    res.sendStatus(400);
+                }
+            });
         }else{
             res.sendStatus(400);
         }
@@ -171,14 +188,32 @@ var showListingsByCategory = function(req, res) {
 	});
 };
 
+//show all the listings of the logged in user
+var showListingsByUser = function(req, res) {
+	var sid = req.cookies.sessionId;
+    User.find({sessionId:sid}, function(err, user){
+        if (!err){
+            Listing.find({owner:user._id}, function(err, listings){
+                if (!err){
+                    var results = {titel: 'Peddlr', category: 'My Listings', 'listings': listings}
+                    res.render('category', results);
+                } else {
+                    res.sendStatus(400);
+                }
+            });
+        } else {
+            res.sendStatus(400);
+        }
+    });
+};
 
 //create a new user
 var createUser = function(req,res){
     bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
         let user = new User({
             "email":req.body.email,
-            "fname":req.body.firstname,
-            "lname":req.body.lastname,
+            "fname":req.body.fname,
+            "lname":req.body.lname,
             "address":req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country),
             "photo":req.body.photo,
             "phoneNumber":req.body.phoneNumber,
@@ -229,11 +264,12 @@ module.exports = {
     createUser,
     showHomepage,
     showSignUp,
-    showAboutUs, 
+    showAboutUs,
     showLogin,
     loginUser,
     showListingByID,
     showCreateListing,
     showSettings,
-    showLoggedInHomepage
+    showLoggedInHomepage,
+    showListingsByUser
 };
