@@ -8,13 +8,7 @@ router.get("/", function(req, res, next){
 });
 
 //show the homepage with all listings and categories
-router.get("/homepage", function(req, res, next){
-  if (req.cookies.sessionId) {
-    controller.showLoggedInHomepage(req, res);
-  } else {
-    controller.showHomepage(req, res);
-  }
-});
+router.get("/homepage", controller.showHomepage);
 
 router.get("/logout", function(req, res, next){
   res.cookie('sessionId', '');

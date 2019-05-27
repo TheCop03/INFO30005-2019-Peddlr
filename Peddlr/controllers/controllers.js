@@ -14,7 +14,7 @@ var showHomepage = function(req, res) {
             //find all the listings
             Listing.find({}, function(err,listings){
                 if(!err){
-                    var results = {title: 'Peddlr', 'listings': listings, 'categories': categories};
+                    var results = {title: 'Peddlr', 'listings': listings, 'categories': categories, session: req.cookies.sessionId};
                     res.render('homepage', results);
                 }else{
                     res.sendStatus(404);
@@ -42,7 +42,7 @@ var showAboutUs = function(req, res) {
 };
 
 var showLogin = function(req, res) {
-    var results = {title: 'Peddlr'};
+    var results = {title: 'Peddlr', error: ""};
     res.render('login', results);
 };
 var showCreateListing = function(req, res) {
@@ -55,26 +55,6 @@ var showCreateListing = function(req, res) {
         }
     });
 };
-
-var showLoggedInHomepage = function(req, res) {
-    //find all categories
-    Category.find(function(err,categories){
-        if(!err){
-            //find all the listings
-            Listing.find({}, function(err,listings){
-                if(!err){
-                    var results = {title: 'Peddlr', 'listings': listings, 'categories': categories};
-                    res.render('loggedin', results);
-                }else{
-                    res.sendStatus(404);
-                }
-            });
-        } else {
-            res.sendStatus(404);
-        }
-    });
-};
-
 
 const showListingByID = function(req, res) {
     var ID = req.params.id;
@@ -109,14 +89,14 @@ var loginUser = function(req, res) {
                     if (same) {
                         let sidrequest = utils.generate_unique_sid();
                         sidrequest.then(function (sid) {
-                            console.log(sid);
                             user[0].sessionId = sid;
                             user[0].save();
                             res.cookie("sessionId", sid).redirect("/homepage");
                         });
                     } else {
-                        res.status(401);
-                        res.send('wrong password'); // Redirect back to login with wrong password bubble
+                        var message = "Wrong credentials. Please try again.";
+                        var results = {title: 'Peddlr', error: message}
+                        res.render('login', results);
                     }
                 });
             }
@@ -178,7 +158,7 @@ var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
 	Listing.find({category:myCategory}, function(err, listings) {
 		Category.findById(myCategory, function(err, category){
-			var results = {title: 'Peddlr', category: category.title, 'listings': listings}
+			var results = {title: 'Peddlr', category: category.title, 'listings': listings, session: req.cookies.sessionId}
 			if (!err) {
 				res.render('category', results);
 			} else {
@@ -270,6 +250,5 @@ module.exports = {
     showListingByID,
     showCreateListing,
     showSettings,
-    showLoggedInHomepage,
     showListingsByUser
 };

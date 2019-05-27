@@ -4,12 +4,22 @@ block css
         include ../public/css/homepage.css
 
 block user
-    a(href = './signup')
-        div.btn.from-middle Sign Up
-    a(href = './login')
-        div.btn.from-middle Log In
-    a(href = './homepage')
-        div.btn.from-middle.active Home
+    if (session)
+        a(href = '/logout')
+            div.btn.from-middle Logout
+
+        a(href = './Account')
+            div.btn.from-middle Account
+
+        a(href = './mylistings')
+            div.btn.from-middle My Listings
+    else
+        a(href = './signup')
+            div.btn.from-middle Sign Up
+        a(href = './login')
+            div.btn.from-middle Log In
+        a(href = './homepage')
+            div.btn.from-middle.active Home
 
 block content
     //form.searchbar(action='SEARCHRESULTS')
@@ -56,4 +66,3 @@ block content
                 x.className = "header";
             }
         }
-
