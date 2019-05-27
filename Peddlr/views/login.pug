@@ -28,6 +28,8 @@ block content
                         text.style.display = "none"
                     }
                 })
+        if (error)
+            p#wrongcredmessage #{error}
         div
             button.pagebutton(type='submit') Login
 

@@ -55,3 +55,8 @@ p {
     left: 25%;
 }
 
+#wrongcredmessage{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
