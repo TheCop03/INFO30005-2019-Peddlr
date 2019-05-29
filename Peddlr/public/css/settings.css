@@ -8,9 +8,21 @@ body {
     background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 
-.settingszone {
-    background-color: blue;
-    border-radius: 10px;
-
-
+nav {
+    background-color: #125358 ;
+    padding-right: 20px;
+    height: 70px;
 }
+
+/************************************************************************************/
+/* HEADERS */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+}
+
+/************************************************************************************/
+/* ZONES */

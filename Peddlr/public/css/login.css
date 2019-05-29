@@ -29,6 +29,10 @@ input, select {
     box-sizing: border-box;
 }
 
+.msg {
+    text-align: center;
+}
+
 /************************************************************************************/
 /* BUTTONS */
 
