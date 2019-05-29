@@ -22,8 +22,8 @@ block content
                     p#confirmMessage Are you sure you want to delete the listing?
                     div.buttons
                         form(action='/deleteListing', method='post')
-                            var val = #{listing._id}
-                            button#confirm(type='submit', name="confirm", value=val) Yes
+                            input(type='hidden', name='listing_id', value=listing._id)
+                            button#confirm(type='submit') Yes
                         button#cancel No
                 
         div.imagebox

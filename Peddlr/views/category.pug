@@ -41,9 +41,9 @@ block content
     div.listingszone
         each listing in listings
             div.listing
-                a.photo(href = `/listing/id/${listing.id}`)
+                a.photo(href = `/listing/id/${listing._id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
-                a.title(href = `/listing/id/${listing.id}`)
+                a.title(href = `/listing/id/${listing._id}`)
                     p.listingtitle #{listing.title}
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
