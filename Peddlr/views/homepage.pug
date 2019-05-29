@@ -58,7 +58,7 @@ block content
             each listing in listings
                 .card(style='width: 15rem; height: 25rem;')
                     .d-flex
-                        a(href = `./listing/id/${listing.id}`)
+                        a(href = `./listing/id/${listing._id}`)
                             img.card-img-top.image-custom(src=listing.photo)
                             .card-body.flex-fill
                                 h5.card-title #{listing.title}
