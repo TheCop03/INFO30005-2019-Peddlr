@@ -19,7 +19,7 @@ block content
         input#lname(type='text', placeholder='Last name' name='lname', required)
       div.form-group
         p.dob Date of Birth
-        input#dob(type='date', placeholder='22/07/2018' name='dob', required)
+        input#dob(type='date', placeholder='22/07/2018' name='dob', max='2001-01-01', min='1930-01-01', required)
       div.form-group
 
         input#address(type='text', placeholder='Address' name='address', required)
@@ -38,18 +38,6 @@ block content
       div.form-group
         input#email(type='email', placeholder='Email Address' name='email', required)
       div.form-group
-<<<<<<< Updated upstream
-
-        input#confirmemail(type='email', placeholder='Confirm Email Address' name='confirmemail', required)
-      div.form-group
-        input#pw(type='password', placeholder='Password' name='password', required)
-      div.form-group
-        input#pw2(type='password', placeholder='Retype Password' name='confirmPassword', required)
-      div.row
-          button.pagebutton(type='submit') SIGN UP
-
-    p Copyright (c) Peddlr People
-=======
         input#pw(type='password', onkeyup="checkPasswords();",
          placeholder='Password' name='password', required)
       div.form-group
@@ -70,7 +58,15 @@ block content
         }
       if (error)
           p#errormessage #{error}
+          script.
+            window.onload = function(){
+                document.getElementById('email').value = "#{email}";
+                document.getElementById('fname').value = "#{fname}";
+                document.getElementById('lname').value = "#{lname}";
+                document.getElementById('address').value = "#{address}";
+                document.getElementById('state').value = "#{state}";
+                document.getElementById('zip').value = "#{zip}";
+            }
       button#submit.pagebutton(type='submit') SIGN UP
 
       p.foobar Copyright (c) Peddlr People
->>>>>>> Stashed changes

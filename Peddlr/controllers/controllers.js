@@ -119,6 +119,7 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
+    console.log(req.body)
     if (req.body.photo == null){
         console.log("no file");
     }
@@ -140,7 +141,7 @@ var createListing = function(req,res){
 
     User.find({sessionId:sid}, function(err, user){
         if (!err){
-            listing.owner = user[0].id;
+            listing.owner = user[0]._id;
             listing.save(function(err, newListing){
                 if (!err){
                     user[0].listings.push(listing.id);
@@ -209,41 +210,52 @@ var showListingsByUser = function(req, res) {
 
 //create a new user
 var createUser = function(req,res){
-    bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-        let user = new User({
-            "email":req.body.email,
-            "fname":req.body.fname,
-            "lname":req.body.lname,
-            "address":req.body.address.concat(", ", req.body.state, " ",
-             req.body.zip, ", ", req.body.country),
-            "photo":req.body.photo,
-            "phoneNumber":req.body.phoneNumber,
-            "password":hash
-        });
-        // Check if the email already exists
-        User.find({email: req.body.email}, function(err, users){
-            if (!err){
-                if(users.length != 0){
-                    var message = "Email address already in use. Please log in.";
-                    var results = {title: 'Peddlr', error: message};
-                    res.render('signup', results);
+    if (req.body.password.length < 8){
+        var message = "Password must be more than 7 characters";
+        var results = {title: 'Peddlr', error: message,
+         email: req.body.email, fname: req.body.fname,
+          lname: req.body.lname, address: req.body.address, state: req.body.state,
+           zip: req.body.zip};
+        res.render('signup', results);
+    } else {
+        bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+            let user = new User({
+                "email":req.body.email,
+                "fname":req.body.fname,
+                "lname":req.body.lname,
+                "address":req.body.address.concat(", ", req.body.state, " ",
+                 req.body.zip, ", ", req.body.country),
+                "photo":req.body.photo,
+                "phoneNumber":req.body.phoneNumber,
+                "password":hash
+            });
+            // Check if the email already exists
+            User.find({email: req.body.email}, function(err, users){
+                if (!err){
+                    if(users.length != 0){
+                        var message = "Email address already in use. Please log in.";
+                        var results = {title: 'Peddlr', error: message,
+                         email: req.body.email, fname: req.body.fname,
+                          lname: req.body.lname};
+                        res.render('signup', results);
+                    }
+                    else{
+                        user.save(function(err,newUser){
+                            if(!err){
+                                //if there are no errors, show the new user
+                                showHomepage(req,res)
+                            }else{
+                                res.sendStatus(400);
+                            }
+                        });
+                    }
                 }
-                else{
-                    user.save(function(err,newUser){
-                        if(!err){
-                            //if there are no errors, show the new user
-                            showHomepage(req,res)
-                        }else{
-                            res.sendStatus(400);
-                        }
-                    });
+                else {
+                    res.sendStatus(400);
                 }
-            }
-            else {
-                res.sendStatus(400);
-            }
+            });
         });
-    });
+    }
 };
 
 
