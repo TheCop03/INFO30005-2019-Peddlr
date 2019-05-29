@@ -78,16 +78,8 @@ input, select{
     margin: 10px;
     text-indent: 5px;
     font-size: larger;
-    transition: transform .2s; /* Animation */
-
-}
-input:hover {
-    transform: scale(1.1) ;
 }
 
-input:focus{
-    transform: scale(1.1);
-}
 
 #title {
     position:relative;
@@ -96,13 +88,6 @@ input:focus{
     height: 40px;
     font-size: 20px;
 }
-input#title:hover {
-    transform: scale(1.05) ;
-}
-
-input#title:focus{
-    transform: scale(1.05);
-}
 
 #category {
     position:relative;
@@ -110,8 +95,6 @@ input#title:focus{
     width: 85%;
     height: 40px;
     font-size: 20px;
-
-
 }
 
 #price {

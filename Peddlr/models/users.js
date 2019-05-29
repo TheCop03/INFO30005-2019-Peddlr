@@ -8,7 +8,8 @@ var userSchema = mongoose.Schema(
         "photo":String,
         "phoneNumber":Number,
         "password":String,
-        "sessionId":String
+        "sessionId":String,
+        "listings":Array
     }
 );
 mongoose.model('users',userSchema);

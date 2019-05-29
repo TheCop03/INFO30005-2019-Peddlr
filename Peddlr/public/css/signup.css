@@ -3,7 +3,6 @@ html{
 }
 body {
     display:grid;
-    grid-template-rows: 80px 0.5fr 0.25fr auto;
     border: 0;
     margin: 0;
     background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
@@ -21,19 +20,22 @@ h1 {
 }
 
 h2 {
-    margin-bottom: 0px;
     text-align: center;
     font-size: 50px;
     font-weight: normal;
     color: #4F5445;
+    padding-bottom: 20px;
 }
 
 .tagline {
-    margin-top: 0px;
-    text-align: center;
     font-size: 25px;
     font-weight: lighter;
     color: #4F5445;
+}
+
+p {
+    padding-top: 10px;
+    text-align: center;
 }
 
 footer {
@@ -43,18 +45,20 @@ footer {
 /* FORM */
 form {
     text-align: center;
+    margin: 0 auto;
+
 }
 
 input, select {
-    margin: 10px;
-    width: 40%;
+    border-radius: 10px;
+    margin: 0 auto;
     text-indent: 5px;
     font-size: larger;
+    width: 50%;
 }
 
+
 .dob {
-    margin-top: 5px;
-    margin-bottom: 0px;
     font-weight: bold;
     font-size: 18px;
 }
@@ -64,8 +68,13 @@ input, select {
     color: grey;
 }
 
-#fname, #lname {
-    width: 19%;
+#fname{
+    width: 23%;
+}
+#lname{
+    width: 23%;
+    margin-left: 50px;
+
 }
 
 #state, #zip {
@@ -78,24 +87,25 @@ input, select {
 /************************************************************************************/
 /* BUTTONS */
 .pagebutton {
+    position: relative;
     width: 30%;
-    margin: 20px;
+    margin: 0 auto;
     border: 0px;
     background-color: #125358;
     color: white;
     font-size: 20px;
     height: 35px;
     border-radius: 20px;
-
-
 }
 
 .pagebutton:hover {
     transition: box-shadow 0.3s ease-in-out;
     box-shadow: 3px 3px 3px darkslategrey;
-
 }
 
+.pagebutton:disabled {
+    background-color: grey;
+}
 
 .backbutton {
     color:#4F5445;
@@ -117,103 +127,31 @@ input, select {
     opacity: 0.8;
 }
 
-input{
-    border-radius: 20px;
-    margin: 10px;
-    text-indent: 5px;
-    font-size: larger;
-    transition: transform .2s; /* Animation */
-
-}
-input:hover {
-    transform: scale(1.1) ;
-}
-
-input:focus{
-    transform: scale(1.1);
-}
-
 
 
 /************************************************************************************/
 
 .btn {
     position: relative;
-    padding: 8px 32px;
-    padding-right: 3.1rem;
+    float: right;
+    padding-right: 20px;
+    padding-top: 10px;
     font-size: 20px;
     color: white;
-    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
     border-radius: 20px;
-    top:20px;
-
-    cursor: pointer;
-    user-select: none;
-    float: right;
-    z-index: 1;
-    text-align: center;
-
-}
-
-.btn:before, .btn:after {
-    content: '';
-    position: absolute;
-    transition: inherit;
-    z-index: 1;
+    top: 20px;
 }
 
 .btn:hover {
-    color: #125358;
-    transition-delay: .6s;
+    color: #C4C4C4;
 }
 
-.btn:hover:before {
-    transition-delay: 0s;
-
+#errormessage{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.btn:hover:after {
-    background-color: white;
-    opacity: 0.8;
-    transition-delay: .4s;
-    z-index: -1;
-    border-radius: 10px;
-    height: 80%;
-
-
-}
-
-
-.from-middle:before {
-    top: 0;
-    left: 50%;
-    height: 100%;
-    width: 0;
-    border: 1px solid white;
-    border-left: 0;
-    border-right: 0;
-    z-index: 1;
-
-}
-
-.from-middle:after {
-    bottom: 0;
-    left: 0;
-    height: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 1;
-
-}
-
-.from-middle:hover:before {
-    left: 0;
-    width: 100%;
-
-}
-
-.from-middle:hover:after {
-    top: 0;
-    height: 100%;
-
+#pw_message {
+    padding-left: 20px;
 }

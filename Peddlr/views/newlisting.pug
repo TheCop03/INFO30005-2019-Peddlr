@@ -2,7 +2,7 @@ extends default.pug
 
 block css
     style
-        include ../public/css/createlisting.css
+        include ../public/css/newlisting.css
 
 block content
     div.headerzone
@@ -38,6 +38,7 @@ block content
                 p.fieldtitle Please upload a photo
                 input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
                 img#preview(src=file alt="Image preview...")
+                p#b64
             div.form-group
                 p.fieldtitle Where can the item be picked up?
                 input#address(type='text', placeholder='Address' name='address', required)
@@ -68,7 +69,8 @@ block content
             var file = document.querySelector('input[type=file]').files[0];
             var reader = new FileReader();
 
-            reader.addEventListener("load", function() {
+            reader.addEventListener("load", function(e) {
+                //document.getElementById("b64").innerHTML = e.target.result;
                 preview.src = reader.result.toString();
                 //CANNOT FIGURE OUT HOW TO SET THE PHOTO TO A STRING SO IT WILL SAVE IN DB
                 document.getElementById('photoinput').value = reader.result.toString();

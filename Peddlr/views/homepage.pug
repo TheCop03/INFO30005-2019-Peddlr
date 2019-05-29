@@ -3,49 +3,67 @@ block css
     style
         include ../public/css/homepage.css
 
+
 block user
-    a(href = './signup')
-        div.btn.from-middle Sign Up
-    a(href = './login')
-        div.btn.from-middle Log In
-    a(href = './homepage')
-        div.btn.from-middle.active Home
+    nav.navbar.navbar-expand-lg.navbar-light
+        a.navbar-brand.active(href='/homepage')
+            h1 Peddlr
+            span.sr-only (current)
+
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse.flex-grow-0
+            ul.navbar-nav
+                if (session)
+                    li.nav-item
+                        a.nav-link(href='/myListings') My Listings
+                    li.nav-item.dropdown
+                        a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            | Account
+                            .dropdown-menu(aria-labelledby='navbarDropdown')
+                                a.dropdown-item(href='/settings') Settings
+                                .dropdown-divider
+                                a.dropdown-item(href='logout') Log Out
+                else
+                    li.nav-item
+                        a.nav-link(href='/login') Login
+                    li.nav-item
+                        a.nav-link(href='/signup') Sign Up
 
 block content
     //form.searchbar(action='SEARCHRESULTS')
-    div.searchzone
-        h2 Let's Peddle
+    div.container-fluid.searchzone
+        spantitle Let's Peddle
         a(href='./newlisting')
-            button.createbutton(type='submit') + Create listing
+            button.createbutton.btn.btn-light(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
         a(href="/search")
-            button.searchbutton(type='submit') Search
+            button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
             i.fa.fa-search
 
-    h3 Categories:
+    h3 Featured Categories:
 
-    div.categoryzone.menu-wrapper.menu
+    div.scrollmenu.categoryzone
         each category in categories
             div.category.item
                 a(href = `./listing/category/${category._id}`)
                     img.categoryphoto(src=category.photo alt=category.title)
-                p.categorytitle #{category.title}
+                    p.categorytitle #{category.title}
+
 
     h3 Latest Listings:
 
     div.latestlistingszone
-        each listing in listings
-            div.listing.dropup
-                a(href = `./listing/id/${listing.id}`)
-                    img.listingphoto(src=listing.photo alt=listing.title)
-                    p.listingtitle #{listing.title}
-                    div.dropup-content
-                        p.listingdescription #{listing.description}
 
-                    p.listingprice $#{listing.price} #{listing.interval}
-                        div.dropup-content
-                            p.listingdescription #{listing.description}
-
+            each listing in listings
+                .card(style='width: 15rem; height: 25rem;')
+                    .d-flex
+                        a(href = `./listing/id/${listing.id}`)
+                            img.card-img-top.image-custom(src=listing.photo)
+                            .card-body.flex-fill
+                                h5.card-title #{listing.title}
+                                p.card-text.listingprice $#{listing.price} #{listing.interval}
+                                p.listingdescription #{listing.description}
 
     script.
         function respFunction() {
@@ -57,3 +75,7 @@ block content
             }
         }
 
+        function getlistings () {
+            listings.collection.find({ '_id': 10 }).sort({_id: -1}).limit(10, function (e, d) {})
+
+        }

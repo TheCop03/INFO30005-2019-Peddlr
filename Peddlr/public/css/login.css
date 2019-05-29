@@ -10,15 +10,23 @@ p {
 
 /************************************************************************************/
 /* MISC */
+input, select {
+    border-radius: 20px;
+    text-indent: 5px;
+    font-size: larger;
+    position: relative;
+    left: 36%;
+}
+
 .brk {
+    position: relative;
+    margin: 20px;
+    left: 25%;
     width: 50%;
     height: 0px;
-    margin-left:auto;
-    margin-right: auto;
     background: #C4C4C4;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
-    transform: rotate(-0.09deg);
 }
 
 /************************************************************************************/
@@ -27,7 +35,6 @@ p {
 .joinbutton{
     width: 30%;
     margin: 20px;
-    border: 0px;
     opacity:1;
     font-size: 20px;
     height: 35px;
@@ -48,10 +55,41 @@ p {
     border-width: medium;
 }
 
+.pagebutton {
+    position: relative;
+    width: 30%;
+    margin: 0 auto;
+    border: 0px;
+    background-color: #125358;
+    color: white;
+    font-size: 20px;
+    height: 35px;
+    border-radius: 20px;
+
+
+}
+
+.pagebutton:hover {
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 3px 3px 3px darkslategrey;
+
+}
+
 
 /* FORM */
 .formzone {
     position: relative;
     left: 25%;
+}
+
+#wrongcredmessage{
+  color: red;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.form-group{
+    position: relative;
+    width: 60%;
 }
 
