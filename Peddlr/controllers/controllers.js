@@ -119,7 +119,7 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
-    console.log(req.body)
+    //console.log(req.body)
     if (req.body.photo == null){
         console.log("no file");
     }
@@ -133,7 +133,7 @@ var createListing = function(req,res){
         "price":req.body.price,
         "interval":req.body.interval, //look into this
         "description":req.body.description,
-        "photo":req.body.photo,
+        "photo":req.body.b64,
         "category":req.body.category
     });
 
@@ -274,7 +274,6 @@ var findUserByName = function(req, res){
 
 
 var deleteListing = function(req,res){
-    console.log(req.body);
     var listingID = req.body.listing_id;
     Listing.deleteOne({_id: listingID}, function(err, results) {
         if (!err) {
