@@ -274,16 +274,15 @@ var findUserByName = function(req, res){
 
 
 var deleteListing = function(req,res){
-    var listingID = req.body._id;
-    console.log(listingID);
-    showListingsByUser(req,res);
-    // Listing.deleteOne({_id: listingID}, function(err, results) {
-    //     if (!err) {
-    //         showListingsByUser(req, res);
-    //     } else {
-    //         res.sendStatus(404);
-    //     }
-    // });
+    console.log(req.body);
+    var listingID = req.body.listing_id;
+    Listing.deleteOne({_id: listingID}, function(err, results) {
+        if (!err) {
+            res.redirect("/mylistings")
+        } else {
+            res.sendStatus(404);
+        }
+    });
 };
 
 module.exports = {

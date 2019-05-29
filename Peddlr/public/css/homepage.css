@@ -65,12 +65,9 @@ footer {
 	height: 100%;
 }
 
-<<<<<<< Updated upstream
 /************************************************************************************/
 /* BUTTONS */
 
-=======
->>>>>>> Stashed changes
 .createbutton {
 	grid-area: createbutton;
 	background-color:white;
