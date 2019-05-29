@@ -6,36 +6,38 @@ block css
         include ../public/css/login.css
 
 block content
-    div.headerzone
+    div.container-fluid.headerzone
         a(href = './homepage')
             button.backbutton(type = 'submit') Back
 
         h2 Login
-    form(role='form', action='/login', method='post')
-        div.form-group
-            input.form-control(type='text', id='user', name='username', placeholder=' Email address')
+    div.container-fluid
+        form(role='form', action='/login', method='post')
+            div.row.form-group
+                input.form-control(type='text', id='user', name='username', placeholder=' Email address')
 
-        div.form-group
-            input.form-control(type='password', id='password', name='password', placeholder=' Password')
-            p(id='text', style="display: none;") Caps lock is ON.
-            script.
-                var input = document.getElementById("password");
-                var text = document.getElementById("text");
-                input.addEventListener("keyup", function (event) {
-                    if (event.getModifierState("CapsLock")) {
-                        text.style.display = "block";
-                    } else {
-                        text.style.display = "none"
-                    }
-                })
-        if (error)
-            p#wrongcredmessage #{error}
-        div
-            button.pagebutton(type='submit') Login
+            div.row.form-group
+                input.form-control(type='password', id='password', name='password', placeholder=' Password')
+                p(id='text', style="display: none;") Caps lock is ON.
+                script.
+                    var input = document.getElementById("password");
+                    var text = document.getElementById("text");
+                    input.addEventListener("keyup", function (event) {
+                        if (event.getModifierState("CapsLock")) {
+                            text.style.display = "block";
+                        } else {
+                            text.style.display = "none"
+                        }
+                    })
+            if (error)
+                p#wrongcredmessage #{error}
+            div.row
+                button.pagebutton(type='submit') Login
 
-        div.brk
-    p Don't have an account?
-    a(href = './signup')
-         button.joinbutton(type='submit') Join the community
+            div.row.brk
+    div.container-fluid
+        p Don't have an account?
+        a(href = './signup')
+             button.joinbutton(type='submit') Join the community
 
-    p Copyright (c) Peddlr People
+        p Copyright (c) Peddlr People

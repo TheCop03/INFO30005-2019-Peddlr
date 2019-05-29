@@ -3,8 +3,6 @@ html{
 }
 
 body {
-	display:grid;
-	grid-template-rows: 0.15fr 0.6fr 3.25fr;
 	border: 0;
 	margin: 8px;
 	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
@@ -52,88 +50,15 @@ footer {
 	background-color: #bfa487;
 }
 
+input {
+	position: relative;
+	width: 80%;
+	height: 70px;
+	left: 150px;
+}
+
 /************************************************************************************/
 /* HEADER BUTTONS */
-.btn {
-	position: relative;
-	padding: 8px 32px;
-	padding-right: 3.1rem;
-	font-size: 20px;
-	color: white;
-	transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
-	border-radius: 20px;
-	top:20px;
-
-	cursor: pointer;
-	user-select: none;
-	float: right;
-	z-index: 1;
-	text-align: center;
-
-}
-
-.btn:before, .btn:after {
-	content: '';
-	position: absolute;
-	transition: inherit;
-	z-index: 1;
-}
-
-.btn:hover {
-	color: #125358;
-	transition-delay: .6s;
-
-}
-
-.btn:hover:before {
-	transition-delay: 0s;
-
-}
-
-.btn:hover:after {
-	background-color: white;
-	opacity: 0.8;
-	transition-delay: .4s;
-	z-index: -1;
-	border-radius: 10px;
-
-
-}
-
-
-.from-middle:before {
-	top: 0;
-	left: 50%;
-	height: 100%;
-	width: 0;
-	border: 1px solid white;
-	border-left: 0;
-	border-right: 0;
-	z-index: 1;
-
-}
-
-.from-middle:after {
-	bottom: 0;
-	left: 0;
-	height: 0;
-	width: 100%;
-	background-color: white;
-	z-index: 1;
-
-}
-
-.from-middle:hover:before {
-	left: 0;
-	width: 100%;
-
-}
-
-.from-middle:hover:after {
-	top: 1.5px;
-	height: 97%;
-
-}
 
 .backbutton:hover {
 	opacity: 0.8;
@@ -156,10 +81,11 @@ footer {
 
 /************************************************************************************/
 /* ZONES */
+.searchzone {
 
+}
 .titlezone {
 	display: grid;
-	margin: 20px 10px 0px 10px;
 	width: auto;
 	height: auto;
 	grid-template-columns: 10% 90%;
