@@ -14,7 +14,8 @@ var showHomepage = function(req, res) {
             //find all the listings
             Listing.find({}, function(err,listings){
                 if(!err){
-                    var results = {title: 'Peddlr', 'listings': listings, 'categories': categories, session: req.cookies.sessionId};
+                    var results = {title: 'Peddlr', 'listings': listings,
+                     'categories': categories, session: req.cookies.sessionId};
                     res.render('homepage', results);
                 }else{
                     res.sendStatus(404);
@@ -27,7 +28,7 @@ var showHomepage = function(req, res) {
 };
 
 var showSignUp = function(req, res) {
-    var results = {title: 'Peddlr'};
+    var results = {title: 'Peddlr', error: ''};
     res.render('signup', results);
 };
 
@@ -45,6 +46,7 @@ var showLogin = function(req, res) {
     var results = {title: 'Peddlr', error: ""};
     res.render('login', results);
 };
+
 var showCreateListing = function(req, res) {
     Category.find(function(err,categories){
         if(!err){
@@ -62,13 +64,19 @@ const showListingByID = function(req, res) {
         if(!err){
             User.findById(listing.owner, function(err, owner){
               if (!err){
-                var results = {listing: listing, owner: owner};
-                res.render('listing', results);
+                var sid = req.cookies.sessionId;
+                User.find({sessionId: sid}, function(err, currUser){
+                    if (!err){
+                        var results = {listing: listing, owner: owner, user: currUser[0]};
+                        res.render('listing', results);
+                    } else {
+                        res.sendStatus(400);
+                    }
+                });
               }else{
                 res.sendStatus(404);
               }
             });
-            //res.render('listing', {listing: listing}); //if no errors send the listings found
         }else{
             res.sendStatus(404);
         }
@@ -82,10 +90,11 @@ var loginUser = function(req, res) {
     User.find({email:username},function(err,user){
         if(!err){
             if (user.length != 1) {
-                //No user found (or double account error, shouldn't happen anyway), just say wrong user/pass
+                //No user found (or double account error)
+                // just say wrong user/pass
                 res.sendStatus(401);
             } else {
-                bcrypt.compare(password, user[0].password, function (err, same) {
+                bcrypt.compare(password, user[0].password, function (err, same){
                     if (same) {
                         let sidrequest = utils.generate_unique_sid();
                         sidrequest.then(function (sid) {
@@ -110,21 +119,29 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
+    if (req.body.photo == null){
+        console.log("no file");
+    }
+    else {
+        var reader = new FileReader();
+
+        console.log("file exists");
+    }
     var listing = new Listing({
         "title":req.body.title,
         "price":req.body.price,
         "interval":req.body.interval, //look into this
         "description":req.body.description,
         "photo":req.body.photo,
-        "owner":req.body.owner,
-        "location":req.body.location,
         "category":req.body.category
     });
 
-    listing.save(function(err,newListing){
-        if(!err){
-            var sid = req.cookies.sessionId;
-            User.find({sessionId:sid}, function(err, user){
+    var sid = req.cookies.sessionId;
+
+    User.find({sessionId:sid}, function(err, user){
+        if (!err){
+            listing.owner = user[0].id;
+            listing.save(function(err, newListing){
                 if (!err){
                     user[0].listings.push(listing.id);
                     user[0].save();
@@ -133,10 +150,11 @@ var createListing = function(req,res){
                     res.sendStatus(400);
                 }
             });
-        }else{
+        } else {
             res.sendStatus(400);
         }
     });
+    console.log(req.file);
 };
 
 
@@ -158,7 +176,8 @@ var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
 	Listing.find({category:myCategory}, function(err, listings) {
 		Category.findById(myCategory, function(err, category){
-			var results = {title: 'Peddlr', category: category.title, 'listings': listings, session: req.cookies.sessionId}
+			var results = {title: 'Peddlr', category: category.title,
+             'listings': listings, session: req.cookies.sessionId}
 			if (!err) {
 				res.render('category', results);
 			} else {
@@ -173,9 +192,10 @@ var showListingsByUser = function(req, res) {
 	var sid = req.cookies.sessionId;
     User.find({sessionId:sid}, function(err, user){
         if (!err){
-            Listing.find({owner:user._id}, function(err, listings){
+            Listing.find({owner:user[0]._id}, function(err, listings){
                 if (!err){
-                    var results = {titel: 'Peddlr', category: 'My Listings', 'listings': listings}
+                    var results = {titel: 'Peddlr', category: 'My Listings',
+                     'listings': listings}
                     res.render('category', results);
                 } else {
                     res.sendStatus(400);
@@ -194,15 +214,32 @@ var createUser = function(req,res){
             "email":req.body.email,
             "fname":req.body.fname,
             "lname":req.body.lname,
-            "address":req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country),
+            "address":req.body.address.concat(", ", req.body.state, " ",
+             req.body.zip, ", ", req.body.country),
             "photo":req.body.photo,
             "phoneNumber":req.body.phoneNumber,
             "password":hash
         });
-        user.save(function(err,newUser){
-            if(!err){
-                showHomepage(req,res) //if there are no errors, show the new user
-            }else{
+        // Check if the email already exists
+        User.find({email: req.body.email}, function(err, users){
+            if (!err){
+                if(users.length != 0){
+                    var message = "Email address already in use. Please log in.";
+                    var results = {title: 'Peddlr', error: message};
+                    res.render('signup', results);
+                }
+                else{
+                    user.save(function(err,newUser){
+                        if(!err){
+                            //if there are no errors, show the new user
+                            showHomepage(req,res)
+                        }else{
+                            res.sendStatus(400);
+                        }
+                    });
+                }
+            }
+            else {
                 res.sendStatus(400);
             }
         });
@@ -225,14 +262,16 @@ var findUserByName = function(req, res){
 
 
 var deleteListing = function(req,res){
-    var listingName = req.body.title;
-    Listing.deleteOne({title:listingName}, function(err, results) {
-        if (!err) {
-            res.sendStatus(200);
-        } else {
-            res.sendStatus(404);
-        }
-    });
+    var listingID = req.body._id;
+    console.log(listingID);
+    showListingsByUser(req,res);
+    // Listing.deleteOne({_id: listingID}, function(err, results) {
+    //     if (!err) {
+    //         showListingsByUser(req, res);
+    //     } else {
+    //         res.sendStatus(404);
+    //     }
+    // });
 };
 
 module.exports = {

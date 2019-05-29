@@ -67,7 +67,7 @@ router.get('/newListing', function(req, res, next){
 router.post('/newListing', controller.createListing);
 
 //delete a listing
-router.post('/deleteListing', controller.deleteListing)
+router.post('/deleteListing', controller.deleteListing);
 
 //login a user
 router.post('/login', controller.loginUser);

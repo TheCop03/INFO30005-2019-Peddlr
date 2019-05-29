@@ -96,16 +96,16 @@ input, select {
     font-size: 20px;
     height: 35px;
     border-radius: 20px;
-
-
 }
 
 .pagebutton:hover {
     transition: box-shadow 0.3s ease-in-out;
     box-shadow: 3px 3px 3px darkslategrey;
-
 }
 
+.pagebutton:disabled {
+    background-color: grey;
+}
 
 .backbutton {
     color:#4F5445;
@@ -144,4 +144,14 @@ input, select {
 
 .btn:hover {
     color: #C4C4C4;
+}
+
+#errormessage{
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#pw_message {
+    padding-left: 20px;
 }
