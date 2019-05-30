@@ -14,9 +14,15 @@ var showHomepage = function(req, res) {
             //find all the listings
             Listing.find({}, function(err,listings){
                 if(!err){
-                    var results = {title: 'Peddlr', 'listings': listings,
-                     'categories': categories, session: req.cookies.sessionId};
-                    res.render('homepage', results);
+                    if (req.cookies.sessionId.length > 0){
+                        User.findOne({sessionId:req.cookies.sessionId},function(err,user){
+                            console.log(user);
+                            var results = {title: 'Peddlr', 'listings': listings,
+                            'categories': categories, session: req.cookies.sessionId, name: user.fname};
+                            res.render('homepage', results);
+                        })
+                    }
+
                 }else{
                     res.sendStatus(404);
                 }
@@ -33,13 +39,12 @@ var showSignUp = function(req, res) {
 };
 
 var showSettings = function(req, res) {
-    var results = {title: 'Peddlr'};
+    var results = {title: 'Peddlr', session: req.cookies.sessionId};
     res.render('settings', results);
 };
-
-var showAboutUs = function(req, res) {
-    var results = {title: 'Peddlr'};
-    res.render('aboutus', results);
+var showPrivacy = function(req, res) {
+    var results = {title: 'Peddlr', session: req.cookies.sessionId};
+    res.render('privacy.pug', results);
 };
 
 var showLogin = function(req, res) {
@@ -262,20 +267,57 @@ var createUser = function(req,res){
     }
 };
 
-
-//find user by searching full first and last name
-var findUserByName = function(req, res){
-    var userFName = req.params.fname;
-    var userLName = req.params.lname;
-    User.find({fname:userFName, lname: userLName},function(err,results){
-        if(!err){
-            res.send(results);
-        }else{
-            res.sendStatus(404);
+var editUser = function(req, res){
+    User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
+        if (!err && user) {
+            if (req.body.fname.length > 0) {user.fname = req.body.fname;}
+            if (req.body.lname.length > 0) {user.lname = req.body.lname;}
+            if (req.body.email.length > 0) {user.email = req.body.email;}
+            if (req.body.address.length > 0) {
+                user.address = req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country);
+            }
+            user.save(function(err, updatedUser) {
+                if (updatedUser) {
+                    let message = "Your account has been updated.";
+                    let results = {title: 'Peddlr', error: message}
+                    res.render('settings', results);
+                } else {
+                    res.sendStatus(500);
+                }
+            });
+        } else {
+            res.cookie('sessionId', '');
+            res.redirect('/login')
         }
     });
 };
 
+var editPassword = function(req, res){
+    User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
+        if (req.body.password.length < 8) {
+            let message = "Your password must be at least 8 characters.";
+            let results = {title: 'Peddlr', error: message}
+            res.render('privacy', results);
+        }
+        else if (!err && user) {
+            bcrypt.hash(req.body.password, saltRounds, function(hasherr, hash) {
+                user.password = hash;
+                user.save(function(err, updatedUser) {
+                    if (updatedUser) {
+                        let message = "Your account has been updated.";
+                        let results = {title: 'Peddlr', error: message}
+                        res.render('privacy', results);
+                    } else {
+                        res.sendStatus(500);
+                    }
+                });
+            });
+        } else {
+            res.cookie('sessionId', '');
+            res.redirect('/login')
+        }
+    });
+};
 
 var deleteListing = function(req,res){
     var listingID = req.body.listing_id;
@@ -318,15 +360,16 @@ module.exports = {
     updateListing,
     findListingByName,
     showListingsByCategory,
-    findUserByName,
     createUser,
     showHomepage,
     showSignUp,
-    showAboutUs,
     showLogin,
     loginUser,
     showListingByID,
     showCreateListing,
     showSettings,
-    showListingsByUser
+    showListingsByUser,
+    showPrivacy,
+    editUser,
+    editPassword
 };

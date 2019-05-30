@@ -3,14 +3,67 @@ extends default.pug
 block css
     style
         include ../public/css/settings.css
-        include ../public/css/category.css
-
-
+        include ../public/css/header.css
 block content
-    div.titlezone.row
-        .col-sm-(style = "margin-left: 10px;")
-            a(href = './homepage')
-                button.backbutton(type = 'submit') Back
-        .col
-            h2 Settings
+    .jumbotron.settingszone
+        .row
+            .col-3.vertical-menu
+                h2.display-4 Settings
+                a.active(href='#') General
+                a(href='/settings/security') Security and Login
+                a(href='#') Delete Account
+
+            .col-9
+                .row
+                    h2 Personal details
+                hr
+                form(method='POST' action='/settings/general/update')
+                    .row
+                        h5 Name
+                    .row
+                        p Your Name
+                    .row
+                        div.form-group
+                            .row
+                                p First name
+                                input(type='text', name='fname')
+                            .row
+                                p Last name
+                                input(type='text', name='lname')
+
+                    .row
+                        h5 Email
+                    .row
+                        div.form-group
+                            .row
+                                p New Email Address
+                                input(type='email', name='email')
+                    .row
+                        h5 Address
+                    .row
+                        div.form-group
+                            .row
+                                p New Home Address
+                                input#address(type='text', placeholder='Address' name='address')
+
+                                select#state(type='text', placeholder='State' name='state')
+                                    option NSW
+                                    option QLD
+                                    option SA
+                                    option TAS
+                                    option VIC
+                                    option WA
+                                input#zip(type='text', placeholder='Zip Code' name='zip')
+                                select#country(type='text', placeholder='Country' name='country')
+                                    option Australia
+                    .row
+                        button#submit.pagebutton(type='submit', ) Update
+
+                        if (success)
+                            successMsg()
+
+                    script.
+                        function successMsg() {
+                            alert("Update Successful");
+                        }
 

@@ -10,12 +10,20 @@ html
     header
         nav.navbar.navbar-expand-lg.navbar-light
             a.navbar-brand.active(href='/homepage')
+<<<<<<< HEAD
+=======
+
+>>>>>>> kaylene
                 h1 Peddlr
                 span.sr-only (current)
 
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
                 span.navbar-toggler-icon
+<<<<<<< HEAD
             #navbarSupportedContent.collapse.navbar-collapse.flex-grow-0
+=======
+            #navbarSupportedContent.collapse.navbar-collapse
+>>>>>>> kaylene
                 ul.navbar-nav
                     if (session)
                         li.nav-item
@@ -23,21 +31,32 @@ html
                         li.nav-item.dropdown
                             a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                                 | Account
+<<<<<<< HEAD
                                 .dropdown-menu(aria-labelledby='navbarDropdown')
                                     a.dropdown-item(href='/settings') Settings
                                     .dropdown-divider
                                     a.dropdown-item(href='logout') Log Out
+=======
+                            .dropdown-menu(aria-labelledby='navbarDropdown')
+                                a.dropdown-item(href='/settings') Settings
+                                .dropdown-divider
+                                a.dropdown-item(href='/logout') Log Out
+>>>>>>> kaylene
                     else
                         li.nav-item
                             a.nav-link(href='/login') Login
                         li.nav-item
                             a.nav-link(href='/signup') Sign Up
+<<<<<<< HEAD
 
+=======
+>>>>>>> kaylene
     body
         block content
-            script( src="https://code.jquery.com/jquery-3.3.1.slim.min.js",integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",crossorigin="anonymous")
-            script( src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",crossorigin="anonymous")
-            script( src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",crossorigin="anonymous")
+        footer
+            block footer
+                p.text-center Copyright (c) Peddlr People
+        script( src="https://code.jquery.com/jquery-3.3.1.slim.min.js",integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",crossorigin="anonymous")
+        script( src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js",integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1",crossorigin="anonymous")
+        script( src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM",crossorigin="anonymous")
 
-    footer
-        block footer

@@ -2,26 +2,27 @@ extends default.pug
 
 block css
     style
-        include ../public/css/homepage.css
         include ../public/css/category.css
-
-
+        include ../public/css/header.css
 
 block content
-    div.titlezone.row
-        .col-sm-(style = "margin-left: 10px;")
-            a(href = `/homepage`)
-                button.backbutton(type = 'submit') Back
-        .col
-            h2 #{category}
-
-    .input-group.py-1.px-2.px-md-0
-        input(type='text', placeholder='Search here...', aria-label='Search')
-        a(href="/search")
-            button.btn.btn-light(type='submit', value = 'Submit') Search
-            i.fa.fa-search
-
-
+    div.titlezone
+        .row
+            .col-4
+                a(href = './homepage')
+                    button.backbutton(type = 'submit') Back
+            .col-4
+                h2 #{category}
+            .col-4
+                a(href='./newlisting')
+                    button.createbutton.btn.btn-light(type='submit') + Create listing
+        .row
+            .col-8
+                input(type='text', placeholder='   I am looking for...', name='search')
+            .col-4
+                a(href="/search")
+                    button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
+                    i.fa.fa-search
     div.listingszone
         each listing in listings
             div.listing

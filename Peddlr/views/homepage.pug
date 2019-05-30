@@ -1,14 +1,16 @@
 extends default.pug
+
 block css
     style
         include ../public/css/homepage.css
-
-
-
+        include ../public/css/header.css
 block content
-    //form.searchbar(action='SEARCHRESULTS')
     div.container-fluid.searchzone
-        spantitle Let's Peddle
+        if(session)
+            spantitle Let's Peddle, #{name}
+        else
+            spantitle Let's Peddle
+
         a(href='./newlisting')
             button.createbutton.btn.btn-light(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
@@ -39,6 +41,7 @@ block content
                                 h5.card-title #{listing.title}
                                 p.card-text.listingprice $#{listing.price} #{listing.interval}
                                 p.listingdescription #{listing.description}
+
 
     script.
         function respFunction() {

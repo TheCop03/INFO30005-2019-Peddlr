@@ -3,20 +3,17 @@ html{
 }
 
 body{
-    display: grid;
-    grid-template-rows: 1fr auto 0.5fr;
     height: 100%;
     border: 0;
 	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 
-
 header {
 	background-color: #125358;
-	border-radius:10px;
-	box-shadow: 3px 3px 3px dimgrey;
 	padding-right: 20px;
 }
+/************************************************************************************/
+/* FONTS */
 
 h1 {
 	float: left;
@@ -25,101 +22,66 @@ h1 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-.content-box{
-    display: inline-grid;
-    grid-template-columns: 60% 40%;
-    background-color: rgba(216,212,202,0.65);
-    width: 70%;
-    height: auto;
-    margin: auto;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
-.titlebox {
-    display: grid;
-    grid-template-rows: auto auto;
-}
-
-.title {
-    color: black;
-    font-weight: bolder;
+.title{
     position: relative;
-    padding-left: 10%;
-    font-size: 35px;
+    bottom: 20px;
+}
+/************************************************************************************/
+/* ZONES */
+.searchzone {
+    width: auto;
+    height: 200px;
+    background-color:dimgrey ;
+
 }
 
-.price{
-    float: right;
-    width: 35%;
-    text-align: right;
-    padding-right: 5%;
-    grid-row: 2;
-    grid-column: 2;
-    color: black;
-    font-weight: normal;
-    position: relative;
-    font-size: 25px;
+.listingzone {
+    margin: 20px 80px 0 80px;
+
 }
 
-.location {
-    float: left;
-    width: 50%;
-    color: black;
-    padding-left: 10%;
-    grid-row: 2;
-    grid-column: 1;
-    font-weight: normal;
-    position: relative;
-    font-size: 25px;
-}
-
-.deleteBox {
-	grid-row: 1;
-	grid-column: 2;
-	align-content: center;
-}
-
-.imagebox {
-    grid-row-start: 2;
-    grid-row-end: 5;
-}
-
-.listingphoto{
-    position: relative;
-    width: 96%;
-    height: 96%;
-    margin: 2%;
-    padding: 2px;
-    background-color: white	;
-    box-shadow: none;
-}
-
-.descriptionbox {
-    grid-row-start: 3;
-}
-
-.description, .desc_title{
-    font-weight: normal;
+input{
     padding-left: 10px;
+    width: 70%;
+    height: 70px;
+    font-size: medium;
+    border-radius: 5px;
     position: relative;
-    top: 3px;
-    font-size: 25px;
-    color: black;
-    margin-left: 20px;
-    margin-top: 10px;
-    border-top: #010106;
-    border-top-width: 1px;
+    float: right;
 }
 
-.desc_title {
-    font-weight: bold;
+/************************************************************************************/
+/* BUTTONS */
+.createbutton {
+    background-color:white;
+    display: inline-block;
+    text-decoration: none;
+    height: 44px;
+    font-size: 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+    float: right;
+    margin-right: 10%;
+    position: relative;
+    text-align: center;
+    border-width: medium;
+    font-size: 18px;
+    width: 30%;
+
 }
 
-footer {
-	background-color: #808000	;
-	opacity: 0.7;
-	height: 100%;
+.backbutton {
+    color: #4F5445;
+    display: inline-block;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 20px;
 }
 
 .modal-content {
@@ -132,28 +94,48 @@ footer {
 	width: 40%;
 }
 
-#confirmMessage {
-	text-align: center;
+.backbutton:hover {
+    opacity: 0.8;
 }
 
-.buttons {
-	width: 50%;
-	height: 50%;
-	margin: 0 auto;
-	display: block;
-	padding-bottom: 10%;
+.searchbutton{
+    background-color: white;
+    width: 30%;
+    height: 70px;
+    font-size: 18px;
+    padding-right: 10px;
+    border-radius: 10px;
+    float: left;
+}
+/************************************************************************************/
+/* SIDEBAR */
+
+.deleteBox {
+    display: inline-grid;
+    float: right;
 }
 
 .confirm {
-	float: left;
-	height: 100%;
-	display: block;
-	width: 40%;
+            float: left;
+            height: 100%;
+            display: block;
+            width: 40%;
+        }
+
+.details {
+    font-size: 20px;
 }
+/************************************************************************************/
+/* MAIN */
 
 .cancel {
-	float: right;
-	display: block;
-	width: 40%;
-	height: 100%;
+    float: right;
+    display: block;
+    width: 40%;
+    height: 100%;
+}
+
+.listingphoto{
+    width: 70%;
+    height: 70%;
 }

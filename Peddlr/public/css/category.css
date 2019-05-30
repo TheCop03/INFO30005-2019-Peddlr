@@ -11,38 +11,16 @@ body {
 
 header {
 	background-color: #125358;
-	border-radius:10px;
-	box-shadow: 3px 3px 3px dimgrey;
 	padding-right: 20px;
 	color: white;
 }
 
-h1 {
-	float: left;
-	padding-left: 20px;
-	color: white;
-	font-family: 'Montserrat', sans-serif;
-}
-
 h2 {
-	grid-area: title;
 	font-family: 'Montserrat', sans-serif;
 	color: white;
-	position: relative;
-	top: 40%;
-}
-
-footer {
-	position: absolute;
-	bottom: 0px;
-	background-color: #bfa487;
-}
-
-input {
-	width: 80%;
-	height: 70px;
-	align-items: center;
-	justify-items: center;
+	text-align: center;
+	top: 20px;
+	position:relative;
 }
 
 /************************************************************************************/
@@ -65,17 +43,15 @@ input {
 	cursor: pointer;
 	border-radius: 20px;
 }
-
-
 /************************************************************************************/
 /* ZONES */
-.titlezone {
-	width: auto;
-	height: auto;
-	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
-	text-align: center;
 
+.titlezone {
+	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
+	width: auto;
+	height: 200px;
 }
+
 
 .listingszone {
 	display: grid;
@@ -165,3 +141,63 @@ a.title {
 	color: black;
 	margin-top: 0;
 }
+
+
+/************************************************************************************/
+/* BUTTONS */
+input{
+	padding-left: 10px;
+	width: 70%;
+	height: 70px;
+	font-size: medium;
+	border-radius: 5px;
+	position: relative;
+	float: right;
+}
+.createbutton {
+	background-color:white;
+	display: inline-block;
+	text-decoration: none;
+	height: 44px;
+	font-size: 18px;
+	border-radius: 10px;
+	margin-top: 20px;
+	float: right;
+	margin-right: 10%;
+	position: relative;
+	text-align: center;
+	border-width: medium;
+	font-size: 18px;
+	width: 30%;
+
+}
+
+.backbutton {
+	color:#4F5445;
+	display: inline-block;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	width: 100px;
+	margin-left: 15px;
+	margin-top: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+
+}
+
+.backbutton:hover {
+	opacity: 0.8;
+}
+
+.searchbutton{
+	background-color: white;
+	width: 30%;
+	height: 70px;
+	font-size: 18px;
+	padding-right: 10px;
+	border-radius: 10px;
+	float: left;
+}
+/************************************************************************************/
