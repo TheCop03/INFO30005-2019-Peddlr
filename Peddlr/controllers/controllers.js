@@ -220,6 +220,33 @@ var deleteListing = function(req,res){
     });
 };
 
+var searchListing = function(req, res) {
+    var input = req.params.input;
+    var regex = new RegExp(input, 'i');
+    console.log(regex);
+    Listing.find({"title": regex}, function(err, listings) {
+        if(!err){
+            res.json(listings);
+        }else{
+            res.sendStatus(404);
+        }
+    });
+};
+
+var search = function(req, res) {
+    var input = req.param('input');
+    console.log("in search controller: " + input);
+    var regex = new RegExp(input, 'i');
+    Listing.find({"title": regex}, function(err, listings) {
+        var results = {title: 'Peddlr', category: 'Search Results', 'listings': listings}
+        if (!err) {
+            res.render('category', results);
+        } else {
+            res.sendStatus(404);
+        }
+    });
+}
+
 module.exports = {
     createListing,
     deleteListing,
@@ -235,5 +262,7 @@ module.exports = {
     showListingByID,
     showCreateListing,
     showSettings,
-    showLoggedInHomepage
+    showLoggedInHomepage,
+    searchListing,
+    search
 };

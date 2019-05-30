@@ -58,13 +58,19 @@ router.get('/newListing', function(req, res, next){
 router.post('/newListing', controller.createListing);
 
 //delete a listing
-router.post('/deleteListing', controller.deleteListing)
+router.post('/deleteListing', controller.deleteListing);
 
 //login a user
 router.post('/login', controller.loginUser);
 
 //create a new user
 router.post('/newUser', controller.createUser);
+
+//autocomplete search for search bar
+router.get('/searchlistings/:input', controller.searchListing);
+
+//searching for listings, search results
+router.get('/search', controller.search);
 
 
 module.exports = router;
