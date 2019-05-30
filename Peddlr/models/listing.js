@@ -8,8 +8,8 @@ var listingSchema = mongoose.Schema(
         "description":String,
         "photo":String,
         "owner":String,
-        "location":String,
-        "category":String
+        "category":String,
+        "created":Date
     }
 );
 mongoose.model('listing',listingSchema);

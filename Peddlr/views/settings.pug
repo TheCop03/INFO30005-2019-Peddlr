@@ -3,12 +3,14 @@ extends default.pug
 block css
     style
         include ../public/css/settings.css
+        include ../public/css/category.css
+
 
 block content
-
-    div.settingszone
-        div.menu
-
-
-        div.profile
+    div.titlezone.row
+        .col-sm-(style = "margin-left: 10px;")
+            a(href = './homepage')
+                button.backbutton(type = 'submit') Back
+        .col
+            h2 Settings
 

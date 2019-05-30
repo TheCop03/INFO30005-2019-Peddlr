@@ -17,15 +17,6 @@ header {
 	color: white;
 }
 
-.headerzone {
-	margin: 5px 10px 0 10px;
-	border-radius: 10px;
-	background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
-	background-position: 30%;
-	height: 100%;
-	background-repeat: repeat;
-}
-
 h1 {
 	float: left;
 	padding-left: 20px;
@@ -36,12 +27,9 @@ h1 {
 h2 {
 	grid-area: title;
 	font-family: 'Montserrat', sans-serif;
-	font-weight: bolder;
-	font-size: 50px;
-	align-self: center;
 	color: white;
 	position: relative;
-	right: 50px;
+	top: 40%;
 }
 
 footer {
@@ -51,10 +39,10 @@ footer {
 }
 
 input {
-	position: relative;
 	width: 80%;
 	height: 70px;
-	left: 150px;
+	align-items: center;
+	justify-items: center;
 }
 
 /************************************************************************************/
@@ -81,19 +69,11 @@ input {
 
 /************************************************************************************/
 /* ZONES */
-.searchzone {
-
-}
 .titlezone {
-	display: grid;
 	width: auto;
 	height: auto;
-	grid-template-columns: 10% 90%;
-	grid-template-areas: "back title";
 	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
-	justify-items: center;
-	border-radius: 10px;
-	box-shadow: 3px 3px 3px dimgrey;
+	text-align: center;
 
 }
 

@@ -5,37 +5,21 @@ block css
         include ../public/css/homepage.css
         include ../public/css/category.css
 
-block user
 
-    nav.navbar.navbar-expand-lg.navbar-light
-        a.navbar-brand.active(href='/homepage')
-            h1 Peddlr
-            span.sr-only (current)
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse.flex-grow-0
-            ul.navbar-nav
-                li.nav-item
-                    a.nav-link(href='/myListings') My Listings
-                li.nav-item.dropdown
-                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        | Account
-                        .dropdown-menu(aria-labelledby='navbarDropdown')
-                            a.dropdown-item(href='/settings') Settings
-                            .dropdown-divider
-                            a.dropdown-item(href='logout') Log Out
 
 block content
-    div.titlezone
-        //a(href = './homepage')
-            //button.backbutton(type = 'submit') Back
-        h2 #{category}
-    .row
-        .input-group.py-1.px-2.px-md-0
-            input(type='text', placeholder='Search here...', aria-label='Search')
-            a(href="/search")
-                button.btn.btn-light(type='submit', value = 'Submit') Search
-                i.fa.fa-search
+    div.titlezone.row
+        .col-sm-(style = "margin-left: 10px;")
+            a(href = `/homepage`)
+                button.backbutton(type = 'submit') Back
+        .col
+            h2 #{category}
+
+    .input-group.py-1.px-2.px-md-0
+        input(type='text', placeholder='Search here...', aria-label='Search')
+        a(href="/search")
+            button.btn.btn-light(type='submit', value = 'Submit') Search
+            i.fa.fa-search
 
 
     div.listingszone
