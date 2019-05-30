@@ -14,7 +14,7 @@ var showHomepage = function(req, res) {
             //find all the listings
             Listing.find({}, function(err,listings){
                 if(!err){
-                    if (req.cookies.sessionId.length > 0){
+                    if (req.cookies.sessionId && req.cookies.sessionId.length > 0){
                         User.findOne({sessionId:req.cookies.sessionId},function(err,user){
                             var results = {title: 'Peddlr', 'listings': listings,
                             'categories': categories, session: req.cookies.sessionId, name: user.fname};
