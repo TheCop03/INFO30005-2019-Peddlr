@@ -78,13 +78,6 @@ footer {
 	top: 50px;
 	width: 95%;
 	box-shadow: 3px 3px 3px lightgrey;
-
-}
-
-.createbutton:hover{
-	transition: border-color 0.3s ease-in-out;
-	border-color: darkcyan;
-	border-width: medium;
 }
 
 .searchbutton{
@@ -98,11 +91,6 @@ footer {
 	top: 30px;
 	left: 8%;
 	border-radius: 10px;
-}
-.searchbutton:hover {
-	transition: border-color 0.3s ease-in-out;
-	border-color: darkcyan;
-	border-width: medium;
 }
 /************************************************************************************/
 /* SEARCH ZONE */
@@ -244,7 +232,6 @@ div.scrollmenu a {
 	margin: 0 auto;
 }
 /************************************************************************************/
-/************************************************************************************/
 /* HEADER BUTTONS */
 .nav-item {
 	padding: 8px 32px;
@@ -254,6 +241,6 @@ div.scrollmenu a {
 	position: relative;
 }
 
-ul {
-	margin-right: auto;
+#navbarSupportedContent {
+	background-color: #125358;
 }

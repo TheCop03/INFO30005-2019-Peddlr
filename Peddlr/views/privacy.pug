@@ -1,0 +1,52 @@
+extends default.pug
+
+block css
+    style
+        include ../public/css/privacy.css
+
+block content
+    .jumbotron.settingszone
+        .row
+            .col-3.vertical-menu
+                span.border-left
+                h1.display-4 Settings
+                a(href='/settings') General
+                a.active(href='/privacy') Security and Login
+                a(href='#') Delete Account
+
+            .col-9
+                .row
+                    h2 Privacy details
+                hr
+                form(method='POST' action='./updateAccount')
+                    .row
+                        h5 Password
+                    .row
+                        div.form-group
+                            .row
+                                p New password
+                                input#pw(type='password', onkeyup="checkPasswords();",
+                                    placeholder='Password' name='password', required)
+                            .row
+                                p Retype new password
+                                input#pw2(type='password', onkeyup="checkPasswords();",
+                                    placeholder='Retype Password' name='confirmPassword',
+                                    autocomplete='new-password', required)
+                            .row
+                                p#pw_message(style="display: none; color: red; font-weight: bold;") Passwords do not match.
+
+                    .row
+                        button#submit.pagebutton(type='submit') Update
+                        script.
+                            var checkPasswords = function () {
+                                if (document.getElementById('pw').value ==
+                                    document.getElementById('pw2').value) {
+                                    document.getElementById('submit').disabled = false;
+                                    document.getElementById('pw_message').style.display = 'none';
+                                } else {
+                                    document.getElementById('submit').disabled = true;
+                                    document.getElementById('pw_message').style.display = 'block';
+                                }
+                            }
+                        if (error)
+                            p#errormessage #{error}

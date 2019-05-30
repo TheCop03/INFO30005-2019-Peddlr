@@ -1,11 +1,14 @@
 extends default.pug
-
 block css
     style
         include ../public/css/listing.css
 block content
+    script(type='text/javascript', src='//platform-api.sharethis.com/js/sharethis.js#property=5cef51d30180a500128311f3&product=sticky-share-buttons', async='async')
+        meta(property='og:title', content="Let's Peddle")
+        meta(property='og:description', content="Be apart of the neighbourhood!")
+        meta(property='og:site_name', content='Peddlr')
 
-    div.content-box
+    //div.content-box
         div.titlebox
             p.title #{listing.title}
             div.details
@@ -32,6 +35,7 @@ block content
             p.desc_title Description:
             p.description #{listing.description}
 
+
         script.
             var modal = document.getElementById("confirmationModal");
             var deletebtn = document.getElementById("deleteListing");
@@ -50,4 +54,83 @@ block content
             cancelbtn.onclick = function(){
                 modal.style.display = "none";
             }
-            
+    div.searchzone
+        .row
+            .col-6
+                a(href = './homepage')
+                    button.backbutton(type = 'submit') Back
+            .col-6
+                a(href='./newlisting')
+                    button.createbutton.btn.btn-light(type='submit') + Create listing
+        .row
+            .col-8
+                input(type='text', placeholder='   I am looking for...', name='search')
+            .col-4
+                a(href="/search")
+                    button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
+                    i.fa.fa-search
+
+    .jumbotron.listingzone
+        .row
+            .col-9
+                h2.title #{listing.title}
+            .col-3
+                a(href = './ bookmark')
+                    button.btn.btn-light(type = 'submit') Bookmark
+
+                if (owner._id.equals(user._id))
+                    div.deleteBox
+                        a(href = './deleteListing')
+                            button.btn.btn-light#deleteListing Delete
+
+        .row
+            .col-9
+                .row.imagebox
+                    img.listingphoto(src=listing.photo alt=listing.title)
+                .row.descriptionbox
+                    p.details(style = "font-weight: bold") Description:
+                .row
+                    p.description #{listing.description}
+
+
+            .col-3
+                ul.list-group
+                    li.list-group-item
+                        p.details(style = "font-weight: bold") Location:
+                            p.details
+                                | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
+                                | #{owner.address.substring(owner.address.indexOf(",") + 12)}
+                    li.list-group-item
+                        p.details(style = "font-weight: bold") Owner:
+                            p.details
+                               // | #{owner.fname.substring(owner.fname)}
+                               // | #{owner.lname.substring(owner.lname)}
+                    li.list-group-item
+                        p.details(style = "font-weight: bold") Contact:
+                            p.details
+                               // | #{owner.phoneNumber.count(owner.phoneNumber)}
+                               // | #{owner.phoneNumber.count(owner.phoneNumber)}
+                    li.list-group-item
+                        p.details(style = "font-weight: bold") Email:
+                            p.details
+                                | #{owner.email.substring(owner.email)}
+
+
+        script.
+            var modal = document.getElementById("confirmationModal");
+            var deletebtn = document.getElementById("deleteListing");
+            var cancelbtn = document.getElementById("cancel");
+
+            deletebtn.onclick = function () {
+                modal.style.display = "block";
+            }
+
+            window.onclick = function () {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+            cancelbtn.onclick = function () {
+                modal.style.display = "none";
+            }

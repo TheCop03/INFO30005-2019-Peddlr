@@ -51,9 +51,7 @@ form {
 
 input, select {
     border-radius: 10px;
-    margin: 0 auto;
     text-indent: 5px;
-    font-size: larger;
     width: 50%;
 }
 
@@ -73,7 +71,6 @@ input, select {
 }
 #lname{
     width: 23%;
-    margin-left: 50px;
 
 }
 

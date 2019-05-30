@@ -4,15 +4,6 @@ block css
   style
     include ../public/css/signup.css
 
-block user
-  nav.navbar.navbar-expand-lg.navbar-light
-    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-      span.navbar-toggler-icon
-    #navbarSupportedContent.collapse.navbar-collapse.flex-grow-0
-      ul.navbar-nav
-          li.nav-item
-            a.nav-link(href='/login') Login
-
 block content
   div.container-fluid.headerzone
     a(href = './homepage')
@@ -26,6 +17,7 @@ block content
       div.form-group
         input#fname(type='text', placeholder='First name' name='fname', required)
         input#lname(type='text', placeholder='Last name' name='lname', required)
+
       div.form-group
         p.dob Date of Birth
         input#dob(type='date', placeholder='22/07/2018' name='dob', required)
@@ -69,4 +61,3 @@ block content
           p#errormessage #{error}
       button#submit.pagebutton(type='submit') SIGN UP
 
-      p.foobar Copyright (c) Peddlr People

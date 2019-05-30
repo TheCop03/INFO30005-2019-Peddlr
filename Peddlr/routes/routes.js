@@ -54,6 +54,9 @@ router.get('/aboutus', controller.showAboutUs);
 //show the settings page
 router.get('/settings', controller.showSettings);
 
+//show the security settings page
+router.get('/privacy', controller.showPrivacy);
+
 //show the create listing page
 router.get('/newListing', function(req, res, next){
   if (req.cookies.sessionId) {

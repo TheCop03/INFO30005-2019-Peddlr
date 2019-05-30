@@ -1,0 +1,23 @@
+extends default.pug
+
+block css
+    style
+        include ../public/css/privacy.css
+
+block content
+    .jumbotron.settingszone
+        .row
+            .col-3.vertical-menu
+                span.border-left
+                h1.display-4 Settings
+                a(href='/settings') General
+                a.active(href='/privacy') Security and Login
+                a(href='#') Delete Account
+
+            .col-9
+                .row
+                    h2 Privacy details
+                hr
+                form(method='POST' action='./updateAccount')
+                    .row
+                        h5 Password

@@ -5,10 +5,56 @@ block css
         include ../public/css/settings.css
 
 block content
+    .jumbotron.settingszone
+        .row
+            .col-3.vertical-menu
+                h2.display-4 Settings
+                a.active(href='#') General
+                a(href='/privacy') Security and Login
+                a(href='#') Delete Account
 
-    div.settingszone
-        div.menu
+            .col-9
+                .row
+                    h2 Personal details
+                hr
+                form(method='POST' action='./updateAccount')
+                    .row
+                        h5 Name
+                    .row
+                        p Your Name
+                    .row
+                        div.form-group
+                            .row
+                                p First name
+                                input(type='text', name='fname')
+                            .row
+                                p Last name
+                                input(type='text', name='lname')
 
+                    .row
+                        h5 Email
+                    .row
+                        div.form-group
+                            .row
+                                p New Email Address
+                                input(type='email', name='email')
+                    .row
+                        h5 Address
+                    .row
+                        div.form-group
+                            .row
+                                p New Home Address
+                                input#address(type='text', placeholder='Address' name='address')
 
-        div.profile
-
+                                select#state(type='text', placeholder='State' name='state')
+                                    option NSW
+                                    option QLD
+                                    option SA
+                                    option TAS
+                                    option VIC
+                                    option WA
+                                input#zip(type='text', placeholder='Zip Code' name='zip')
+                                select#country(type='text', placeholder='Country' name='country')
+                                    option Australia
+                    .row
+                        button#submit.pagebutton(type='submit') Update

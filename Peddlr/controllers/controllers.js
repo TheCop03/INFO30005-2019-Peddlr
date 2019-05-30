@@ -36,6 +36,10 @@ var showSettings = function(req, res) {
     var results = {title: 'Peddlr'};
     res.render('settings', results);
 };
+var showPrivacy = function(req, res) {
+    var results = {title: 'Peddlr'};
+    res.render('privacy.pug', results);
+};
 
 var showAboutUs = function(req, res) {
     var results = {title: 'Peddlr'};
@@ -273,6 +277,8 @@ var deleteListing = function(req,res){
     });
 };
 
+
+
 module.exports = {
     createListing,
     deleteListing,
@@ -288,5 +294,6 @@ module.exports = {
     showListingByID,
     showCreateListing,
     showSettings,
-    showListingsByUser
+    showListingsByUser,
+    showPrivacy
 };

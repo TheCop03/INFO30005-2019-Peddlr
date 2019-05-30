@@ -1,39 +1,16 @@
 extends default.pug
+
 block css
     style
         include ../public/css/homepage.css
 
-
-block user
-    nav.navbar.navbar-expand-lg.navbar-light
-        a.navbar-brand.active(href='/homepage')
-            h1 Peddlr
-            span.sr-only (current)
-
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse.flex-grow-0
-            ul.navbar-nav
-                if (session)
-                    li.nav-item
-                        a.nav-link(href='/myListings') My Listings
-                    li.nav-item.dropdown
-                        a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                            | Account
-                            .dropdown-menu(aria-labelledby='navbarDropdown')
-                                a.dropdown-item(href='/settings') Settings
-                                .dropdown-divider
-                                a.dropdown-item(href='logout') Log Out
-                else
-                    li.nav-item
-                        a.nav-link(href='/login') Login
-                    li.nav-item
-                        a.nav-link(href='/signup') Sign Up
-
 block content
-    //form.searchbar(action='SEARCHRESULTS')
     div.container-fluid.searchzone
-        spantitle Let's Peddle
+        if(session)
+            spantitle Let's Peddle
+        else
+            spantitle Let's Peddle
+
         a(href='./newlisting')
             button.createbutton.btn.btn-light(type='submit') + Create listing
         input(type='text', placeholder='   I am looking for...', name='search')
@@ -64,6 +41,7 @@ block content
                                 h5.card-title #{listing.title}
                                 p.card-text.listingprice $#{listing.price} #{listing.interval}
                                 p.listingdescription #{listing.description}
+
 
     script.
         function respFunction() {
