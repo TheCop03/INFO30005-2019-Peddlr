@@ -58,3 +58,9 @@ block content
                                     option Australia
                     .row
                         button#submit.pagebutton(type='submit') Update
+
+                        if (success)
+                            .alert.alert-info
+                                strong Info!
+                                |  Update successful.
+

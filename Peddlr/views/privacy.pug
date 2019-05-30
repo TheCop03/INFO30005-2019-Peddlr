@@ -11,7 +11,7 @@ block content
         .row
             .col-3.vertical-menu
                 span.border-left
-                h1.display-4 Settings
+                h2.display-4 Settings
                 a(href='/settings') General
                 a.active(href='/privacy') Security and Login
                 a(href='#') Delete Account
@@ -39,6 +39,7 @@ block content
 
                     .row
                         button#submit.pagebutton(type='submit') Update
+
                         script.
                             var checkPasswords = function () {
                                 if (document.getElementById('pw').value ==

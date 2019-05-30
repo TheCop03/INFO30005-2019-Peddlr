@@ -98,12 +98,6 @@ input{
     border-radius: 10px;
     float: left;
 }
-.searchbutton:hover {
-    transition: border-color 0.3s ease-in-out;
-    border-color: darkcyan;
-    border-width: medium;
-}
-
 /************************************************************************************/
 /* SIDEBAR */
 

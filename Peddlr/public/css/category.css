@@ -11,44 +11,19 @@ body {
 
 header {
 	background-color: #125358;
-	border-radius:10px;
-	box-shadow: 3px 3px 3px dimgrey;
 	padding-right: 20px;
 	color: white;
 }
 
-.headerzone {
-	margin: 5px 10px 0 10px;
-	border-radius: 10px;
-	background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
-	background-position: 30%;
-	height: 100%;
-	background-repeat: repeat;
-}
-
 
 h2 {
-	grid-area: title;
 	font-family: 'Montserrat', sans-serif;
-	font-weight: bolder;
-	font-size: 50px;
-	align-self: center;
 	color: white;
-	position: relative;
-	right: 50px;
-}
+	text-align: center;
+	top: 20px;
+	position:relative;
 
-footer {
-	position: absolute;
-	bottom: 0px;
-	background-color: #bfa487;
-}
 
-input {
-	position: relative;
-	width: 80%;
-	height: 70px;
-	left: 150px;
 }
 
 /************************************************************************************/
@@ -71,23 +46,15 @@ input {
 	cursor: pointer;
 	border-radius: 20px;
 }
-
-
 /************************************************************************************/
 /* ZONES */
-.
-.titlezone {
-	display: grid;
-	width: auto;
-	height: auto;
-	grid-template-columns: 10% 90%;
-	grid-template-areas: "back title";
-	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
-	justify-items: center;
-	border-radius: 10px;
-	box-shadow: 3px 3px 3px dimgrey;
 
+.titlezone {
+	background-image: url(https://images.unsplash.com/photo-1451934403379-ffeff84932da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1284&q=80);
+	width: auto;
+	height: 200px;
 }
+
 
 .listingszone {
 	display: grid;
@@ -177,3 +144,63 @@ a.title {
 	color: black;
 	margin-top: 0;
 }
+
+
+/************************************************************************************/
+/* BUTTONS */
+input{
+	padding-left: 10px;
+	width: 70%;
+	height: 70px;
+	font-size: medium;
+	border-radius: 5px;
+	position: relative;
+	float: right;
+}
+.createbutton {
+	background-color:white;
+	display: inline-block;
+	text-decoration: none;
+	height: 44px;
+	font-size: 18px;
+	border-radius: 10px;
+	margin-top: 20px;
+	float: right;
+	margin-right: 10%;
+	position: relative;
+	text-align: center;
+	border-width: medium;
+	font-size: 18px;
+	width: 30%;
+
+}
+
+.backbutton {
+	color:#4F5445;
+	display: inline-block;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	width: 100px;
+	margin-left: 15px;
+	margin-top: 20px;
+	cursor: pointer;
+	border-radius: 20px;
+
+}
+
+.backbutton:hover {
+	opacity: 0.8;
+}
+
+.searchbutton{
+	background-color: white;
+	width: 30%;
+	height: 70px;
+	font-size: 18px;
+	padding-right: 10px;
+	border-radius: 10px;
+	float: left;
+}
+/************************************************************************************/
