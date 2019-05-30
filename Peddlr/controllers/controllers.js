@@ -16,7 +16,6 @@ var showHomepage = function(req, res) {
                 if(!err){
                     if (req.cookies.sessionId.length > 0){
                         User.findOne({sessionId:req.cookies.sessionId},function(err,user){
-                            console.log(user);
                             var results = {title: 'Peddlr', 'listings': listings,
                             'categories': categories, session: req.cookies.sessionId, name: user.fname};
                             res.render('homepage', results);
