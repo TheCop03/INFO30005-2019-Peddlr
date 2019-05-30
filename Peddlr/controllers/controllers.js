@@ -33,17 +33,12 @@ var showSignUp = function(req, res) {
 };
 
 var showSettings = function(req, res) {
-    var results = {title: 'Peddlr'};
+    var results = {title: 'Peddlr', session: req.cookies.sessionId};
     res.render('settings', results);
 };
 var showPrivacy = function(req, res) {
-    var results = {title: 'Peddlr'};
+    var results = {title: 'Peddlr', session: req.cookies.sessionId};
     res.render('privacy.pug', results);
-};
-
-var showAboutUs = function(req, res) {
-    var results = {title: 'Peddlr'};
-    res.render('aboutus', results);
 };
 
 var showLogin = function(req, res) {
@@ -251,20 +246,6 @@ var createUser = function(req,res){
 };
 
 
-//find user by searching full first and last name
-var findUserByName = function(req, res){
-    var userFName = req.params.fname;
-    var userLName = req.params.lname;
-    User.find({fname:userFName, lname: userLName},function(err,results){
-        if(!err){
-            res.send(results);
-        }else{
-            res.sendStatus(404);
-        }
-    });
-};
-
-
 var deleteListing = function(req,res){
     console.log(req.body);
     var listingID = req.body.listing_id;
@@ -284,11 +265,9 @@ module.exports = {
     deleteListing,
     findListingByName,
     showListingsByCategory,
-    findUserByName,
     createUser,
     showHomepage,
     showSignUp,
-    showAboutUs,
     showLogin,
     loginUser,
     showListingByID,

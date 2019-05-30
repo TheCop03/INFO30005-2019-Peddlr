@@ -48,14 +48,32 @@ router.get('/signup', function(req, res, next){
 //show the login up page
 router.get('/login', controller.showLogin);
 
-//show the about us page
-router.get('/aboutus', controller.showAboutUs);
-
 //show the settings page
-router.get('/settings', controller.showSettings);
+router.get('/settings/general', function(req, res){
+    if (req.cookies.sessionId) {
+        controller.showSettings(req, res);
+    } else {
+        res.redirect('/login');
+    }
+});
 
 //show the security settings page
-router.get('/privacy', controller.showPrivacy);
+router.get('/settings/security', function(req, res){
+    if (req.cookies.sessionId) {
+        controller.showPrivacy(req, res);
+    } else {
+        res.redirect('/login');
+    }
+});
+
+//redirect settings to general settings
+router.get('/settings', function(req, res){
+    if (req.cookies.sessionId) {
+        res.redirect('/settings/general');
+    } else {
+        res.redirect('/login');
+    }
+});
 
 //show the create listing page
 router.get('/newListing', function(req, res, next){
