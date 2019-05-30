@@ -69,6 +69,9 @@ router.post('/newListing', controller.createListing);
 //delete a listing
 router.post('/deleteListing', controller.deleteListing);
 
+// Update the details of a listing
+router.post('/updateListing', controller.updateListing);
+
 //login a user
 router.post('/login', controller.loginUser);
 

@@ -31,10 +31,10 @@ block content
     div.latestlistingszone
 
             each listing in listings
-                .card(style='width: 15rem; height: 25rem;')
+                .card(style='width: 15rem; height: fit-content;')
                     .d-flex
                         a(href = `./listing/id/${listing._id}`)
-                            img.card-img-top.image-custom(src=listing.photo)
+                            img.card-img-top.image-custom(src=listing.photo, style="width:14rem;height:15rem;")
                             .card-body.flex-fill
                                 h5.card-title #{listing.title}
                                 p.card-text.listingprice $#{listing.price} #{listing.interval}
