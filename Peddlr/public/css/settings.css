@@ -11,18 +11,10 @@ body {
 .settingszone {
     margin-left: 80px;
     margin-right: 80px;
-
 }
 
 /************************************************************************************/
 /* FONTS */
-h1 {
-    float: left;
-    padding-left: 20px;
-    padding-top: 5px;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-}
 
 p {
     font-size: 14px !important;
