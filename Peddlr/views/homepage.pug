@@ -12,10 +12,12 @@ block content
             spantitle Let's Peddle
 
         a(href='./newlisting')
-            button.createbutton.btn.btn-light(type='submit') + Create listing
-        input(type='text', placeholder='   I am looking for...', name='search')
-        a(href="/search")
-            button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
+            button.createbutton(type='submit') + Create listing
+
+        form(method = 'GET', action = '/search', autocomplete='off')
+            input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
+            datalist#datalist
+            button.searchbutton(type='submit') Search
             i.fa.fa-search
 
     h3 Featured Categories:
@@ -55,5 +57,34 @@ block content
 
         function getlistings () {
             listings.collection.find({ '_id': 10 }).sort({_id: -1}).limit(10, function (e, d) {})
+
+        }
+        document.getElementById("searchbar").addEventListener('keyup', () => {
+            autocomplete(document.getElementById("searchbar").value);
+        });
+
+        function autocomplete(value) {
+            if (value == "") {
+                document.getElementById("datalist").innerHTML = "";
+                return;
+            }
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var result = JSON.parse(xhttp.responseText);
+                    document.getElementById("datalist").innerHTML = "";
+                    for (var i = 0; i < result.length; i++) {
+                        var node = document.createElement("option");
+                        var val = document.createTextNode(result[i].title);
+                        node.appendChild(val);
+                        document.getElementById("datalist").appendChild(node);
+                    }
+                }
+            };
+
+            xhttp.open("GET", "/searchlistings/" + value, true);
+            xhttp.send();
+
 
         }

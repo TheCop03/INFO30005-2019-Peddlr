@@ -20,6 +20,10 @@ var showHomepage = function(req, res) {
                             'categories': categories, session: req.cookies.sessionId, name: user.fname};
                             res.render('homepage', results);
                         })
+                    } else {
+                        var results = {title: 'Peddlr', 'listings': listings,
+                            'categories': categories};
+                        res.render('homepage', results);
                     }
 
                 }else{
@@ -130,7 +134,6 @@ var loginUser = function(req, res) {
 
 //create a new listing
 var createListing = function(req,res){
-    //console.log(req.body)
 
     var listing = new Listing({
         "title":req.body.title,
@@ -163,7 +166,6 @@ var createListing = function(req,res){
             res.sendStatus(400);
         }
     });
-    //console.log(req.file);
 };
 
 
@@ -353,6 +355,31 @@ var updateListing = function(req, res){
     });
 }
 
+var searchListing = function(req, res) {
+    var input = req.params.input;
+    var regex = new RegExp(input, 'i');
+    Listing.find({"title": regex}, function(err, listings) {
+        if(!err){
+            res.json(listings);
+        }else{
+            res.sendStatus(404);
+        }
+    });
+};
+
+var search = function(req, res) {
+    var input = req.param('input');
+    var regex = new RegExp(input, 'i');
+    Listing.find({"title": regex}, function(err, listings) {
+        var results = {title: 'Peddlr', category: 'Search Results', 'listings': listings}
+        if (!err) {
+            res.render('category', results);
+        } else {
+            res.sendStatus(404);
+        }
+    });
+}
+
 module.exports = {
     createListing,
     deleteListing,
@@ -370,5 +397,7 @@ module.exports = {
     showListingsByUser,
     showPrivacy,
     editUser,
-    editPassword
+    editPassword,
+    searchListing,
+    search
 };
