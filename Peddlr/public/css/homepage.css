@@ -16,25 +16,7 @@ nav {
 	height: 70px;
 }
 
-h1 {
-	float: left;
-	padding-left: 20px;
-	padding-top: 5px;
-	color: white;
-	font-family: 'Montserrat', sans-serif;
-}
 
-spantitle {
-	grid-area: h2;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bolder;
-	font-size: 60px;
-	color: white;
-
-	display: inline-block;
-	vertical-align: middle;
-	line-height: 150px;
-}
 
 h3 {
 	padding-left: 20px;

@@ -26,12 +26,6 @@ header {
 	background-repeat: repeat;
 }
 
-h1 {
-	float: left;
-	padding-left: 20px;
-	color: white;
-	font-family: 'Montserrat', sans-serif;
-}
 
 h2 {
 	grid-area: title;
