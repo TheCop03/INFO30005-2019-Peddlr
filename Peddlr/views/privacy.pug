@@ -11,16 +11,16 @@ block content
         .row
             .col-3.vertical-menu
                 span.border-left
-                h1.display-4 Settings
-                a(href='/settings') General
-                a.active(href='/privacy') Security and Login
+                h2.display-4 Settings
+                a(href='/settings/general') General
+                a.active(href='#') Security and Login
                 a(href='#') Delete Account
 
             .col-9
                 .row
                     h2 Privacy details
                 hr
-                form(method='POST' action='./updateAccount')
+                form(method='POST' action='/settings/security/update')
                     .row
                         h5 Password
                     .row

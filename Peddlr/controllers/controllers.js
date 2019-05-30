@@ -245,6 +245,57 @@ var createUser = function(req,res){
     });
 };
 
+var editUser = function(req, res){
+    User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
+        if (!err && user) {
+            if (req.body.fname.length > 0) {user.fname = req.body.fname;}
+            if (req.body.lname.length > 0) {user.lname = req.body.lname;}
+            if (req.body.email.length > 0) {user.email = req.body.email;}
+            if (req.body.address.length > 0) {
+                user.address = req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country);
+            }
+            user.save(function(err, updatedUser) {
+                if (updatedUser) {
+                    let message = "Your account has been updated.";
+                    let results = {title: 'Peddlr', error: message}
+                    res.render('settings', results);
+                } else {
+                    res.sendStatus(500);
+                }
+            });
+        } else {
+            res.cookie('sessionId', '');
+            res.redirect('/login')
+        }
+    });
+};
+
+var editPassword = function(req, res){
+    User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
+        if (req.body.password.length < 8) {
+            let message = "Your password must be at least 8 characters.";
+            let results = {title: 'Peddlr', error: message}
+            res.render('privacy', results);
+        }
+        else if (!err && user) {
+            bcrypt.hash(req.body.password, saltRounds, function(hasherr, hash) {
+                user.password = hash;
+                user.save(function(err, updatedUser) {
+                    if (updatedUser) {
+                        let message = "Your account has been updated.";
+                        let results = {title: 'Peddlr', error: message}
+                        res.render('privacy', results);
+                    } else {
+                        res.sendStatus(500);
+                    }
+                });
+            });
+        } else {
+            res.cookie('sessionId', '');
+            res.redirect('/login')
+        }
+    });
+};
 
 var deleteListing = function(req,res){
     console.log(req.body);
@@ -274,5 +325,7 @@ module.exports = {
     showCreateListing,
     showSettings,
     showListingsByUser,
-    showPrivacy
+    showPrivacy,
+    editUser,
+    editPassword
 };
