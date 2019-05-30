@@ -57,6 +57,24 @@ router.get('/settings/general', function(req, res){
     }
 });
 
+//update general settings
+router.post('/settings/general/update', function(req, res){
+    if (req.cookies.sessionId) {
+        controller.editUser(req, res);
+    } else {
+        res.redirect('/login');
+    }
+});
+
+//update security settings
+router.post('/settings/security/update', function(req, res){
+    if (req.cookies.sessionId) {
+        controller.editPassword(req, res);
+    } else {
+        res.redirect('/login');
+    }
+});
+
 //show the security settings page
 router.get('/settings/security', function(req, res){
     if (req.cookies.sessionId) {

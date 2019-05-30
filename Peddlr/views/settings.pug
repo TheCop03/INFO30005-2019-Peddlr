@@ -17,7 +17,7 @@ block content
                 .row
                     h2 Personal details
                 hr
-                form(method='POST' action='./updateAccount')
+                form(method='POST' action='/settings/general/update')
                     .row
                         h5 Name
                     .row
@@ -57,10 +57,14 @@ block content
                                 select#country(type='text', placeholder='Country' name='country')
                                     option Australia
                     .row
-                        button#submit.pagebutton(type='submit') Update
+                        button#submit.pagebutton(type='submit', ) Update
 
                         if (success)
-                            .alert.alert-info
-                                strong Info!
-                                |  Update successful.
+                            successMsg()
+
+                    script.
+                        function successMsg() {
+                            alert("Update Successful");
+                        }
+
 
