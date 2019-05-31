@@ -117,9 +117,16 @@ input, select{
 #photo {
     position: relative;
     font-size: 15px;
-    height: 100px;
+    height: 50px;
     left: 3%;
-
+    vertical-align: middle;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    margin: 3px 2px;
+    cursor: pointer;
 }
 
 #preview{
@@ -189,19 +196,6 @@ input, select{
     transition: border-color 0.3s ease-in-out;
     border-color: darkcyan;
     border-width: medium;
-}
-
-
-input[type=file]{
-    background-color: #4CAF50;
-    max-height: 20px;
-    border: none;
-    color: white;
-    padding: 20px 32px;
-    text-decoration: none;
-    margin: 3px 2px;
-    cursor: pointer;
-    text-align: center;
 }
 
 .backbutton {

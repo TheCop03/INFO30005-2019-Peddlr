@@ -56,7 +56,7 @@ var showPrivacy = function(req, res) {
 };
 
 var showDeleteUser = function(req, res) {
-    var results = {title: 'Peddlr', error: ''};
+    var results = {title: 'Peddlr', error: '', session: req.cookies.sessionId};
     res.render('deleteAccount', results)
 }
 
@@ -68,7 +68,8 @@ var showLogin = function(req, res) {
 var showCreateListing = function(req, res) {
     Category.find(function(err,categories){
         if(!err){
-            var results = {title: 'Peddlr', 'categories': categories};
+            var results = {title: 'Peddlr', 'categories': categories,
+             session: req.cookies.sessionId};
             res.render('newlisting', results);
         }else{
             res.sendStatus(404);
@@ -216,7 +217,7 @@ var showListingsByUser = function(req, res) {
             Listing.find({owner:user[0]._id}, function(err, listings){
                 if (!err){
                     var results = {title: 'Peddlr', category: 'My Listings',
-                     'listings': listings, 'user': user[0]._id};
+                     'listings': listings, 'user': user[0]._id, session: sid};
                     res.render('category', results);
                 } else {
                     res.sendStatus(400);
@@ -290,7 +291,8 @@ var editUser = function(req, res){
             user.save(function(err, updatedUser) {
                 if (updatedUser) {
                     let message = "Your account has been updated.";
-                    let results = {title: 'Peddlr', error: message}
+                    let results = {title: 'Peddlr', error: message,
+                     user: updatedUser, session: req.cookies.sessionId};
                     res.render('settings', results);
                 } else {
                     res.sendStatus(500);
@@ -312,7 +314,7 @@ var deleteUser = function(req, res){
         if(!err){
             if (user.length != 1) {
                 var message = "Wrong credentials. Please try again.";
-                var results = {title: 'Peddlr', error: message}
+                var results = {title: 'Peddlr', error: message, session: sid}
                 res.render('deleteAccount', results);
             } else {
                 bcrypt.compare(pw, user[0].password, function (err, same){
@@ -327,7 +329,8 @@ var deleteUser = function(req, res){
                         res.redirect('/logout');
                     } else {
                         var message = "Wrong credentials. Please try again.";
-                        var results = {title: 'Peddlr', error: message}
+                        var results = {title: 'Peddlr', error: message,
+                         session: sid}
                         res.render('deleteAccount', results);
                     }
                 });
@@ -340,10 +343,11 @@ var deleteUser = function(req, res){
 }
 
 var editPassword = function(req, res){
-    User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
+    var sid = req.cookies.sessionId
+    User.findOne({sessionId: sid}, function(err, user) {
         if (req.body.password.length < 8) {
             let message = "Your password must be at least 8 characters.";
-            let results = {title: 'Peddlr', error: message}
+            let results = {title: 'Peddlr', error: message, session: sid}
             res.render('privacy', results);
         }
         else if (!err && user) {
@@ -352,7 +356,8 @@ var editPassword = function(req, res){
                 user.save(function(err, updatedUser) {
                     if (updatedUser) {
                         let message = "Your account has been updated.";
-                        let results = {title: 'Peddlr', error: message}
+                        let results = {title: 'Peddlr', error: message,
+                         session: sid}
                         res.render('privacy', results);
                     } else {
                         res.sendStatus(500);
@@ -439,7 +444,8 @@ var search = function(req, res) {
     var input = req.param('input');
     var regex = new RegExp(input, 'i');
     Listing.find({"title": regex}, function(err, listings) {
-        var results = {title: 'Peddlr', category: 'Search Results', 'listings': listings}
+        var results = {title: 'Peddlr', category: 'Search Results',
+         'listings': listings, session: req.cookies.sessionId}
         if (!err) {
             res.render('category', results);
         } else {
