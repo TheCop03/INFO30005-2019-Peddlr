@@ -8,38 +8,19 @@ body {
     background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 .headerzone {
-    margin: 5px 10px 0 10px;
-    border-radius: 10px;
     background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
     background-position: 30%;
     height: 100%;
     background-repeat: repeat;
 }
-.footer {
-    position: absolute;
-    bottom: 0px;
-    background-color: #125358;
-}
 /************************************************************************************/
 /* TITLES */
-header {
-    background-color: #125358;
-    border-radius:10px;
-    box-shadow: 3px 3px 3px dimgrey;
-    padding-right: 20px;
-    color: white;
-}
 
 h2 {
-    text-align: center;
-    color: white;
     font-size: 50px;
     font-weight: bold;
-    position: relative;
     bottom: 25px;
 }
-
-
 /************************************************************************************/
 /* FORM */
 .createlistingzone{

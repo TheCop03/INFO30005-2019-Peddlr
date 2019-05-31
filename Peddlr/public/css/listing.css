@@ -8,81 +8,45 @@ body{
 	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 
-header {
-	background-color: #125358;
-	padding-right: 20px;
+#dropdownMenuLink {
+    height: 70px;
+    font-size: 18px;
+    padding-right: 10px;
+    border-radius: 10px;
+    float:right;
+    background-color: white;
+    width: 30%;
 }
 /************************************************************************************/
 /* FONTS */
 
-h1 {
-	float: left;
-	padding-left: 20px;
-	color: white;
-	font-family: 'Montserrat', sans-serif;
+
+h2{
+    position: relative;
+    top: unset;
+    text-align: unset;
+    bottom: 15px;
+    font-weight: bold;
+    color: black;
 }
 
-.title{
-    position: relative;
-    bottom: 20px;
+p {
+    color: dimgrey;
 }
 /************************************************************************************/
 /* ZONES */
-.searchzone {
-    width: auto;
-    height: 200px;
-    background-color:dimgrey ;
-
-}
 
 .listingzone {
     margin: 20px 80px 0 80px;
+    padding-top: 0;
 
 }
-
-input{
-    padding-left: 10px;
-    width: 70%;
-    height: 70px;
-    font-size: medium;
-    border-radius: 5px;
-    position: relative;
-    float: right;
+.breadzone {
+    padding-left: 8%;
+    padding-top: 8px;
 }
-
 /************************************************************************************/
-/* BUTTONS */
-.createbutton {
-    background-color:white;
-    display: inline-block;
-    text-decoration: none;
-    height: 44px;
-    font-size: 18px;
-    border-radius: 10px;
-    margin-top: 20px;
-    float: right;
-    margin-right: 10%;
-    position: relative;
-    text-align: center;
-    border-width: medium;
-    font-size: 18px;
-    width: 30%;
 
-}
-
-.backbutton {
-    color: #4F5445;
-    display: inline-block;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    width: 100px;
-    margin-left: 15px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 20px;
-}
 
 .modal-content {
 	position: relative;
@@ -124,6 +88,7 @@ input{
 
 .details {
     font-size: 20px;
+    color: black;
 }
 /************************************************************************************/
 /* MAIN */

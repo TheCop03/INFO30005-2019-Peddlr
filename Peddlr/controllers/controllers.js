@@ -56,7 +56,7 @@ var showPrivacy = function(req, res) {
 };
 
 var showDeleteUser = function(req, res) {
-    var results = {title: 'Peddlr', error: ''};
+    var results = {title: 'Peddlr', session: req.cookies.sessionId, error: ''};
     res.render('deleteAccount', results)
 }
 
@@ -76,7 +76,7 @@ var showCreateListing = function(req, res) {
     });
 };
 
-const showListingByID = function(req, res) {
+var showListingByID = function(req, res) {
     var ID = req.params.id;
     Listing.findById(ID, function(err, listing) {
         if(!err){

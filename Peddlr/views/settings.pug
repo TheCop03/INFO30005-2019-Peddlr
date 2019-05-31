@@ -4,6 +4,8 @@ block css
     style
         include ../public/css/settings.css
         include ../public/css/header.css
+        include ../public/css/fonts.css
+
 block content
     .jumbotron.settingszone
         .row
@@ -57,10 +59,7 @@ block content
                                 select#country(type='text', placeholder='Country' name='country', value=user.address.split(", ")[2])
                                     option Australia
                     .row
-                        button#submit.pagebutton(type='submit', ) Update
-
-                        if (success)
-                            successMsg()
+                        button#submit.pagebutton(type='submit', onClick = "successMsg()" ) Update
 
                     script.
                         function successMsg() {
