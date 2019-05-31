@@ -9,7 +9,6 @@ block css
 block content
     div.searchzone
         .row
-
             .col-6
                 h2 #{category}
             .col-6
@@ -28,9 +27,9 @@ block content
     div.listingszone
         each listing in listings
             div.listing
-                a.photo(href = `/listing/id/${listing._id}`)
+                a.photo(href = `/listing/view/${listing._id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
-                a.title(href = `/listing/id/${listing._id}`)
+                a.title(href = `/listing/view/${listing._id}`)
                     p.listingtitle #{listing.title}
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
@@ -61,9 +60,9 @@ block content
                 }
             };
             if("#{category}" == "My Listings") {
-                xhttp.open("GET", "/searchlistingbyuser/" + value + "/" + "#{user}", true);
+                xhttp.open("GET", "/search/userlist/" + value + "/" + "#{user}", true);
             } else {
-                xhttp.open("GET", "/searchlistingbycategory/" + value + "/" + "#{categoryID}", true);
+                xhttp.open("GET", "/search/categorylist/" + value + "/" + "#{categoryID}", true);
             }
             xhttp.send();
         }

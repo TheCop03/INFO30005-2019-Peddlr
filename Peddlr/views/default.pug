@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title #{title}
+        title Peddlr
         block css
         link(href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet")
         link(rel="stylesheet",href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
@@ -9,7 +9,7 @@ html
 
     header
         nav.navbar.navbar-expand-lg.navbar-light
-            a.navbar-brand.active(href='/homepage')
+            a.navbar-brand.active(href='/')
                 h1 Peddlr
                 span.sr-only (current)
 
@@ -19,7 +19,7 @@ html
                 ul.navbar-nav
                     if (session)
                         li.nav-item
-                            a.nav-link(href='/myListings') My Listings
+                            a.nav-link(href='/listing/me') My Listings
                         li.nav-item.dropdown
                             a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                                 | Account
