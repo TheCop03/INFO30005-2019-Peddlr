@@ -57,10 +57,7 @@ block content
                                 select#country(type='text', placeholder='Country' name='country')
                                     option Australia
                     .row
-                        button#submit.pagebutton(type='submit', ) Update
-
-                        if (success)
-                            successMsg()
+                        button#submit.pagebutton(type='submit', onClick = "successMsg()" ) Update
 
                     script.
                         function successMsg() {
