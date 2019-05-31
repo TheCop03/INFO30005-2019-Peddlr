@@ -11,7 +11,7 @@ block content
                 h2.display-4 Settings
                 a.active(href='#') General
                 a(href='/settings/security') Security and Login
-                a(href='#') Delete Account
+                a(href='/settings/delete') Delete Account
 
             .col-9
                 .row
@@ -26,35 +26,35 @@ block content
                         div.form-group
                             .row
                                 p First name
-                                input(type='text', name='fname')
+                                input(type='text', name='fname', value=user.fname)
                             .row
                                 p Last name
-                                input(type='text', name='lname')
+                                input(type='text', name='lname', value=user.lname)
 
                     .row
                         h5 Email
                     .row
                         div.form-group
                             .row
-                                p New Email Address
-                                input(type='email', name='email')
+                                p Email Address
+                                input(type='email', name='email', value=user.email)
                     .row
                         h5 Address
                     .row
                         div.form-group
                             .row
-                                p New Home Address
-                                input#address(type='text', placeholder='Address' name='address')
+                                p Home Address
+                                input#address(type='text', placeholder='Address' name='address', value=user.address.split(", ")[0])
 
-                                select#state(type='text', placeholder='State' name='state')
+                                select#state(type='text', placeholder='State' name='state', value=user.address.split(" ")[3])
                                     option NSW
                                     option QLD
                                     option SA
                                     option TAS
                                     option VIC
                                     option WA
-                                input#zip(type='text', placeholder='Zip Code' name='zip')
-                                select#country(type='text', placeholder='Country' name='country')
+                                input#zip(type='text', placeholder='Zip Code' name='zip', value=user.address.split(" ")[4].slice(0, -1))
+                                select#country(type='text', placeholder='Country' name='country', value=user.address.split(", ")[2])
                                     option Australia
                     .row
                         button#submit.pagebutton(type='submit', ) Update
@@ -66,4 +66,3 @@ block content
                         function successMsg() {
                             alert("Update Successful");
                         }
-

@@ -14,7 +14,7 @@ var showHomepage = function(req, res) {
             //find all the listings
             Listing.find({}, function(err,listings){
                 if(!err){
-                    if (req.cookies.sessionId && req.cookies.sessionId.length > 0){
+                    if (req.cookies.sessionId){
                         User.findOne({sessionId:req.cookies.sessionId},function(err,user){
                             var results = {title: 'Peddlr', 'listings': listings,
                             'categories': categories, session: req.cookies.sessionId, name: user.fname};
@@ -42,13 +42,23 @@ var showSignUp = function(req, res) {
 };
 
 var showSettings = function(req, res) {
-    var results = {title: 'Peddlr', session: req.cookies.sessionId};
-    res.render('settings', results);
+    var sid = req.cookies.sessionId;
+    User.findOne({sessionId: sid}, function(err, user){
+        if (!err){
+            var results = {title: 'Peddlr', session: sid, user: user};
+            res.render('settings', results);
+        }
+    });
 };
 var showPrivacy = function(req, res) {
     var results = {title: 'Peddlr', session: req.cookies.sessionId};
     res.render('privacy.pug', results);
 };
+
+var showDeleteUser = function(req, res) {
+    var results = {title: 'Peddlr', error: ''};
+    res.render('deleteAccount', results)
+}
 
 var showLogin = function(req, res) {
     var results = {title: 'Peddlr', error: ""};
@@ -78,7 +88,7 @@ const showListingByID = function(req, res) {
                         Category.find({}, function(err, categories){
                             if (!err){
                                 var results = {listing: listing, owner: owner,
-                                     user: currUser[0], categories: categories};
+                                     user: currUser[0], categories: categories, session: sid};
                                 res.render('listing', results);
                             } else {
                                 res.sendStatus(400);
@@ -105,9 +115,9 @@ var loginUser = function(req, res) {
     User.find({email:username},function(err,user){
         if(!err){
             if (user.length != 1) {
-                //No user found (or double account error)
-                // just say wrong user/pass
-                res.sendStatus(401);
+                var message = "Wrong credentials. Please try again.";
+                var results = {title: 'Peddlr', error: message}
+                res.render('login', results);
             } else {
                 bcrypt.compare(password, user[0].password, function (err, same){
                     if (same) {
@@ -155,7 +165,7 @@ var createListing = function(req,res){
             listing.owner = user[0]._id;
             listing.save(function(err, newListing){
                 if (!err){
-                    user[0].listings.push(listing.id);
+                    user[0].listings.push(listing._id);
                     user[0].save();
                     res.redirect('/homepage');
                 } else {
@@ -293,6 +303,42 @@ var editUser = function(req, res){
     });
 };
 
+var deleteUser = function(req, res){
+    var sid = req.cookies.sessionId;
+    var username = req.body.username;
+    var pw = req.body.password;
+
+    User.find({email: username}, function(err, user){
+        if(!err){
+            if (user.length != 1) {
+                var message = "Wrong credentials. Please try again.";
+                var results = {title: 'Peddlr', error: message}
+                res.render('deleteAccount', results);
+            } else {
+                bcrypt.compare(pw, user[0].password, function (err, same){
+                    if (same) {
+                        user[0].listings.forEach(function(element){
+                            console.log(element);
+                            Listing.findById(element, function(err, listing){
+                                listing.remove();
+                            });
+                        });
+                        user[0].remove();
+                        res.redirect('/logout');
+                    } else {
+                        var message = "Wrong credentials. Please try again.";
+                        var results = {title: 'Peddlr', error: message}
+                        res.render('deleteAccount', results);
+                    }
+                });
+            }
+        }else{
+            // Redirect back to login with server error bubble
+            res.sendStatus(500);
+        }
+    });
+}
+
 var editPassword = function(req, res){
     User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
         if (req.body.password.length < 8) {
@@ -322,11 +368,33 @@ var editPassword = function(req, res){
 
 var deleteListing = function(req,res){
     var listingID = req.body.listing_id;
-    Listing.deleteOne({_id: listingID}, function(err, results) {
-        if (!err) {
-            res.redirect("/mylistings")
+    Listing.findById(listingID, function(err, listing){
+        if (!err){
+            User.findById(listing.owner, function(err, user){
+                if (user.sessionId != req.cookies.sessionId){
+                    res.sendStatus(401);
+                } else if (!err && user){
+                    var delIndex = user.listings.indexOf(listingID);
+                    var removed = user.listings.splice(delIndex, 1);
+                    user.save(function(err, updatedUser){
+                        if (updatedUser){
+                            Listing.deleteOne({_id: listingID}, function(err, results) {
+                                if (!err) {
+                                    res.redirect("/mylistings")
+                                } else {
+                                    res.sendStatus(500);
+                                }
+                            });
+                        } else {
+                            res.sendStatus(500);
+                        }
+                    });
+                } else {
+                    res.sendStatus(500);
+                }
+            });
         } else {
-            res.sendStatus(404);
+            res.sendStatus(500);
         }
     });
 };
@@ -387,6 +455,7 @@ module.exports = {
     findListingByName,
     showListingsByCategory,
     createUser,
+    deleteUser,
     showHomepage,
     showSignUp,
     showLogin,
@@ -396,6 +465,7 @@ module.exports = {
     showSettings,
     showListingsByUser,
     showPrivacy,
+    showDeleteUser,
     editUser,
     editPassword,
     searchListing,

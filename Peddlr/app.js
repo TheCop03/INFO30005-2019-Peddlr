@@ -21,11 +21,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-bodyParser = {
-  json: {limit: '50mb', extended: true},
-  urlencoded: {limit: '50mb', extended: true}
-};
-
 // Database setup
 require('./models/db.js');
 

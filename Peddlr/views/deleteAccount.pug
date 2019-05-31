@@ -11,15 +11,28 @@ block content
         .row
             .col-3.vertical-menu
                 span.border-left
-                h1.display-4 Settings
-                a(href='/settings') General
-                a.active(href='/privacy') Security and Login
-                a(href='#') Delete Account
+                h2.display-4 Settings
+                a(href='/settings/general') General
+                a(href='/settings/security') Security and Login
+                a.active(href='#') Delete Account
 
             .col-9
                 .row
-                    h2 Privacy details
+                    h2 Delete Account
                 hr
-                form(method='POST' action='./updateAccount')
+                form(method='POST' action='/settings/delete')
                     .row
-                        h5 Password
+                        h5 Please enter your username and password to confirm
+                    .row
+                        div.form-group
+                            .row
+                                p Username
+                                input#username(type='text', name='username', autocomplete='new-text', placeholder='Username' required)
+                            .row
+                                p Password
+                                input#pw(type='password', name='password', autocomplete='new-password', placeholder='Password', required)
+                    if (error)
+                        .row
+                            p #{error}
+                    .row
+                        button#deletebtn.pagebutton(type='submit') Delete Account

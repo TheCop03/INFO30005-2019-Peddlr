@@ -10,66 +10,112 @@ block content
         meta(property='og:description', content="Be apart of the neighbourhood!")
         meta(property='og:site_name', content='Peddlr')
 
-    //div.content-box
-        div.titlebox
-            p.title #{listing.title}
-            div.details
-                p.price $ #{listing.price} #{listing.interval}
-                p.location
-                    |#{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
-                    |#{owner.address.substring(owner.address.indexOf(",") + 12)}
-        if (owner._id.equals(user._id))
-            div.deleteBox
-                button#deleteListing Delete
-            div.editBox
-                button#editListing Edit
+    div.searchzone
+        .row
+            .col-6
+                a(href = '/homepage')
+                    button.backbutton(type = 'submit') Back
+            .col-6
+                a(href='./newlisting')
+                    button.createbutton.btn.btn-light(type='submit') + Create listing
+        .row
+            .col-8
+                input(type='text', placeholder='   I am looking for...', name='search')
+            .col-4
+                a(href="/search")
+                    button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
+                    i.fa.fa-search
 
-            div#confirmationModal.modal
-                div.modal-content
-                    p#confirmMessage Are you sure you want to delete the listing?
-                    div.buttons
-                        form(action='/deleteListing', method='post')
-                            input(type='hidden', name='listing_id', value=listing._id)
-                            button#confirm.confirm(type='submit') Yes
-                        button#cancelDelete.cancel No
+    .jumbotron.listingzone
+        .row
+            .col-9
+                h2.title #{listing.title}
+            .col-3
+                a(href = './ bookmark')
+                    button.btn.btn-light(type = 'submit') Bookmark
 
-            div#editModal.modal
-                div.modal-content
-                    p Update your Listing: #{listing.title}
-                    div.updateForm
-                        form(method='POST' action='/updateListing')
-                            div.form-group
-                                p.fieldtitle Item:
-                                input#title(type='text', placeholder=' Title', name='title',
-                                 maxlength='50', value=listing.title, required)
-                            div.form-group
-                                p.fieldtitle Category:
-                                select#category(type = 'text', name = 'category', value=listing.category, required)
-                                    each category in categories
-                                        option(value=`${category._id}`) #{category.title}
-                            div.form-group
-                                p.fieldtitle Price:
-                                input#price(type = 'number', placeholder='$0', name = 'price', value=listing.price, required)
-                                select#interval(type='text', placeholder='per...', name= 'interval', value=listing.interval, required)
-                                    option per day
-                                    option per week
-                                    option per month
-                                    option per year
-                            div.form-group
-                                p.fieldtitle Description:
-                                p.example e.g "Authentic oak wood patio table. Suitable for parties"
-                                input#description(type = 'text', placeholder=' Description',
-                                 name = 'description', maxlength='250', value=listing.description)
+                if (session && owner._id.equals(user._id))
+                    div.deleteBox
+                        button.btn.btn-light#deleteListing Delete
+                    div.editBox
+                        button.btn.btn-light#editListing Edit
+
+                    div#confirmationModal.modal
+                        div.modal-content
+                            p#confirmMessage Are you sure you want to delete the listing?
                             div.buttons
-                                input(type='hidden', name='listing_id', value=listing._id)
-                                button#updatebutton.confirm(type='submit') Update Listing
-                        button#cancelEdit.cancel Cancel
-                
-        div.imagebox
-            img.listingphoto(src=listing.photo alt=listing.title)
-        div.descriptionbox
-            p.desc_title Description:
-            p.description #{listing.description}
+                                form(action='/listing/delete', method='post')
+                                    input(type='hidden', name='listing_id', value=listing._id)
+                                    button#confirm.confirm(type='submit') Yes
+                                button#cancelDelete.cancel No
+
+                    div#editModal.modal
+                        div.modal-content
+                            p Update your Listing: #{listing.title}
+                            div.updateForm
+                                form(method='POST' action='/listing/update')
+                                    div.form-group
+                                        p.fieldtitle Item:
+                                        input#title(type='text', placeholder=' Title', name='title',
+                                         maxlength='50', value=listing.title, required)
+                                    div.form-group
+                                        p.fieldtitle Category:
+                                        select#category(type = 'text', name = 'category', value=listing.category, required)
+                                            each category in categories
+                                                option(value=`${category._id}`) #{category.title}
+                                    div.form-group
+                                        p.fieldtitle Price:
+                                        input#price(type = 'number', placeholder='$0', name = 'price', value=listing.price, required)
+                                        select#interval(type='text', placeholder='per...', name= 'interval', value=listing.interval, required)
+                                            option per day
+                                            option per week
+                                            option per month
+                                            option per year
+                                    div.form-group
+                                        p.fieldtitle Description:
+                                        p.example e.g "Authentic oak wood patio table. Suitable for parties"
+                                        input#description(type = 'text', placeholder=' Description',
+                                         name = 'description', maxlength='250', value=listing.description)
+                                    div.buttons
+                                        input(type='hidden', name='listing_id', value=listing._id)
+                                        button#updatebutton.confirm(type='submit') Update Listing
+                                button#cancelEdit.cancel Cancel
+
+        .row
+            .col-9
+                .row.imagebox
+                    img.listingphoto(src=listing.photo alt=listing.title)
+                .row.descriptionbox
+                    p.details(style = "font-weight: bold") Description:
+                .row
+                    p.description #{listing.description}
+
+
+            .col-3
+                ul.list-group
+                    li.list-group-item
+                        p.details(style = "font-weight: bold") Location:
+                            p.details
+                                | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
+                                | #{owner.address.substring(owner.address.indexOf(",") + 12)}
+                    if (session)
+                        li.list-group-item
+                            p.details(style = "font-weight: bold") Owner:
+                                p.details
+                                    | #{owner.fname.substring(owner.fname)}
+                                    | #{owner.lname.substring(owner.lname)}
+                        li.list-group-item
+                            p.details(style = "font-weight: bold") Contact:
+                                p.details
+                                   // | #{owner.phoneNumber.count(owner.phoneNumber)}
+                                   // | #{owner.phoneNumber.count(owner.phoneNumber)}
+                        li.list-group-item
+                            p.details(style = "font-weight: bold") Email:
+                                p.details
+                                    | #{owner.email}
+                    else                       
+                        li.list-group-item
+                            p.details(style = "font-weight: bold") Please log in to get owner information
 
 
         script.
@@ -102,84 +148,4 @@ block content
             
             cancelEditbtn.onclick = function(){
                 editmodal.style.display = "none";
-            }
-    div.searchzone
-        .row
-            .col-6
-                a(href = './homepage')
-                    button.backbutton(type = 'submit') Back
-            .col-6
-                a(href='./newlisting')
-                    button.createbutton.btn.btn-light(type='submit') + Create listing
-        .row
-            .col-8
-                input(type='text', placeholder='   I am looking for...', name='search')
-            .col-4
-                a(href="/search")
-                    button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
-                    i.fa.fa-search
-
-    .jumbotron.listingzone
-        .row
-            .col-9
-                h2.title #{listing.title}
-            .col-3
-                a(href = './ bookmark')
-                    button.btn.btn-light(type = 'submit') Bookmark
-
-                if (owner._id.equals(user._id))
-                    div.deleteBox
-                        a(href = './deleteListing')
-                            button.btn.btn-light#deleteListing Delete
-
-        .row
-            .col-9
-                .row.imagebox
-                    img.listingphoto(src=listing.photo alt=listing.title)
-                .row.descriptionbox
-                    p.details(style = "font-weight: bold") Description:
-                .row
-                    p.description #{listing.description}
-
-
-            .col-3
-                ul.list-group
-                    li.list-group-item
-                        p.details(style = "font-weight: bold") Location:
-                            p.details
-                                | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
-                                | #{owner.address.substring(owner.address.indexOf(",") + 12)}
-                    li.list-group-item
-                        p.details(style = "font-weight: bold") Owner:
-                            p.details
-                               // | #{owner.fname.substring(owner.fname)}
-                               // | #{owner.lname.substring(owner.lname)}
-                    li.list-group-item
-                        p.details(style = "font-weight: bold") Contact:
-                            p.details
-                               // | #{owner.phoneNumber.count(owner.phoneNumber)}
-                               // | #{owner.phoneNumber.count(owner.phoneNumber)}
-                    li.list-group-item
-                        p.details(style = "font-weight: bold") Email:
-                            p.details
-                                | #{owner.email.substring(owner.email)}
-
-
-        script.
-            var modal = document.getElementById("confirmationModal");
-            var deletebtn = document.getElementById("deleteListing");
-            var cancelbtn = document.getElementById("cancel");
-
-            deletebtn.onclick = function () {
-                modal.style.display = "block";
-            }
-
-            window.onclick = function () {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
-
-            cancelbtn.onclick = function () {
-                modal.style.display = "none";
             }
