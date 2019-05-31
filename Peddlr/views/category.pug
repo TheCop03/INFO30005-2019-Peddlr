@@ -12,17 +12,18 @@ block content
                 a(href = './homepage')
                     button.backbutton(type = 'submit') Back
             .col-4
-                h2 #{category}
+                h2#categorytitle #{category}
             .col-4
                 a(href='./newlisting')
                     button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
-            .col-8
-                input(type='text', placeholder='   I am looking for...', name='search')
             .col-4
-                a(href="/search")
-                    button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
+                form(method = 'GET', action = '/search', autocomplete='off')
+                    input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
+                    datalist#datalist
+                    button.searchbutton(type='submit') Search
                     i.fa.fa-search
+
     div.listingszone
         each listing in listings
             div.listing
@@ -33,3 +34,35 @@ block content
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
                 p.listingdescription #{listing.description}
+
+    script.
+        document.getElementById("searchbar").addEventListener('keyup', () => {
+            autocomplete(document.getElementById("searchbar").value);
+        });
+
+        function autocomplete(value) {
+            if (value == "") {
+                document.getElementById("datalist").innerHTML = "";
+                return;
+            }
+            var xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var result = JSON.parse(xhttp.responseText);
+                    document.getElementById("datalist").innerHTML = "";
+                    for (var i = 0; i < result.length; i++) {
+                        var node = document.createElement("option");
+                        var val = document.createTextNode(result[i].title);
+                        node.appendChild(val);
+                        document.getElementById("datalist").appendChild(node);
+                    }
+                }
+            };
+            if("#{category}" == "My Listings") {
+                xhttp.open("GET", "/searchlistingbyuser/" + value + "/" + "#{user}", true);
+            } else {
+                xhttp.open("GET", "/searchlistingbycategory/" + value + "/" + "#{categoryID}", true);
+            }
+            xhttp.send();
+        }

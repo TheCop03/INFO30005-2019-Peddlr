@@ -120,6 +120,12 @@ router.post('/newUser', controller.createUser);
 //autocomplete search for search bar
 router.get('/searchlistings/:input', controller.searchListing);
 
+//autocomplete search for search bar within a category
+router.get('/searchlistingbycategory/:input/:title', controller.searchListingByCategory);
+
+//autocomplete search for search bar within My Listings
+router.get('/searchlistingbyuser/:input/:user', controller.searchListingByUser);
+
 //searching for listings, search results
 router.get('/search', controller.search);
 
