@@ -13,7 +13,7 @@ block content
             .col-6
                 h2 #{category}
             .col-6
-                a(href='./newlisting')
+                a(href='/newlisting')
                     button.createbutton.btn.btn-light.btn-xs(type='submit') + Create listing
         .row
             .col-3
@@ -21,7 +21,7 @@ block content
                     button#dropdownMenuLink.btn.dropdown-toggle(role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                         span.glyphicon.glyphicon-th-list
                     .dropdown-menu
-                        for category in categories
+                        each category in categories
                             a.dropdown-item(href=`/listing/category/${category._id}`) #{category.title}
             .col-5
                 input(type='text', placeholder='   I am looking for...', name='search')

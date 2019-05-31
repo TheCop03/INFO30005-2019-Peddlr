@@ -66,7 +66,7 @@ var showCreateListing = function(req, res) {
     });
 };
 
-const showListingByID = function(req, res) {
+var showListingByID = function(req, res) {
     var ID = req.params.id;
     Listing.findById(ID, function(err, listing) {
         if(!err){
@@ -186,15 +186,25 @@ var findListingByName = function(req, res) {
 var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
 	Listing.find({category:myCategory}, function(err, listings) {
-		Category.findById(myCategory, function(err, category){
-			var results = {title: 'Peddlr', category: category.title,
-             'listings': listings, session: req.cookies.sessionId}
-			if (!err) {
-				res.render('category', results);
-			} else {
-				res.sendStatus(404);
-			}
-		});
+        if (!err){
+    		Category.findById(myCategory, function(err, category){
+                if (!err){
+                    Category.find({}, function(err, categories){
+                        if (!err){
+                            var results = {title: 'Peddlr', category: category.title,
+                             'listings': listings, session: req.cookies.sessionId, categories: categories};
+                            res.render('category', results);
+                        } else {
+                            res.sendStatus(500);
+                        }
+                    });
+                } else {
+                    res.sendStatus(500);
+                }
+    		});
+        } else {
+            res.sendStatus(500);
+        }
 	});
 };
 

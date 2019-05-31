@@ -42,7 +42,10 @@ block content
                     a(href='/homepage')
                         p Home
                 li.breadcrumb-item
-                    // a(href='./listing/category/${category._id}') #{category.title}
+                    a(href=`/listing/category/${listing.category}`)
+                        each category in categories
+                            if (category._id.equals(listing.category))
+                                p #{category.title}
                 li.breadcrumb-item.active(aria-current='page') #{listing.title}
 
     .jumbotron.listingzone
