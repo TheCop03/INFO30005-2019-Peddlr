@@ -11,7 +11,7 @@ block content
         else
             spantitle Let's Peddle
 
-        a(href='./newlisting')
+        a(href='./listing/new')
             button.createbutton(type='submit') + Create listing
 
         form(method = 'GET', action = '/search', autocomplete='off')
@@ -37,7 +37,7 @@ block content
             each listing in listings
                 .card(style='width: 15rem; height: fit-content;')
                     .d-flex
-                        a(href = `./listing/id/${listing._id}`)
+                        a(href = `./listing/view/${listing._id}`)
                             img.card-img-top.image-custom(src=listing.photo, style="width:14rem;height:15rem;")
                             .card-body.flex-fill
                                 h5.card-title #{listing.title}
@@ -83,7 +83,7 @@ block content
                 }
             };
 
-            xhttp.open("GET", "/searchlistings/" + value, true);
+            xhttp.open("GET", "/search/list/" + value, true);
             xhttp.send();
 
 

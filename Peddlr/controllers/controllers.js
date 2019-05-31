@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const utils = require('./utils.js');
-const Category = mongoose.model('category');
-const Listing = mongoose.model('listing');
-const User = mongoose.model('users');
+const Category = require('../models/category');
+const Listing = require('../models/listing');
+const User = require('../models/users');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -115,7 +115,7 @@ var loginUser = function(req, res) {
                         sidrequest.then(function (sid) {
                             user[0].sessionId = sid;
                             user[0].save();
-                            res.cookie("sessionId", sid).redirect("/homepage");
+                            res.cookie("sessionId", sid).redirect("/");
                         });
                     } else {
                         var message = "Wrong credentials. Please try again.";
@@ -200,20 +200,19 @@ var showListingsByCategory = function(req, res) {
 
 //show all the listings of the logged in user
 var showListingsByUser = function(req, res) {
-	var sid = req.cookies.sessionId;
-    User.find({sessionId:sid}, function(err, user){
+    User.find({sessionId: req.cookies.sessionId}, function(err, user){
         if (!err){
             Listing.find({owner:user[0]._id}, function(err, listings){
                 if (!err){
-                    var results = {titel: 'Peddlr', category: 'My Listings',
+                    var results = {title: 'Peddlr', category: 'My Listings',
                      'listings': listings}
                     res.render('category', results);
                 } else {
-                    res.sendStatus(400);
+                    res.sendStatus(500);
                 }
             });
         } else {
-            res.sendStatus(400);
+            res.sendStatus(500);
         }
     });
 };
@@ -336,6 +335,11 @@ var updateListing = function(req, res){
 
     Listing.findById(listingID, function(err, listing){
         if (!err){
+            User.findOne({sessionId:req.cookies.sessionId}, function (err, user) {
+               if (err || !user || user._id !== listing.owner) {
+                   res.sendStatus(401);
+               }
+            });
             listing.title = req.body.title;
             listing.category = req.body.category;
             listing.price = req.body.price;

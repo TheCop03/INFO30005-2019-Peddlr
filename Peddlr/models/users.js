@@ -12,4 +12,4 @@ var userSchema = mongoose.Schema(
         "listings":Array
     }
 );
-mongoose.model('users',userSchema);
+module.exports = mongoose.model('User', userSchema);

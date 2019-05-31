@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const User = mongoose.model('users');
+const User = require('../models/users');
 var crypto = require('crypto');
 
 const generate_key = () => {
@@ -28,6 +27,14 @@ const generate_unique_sid = async () => {
     return key;
 };
 
+function verify_logged_in(sid, callback) {
+    User.findOne({sessionId: sid}, function(err, user) {
+        var feedback = !!(!err && user);
+        callback(feedback);
+    });
+}
+
 module.exports = {
-    generate_unique_sid
+    generate_unique_sid,
+    verify_logged_in
 };

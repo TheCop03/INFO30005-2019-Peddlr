@@ -10,103 +10,10 @@ block content
         meta(property='og:description', content="Be apart of the neighbourhood!")
         meta(property='og:site_name', content='Peddlr')
 
-    //div.content-box
-        div.titlebox
-            p.title #{listing.title}
-            div.details
-                p.price $ #{listing.price} #{listing.interval}
-                p.location
-                    |#{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
-                    |#{owner.address.substring(owner.address.indexOf(",") + 12)}
-        if (owner._id.equals(user._id))
-            div.deleteBox
-                button#deleteListing Delete
-            div.editBox
-                button#editListing Edit
-
-            div#confirmationModal.modal
-                div.modal-content
-                    p#confirmMessage Are you sure you want to delete the listing?
-                    div.buttons
-                        form(action='/deleteListing', method='post')
-                            input(type='hidden', name='listing_id', value=listing._id)
-                            button#confirm.confirm(type='submit') Yes
-                        button#cancelDelete.cancel No
-
-            div#editModal.modal
-                div.modal-content
-                    p Update your Listing: #{listing.title}
-                    div.updateForm
-                        form(method='POST' action='/updateListing')
-                            div.form-group
-                                p.fieldtitle Item:
-                                input#title(type='text', placeholder=' Title', name='title',
-                                 maxlength='50', value=listing.title, required)
-                            div.form-group
-                                p.fieldtitle Category:
-                                select#category(type = 'text', name = 'category', value=listing.category, required)
-                                    each category in categories
-                                        option(value=`${category._id}`) #{category.title}
-                            div.form-group
-                                p.fieldtitle Price:
-                                input#price(type = 'number', placeholder='$0', name = 'price', value=listing.price, required)
-                                select#interval(type='text', placeholder='per...', name= 'interval', value=listing.interval, required)
-                                    option per day
-                                    option per week
-                                    option per month
-                                    option per year
-                            div.form-group
-                                p.fieldtitle Description:
-                                p.example e.g "Authentic oak wood patio table. Suitable for parties"
-                                input#description(type = 'text', placeholder=' Description',
-                                 name = 'description', maxlength='250', value=listing.description)
-                            div.buttons
-                                input(type='hidden', name='listing_id', value=listing._id)
-                                button#updatebutton.confirm(type='submit') Update Listing
-                        button#cancelEdit.cancel Cancel
-                
-        div.imagebox
-            img.listingphoto(src=listing.photo alt=listing.title)
-        div.descriptionbox
-            p.desc_title Description:
-            p.description #{listing.description}
-
-
-        script.
-            var deletemodal = document.getElementById("confirmationModal");
-            var deletebtn = document.getElementById("deleteListing");
-            var cancelDeletebtn = document.getElementById("cancelDelete");
-            
-            var editbtn = document.getElementById("editListing");
-            var editmodal = document.getElementById("editModal");
-            var cancelEditbtn = document.getElementById("cancelEdit");
-            
-            deletebtn.onclick = function(){
-                deletemodal.style.display = "block";
-            }
-            
-            window.onclick = function(){
-                if (event.target == deletemodal || event.target == editmodal){
-                    deletemodal.style.display = "none";
-                    editmodal.style.display = "none";
-                }
-            }
-            
-            cancelDeletebtn.onclick = function(){
-                deletemodal.style.display = "none";
-            }
-            
-            editbtn.onclick = function(){
-                editmodal.style.display = "block";
-            }
-            
-            cancelEditbtn.onclick = function(){
-                editmodal.style.display = "none";
-            }
     div.searchzone
         .row
             .col-6
-                a(href = './homepage')
+                a(href = '/')
                     button.backbutton(type = 'submit') Back
             .col-6
                 a(href='./newlisting')
@@ -129,7 +36,7 @@ block content
 
                 if (owner._id.equals(user._id))
                     div.deleteBox
-                        a(href = './deleteListing')
+                        a(href = './listing/delete')
                             button.btn.btn-light#deleteListing Delete
 
         .row

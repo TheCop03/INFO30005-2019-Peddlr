@@ -9,12 +9,12 @@ block content
     div.titlezone
         .row
             .col-4
-                a(href = './homepage')
+                a(href = '/')
                     button.backbutton(type = 'submit') Back
             .col-4
                 h2 #{category}
             .col-4
-                a(href='./newlisting')
+                a(href='./listing/new')
                     button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-8
@@ -26,9 +26,9 @@ block content
     div.listingszone
         each listing in listings
             div.listing
-                a.photo(href = `/listing/id/${listing._id}`)
+                a.photo(href = `/listing/view/${listing._id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
-                a.title(href = `/listing/id/${listing._id}`)
+                a.title(href = `/listing/view/${listing._id}`)
                     p.listingtitle #{listing.title}
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
