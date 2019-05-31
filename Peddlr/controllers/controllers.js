@@ -187,7 +187,7 @@ var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
 	Listing.find({category:myCategory}, function(err, listings) {
 		Category.findById(myCategory, function(err, category){
-			var results = {title: 'Peddlr', category: category.title,
+		    var results = {title: 'Peddlr', category: category.title, categoryID: category._id,
              'listings': listings, session: req.cookies.sessionId}
 			if (!err) {
 				res.render('category', results);
@@ -205,8 +205,8 @@ var showListingsByUser = function(req, res) {
         if (!err){
             Listing.find({owner:user[0]._id}, function(err, listings){
                 if (!err){
-                    var results = {titel: 'Peddlr', category: 'My Listings',
-                     'listings': listings}
+                    var results = {title: 'Peddlr', category: 'My Listings',
+                     'listings': listings, 'user': user[0]._id};
                     res.render('category', results);
                 } else {
                     res.sendStatus(400);
@@ -378,7 +378,33 @@ var search = function(req, res) {
             res.sendStatus(404);
         }
     });
-}
+};
+
+var searchListingByCategory = function(req, res) {
+    var input = req.params.input;
+    var title = req.params.title;
+    var regex = new RegExp(input, 'i');
+    Listing.find({"title": regex, "category": title}, function(err, listings) {
+        if(!err) {
+            res.json(listings);
+        }else{
+            res.sendStatus(404);
+        }
+    });
+};
+
+var searchListingByUser = function(req, res) {
+    var input = req.params.input;
+    var user = req.params.user;
+    var regex = new RegExp(input, 'i');
+    Listing.find({"title": regex, "owner": user}, function(err1, listings) {
+        if (!err1) {
+            res.json(listings);
+        } else {
+            res.sendStatus(404);
+        }
+    });
+};
 
 module.exports = {
     createListing,
@@ -399,5 +425,7 @@ module.exports = {
     editUser,
     editPassword,
     searchListing,
-    search
+    search,
+    searchListingByCategory,
+    searchListingByUser
 };
