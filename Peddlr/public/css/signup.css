@@ -9,33 +9,16 @@ body {
 }
 /************************************************************************************/
 /* HEADERS */
-header {
-    background-color: #125358;
-}
-
-
 
 h2 {
-    text-align: center;
     font-size: 50px;
     font-weight: normal;
-    color: #4F5445;
     padding-bottom: 20px;
-}
-
-.tagline {
-    font-size: 25px;
-    font-weight: lighter;
-    color: #4F5445;
 }
 
 p {
     padding-top: 10px;
     text-align: center;
-}
-
-footer {
-    background-color: #125358;
 }
 /************************************************************************************/
 /* FORM */
@@ -119,9 +102,6 @@ input, select {
 .backbutton:hover {
     opacity: 0.8;
 }
-
-
-
 /************************************************************************************/
 
 .btn {

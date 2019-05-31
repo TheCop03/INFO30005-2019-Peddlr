@@ -10,9 +10,21 @@ app.set('views', path.join(__dirname, '/views'));
 var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({
+    limit: '50mb',
+     extended: true
+}));
+app.use(bodyParser.urlencoded({
+    parameterLimit: 100000,
+     limit: '50mb',
+      extended: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+bodyParser = {
+  json: {limit: '50mb', extended: true},
+  urlencoded: {limit: '50mb', extended: true}
+};
 
 // Database setup
 require('./models/db.js');

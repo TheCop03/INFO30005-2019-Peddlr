@@ -4,25 +4,31 @@ block css
     style
         include ../public/css/category.css
         include ../public/css/header.css
-
+        include ../public/css/fonts.css
+        include ../public/css/searchzone.css
 block content
-    div.titlezone
+    div.searchzone
         .row
-            .col-4
-                a(href = './homepage')
-                    button.backbutton(type = 'submit') Back
-            .col-4
+
+            .col-6
                 h2 #{category}
-            .col-4
+            .col-6
                 a(href='./newlisting')
-                    button.createbutton.btn.btn-light(type='submit') + Create listing
+                    button.createbutton.btn.btn-light.btn-xs(type='submit') + Create listing
         .row
-            .col-8
+            .col-3
+                .dropdown.show
+                    button#dropdownMenuLink.btn.dropdown-toggle(role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        span.glyphicon.glyphicon-th-list
+                    .dropdown-menu
+                        for category in categories
+                            a.dropdown-item(href=`/listing/category/${category._id}`) #{category.title}
+            .col-5
                 input(type='text', placeholder='   I am looking for...', name='search')
             .col-4
                 a(href="/search")
                     button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
-                    i.fa.fa-search
+
     div.listingszone
         each listing in listings
             div.listing

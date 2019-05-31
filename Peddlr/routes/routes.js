@@ -108,11 +108,20 @@ router.post('/newListing', controller.createListing);
 //delete a listing
 router.post('/deleteListing', controller.deleteListing);
 
+// Update the details of a listing
+router.post('/updateListing', controller.updateListing);
+
 //login a user
 router.post('/login', controller.loginUser);
 
 //create a new user
 router.post('/newUser', controller.createUser);
+
+//autocomplete search for search bar
+router.get('/searchlistings/:input', controller.searchListing);
+
+//searching for listings, search results
+router.get('/search', controller.search);
 
 
 module.exports = router;
