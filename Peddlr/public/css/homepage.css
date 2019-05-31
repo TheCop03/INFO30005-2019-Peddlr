@@ -42,6 +42,7 @@ body {
 	background-position: 0% 50%;
 	background-repeat: no-repeat;
 	background-size: 100%;
+	height: 300px;
 }
 input{
 	padding-left: 10px;
