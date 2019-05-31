@@ -28,13 +28,7 @@ router.get('/listing/category/:category', function(req, res){
 });
 
 //show listing by id
-router.get('/listing/id/:id', function(req, res){
-    if (req.cookies.sessionId) {
-      controller.showListingByID(req, res);
-    } else {
-      controller.showLogin(req, res);
-    }
-});
+router.get('/listing/id/:id', controller.showListingByID);
 
 //show the sign up page
 router.get('/signup', function(req, res, next){
@@ -90,6 +84,24 @@ router.get('/settings', function(req, res){
         res.redirect('/settings/general');
     } else {
         res.redirect('/login');
+    }
+});
+
+// Delete user account form page
+router.get('/settings/delete', function(req,res){
+    if (req.cookies.sessionId) {
+        controller.showDeleteUser(req, res);
+    } else {
+        res.redirect('login');
+    }
+});
+
+// Delete user confirmed
+router.post('/settings/delete', function(req, res){
+    if (req.cookies.sessionId){
+        controller.deleteUser(req, res);
+    } else {
+        res.redirect('login');
     }
 });
 
