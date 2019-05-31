@@ -11,7 +11,7 @@ block content
         else
             spantitle Let's Peddle
 
-        a(href='./newlisting')
+        a(href='/newlisting')
             button.createbutton(type='submit') + Create listing
 
         form(method = 'GET', action = '/search', autocomplete='off')
@@ -25,7 +25,7 @@ block content
     div.scrollmenu.categoryzone
         each category in categories
             div.category.item
-                a(href = `./listing/category/${category._id}`)
+                a(href = `/listing/category/${category._id}`)
                     img.categoryphoto(src=category.photo alt=category.title)
                     p.categorytitle #{category.title}
 
@@ -37,7 +37,7 @@ block content
             each listing in listings
                 .card(style='width: 15rem; height: fit-content;')
                     .d-flex
-                        a(href = `./listing/id/${listing._id}`)
+                        a(href = `/listing/id/${listing._id}`)
                             img.card-img-top.image-custom(src=listing.photo, style="width:14rem;height:15rem;")
                             .card-body.flex-fill
                                 h5.card-title #{listing.title}

@@ -6,7 +6,7 @@ block css
     include ../public/css/header.css
 block content
   div.container-fluid.headerzone
-    a(href = './homepage')
+    a(href = '/homepage')
       button.backbutton(type = 'submit') Back
     h2 Sign Up
   p.tagline Time to feel like home
@@ -69,4 +69,3 @@ block content
                 document.getElementById('zip').value = "#{zip}";
             }
       button#submit.pagebutton(type='submit') SIGN UP
-

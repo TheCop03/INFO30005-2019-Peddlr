@@ -40,7 +40,7 @@ block content
             div.form-group
                 p.fieldtitle Please upload a photo
                 input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
-                img#preview(src=file alt="Image preview...")
+                img#preview(src=file alt="Choose a file to see the preview here.")
             div.form-group
                 p.fieldtitle Where can the item be picked up?
                 input#address(type='text', placeholder='Address' name='address', required)
@@ -59,7 +59,7 @@ block content
             div
                 input#b64(type="hidden", name='b64')
             div
-                a(href = './newlisting/')
+                a(href = '/newlisting')
                     button.pagebutton(type='submit') Post
     div.footer
 
