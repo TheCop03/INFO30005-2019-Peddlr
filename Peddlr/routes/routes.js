@@ -126,8 +126,8 @@ router.get('/searchlistingbycategory/:input/:title', controller.searchListingByC
 //autocomplete search for search bar within My Listings
 router.get('/searchlistingbyuser/:input/:user', controller.searchListingByUser);
 
-//searching for listings, search results
-router.get('/search', controller.search);
+//searching for listings, all search results
+router.get('/searchresults', controller.searchResults);
 
 
 module.exports = router;

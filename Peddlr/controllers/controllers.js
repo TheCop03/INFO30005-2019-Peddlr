@@ -185,17 +185,30 @@ var findListingByName = function(req, res) {
 //show all the listings that are in a certain category
 var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
-	Listing.find({category:myCategory}, function(err, listings) {
-		Category.findById(myCategory, function(err, category){
-		    var results = {title: 'Peddlr', category: category.title, categoryID: category._id,
-             'listings': listings, session: req.cookies.sessionId}
-			if (!err) {
-				res.render('category', results);
-			} else {
-				res.sendStatus(404);
-			}
-		});
-	});
+    var sid = req.cookies.sessionId;
+	User.find({sessionId:sid}, function(err, user) {
+	    if (!err) {
+            Listing.find({category: myCategory}, function (err, listings) {
+                if (!err) {
+                    Category.findById(myCategory, function (err, category) {
+                        if (!err) {
+                            var results = {
+                                title: 'Peddlr', category: category.title, categoryID: category._id,
+                                'listings': listings, session: req.cookies.sessionId, user: user
+                            };
+                            res.render('category', results);
+                        } else {
+                            res.sendStatus(404);
+                        }
+                    });
+                } else {
+                    res.sendStatus(404);
+                }
+            });
+        } else {
+            res.sendStatus(404);
+        }
+    });
 };
 
 //show all the listings of the logged in user
@@ -367,18 +380,6 @@ var searchListing = function(req, res) {
     });
 };
 
-var search = function(req, res) {
-    var input = req.param('input');
-    var regex = new RegExp(input, 'i');
-    Listing.find({"title": regex}, function(err, listings) {
-        var results = {title: 'Peddlr', category: 'Search Results', 'listings': listings}
-        if (!err) {
-            res.render('category', results);
-        } else {
-            res.sendStatus(404);
-        }
-    });
-};
 
 var searchListingByCategory = function(req, res) {
     var input = req.params.input;
@@ -393,6 +394,49 @@ var searchListingByCategory = function(req, res) {
     });
 };
 
+var searchResults = function(req, res) {
+    var input = req.param('input');
+    var categoryname = req.param('category');
+    console.log(categoryname);
+    var regex = new RegExp(input, 'i');
+    if (categoryname == "My Listings") {
+        console.log("my listings");
+        var user = req.body.user;
+        console.log(user);
+        Listing.find({"title": regex, "owner": user}, function(err, listings) {
+            var results = {title: 'Peddlr', category: "My Listings", 'listings': listings}
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(404);
+            }
+        });
+    }
+    else if(categoryname == null) {
+        console.log("all");
+        Listing.find({"title": regex}, function(err, listings) {
+            var results = {title: 'Peddlr', category: "Search Results", 'listings': listings}
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(404);
+            }
+        });
+    } else {
+        console.log("cate")
+        Listing.find({"title": regex, "category": category}, function (err, listings) {
+            var results = {title: 'Peddlr', category: req.body.category, 'listings': listings}
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(404);
+            }
+        });
+    }
+};
+
+
+
 var searchListingByUser = function(req, res) {
     var input = req.params.input;
     var user = req.params.user;
@@ -405,6 +449,8 @@ var searchListingByUser = function(req, res) {
         }
     });
 };
+
+
 
 module.exports = {
     createListing,
@@ -425,7 +471,7 @@ module.exports = {
     editUser,
     editPassword,
     searchListing,
-    search,
+    searchResults,
     searchListingByCategory,
     searchListingByUser
 };

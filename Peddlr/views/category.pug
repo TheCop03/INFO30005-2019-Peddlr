@@ -18,7 +18,9 @@ block content
                     button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-4
-                form(method = 'GET', action = '/search', autocomplete='off')
+                form(method = 'GET', action = "/searchresults", autocomplete='off')
+                    input(type = 'hidden', name = 'category' value = category)
+                    input(type = 'hidden', name = 'user', value = user)
                     input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
                     datalist#datalist
                     button.searchbutton(type='submit') Search
@@ -61,6 +63,8 @@ block content
             };
             if("#{category}" == "My Listings") {
                 xhttp.open("GET", "/searchlistingbyuser/" + value + "/" + "#{user}", true);
+            } else if ("#{category}" == "Search Results") {
+                xhttp.open("GET", "/searchlistings/" + value, true);
             } else {
                 xhttp.open("GET", "/searchlistingbycategory/" + value + "/" + "#{categoryID}", true);
             }
