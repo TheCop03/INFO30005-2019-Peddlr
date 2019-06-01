@@ -13,11 +13,11 @@ block content
                 h2 #{category}
             .col-6
                 a(href='/listing/new')
-                    button.createbutton.btn.btn-light.btn-xs(type='submit') + Create listing
+                    button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-3
                 a(href = '/')
-                    button.backbutton(type = 'submit') Back
+                    button.backbutton.btn.btn-light(type = 'submit') Back
             .col-5
                 input(type='text', placeholder='   I am looking for...', name='search')
             .col-4
@@ -25,15 +25,19 @@ block content
                     button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
 
     div.listingszone
-        each listing in listings
-            div.listing
-                a.photo(href = `/listing/view/${listing._id}`)
-                    img.listingphoto(src=listing.photo alt=listing.title)
-                a.title(href = `/listing/view/${listing._id}`)
-                    p.listingtitle #{listing.title}
-                p.listinglocation #{listing.location}
-                p.listingprice $#{listing.price} #{listing.interval}
-                p.listingdescription #{listing.description}
+        if listings > 0
+            each listing in listings
+                div.listing
+                    a.photo(href = `/listing/view/${listing._id}`)
+                        img.listingphoto(src=listing.photo alt=listing.title)
+                    a.title(href = `/listing/view/${listing._id}`)
+                        p.listingtitle #{listing.title}
+                    p.listinglocation #{listing.location}
+                    p.listingprice $#{listing.price} #{listing.interval}
+                    p.listingdescription #{listing.description}
+        else
+            .card
+                .card-body.text  No listings found here!
 
     script.
         document.getElementById("searchbar").addEventListener('keyup', () => {
