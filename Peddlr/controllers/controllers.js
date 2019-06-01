@@ -167,7 +167,7 @@ var createListing = function(req,res){
                 if (!err){
                     user[0].listings.push(listing._id);
                     user[0].save();
-                    res.redirect('/homepage');
+                    res.redirect('/');
                 } else {
                     res.sendStatus(400);
                 }
