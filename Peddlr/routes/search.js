@@ -13,6 +13,6 @@ router.get('/categorylist/:input/:title', controller.searchListingByCategory);
 router.get('/userlist/:input/:user', controller.searchListingByUser);
 
 //searching for listings, search results
-router.get('/', controller.search);
+router.get('/', controller.searchResults);
 
 module.exports = router;
