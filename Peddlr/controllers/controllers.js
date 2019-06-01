@@ -255,8 +255,8 @@ var createUser = function(req,res){
                 "email":req.body.email,
                 "fname":req.body.fname,
                 "lname":req.body.lname,
-                "address":req.body.address.concat(", ", req.body.state, " ",
-                 req.body.zip, ", ", req.body.country),
+                "address":req.body.address.concat("|", req.body.state, "|",
+                 req.body.zip, "|", req.body.country),
                 "photo":req.body.photo,
                 "phoneNumber":req.body.phoneNumber,
                 "password":hash
@@ -297,12 +297,13 @@ var editUser = function(req, res){
             if (req.body.lname.length > 0) {user.lname = req.body.lname;}
             if (req.body.email.length > 0) {user.email = req.body.email;}
             if (req.body.address.length > 0) {
-                user.address = req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country);
+                user.address = req.body.address.concat("|", req.body.state, "|", req.body.zip, "|", req.body.country);
             }
             user.save(function(err, updatedUser) {
                 if (updatedUser) {
                     let message = "Your account has been updated.";
-                    let results = {title: 'Peddlr', error: message}
+                    let results = {title: 'Peddlr', error: message,
+                     user: updatedUser, session: req.cookies.sessionId};
                     res.render('settings', results);
                 } else {
                     res.sendStatus(500);
@@ -324,13 +325,12 @@ var deleteUser = function(req, res){
         if(!err){
             if (user.length != 1) {
                 var message = "Wrong credentials. Please try again.";
-                var results = {title: 'Peddlr', error: message}
+                var results = {title: 'Peddlr', error: message, session: sid}
                 res.render('deleteAccount', results);
             } else {
                 bcrypt.compare(pw, user[0].password, function (err, same){
                     if (same) {
                         user[0].listings.forEach(function(element){
-                            console.log(element);
                             Listing.findById(element, function(err, listing){
                                 listing.remove();
                             });
@@ -339,7 +339,8 @@ var deleteUser = function(req, res){
                         res.redirect('/logout');
                     } else {
                         var message = "Wrong credentials. Please try again.";
-                        var results = {title: 'Peddlr', error: message}
+                        var results = {title: 'Peddlr', error: message,
+                         session: sid}
                         res.render('deleteAccount', results);
                     }
                 });
@@ -352,10 +353,11 @@ var deleteUser = function(req, res){
 }
 
 var editPassword = function(req, res){
-    User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
+    var sid = req.cookies.sessionId
+    User.findOne({sessionId: sid}, function(err, user) {
         if (req.body.password.length < 8) {
             let message = "Your password must be at least 8 characters.";
-            let results = {title: 'Peddlr', error: message}
+            let results = {title: 'Peddlr', error: message, session: sid}
             res.render('privacy', results);
         }
         else if (!err && user) {
@@ -364,7 +366,8 @@ var editPassword = function(req, res){
                 user.save(function(err, updatedUser) {
                     if (updatedUser) {
                         let message = "Your account has been updated.";
-                        let results = {title: 'Peddlr', error: message}
+                        let results = {title: 'Peddlr', error: message,
+                         session: sid}
                         res.render('privacy', results);
                     } else {
                         res.sendStatus(500);

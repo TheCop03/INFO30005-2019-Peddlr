@@ -53,8 +53,6 @@ block content
             .col-9
                 h2.title #{listing.title}
             .col-3
-                a(href = '#')
-                    button.btn.btn-light(type = 'submit') Bookmark
 
                 if (session && owner._id.equals(user._id))
                     div.deleteBox
@@ -115,11 +113,12 @@ block content
 
             .col-3
                 ul.list-group
+                    li.list-group-item
+                        p.details(style = "font-weight: bold") Location:
+                            p.details
+                                | #{owner.address.split("|")[1]},
+                                | #{owner.address.split("|")[3]}
                     if (session)
-                        li.list-group-item
-                            p.details(style = "font-weight: bold") Location:
-                                p.details
-                                    | #{owner.address}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
                                 p.details
