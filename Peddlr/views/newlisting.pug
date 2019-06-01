@@ -15,7 +15,7 @@ block content
 
     div.createlistingzone
         //create listing form
-        form(method='POST' action='/newListing')
+        form(method='POST' action='/listing/new')
             div.form-group
                 p.fieldtitle Item:
                 input#title(type='text', placeholder=' Title', name='title',
@@ -61,7 +61,7 @@ block content
             div
                 input#b64(type="hidden", name='b64')
             div
-                a(href = './listing/new')
+                a(href = '/listing/new')
                     button.pagebutton(type='submit') Post
     div.footer
 

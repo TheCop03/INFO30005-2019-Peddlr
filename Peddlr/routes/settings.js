@@ -20,6 +20,15 @@ router.get('/security', function(req, res){
     }
 });
 
+// Delete user account form page
+router.get('/delete', function(req,res){
+    if (req.cookies.sessionId) {
+        controller.showDeleteUser(req, res);
+    } else {
+        res.redirect('login');
+    }
+});
+
 //redirect settings to general settings
 router.get('/', function(req, res){
     res.redirect('/settings/general');
@@ -40,6 +49,15 @@ router.post('/security/update', function(req, res){
         controller.editPassword(req, res);
     } else {
         res.redirect('/login');
+    }
+});
+
+// Delete user confirmed
+router.post('/delete', function(req, res){
+    if (req.cookies.sessionId){
+        controller.deleteUser(req, res);
+    } else {
+        res.redirect('login');
     }
 });
 
