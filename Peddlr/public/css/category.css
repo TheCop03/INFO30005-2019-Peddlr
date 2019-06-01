@@ -1,27 +1,10 @@
-html{
-	font-family: 'Montserrat', sans-serif;
-}
-
 body {
 	border: 0;
 	margin: 8px;
-	background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
-	background-color: #F9F6EE;
+	background-color:white;
 }
-
-header {
-	background-color: #125358;
-	padding-right: 20px;
-	color: white;
-}
-
-h2 {
-	font-family: 'Montserrat', sans-serif;
-	color: white;
-}
-
 /************************************************************************************/
-/* HEADER BUTTONS */
+/* BUTTONS */
 
 .backbutton:hover {
 	opacity: 0.8;
@@ -87,7 +70,7 @@ a.photo {
 }
 
 .listingphoto:hover {
-	background-color: darkcyan;
+	background-color: lightgrey;
 }
 
 a.title {

@@ -2,18 +2,15 @@ html{
     font-family: 'Montserrat', sans-serif;
 }
 body {
-    display:grid;
     border: 0;
     margin: 0;
     background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 /************************************************************************************/
-/* HEADERS */
+/* FONTS */
 
 h2 {
-    font-size: 50px;
-    font-weight: normal;
-    padding-bottom: 20px;
+    color: black;
 }
 
 p {
@@ -102,24 +99,9 @@ input, select {
 .backbutton:hover {
     opacity: 0.8;
 }
-/************************************************************************************/
-
-.btn {
-    position: relative;
-    float: right;
-    padding-right: 20px;
-    padding-top: 10px;
-    font-size: 20px;
-    color: white;
-    border-radius: 20px;
-    top: 20px;
-}
-
-.btn:hover {
-    color: #C4C4C4;
-}
 
 #errormessage{
+    font-family: Roboto;
     color: red;
     font-weight: bold;
     font-size: 20px;
