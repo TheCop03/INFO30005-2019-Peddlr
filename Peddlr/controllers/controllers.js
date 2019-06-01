@@ -245,7 +245,7 @@ var createUser = function(req,res){
     if (req.body.password.length < 8){
         var message = "Password must be more than 7 characters";
         var results = {title: 'Peddlr', error: message,
-         email: req.body.email, fname: req.body.fname,
+         email: req.body.email, fname: req.body.fname, phone: req.body.phone,
           lname: req.body.lname, address: req.body.address, state: req.body.state,
            zip: req.body.zip};
         res.render('signup', results);
@@ -258,7 +258,7 @@ var createUser = function(req,res){
                 "address":req.body.address.concat("|", req.body.state, "|",
                  req.body.zip, "|", req.body.country),
                 "photo":req.body.photo,
-                "phoneNumber":req.body.phoneNumber,
+                "phone":req.body.phone,
                 "password":hash
             });
             // Check if the email already exists
@@ -268,7 +268,7 @@ var createUser = function(req,res){
                         var message = "Email address already in use. Please log in.";
                         var results = {title: 'Peddlr', error: message,
                          email: req.body.email, fname: req.body.fname,
-                          lname: req.body.lname};
+                          lname: req.body.lname, phone: req.body.phone};
                         res.render('signup', results);
                     }
                     else{
@@ -293,12 +293,13 @@ var createUser = function(req,res){
 var editUser = function(req, res){
     User.findOne({sessionId:req.cookies.sessionId}, function(err, user) {
         if (!err && user) {
-            if (req.body.fname.length > 0) {user.fname = req.body.fname;}
-            if (req.body.lname.length > 0) {user.lname = req.body.lname;}
-            if (req.body.email.length > 0) {user.email = req.body.email;}
-            if (req.body.address.length > 0) {
-                user.address = req.body.address.concat("|", req.body.state, "|", req.body.zip, "|", req.body.country);
-            }
+            user.fname = req.body.fname;
+            user.lname = req.body.lname;
+            user.email = req.body.email;
+            user.address = req.body.address.concat("|", req.body.state, "|",
+             req.body.zip, "|", req.body.country);
+            user.phone = req.body.phone;
+
             user.save(function(err, updatedUser) {
                 if (updatedUser) {
                     let message = "Your account has been updated.";
