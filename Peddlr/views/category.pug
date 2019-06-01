@@ -16,12 +16,8 @@ block content
                     button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-3
-                .dropdown.show
-                    button#dropdownMenuLink.btn.dropdown-toggle(role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        span.glyphicon.glyphicon-th-list
-                    .dropdown-menu
-                        for category in categories
-                            a.dropdown-item(href=`/listing/category/${category._id}`) #{category.title}
+                a(href = '/')
+                    button.backbutton.btn.btn-light(type = 'submit') Back
             .col-5
                 input(type='text', placeholder='   I am looking for...', name='search')
             .col-4
