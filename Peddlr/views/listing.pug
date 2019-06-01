@@ -52,24 +52,24 @@ block content
     .jumbotron.listingzone
         .row
             .col-9
-                h2.title #{listing.title}
+                .h1.font-weight-bold #{listing.title}
             .col-3
-                .col
-                    a(href = '#')
-                        button.btn.btn-light(type = 'submit') Bookmark
+                .row
+                    .col-4
+                        a(href = '#')
+                            button.btn.btn-light(type = 'submit') Bookmark
 
-                if (session && owner._id.equals(user._id))
-                    .col
-                        .deleteBox
-                            button.btn.btn-light#deleteListing Delete
-                    .col
-                        .editBox
+                    if (session && owner._id.equals(user._id))
+                        .col-4
                             button.btn.btn-light#editListing Edit
+                        .col-4
+                            button.btn.btn-light#deleteListing Delete
+
 
                     div#confirmationModal.modal
                         div.modal-content
                             p#confirmMessage Are you sure you want to delete the listing?
-                            div.buttons
+                            div
                                 form(action='/listing/delete', method='post')
                                     input(type='hidden', name='listing_id', value=listing._id)
                                     button#confirm.confirm(type='submit') Yes
@@ -109,35 +109,40 @@ block content
 
         .row
             .col-9
-                .row.imagebox
-                    img.listingphoto(src=listing.photo alt=listing.title)
-                .row.descriptionbox
-                    p.details(style = "font-weight: bold") Description:
-                .row
-                    p.description #{listing.description}
+                .text
+                    .row.imagebox
+                        img.listingphoto(src=listing.photo alt=listing.title)
+                    .row
+                        p.details Price:
+                    .row
+                        p.description #{listing.price} #{listing.interval}
+                    .row.descriptionbox
+                        p.details Description:
+                    .row
+                        p.description #{listing.description}
 
 
             .col-3
                 ul.list-group
                     li.list-group-item
                         p.details(style = "font-weight: bold") Location:
-                            p.details
+                            p
                                 | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
                                 | #{owner.address.substring(owner.address.indexOf(",") + 12)}
                     if (session)
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
-                                p.details
+                                p
                                     | #{owner.fname.substring(owner.fname)}
                                     | #{owner.lname.substring(owner.lname)}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Contact:
-                                p.details
+                                p
                                    // | #{owner.phoneNumber.count(owner.phoneNumber)}
                                    // | #{owner.phoneNumber.count(owner.phoneNumber)}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Email:
-                                p.details
+                                p
                                     | #{owner.email}
                     else
                         li.list-group-item
