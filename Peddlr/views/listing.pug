@@ -116,13 +116,9 @@ block content
                     li.list-group-item
                         p.details(style = "font-weight: bold") Location:
                             p.details
-                                | #{owner.address.split(", ")[1].split(" ")[0]},
-                                | #{owner.address.split(", ")[2]}
+                                | #{owner.address.split("|")[1]},
+                                | #{owner.address.split("|")[3]}
                     if (session)
-                        li.list-group-item
-                            p.details(style = "font-weight: bold") Location:
-                                p.details
-                                    | #{owner.address}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
                                 p.details

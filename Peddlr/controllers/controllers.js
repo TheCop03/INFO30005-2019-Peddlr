@@ -255,8 +255,8 @@ var createUser = function(req,res){
                 "email":req.body.email,
                 "fname":req.body.fname,
                 "lname":req.body.lname,
-                "address":req.body.address.concat(", ", req.body.state, " ",
-                 req.body.zip, ", ", req.body.country),
+                "address":req.body.address.concat("|", req.body.state, "|",
+                 req.body.zip, "|", req.body.country),
                 "photo":req.body.photo,
                 "phoneNumber":req.body.phoneNumber,
                 "password":hash
@@ -297,7 +297,7 @@ var editUser = function(req, res){
             if (req.body.lname.length > 0) {user.lname = req.body.lname;}
             if (req.body.email.length > 0) {user.email = req.body.email;}
             if (req.body.address.length > 0) {
-                user.address = req.body.address.concat(", ", req.body.state, " ", req.body.zip, ", ", req.body.country);
+                user.address = req.body.address.concat("|", req.body.state, "|", req.body.zip, "|", req.body.country);
             }
             user.save(function(err, updatedUser) {
                 if (updatedUser) {
@@ -331,7 +331,6 @@ var deleteUser = function(req, res){
                 bcrypt.compare(pw, user[0].password, function (err, same){
                     if (same) {
                         user[0].listings.forEach(function(element){
-                            console.log(element);
                             Listing.findById(element, function(err, listing){
                                 listing.remove();
                             });
