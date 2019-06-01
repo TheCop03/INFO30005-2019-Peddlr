@@ -40,27 +40,31 @@ block content
             ol.breadcrumb
                 li.breadcrumb-item
                     a(href='/')
-                        p Home
+                        i Home
                 li.breadcrumb-item
                     a(href=`/listing/category/${listing.category}`)
                         each category in categories
                             if (category._id.equals(listing.category))
                                 i #{category.title}
-                li.breadcrumb-item.active(aria-current='page') #{listing.title}
+                li.breadcrumb-item.active(aria-current='page')
+                    i #{listing.title}
 
     .jumbotron.listingzone
         .row
             .col-9
                 h2.title #{listing.title}
             .col-3
-                a(href = '#')
-                    button.btn.btn-light(type = 'submit') Bookmark
+                .col
+                    a(href = '#')
+                        button.btn.btn-light(type = 'submit') Bookmark
 
                 if (session && owner._id.equals(user._id))
-                    div.deleteBox
-                        button.btn.btn-light#deleteListing Delete
-                    div.editBox
-                        button.btn.btn-light#editListing Edit
+                    .col
+                        .deleteBox
+                            button.btn.btn-light#deleteListing Delete
+                    .col
+                        .editBox
+                            button.btn.btn-light#editListing Edit
 
                     div#confirmationModal.modal
                         div.modal-content

@@ -1,22 +1,18 @@
-html{
-    font-family: 'Montserrat', sans-serif;
-}
-body {
-    display: grid;
-    grid-template-rows: 0.15fr 1fr auto;
-    border: 0;
-    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
-}
 
 .settingszone {
+    margin-top: 20px;
     margin-left: 80px;
     margin-right: 80px;
 }
-
 /************************************************************************************/
 /* FONTS */
+h2 {
+    color: black !important;
+    padding-bottom: 20px;
+}
 p {
     font-size: 14px !important;
+    padding-left: 20px;
 }
 /************************************************************************************/
 /* HEADER BUTTONS */

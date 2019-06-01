@@ -4,8 +4,6 @@ html{
 body {
     display:grid;
     grid-template-rows: 0.25fr 0.6fr 4fr 0.25fr ;
-    border: 0;
-    background-image: url(http://gdj.graphicdesignjunction.com/wp-content/uploads/2012/08/minimal-background-pattern-wordpress-2.jpg);
 }
 .headerzone {
     background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);

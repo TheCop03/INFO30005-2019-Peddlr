@@ -2,6 +2,10 @@ html{
     font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    background-color: floralwhite;
+}
+
 h2 {
     font-family: 'Montserrat', sans-serif;
     color: white;
@@ -19,13 +23,11 @@ h3 {
     background-color: #125358;
     position: relative;
     padding-top: 10px;
-    bottom:51px;
 
 }
 
 .tagline {
     font-size: 22px;
     font-weight: lighter;
-    color: white;
 
 }
