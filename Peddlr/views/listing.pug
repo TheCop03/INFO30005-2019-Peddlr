@@ -94,8 +94,8 @@ block content
                     li.list-group-item
                         p.details(style = "font-weight: bold") Location:
                             p.details
-                                | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
-                                | #{owner.address.substring(owner.address.indexOf(",") + 12)}
+                                | #{owner.address.split(", ")[1].split(" ")[0]},
+                                | #{owner.address.split(", ")[2]}
                     if (session)
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
