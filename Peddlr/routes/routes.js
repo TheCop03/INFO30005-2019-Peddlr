@@ -127,7 +127,7 @@ router.get('/searchlistingbycategory/:input/:title', controller.searchListingByC
 router.get('/searchlistingbyuser/:input/:user', controller.searchListingByUser);
 
 //searching for listings, all search results
-router.get('/searchresults', controller.searchResults);
+router.get('/searchresults/:category/:user', controller.searchResults);
 
 
 module.exports = router;

@@ -17,7 +17,7 @@ var showHomepage = function(req, res) {
                     if (req.cookies.sessionId && req.cookies.sessionId.length > 0){
                         User.findOne({sessionId:req.cookies.sessionId},function(err,user){
                             var results = {title: 'Peddlr', 'listings': listings,
-                            'categories': categories, session: req.cookies.sessionId, name: user.fname};
+                            'categories': categories, 'category': "Search Results", session: req.cookies.sessionId, name: user.fname};
                             res.render('homepage', results);
                         })
                     } else {
@@ -194,7 +194,7 @@ var showListingsByCategory = function(req, res) {
                         if (!err) {
                             var results = {
                                 title: 'Peddlr', category: category.title, categoryID: category._id,
-                                'listings': listings, session: req.cookies.sessionId, user: user
+                                'listings': listings, session: req.cookies.sessionId, user: user[0]._id
                             };
                             res.render('category', results);
                         } else {
@@ -399,12 +399,12 @@ var searchResults = function(req, res) {
     var categoryname = req.param('category');
     console.log(categoryname);
     var regex = new RegExp(input, 'i');
+    var user = req.params.user;
     if (categoryname == "My Listings") {
         console.log("my listings");
-        var user = req.body.user;
         console.log(user);
         Listing.find({"title": regex, "owner": user}, function(err, listings) {
-            var results = {title: 'Peddlr', category: "My Listings", 'listings': listings}
+            var results = {title: 'Peddlr', "user": user, category: "My Listings", 'listings': listings}
             if (!err) {
                 res.render('category', results);
             } else {
@@ -412,8 +412,7 @@ var searchResults = function(req, res) {
             }
         });
     }
-    else if(categoryname == null) {
-        console.log("all");
+    else if(categoryname == 'Search Results') {
         Listing.find({"title": regex}, function(err, listings) {
             var results = {title: 'Peddlr', category: "Search Results", 'listings': listings}
             if (!err) {
@@ -423,15 +422,20 @@ var searchResults = function(req, res) {
             }
         });
     } else {
-        console.log("cate")
-        Listing.find({"title": regex, "category": category}, function (err, listings) {
-            var results = {title: 'Peddlr', category: req.body.category, 'listings': listings}
-            if (!err) {
-                res.render('category', results);
+        Category.findOne({"title": categoryname}, function(err, category) {
+            if(!err) {
+                Listing.find({"title": regex, "category": category._id}, function (err, listings) {
+                    var results = {title: 'Peddlr', "user": user, category: categoryname, 'listings': listings}
+                    if (!err) {
+                        res.render('category', results);
+                    } else {
+                        res.sendStatus(404);
+                    }
+                });
             } else {
                 res.sendStatus(404);
             }
-        });
+         });
     }
 };
 

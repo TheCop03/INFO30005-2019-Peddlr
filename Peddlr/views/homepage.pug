@@ -14,7 +14,7 @@ block content
         a(href='./newlisting')
             button.createbutton(type='submit') + Create listing
 
-        form(method = 'GET', action = '/searchresults', autocomplete='off')
+        form(method = 'GET', action = '/searchresults/' + category + '/null', autocomplete='off')
             input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
             datalist#datalist
             button.searchbutton(type='submit') Search

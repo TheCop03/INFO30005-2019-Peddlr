@@ -9,7 +9,7 @@ block content
     div.titlezone
         .row
             .col-4
-                a(href = './homepage')
+                a(href = '/homepage')
                     button.backbutton(type = 'submit') Back
             .col-4
                 h2#categorytitle #{category}
@@ -18,9 +18,7 @@ block content
                     button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-4
-                form(method = 'GET', action = "/searchresults", autocomplete='off')
-                    input(type = 'hidden', name = 'category' value = category)
-                    input(type = 'hidden', name = 'user', value = user)
+                form(method = 'GET', action = "/searchresults/" + category + "/" + user, autocomplete='off')
                     input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
                     datalist#datalist
                     button.searchbutton(type='submit') Search
