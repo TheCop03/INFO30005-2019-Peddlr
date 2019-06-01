@@ -4,32 +4,35 @@ block css
     style
         include ../public/css/category.css
         include ../public/css/header.css
-
+        include ../public/css/fonts.css
+        include ../public/css/searchzone.css
 block content
-    div.titlezone
+    div.searchzone
         .row
-            .col-4
-                a(href = '/homepage')
+            .col-6
+                h2 #{category}
+            .col-6
+                a(href='/listing/new')
+                    button.createbutton.btn.btn-light.btn-xs(type='submit') + Create listing
+        .row
+            .col-3
+                a(href = '/')
                     button.backbutton(type = 'submit') Back
-            .col-4
-                h2#categorytitle #{category}
-            .col-4
-                a(href='/newlisting')
-                    button.createbutton.btn.btn-light(type='submit') + Create listing
-        .row
-            .col-4
-                form(method = 'GET', action = '/search', autocomplete='off')
+            .col-5
+                form(id = 'search', method = 'GET', action = "/search", autocomplete='off')
+                    input(type='hidden', name = 'category', value = categoryID, autocomplete="off")
+                    input(type='hidden', name = 'user', value = user, autocomplete="off")
                     input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
                     datalist#datalist
-                    button.searchbutton(type='submit') Search
-                    i.fa.fa-search
+            .col-4
+                button.searchbutton(type='submit' form = 'search') Search
 
     div.listingszone
         each listing in listings
             div.listing
-                a.photo(href = `/listing/id/${listing._id}`)
+                a.photo(href = `/listing/view/${listing._id}`)
                     img.listingphoto(src=listing.photo alt=listing.title)
-                a.title(href = `/listing/id/${listing._id}`)
+                a.title(href = `/listing/view/${listing._id}`)
                     p.listingtitle #{listing.title}
                 p.listinglocation #{listing.location}
                 p.listingprice $#{listing.price} #{listing.interval}
@@ -60,9 +63,11 @@ block content
                 }
             };
             if("#{category}" == "My Listings") {
-                xhttp.open("GET", "/searchlistingbyuser/" + value + "/" + "#{user}", true);
+                xhttp.open("GET", "/search/userlist/" + value + "/" + "#{user}", true);
+            } else if ("#{category}" == "Search Results") {
+                xhttp.open("GET", "/search/list/" + value, true);
             } else {
-                xhttp.open("GET", "/searchlistingbycategory/" + value + "/" + "#{categoryID}", true);
+                xhttp.open("GET", "/search/categorylist/" + value + "/" + "#{categoryID}", true);
             }
             xhttp.send();
         }

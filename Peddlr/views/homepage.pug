@@ -4,21 +4,29 @@ block css
     style
         include ../public/css/homepage.css
         include ../public/css/header.css
+        include ../public/css/fonts.css
+
 block content
-    div.container-fluid.searchzone
-        if(session)
-            spantitle Let's Peddle, #{name}
-        else
-            spantitle Let's Peddle
-
-        a(href='/newlisting')
-            button.createbutton(type='submit') + Create listing
-
-        form(method = 'GET', action = '/search', autocomplete='off')
-            input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
-            datalist#datalist
-            button.searchbutton(type='submit') Search
-            i.fa.fa-search
+    div.mainsearchzone
+        .row
+            .col-9
+                if(session)
+                    spantitle Let's Peddle, #{name}
+                else
+                    spantitle Let's Peddle
+            .col-3
+                a(href='/listing/new')
+                    button.createbutton.btn.btn-light(type='submit') + Create listing
+        .row
+            .col-8
+                form(method = 'GET', action = "/search", autocomplete='off')
+                    input(type='hidden', name = 'category', value = "sr", autocomplete="off")
+                    input(type='hidden', name = 'user', value = user, autocomplete="off")
+                    input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
+                    datalist#datalist
+            .col-4
+                button.searchbutton(type='submit') Search
+                    i.fa.fa-search
 
     h3 Featured Categories:
 
@@ -83,7 +91,7 @@ block content
                 }
             };
 
-            xhttp.open("GET", "/searchlistings/" + value, true);
+            xhttp.open("GET", "/search/list/" + value, true);
             xhttp.send();
 
 

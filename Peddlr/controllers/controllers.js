@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const utils = require('./utils.js');
-const Category = mongoose.model('category');
-const Listing = mongoose.model('listing');
-const User = mongoose.model('users');
+const Category = require('../models/category');
+const Listing = require('../models/listing');
+const User = require('../models/users');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -17,7 +17,7 @@ var showHomepage = function(req, res) {
                     if (req.cookies.sessionId){
                         User.findOne({sessionId:req.cookies.sessionId},function(err,user){
                             var results = {title: 'Peddlr', 'listings': listings,
-                            'categories': categories, session: req.cookies.sessionId, name: user.fname};
+                            'categories': categories, 'category': "Search Results", session: req.cookies.sessionId, name: user.fname};
                             res.render('homepage', results);
                         })
                     } else {
@@ -56,7 +56,7 @@ var showPrivacy = function(req, res) {
 };
 
 var showDeleteUser = function(req, res) {
-    var results = {title: 'Peddlr', error: '', session: req.cookies.sessionId};
+    var results = {title: 'Peddlr', session: req.cookies.sessionId, error: ''};
     res.render('deleteAccount', results)
 }
 
@@ -68,8 +68,7 @@ var showLogin = function(req, res) {
 var showCreateListing = function(req, res) {
     Category.find(function(err,categories){
         if(!err){
-            var results = {title: 'Peddlr', 'categories': categories,
-             session: req.cookies.sessionId};
+            var results = {title: 'Peddlr', 'categories': categories, session: req.cookies.sessionId};
             res.render('newlisting', results);
         }else{
             res.sendStatus(404);
@@ -77,7 +76,7 @@ var showCreateListing = function(req, res) {
     });
 };
 
-const showListingByID = function(req, res) {
+var showListingByID = function(req, res) {
     var ID = req.params.id;
     Listing.findById(ID, function(err, listing) {
         if(!err){
@@ -126,7 +125,7 @@ var loginUser = function(req, res) {
                         sidrequest.then(function (sid) {
                             user[0].sessionId = sid;
                             user[0].save();
-                            res.cookie("sessionId", sid).redirect("/homepage");
+                            res.cookie("sessionId", sid).redirect("/");
                         });
                     } else {
                         var message = "Wrong credentials. Please try again.";
@@ -168,7 +167,7 @@ var createListing = function(req,res){
                 if (!err){
                     user[0].listings.push(listing._id);
                     user[0].save();
-                    res.redirect('/homepage');
+                    res.redirect('/');
                 } else {
                     res.sendStatus(400);
                 }
@@ -196,35 +195,47 @@ var findListingByName = function(req, res) {
 //show all the listings that are in a certain category
 var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
-	Listing.find({category:myCategory}, function(err, listings) {
-		Category.findById(myCategory, function(err, category){
-		    var results = {title: 'Peddlr', category: category.title, categoryID: category._id,
-             'listings': listings, session: req.cookies.sessionId}
-			if (!err) {
-				res.render('category', results);
-			} else {
-				res.sendStatus(404);
-			}
-		});
-	});
+    var sid = req.cookies.sessionId;
+	User.find({sessionId:sid}, function(err, user) {
+	    if (!err) {
+            Listing.find({category: myCategory}, function (err, listings) {
+                if (!err) {
+                    Category.findById(myCategory, function (err, category) {
+                        if (!err) {
+                            var results = {
+                                title: 'Peddlr', category: category.title, categoryID: category._id,
+                                'listings': listings, session: req.cookies.sessionId, user: user[0]._id
+                            };
+                            res.render('category', results);
+                        } else {
+                            res.sendStatus(404);
+                        }
+                    });
+                } else {
+                    res.sendStatus(404);
+                }
+            });
+        } else {
+            res.sendStatus(404);
+        }
+    });
 };
 
 //show all the listings of the logged in user
 var showListingsByUser = function(req, res) {
-	var sid = req.cookies.sessionId;
-    User.find({sessionId:sid}, function(err, user){
+    User.find({sessionId: req.cookies.sessionId}, function(err, user){
         if (!err){
             Listing.find({owner:user[0]._id}, function(err, listings){
                 if (!err){
-                    var results = {title: 'Peddlr', category: 'My Listings',
-                     'listings': listings, 'user': user[0]._id, session: sid};
+                    var results = {title: 'Peddlr', category: 'My Listings', 'listings': listings, 'user': user[0]._id,
+                        session: req.cookies.sessionId, categoryID: 'me'};
                     res.render('category', results);
                 } else {
-                    res.sendStatus(400);
+                    res.sendStatus(500);
                 }
             });
         } else {
-            res.sendStatus(400);
+            res.sendStatus(500);
         }
     });
 };
@@ -385,7 +396,7 @@ var deleteListing = function(req,res){
                         if (updatedUser){
                             Listing.deleteOne({_id: listingID}, function(err, results) {
                                 if (!err) {
-                                    res.redirect("/mylistings")
+                                    res.redirect("/listing/me")
                                 } else {
                                     res.sendStatus(500);
                                 }
@@ -409,18 +420,24 @@ var updateListing = function(req, res){
 
     Listing.findById(listingID, function(err, listing){
         if (!err){
-            listing.title = req.body.title;
-            listing.category = req.body.category;
-            listing.price = req.body.price;
-            listing.interval = req.body.interval;
-            listing.description = req.body.description;
+            User.findOne({sessionId:req.cookies.sessionId}, function (err, user) {
+               if (err || !user || user._id != listing.owner) {
+                   res.sendStatus(401);
+               } else {
+                   listing.title = req.body.title;
+                   listing.category = req.body.category;
+                   listing.price = req.body.price;
+                   listing.interval = req.body.interval;
+                   listing.description = req.body.description;
 
-            listing.save(function(err, updatedListing){
-                if (!err){
-                    res.redirect(`/listing/id/${listingID}`);
-                } else {
-                    res.sendStatus(400);
-                }
+                   listing.save(function(err, updatedListing){
+                       if (!err){
+                           res.redirect(`/listing/view/${listingID}`);
+                       } else {
+                           res.sendStatus(400);
+                       }
+                   });
+               }
             });
         } else {
             res.sendStatus(400);
@@ -440,20 +457,6 @@ var searchListing = function(req, res) {
     });
 };
 
-var search = function(req, res) {
-    var input = req.param('input');
-    var regex = new RegExp(input, 'i');
-    Listing.find({"title": regex}, function(err, listings) {
-        var results = {title: 'Peddlr', category: 'Search Results',
-         'listings': listings, session: req.cookies.sessionId}
-        if (!err) {
-            res.render('category', results);
-        } else {
-            res.sendStatus(404);
-        }
-    });
-};
-
 var searchListingByCategory = function(req, res) {
     var input = req.params.input;
     var title = req.params.title;
@@ -467,6 +470,53 @@ var searchListingByCategory = function(req, res) {
     });
 };
 
+var searchResults = function(req, res) {
+    var input = req.query.input;
+    var categoryID = req.query.category;
+    var regex = new RegExp(input, 'i');
+    var user = req.query.user;
+    if (categoryID == "me") {
+        Listing.find({"title": regex, "owner": user}, function(err, listings) {
+            var results = {title: 'Peddlr', "user": user, category: "My Listings", 'listings': listings,
+                categoryID: "me", session: req.cookies.sessionId};
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(500);
+            }
+        });
+    }
+    else if(categoryID == 'sr') {
+        Listing.find({"title": regex}, function(err, listings) {
+            var results = {title: 'Peddlr', category: "Search Results", 'listings': listings, "user": user,
+                categoryID: "sr", session: req.cookies.sessionId};
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(500);
+            }
+        });
+    } else {
+        Category.findById(categoryID, function(err, category) {
+            if(!err) {
+                Listing.find({"title": regex, "category": category._id}, function (err, listings) {
+                    var results = {title: 'Peddlr', "user": user, category: category.title, categoryID: category._id,
+                        'listings': listings, session: req.cookies.sessionId};
+                    if (!err) {
+                        res.render('category', results);
+                    } else {
+                        res.sendStatus(500);
+                    }
+                });
+            } else {
+                res.sendStatus(500);
+            }
+         });
+    }
+};
+
+
+
 var searchListingByUser = function(req, res) {
     var input = req.params.input;
     var user = req.params.user;
@@ -479,6 +529,8 @@ var searchListingByUser = function(req, res) {
         }
     });
 };
+
+
 
 module.exports = {
     createListing,
@@ -501,7 +553,7 @@ module.exports = {
     editUser,
     editPassword,
     searchListing,
-    search,
+    searchResults,
     searchListingByCategory,
     searchListingByUser
 };

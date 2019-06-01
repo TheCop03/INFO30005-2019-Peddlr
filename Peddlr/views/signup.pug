@@ -4,16 +4,18 @@ block css
   style
     include ../public/css/signup.css
     include ../public/css/header.css
+    include ../public/css/fonts.css
+
 block content
   div.container-fluid.headerzone
-    a(href = '/homepage')
+    a(href = '/')
       button.backbutton(type = 'submit') Back
     h2 Sign Up
   p.tagline Time to feel like home
 
   // register form
   div.container-fluid.formzone
-    form(method='POST' action='./newUser')
+    form(method='POST' action='./signup')
       div.form-group
         input#fname(type='text', placeholder='First name' name='fname', required)
         input#lname(type='text', placeholder='Last name' name='lname', required)

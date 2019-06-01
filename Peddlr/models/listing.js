@@ -12,4 +12,4 @@ var listingSchema = mongoose.Schema(
         "created":Date
     }
 );
-mongoose.model('listing',listingSchema);
+module.exports = mongoose.model('Listing', listingSchema);

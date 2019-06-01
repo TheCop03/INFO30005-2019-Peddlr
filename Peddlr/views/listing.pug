@@ -1,8 +1,11 @@
 extends default.pug
 block css
     style
+        include ../public/css/fonts.css
         include ../public/css/listing.css
         include ../public/css/header.css
+        include ../public/css/searchzone.css
+
 
 block content
     script(type='text/javascript', src='//platform-api.sharethis.com/js/sharethis.js#property=5cef51d30180a500128311f3&product=sticky-share-buttons', async='async')
@@ -12,19 +15,38 @@ block content
 
     div.searchzone
         .row
+
             .col-6
-                a(href = '/homepage')
-                    button.backbutton(type = 'submit') Back
+                h2 #{category}
             .col-6
-                a(href='/newlisting')
-                    button.createbutton.btn.btn-light(type='submit') + Create listing
+                a(href='/listing/new')
+                    button.createbutton.btn.btn-light.btn-xs(type='submit') + Create listing
         .row
-            .col-8
+            .col-3
+                .dropdown.show
+                    button#dropdownMenuLink.btn.dropdown-toggle(role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        span.glyphicon.glyphicon-th-list
+                    .dropdown-menu
+                        for category in categories
+                            a.dropdown-item(href=`/listing/category/${category._id}`) #{category.title}
+            .col-5
                 input(type='text', placeholder='   I am looking for...', name='search')
             .col-4
                 a(href="/search")
                     button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
-                    i.fa.fa-search
+
+    .row.breadzone
+        nav(aria-label='breadcrumb')
+            ol.breadcrumb
+                li.breadcrumb-item
+                    a(href='/')
+                        p Home
+                li.breadcrumb-item
+                    a(href=`/listing/category/${listing.category}`)
+                        each category in categories
+                            if (category._id.equals(listing.category))
+                                i #{category.title}
+                li.breadcrumb-item.active(aria-current='page') #{listing.title}
 
     .jumbotron.listingzone
         .row
@@ -98,6 +120,10 @@ block content
                                 | #{owner.address.split(", ")[2]}
                     if (session)
                         li.list-group-item
+                            p.details(style = "font-weight: bold") Location:
+                                p.details
+                                    | #{owner.address}
+                        li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
                                 p.details
                                     | #{owner.fname.substring(owner.fname)}
@@ -111,7 +137,7 @@ block content
                             p.details(style = "font-weight: bold") Email:
                                 p.details
                                     | #{owner.email}
-                    else                       
+                    else
                         li.list-group-item
                             p.details(style = "font-weight: bold") Please log in to get owner information
 
@@ -120,30 +146,30 @@ block content
             var deletemodal = document.getElementById("confirmationModal");
             var deletebtn = document.getElementById("deleteListing");
             var cancelDeletebtn = document.getElementById("cancelDelete");
-            
+
             var editbtn = document.getElementById("editListing");
             var editmodal = document.getElementById("editModal");
             var cancelEditbtn = document.getElementById("cancelEdit");
-            
-            deletebtn.onclick = function(){
+
+            deletebtn.onclick = function () {
                 deletemodal.style.display = "block";
             }
-            
-            window.onclick = function(){
-                if (event.target == deletemodal || event.target == editmodal){
+
+            window.onclick = function () {
+                if (event.target == deletemodal || event.target == editmodal) {
                     deletemodal.style.display = "none";
                     editmodal.style.display = "none";
                 }
             }
-            
-            cancelDeletebtn.onclick = function(){
+
+            cancelDeletebtn.onclick = function () {
                 deletemodal.style.display = "none";
             }
-            
-            editbtn.onclick = function(){
+
+            editbtn.onclick = function () {
                 editmodal.style.display = "block";
             }
-            
-            cancelEditbtn.onclick = function(){
+
+            cancelEditbtn.onclick = function () {
                 editmodal.style.display = "none";
             }

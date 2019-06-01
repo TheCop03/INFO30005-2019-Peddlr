@@ -5,4 +5,4 @@ var categorySchema = mongoose.Schema(
         "photo":String,
     }
 );
-mongoose.model('category',categorySchema);
+module.exports = mongoose.model('Category', categorySchema);

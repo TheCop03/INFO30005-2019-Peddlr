@@ -4,16 +4,18 @@ block css
     style
         include ../public/css/newlisting.css
         include ../public/css/header.css
+        include ../public/css/fonts.css
+
 
 block content
     div.headerzone
-        a(href = '/homepage')
+        a(href = '/')
             button.backbutton(type = 'submit') Back
         h2 Create a new listing
 
     div.createlistingzone
         //create listing form
-        form(method='POST' action='/newListing')
+        form(method='POST' action='/listing/new')
             div.form-group
                 p.fieldtitle Item:
                 input#title(type='text', placeholder=' Title', name='title',
@@ -59,7 +61,7 @@ block content
             div
                 input#b64(type="hidden", name='b64')
             div
-                a(href = '/newlisting')
+                a(href = '/listing/new')
                     button.pagebutton(type='submit') Post
     div.footer
 
