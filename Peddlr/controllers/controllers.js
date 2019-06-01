@@ -17,7 +17,7 @@ var showHomepage = function(req, res) {
                     if (req.cookies.sessionId){
                         User.findOne({sessionId:req.cookies.sessionId},function(err,user){
                             var results = {title: 'Peddlr', 'listings': listings,
-                            'categories': categories, session: req.cookies.sessionId, name: user.fname};
+                            'categories': categories, 'category': "Search Results", session: req.cookies.sessionId, name: user.fname};
                             res.render('homepage', results);
                         })
                     } else {
@@ -195,17 +195,30 @@ var findListingByName = function(req, res) {
 //show all the listings that are in a certain category
 var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
-	Listing.find({category:myCategory}, function(err, listings) {
-		Category.findById(myCategory, function(err, category){
-		    var results = {title: 'Peddlr', category: category.title, categoryID: category._id,
-             'listings': listings, session: req.cookies.sessionId}
-			if (!err) {
-				res.render('category', results);
-			} else {
-				res.sendStatus(404);
-			}
-		});
-	});
+    var sid = req.cookies.sessionId;
+	User.find({sessionId:sid}, function(err, user) {
+	    if (!err) {
+            Listing.find({category: myCategory}, function (err, listings) {
+                if (!err) {
+                    Category.findById(myCategory, function (err, category) {
+                        if (!err) {
+                            var results = {
+                                title: 'Peddlr', category: category.title, categoryID: category._id,
+                                'listings': listings, session: req.cookies.sessionId, user: user[0]._id
+                            };
+                            res.render('category', results);
+                        } else {
+                            res.sendStatus(404);
+                        }
+                    });
+                } else {
+                    res.sendStatus(404);
+                }
+            });
+        } else {
+            res.sendStatus(404);
+        }
+    });
 };
 
 //show all the listings of the logged in user
@@ -215,7 +228,7 @@ var showListingsByUser = function(req, res) {
             Listing.find({owner:user[0]._id}, function(err, listings){
                 if (!err){
                     var results = {title: 'Peddlr', category: 'My Listings', 'listings': listings, 'user': user[0]._id,
-                        session: req.cookies.sessionId};
+                        session: req.cookies.sessionId, categoryID: 'me'};
                     res.render('category', results);
                 } else {
                     res.sendStatus(500);
@@ -440,19 +453,6 @@ var searchListing = function(req, res) {
     });
 };
 
-var search = function(req, res) {
-    var input = req.param('input');
-    var regex = new RegExp(input, 'i');
-    Listing.find({"title": regex}, function(err, listings) {
-        var results = {title: 'Peddlr', category: 'Search Results', 'listings': listings, session: req.cookies.sessionId}
-        if (!err) {
-            res.render('category', results);
-        } else {
-            res.sendStatus(404);
-        }
-    });
-};
-
 var searchListingByCategory = function(req, res) {
     var input = req.params.input;
     var title = req.params.title;
@@ -466,6 +466,53 @@ var searchListingByCategory = function(req, res) {
     });
 };
 
+var searchResults = function(req, res) {
+    var input = req.query.input;
+    var categoryID = req.query.category;
+    var regex = new RegExp(input, 'i');
+    var user = req.query.user;
+    if (categoryID == "me") {
+        Listing.find({"title": regex, "owner": user}, function(err, listings) {
+            var results = {title: 'Peddlr', "user": user, category: "My Listings", 'listings': listings,
+                categoryID: "me", session: req.cookies.sessionId};
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(500);
+            }
+        });
+    }
+    else if(categoryID == 'sr') {
+        Listing.find({"title": regex}, function(err, listings) {
+            var results = {title: 'Peddlr', category: "Search Results", 'listings': listings, "user": user,
+                categoryID: "sr", session: req.cookies.sessionId};
+            if (!err) {
+                res.render('category', results);
+            } else {
+                res.sendStatus(500);
+            }
+        });
+    } else {
+        Category.findById(categoryID, function(err, category) {
+            if(!err) {
+                Listing.find({"title": regex, "category": category._id}, function (err, listings) {
+                    var results = {title: 'Peddlr', "user": user, category: category.title, categoryID: category._id,
+                        'listings': listings, session: req.cookies.sessionId};
+                    if (!err) {
+                        res.render('category', results);
+                    } else {
+                        res.sendStatus(500);
+                    }
+                });
+            } else {
+                res.sendStatus(500);
+            }
+         });
+    }
+};
+
+
+
 var searchListingByUser = function(req, res) {
     var input = req.params.input;
     var user = req.params.user;
@@ -478,6 +525,8 @@ var searchListingByUser = function(req, res) {
         }
     });
 };
+
+
 
 module.exports = {
     createListing,
@@ -500,7 +549,7 @@ module.exports = {
     editUser,
     editPassword,
     searchListing,
-    search,
+    searchResults,
     searchListingByCategory,
     searchListingByUser
 };

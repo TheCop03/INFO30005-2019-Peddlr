@@ -19,11 +19,14 @@ block content
                     button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-8
-                form(method = 'GET', action = '/search', autocomplete='off')
+                form(method = 'GET', action = "/search", autocomplete='off')
+                    input(type='hidden', name = 'category', value = "sr", autocomplete="off")
+                    input(type='hidden', name = 'user', value = user, autocomplete="off")
                     input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
                     datalist#datalist
             .col-4
-                button.searchbutton.btn.btn-light(type='submit') Search
+                button.searchbutton(type='submit') Search
+                    i.fa.fa-search
 
     h3 Featured Categories:
 

@@ -19,10 +19,13 @@ block content
                 a(href = '/')
                     button.backbutton(type = 'submit') Back
             .col-5
-                input(type='text', placeholder='   I am looking for...', name='search')
+                form(id = 'search', method = 'GET', action = "/search", autocomplete='off')
+                    input(type='hidden', name = 'category', value = categoryID, autocomplete="off")
+                    input(type='hidden', name = 'user', value = user, autocomplete="off")
+                    input#searchbar(type='text', name = 'input', placeholder= "I am looking for...", list='datalist', autocomplete="off")
+                    datalist#datalist
             .col-4
-                a(href="/search")
-                    button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
+                button.searchbutton(type='submit' form = 'search') Search
 
     div.listingszone
         each listing in listings
@@ -61,6 +64,8 @@ block content
             };
             if("#{category}" == "My Listings") {
                 xhttp.open("GET", "/search/userlist/" + value + "/" + "#{user}", true);
+            } else if ("#{category}" == "Search Results") {
+                xhttp.open("GET", "/search/list/" + value, true);
             } else {
                 xhttp.open("GET", "/search/categorylist/" + value + "/" + "#{categoryID}", true);
             }
