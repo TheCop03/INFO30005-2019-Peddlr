@@ -35,7 +35,7 @@ router.get('/', function(req, res){
 });
 
 //update general settings
-router.post('/general/update', function(req, res){
+router.post('/general', function(req, res){
     if (req.cookies.sessionId) {
         controller.editUser(req, res);
     } else {
@@ -44,7 +44,7 @@ router.post('/general/update', function(req, res){
 });
 
 //update security settings
-router.post('/security/update', function(req, res){
+router.post('/security', function(req, res){
     if (req.cookies.sessionId) {
         controller.editPassword(req, res);
     } else {
