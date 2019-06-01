@@ -379,7 +379,7 @@ var deleteListing = function(req,res){
                         if (updatedUser){
                             Listing.deleteOne({_id: listingID}, function(err, results) {
                                 if (!err) {
-                                    res.redirect("/mylistings")
+                                    res.redirect("/listing/me")
                                 } else {
                                     res.sendStatus(500);
                                 }
@@ -404,22 +404,23 @@ var updateListing = function(req, res){
     Listing.findById(listingID, function(err, listing){
         if (!err){
             User.findOne({sessionId:req.cookies.sessionId}, function (err, user) {
-               if (err || !user || user._id !== listing.owner) {
+               if (err || !user || user._id != listing.owner) {
                    res.sendStatus(401);
-               }
-            });
-            listing.title = req.body.title;
-            listing.category = req.body.category;
-            listing.price = req.body.price;
-            listing.interval = req.body.interval;
-            listing.description = req.body.description;
+               } else {
+                   listing.title = req.body.title;
+                   listing.category = req.body.category;
+                   listing.price = req.body.price;
+                   listing.interval = req.body.interval;
+                   listing.description = req.body.description;
 
-            listing.save(function(err, updatedListing){
-                if (!err){
-                    res.redirect(`/listing/id/${listingID}`);
-                } else {
-                    res.sendStatus(400);
-                }
+                   listing.save(function(err, updatedListing){
+                       if (!err){
+                           res.redirect(`/listing/view/${listingID}`);
+                       } else {
+                           res.sendStatus(400);
+                       }
+                   });
+               }
             });
         } else {
             res.sendStatus(400);

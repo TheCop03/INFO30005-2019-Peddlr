@@ -115,12 +115,11 @@ block content
 
             .col-3
                 ul.list-group
-                    li.list-group-item
-                        p.details(style = "font-weight: bold") Location:
-                            p.details
-                                | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
-                                | #{owner.address.substring(owner.address.indexOf(",") + 12)}
                     if (session)
+                        li.list-group-item
+                            p.details(style = "font-weight: bold") Location:
+                                p.details
+                                    | #{owner.address}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
                                 p.details

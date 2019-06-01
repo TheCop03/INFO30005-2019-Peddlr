@@ -34,7 +34,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (req, res, next) {
     if (req.cookies.sessionId) {
         utils.verify_logged_in(req.cookies.sessionId, function (loggedin) {
-            console.log(loggedin);
             if (!loggedin) {
                 res.cookie('sessionId', '');
                 res.redirect('/');
