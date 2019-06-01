@@ -1,4 +1,14 @@
 
+#dropdownMenuLink {
+    height: 70px;
+    font-size: 18px;
+    padding-right: 10px;
+    border-radius: 10px;
+    float:right;
+    background-color: white;
+    width: 30%;
+}
+
 .text{
 	font-size: 30px;
 
@@ -95,4 +105,3 @@ a.title {
 	color: black;
 	margin-top: 0;
 }
-

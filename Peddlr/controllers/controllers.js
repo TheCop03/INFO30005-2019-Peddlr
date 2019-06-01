@@ -197,13 +197,18 @@ var showListingsByCategory = function(req, res) {
 	var myCategory = req.params.category;
 	Listing.find({category:myCategory}, function(err, listings) {
 		Category.findById(myCategory, function(err, category){
-		    var results = {title: 'Peddlr', category: category.title, categoryID: category._id,
-             'listings': listings, session: req.cookies.sessionId}
-			if (!err) {
-				res.render('category', results);
-			} else {
-				res.sendStatus(404);
-			}
+            if (!err){
+                Category.find({}, function(err, categories){
+                    if (!err){
+                        var results = {title: 'Peddlr', category: category.title,
+                         categoryID: category._id, categories: categories,
+                          'listings': listings, session: req.cookies.sessionId}
+                        res.render('category', results);
+                    } else {
+                        res.sendStatus(500);
+                    }
+                });
+            }
 		});
 	});
 };
