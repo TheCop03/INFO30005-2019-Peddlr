@@ -1,16 +1,9 @@
-html{
-	font-family: 'Montserrat', sans-serif;
-}
 body {
 	display: grid;
 	grid-template-rows: 0.08fr 0.5fr 0.1fr 0.3fr 0.1fr 2fr 0.2fr;
 	border: 0;
 	background-color:white;
 }
-/************************************************************************************/
-/* HEADERS */
-
-
 /************************************************************************************/
 /* BUTTONS */
 
@@ -55,7 +48,6 @@ input{
 	top: 30px;
 	left: 20px;
 }
-
 /************************************************************************************/
 /* CATEGORY ZONE */
 
@@ -177,18 +169,4 @@ div.scrollmenu a {
 
 .card-img-top.image_custom {
 	padding: 1rem;
-}
-
-/************************************************************************************/
-/* HEADER BUTTONS */
-.nav-item {
-	padding: 8px 32px;
-	font-size: 20px;
-	color: blue;
-	transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
-	position: relative;
-}
-
-#navbarSupportedContent {
-	background-color: #125358;
 }
