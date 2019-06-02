@@ -90,6 +90,7 @@ input, select{
 
 #state, #zip {
     width: 20%;
+    margin-right: 20px;
 }
 
 #country {
@@ -102,7 +103,7 @@ float: left;
 
 .pagebutton {
     position: relative;
-    width: 30%;
+    width: 40%;
     margin: 0 auto;
     border: 0px;
     background-color: #125358;

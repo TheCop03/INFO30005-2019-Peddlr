@@ -13,12 +13,13 @@ block content
   h2.display-4 Sign Up
   p.tagline Time to feel like home
 
+
   // register form
   div.container-fluid.formzone
     form(method='POST' action='./signup')
       div.form-group
-        input#fname(type='text', placeholder='First name' name='fname', required)
-        input#lname(type='text', placeholder='Last name' name='lname', required)
+        input#fname(type='text', placeholder='First name*' name='fname', required)
+        input#lname(type='text', placeholder='Last name*' name='lname', required)
 
       div.form-group
         p.font-weight-bold Date of Birth
@@ -26,27 +27,29 @@ block content
       div.form-group
           input#phone(type='text', placeholder='Phone Number' name='phone', required)
       div.form-group
-        input#address(type='text', placeholder='Address' name='address', required)
+          input#address(type='text', placeholder='Address*' name='address',
+          pattern="[a-zA-Z0-9, ]+", title="Only alphanumeric characters", required)
       div.form-group
-
-        select#state(type='text', placeholder='State' name='state', required)
+        select#state(type='text', placeholder='State*' name='state', required)
           option NSW
           option QLD
           option SA
           option TAS
           option VIC
           option WA
-        input#zip(type='text', placeholder='Zip Code' name='zip', required)
-        select#country(type='text', placeholder='Country' name='country', required)
+        input#zip(type='text', placeholder='Zip Code*' name='zip', maxlength='4', required)
+        select#country(type='text', placeholder='Country*' name='country', required)
           option Australia
       div.form-group
-        input#email(type='email', placeholder='Email Address' name='email', required)
+        input#phone(type='number', placeholder='Phone Number', name='phone')
+      div.form-group
+        input#email(type='email', placeholder='Email Address*' name='email', required)
       div.form-group
         input#pw(type='password', onkeyup="checkPasswords();",
-         placeholder='Password' name='password', required)
+         placeholder='Password*' name='password', required)
       div.form-group
         input#pw2(type='password', onkeyup="checkPasswords();",
-         placeholder='Retype Password' name='confirmPassword',
+         placeholder='Retype Password*' name='confirmPassword',
           autocomplete='new-password', required)
       p#pw_message(style="display: none; color: red; font-weight: bold;") Passwords do not match.
       script.
@@ -68,8 +71,8 @@ block content
                 document.getElementById('fname').value = "#{fname}";
                 document.getElementById('lname').value = "#{lname}";
                 document.getElementById('address').value = "#{address}";
+                document.getElementById('phone').value = "#{phone}";
                 document.getElementById('state').value = "#{state}";
                 document.getElementById('zip').value = "#{zip}";
             }
       button#submit.pagebutton(type='submit') SIGN UP
-

@@ -100,19 +100,6 @@ input[type=file] {
     border-width: medium;
 }
 
-
-input[type=file]{
-    background-color: #4CAF50;
-    max-height: 20px;
-    border: none;
-    color: white;
-    padding: 20px 32px;
-    text-decoration: none;
-    margin: 3px 2px;
-    cursor: pointer;
-    text-align: center;
-}
-
 .backbutton {
     color:black;
     display: inline;

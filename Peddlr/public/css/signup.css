@@ -42,10 +42,15 @@ input, select {
 
 #state, #zip {
     width: 10%;
+    margin-right: 20px;
 }
 
 #country {
     width: 15%;
+}
+
+#signup, #tagline {
+    color: black;
 }
 /************************************************************************************/
 /* BUTTONS */

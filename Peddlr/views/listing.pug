@@ -135,9 +135,10 @@ block content
                 ul.list-group
                     li.list-group-item
                         p.details(style = "font-weight: bold") Location:
-                            p
-                                | #{owner.address.substring(owner.address.indexOf(",") + 1, owner.address.indexOf(",") + 5)},
-                                | #{owner.address.substring(owner.address.indexOf(",") + 12)}
+
+                            p.details
+                                | #{owner.address.split("|")[1]},
+                                | #{owner.address.split("|")[3]}
                     if (session)
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
@@ -146,9 +147,13 @@ block content
                                     | #{owner.lname.substring(owner.lname)}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Contact:
-                                p
-                                   // | #{owner.phoneNumber.count(owner.phoneNumber)}
-                                   // | #{owner.phoneNumber.count(owner.phoneNumber)}
+
+                                if (owner.phone)
+                                    p.details
+                                        | #{owner.phone}
+                                else
+                                    p.details
+                                        | N/A
                         li.list-group-item
                             p.details(style = "font-weight: bold") Email:
                                 p
