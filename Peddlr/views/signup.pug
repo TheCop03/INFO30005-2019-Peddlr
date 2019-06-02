@@ -25,8 +25,6 @@ block content
         p.font-weight-bold Date of Birth
         input#dob(type='date', placeholder='22/07/2018' name='dob', max='2001-01-01', min='1930-01-01', required)
       div.form-group
-          input#phone(type='text', placeholder='Phone Number' name='phone', required)
-      div.form-group
           input#address(type='text', placeholder='Address*' name='address',
           pattern="[a-zA-Z0-9, ]+", title="Only alphanumeric characters", required)
       div.form-group
@@ -41,7 +39,7 @@ block content
         select#country(type='text', placeholder='Country*' name='country', required)
           option Australia
       div.form-group
-        input#phone(type='number', placeholder='Phone Number', name='phone')
+        input#phone(type='text', placeholder='Phone Number', name='phone')
       div.form-group
         input#email(type='email', placeholder='Email Address*' name='email', required)
       div.form-group
