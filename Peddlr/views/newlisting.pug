@@ -22,7 +22,7 @@ block content
 
     .jumbotron.createlistingzone
         //create listing form
-        form(method='POST' action='./newListing', style = "margin-left: 13%;")
+        form(method='POST' action='/listing/new', style = "margin-left: 13%;")
             .form-group
                 p.fieldtitle Item:
                 input#general(type='text', placeholder=' Title', name='title',
@@ -72,7 +72,7 @@ block content
                             option Australia
             .row
                 input(type="hidden", name='b64')
-            a(href = './listing/new')
+            a(href = '/listing/new')
                 button.pagebutton(type='submit') Post
 
 
