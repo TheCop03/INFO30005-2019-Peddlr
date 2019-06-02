@@ -126,9 +126,12 @@ block content
                                     | #{owner.lname.substring(owner.lname)}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Contact:
-                                p.details
-                                   // | #{owner.phoneNumber.count(owner.phoneNumber)}
-                                   // | #{owner.phoneNumber.count(owner.phoneNumber)}
+                                if (owner.phone)
+                                    p.details
+                                        | #{owner.phone}
+                                else
+                                    p.details
+                                        | N/A
                         li.list-group-item
                             p.details(style = "font-weight: bold") Email:
                                 p.details

@@ -19,37 +19,35 @@ block content
                 .row
                     h2 Personal details
                 hr
-                form(method='POST' action='/settings/general/update')
+                form(method='POST' action='/settings/general')
                     .row
                         h5 Name
                     .row
-                        p Your Name
+                        div.form-group.col-3
+                            p First name
+                            input(type='text', name='fname', value=user.fname)
+                        div.form-group.col-3
+                            p Last name
+                            input(type='text', name='lname', value=user.lname)
                     .row
-                        div.form-group
-                            .row
-                                p First name
-                                input(type='text', name='fname', value=user.fname)
-                            .row
-                                p Last name
-                                input(type='text', name='lname', value=user.lname)
-
+                        h5 Phone
+                    .row
+                        div.form-group.col-4
+                            input(type='number', name='phone', value=user.phone)
                     .row
                         h5 Email
                     .row
-                        div.form-group
-                            .row
-                                p Email Address
-                                input(type='email', name='email', value=user.email)
+                        div.form-group.col-6
+                            input(type='email', name='email', value=user.email)
                     .row
                         h5 Address
                     .row
-                        div.form-group
-                            .row
-                                p Home Address
+                        div.form-group.col-6
                                 input#address(type='text', placeholder='Address' name='address',
-                                 pattern="[a-zA-Z0-9 ]+", title="Only alphanumeric characters",
+                                 pattern="[a-zA-Z0-9, ]+", title="Only alphanumeric characters",
                                   value=user.address.split("|")[0])
-
+                    .row
+                        div.form-group.col(style='text-align: justify;')
                                 select#state(type='text', placeholder='State' name='state', value=user.address.split("|")[1])
                                     option NSW
                                     option QLD

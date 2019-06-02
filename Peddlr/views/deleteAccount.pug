@@ -26,6 +26,8 @@ block content
                     .row
                         h5 Please enter your username and password to confirm
                     .row
+                        p(style='color: red;') NOTE: All listings and account information will be permanently erased.
+                    .row
                         div.form-group
                             .row
                                 p Username
@@ -37,4 +39,4 @@ block content
                         .row
                             p #{error}
                     .row
-                        button#deletebtn.pagebutton(type='submit') Delete Account
+                        button#deletebtn.pagebutton(type='submit', style='background-color: red;') Delete Account

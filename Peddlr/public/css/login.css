@@ -7,8 +7,9 @@ p {
     text-align: center;
 }
 
-h2 {
+#logintitle {
     color: black;
+    top: 0px;
 }
 
 /************************************************************************************/
@@ -99,4 +100,3 @@ input, select {
     position: relative;
     width: 60%;
 }
-

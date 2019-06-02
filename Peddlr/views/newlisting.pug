@@ -42,20 +42,19 @@ block content
             div.form-group
                 p.fieldtitle Please upload a photo
                 input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
-                img#preview(src=file alt="Choose a file to see the preview here.")
+                img#preview(src=file alt="See the preview here.")
             div.form-group
                 p.fieldtitle Where can the item be picked up?
                 input#address(type='text', placeholder='Address' name='address', required)
             div.form-group
-                input#zip(type='text', placeholder='Zip Code' name='zip', required)
-
                 select#state(type='text', placeholder='State' name='state', required)
                     option NSW
                     option QLD
                     option SA
                     option TAS
                     option VIC
-                    option WA
+                    option WA                    
+                input#zip(type='text', placeholder='Zip Code' name='zip', required)
                 select#country(type='text', placeholder='Country' name='country', required)
                     option Australia
             div

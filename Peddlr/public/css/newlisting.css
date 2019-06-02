@@ -128,19 +128,19 @@ input, select{
 
 #country {
     position: relative;
-    left: 13%;
     width: 30%;
 }
 
 #zip {
     position: relative;
-    left: 3%;
+    margin-right: 20px;
     width: 20%;
 }
 #state {
     position: relative;
-    left: 13%;
-    width:20%;
+    margin-right: 20px;
+    margin-left: 40px;
+    width:30%;
 }
 
 .example {
