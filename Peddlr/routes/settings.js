@@ -25,7 +25,7 @@ router.get('/delete', function(req,res){
     if (req.cookies.sessionId) {
         controller.showDeleteUser(req, res);
     } else {
-        res.redirect('login');
+        res.redirect('/login');
     }
 });
 
@@ -57,7 +57,7 @@ router.post('/delete', function(req, res){
     if (req.cookies.sessionId){
         controller.deleteUser(req, res);
     } else {
-        res.redirect('login');
+        res.redirect('/login');
     }
 });
 
