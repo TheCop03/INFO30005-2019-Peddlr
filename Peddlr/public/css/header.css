@@ -22,3 +22,12 @@ spantitle {
     vertical-align: middle;
     line-height: 150px;
 }
+
+.nav-link{
+    color: white !important;
+    float: right !important;
+}
+
+.nav-link:hover {
+    color:grey !important;
+}

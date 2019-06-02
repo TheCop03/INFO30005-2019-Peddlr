@@ -29,5 +29,8 @@ h3 {
 .tagline {
     font-size: 22px;
     font-weight: lighter;
+}
 
+spantitle {
+    padding-left: 5%;
 }

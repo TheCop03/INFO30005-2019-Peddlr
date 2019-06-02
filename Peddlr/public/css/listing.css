@@ -79,8 +79,11 @@ i {
     font-weight: bold;
 }
 
-.text {
-    margin-left: 20%;
+.textbox {
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 2%;
+    padding-left: 5%;
 }
 
 #confirmationModal{
@@ -98,5 +101,8 @@ i {
     height: 70%;
     max-height: 500px;
     max-width: 500px;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    background-color: white;
 }
 

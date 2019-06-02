@@ -5,28 +5,34 @@ block css
         include ../public/css/newlisting.css
         include ../public/css/header.css
         include ../public/css/fonts.css
+        include ../public/css/searchzone.css
 
 
 block content
-    div.headerzone
-        a(href = '/')
-            button.backbutton(type = 'submit') Back
-        h2 Create a new listing
+    div.searchzone
+        .row
+            .col-3
+                a(href = '/')
+                    button.backbutton.btn.btn-light(type = 'submit') Back
+            .col-9
+                h2 Create a listing
 
-    div.createlistingzone
+
+
+
+    .jumbotron.createlistingzone
         //create listing form
-        form(method='POST' action='./newListing')
-            div.form-group
+        form(method='POST' action='./newListing', style = "margin-left: 13%;")
+            .form-group
                 p.fieldtitle Item:
-                input#title(type='text', placeholder=' Title', name='title',
-                 maxlength='50', required)
-            div.form-group
+                input#general(type='text', placeholder=' Title', name='title',
+                maxlength='50', required)
+            .form-group
                 p.fieldtitle Category:
-                select#category(type = 'text', name = 'category', required)
+                select#general(type = 'text', name = 'category', required)
                     each category in categories
                         option(value=`${category._id}`) #{category.title}
-
-            div.form-group
+            .form-group
                 p.fieldtitle Price:
                 input#price(type = 'number', placeholder='$0', name = 'price', required)
                 select#interval(type='text', placeholder='per...', name= 'interval', required)
@@ -34,35 +40,40 @@ block content
                     option per week
                     option per month
                     option per year
-            div.form-group
-                p.fieldtitle Description:
-                p.example e.g "Authentic oak wood patio table. Suitable for parties"
-                input#description(type = 'text', placeholder=' Description',
-                 name = 'description', maxlength='250')
-            div.form-group
-                p.fieldtitle Please upload a photo
-                input#photo(type='file', placeholder='Choose File', onchange='previewFile()' name = 'photoinput')
-                img#preview(src=file alt="Image preview...")
-            div.form-group
+            .form-group
+                    p.fieldtitle Description:
+                    p.font-weight-light e.g "Authentic oak wood patio table. Suitable for parties"
+                    textarea#description(type = 'text', placeholder=' Description',
+                    name = 'description', maxlength='250', rows = 5)
+            .form-group
+                .row
+                    .col
+                        p.fieldtitle Please upload a photo
+                        input#general(type='file', placeholder='Choose File', onchange='previewFile()',name = 'photoinput')
+                .row
+                        img#preview(src=file alt="Image preview...")
+            .form-group
                 p.fieldtitle Where can the item be picked up?
-                input#address(type='text', placeholder='Address' name='address', required)
-            div.form-group
-                input#zip(type='text', placeholder='Zip Code' name='zip', required)
-
-                select#state(type='text', placeholder='State' name='state', required)
-                    option NSW
-                    option QLD
-                    option SA
-                    option TAS
-                    option VIC
-                    option WA
-                select#country(type='text', placeholder='Country' name='country', required)
-                    option Australia
-            div
-                input#b64(type="hidden", name='b64')
-            div
-                a(href = './listing/new')
-                    button.pagebutton(type='submit') Post
+                input#general(type='text', placeholder='Address' name='address', required)
+            .form-group
+                .row#address
+                    .col-4
+                        input#general(type='text', placeholder='Zip Code' name='zip', required)
+                    .col-4
+                        select#general(type='text', placeholder='State' name='state', required)
+                            option NSW
+                            option QLD
+                            option SA
+                            option TAS
+                            option VIC
+                            option WA
+                    .col-4
+                        select#general(type='text', placeholder='Country' name='country', required)
+                            option Australia
+            .row
+                input(type="hidden", name='b64')
+            a(href = './listing/new')
+                button.pagebutton(type='submit') Post
     div.footer
 
 

@@ -29,7 +29,7 @@ block content
                     button.searchbutton.btn.btn-light(type='submit', value = 'Submit') Search
 
     div.listingszone
-        if listings > 0
+        if (Object.keys(listings).length > 0)
             each listing in listings
                 div.listing
                     a.photo(href = `/listing/view/${listing._id}`)

@@ -1,42 +1,23 @@
-html{
-    font-family: 'Montserrat', sans-serif;
-}
-body {
-    display:grid;
-    grid-template-rows: 0.25fr 0.6fr 4fr 0.25fr ;
-}
-.headerzone {
-    background-image: url(https://images.unsplash.com/photo-1499310392581-322cec0355a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1868&q=80);
-    background-position: 30%;
+
+.searchzone {
+    background-image: url(https://images.unsplash.com/photo-1485965120184-e220f721d03e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) !important;
+    background-position: 50%;
     height: 100%;
     background-repeat: repeat;
+    padding-top: 4%;
 }
-/************************************************************************************/
-/* TITLES */
 
 h2 {
-    font-size: 50px;
-    font-weight: bold;
-    bottom: 25px;
+    padding-right: 30%;
 }
+
 /************************************************************************************/
 /* FORM */
 .createlistingzone{
-    padding-left: 20px;
-    display: grid;
-    margin: 20px auto;
-    background-color: #125358;
-    border-radius: 20px;
-    box-shadow: 5px 5px 5px 10px grey;
-    position: relative;
-    width: 75%;
-    height:100%;
-    text-align: left;
-}
-
-#create{
-    position: relative;
-    left: 25%;
+    background-color: #125358 !important;
+    margin-top:5%;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .form-group {
@@ -53,96 +34,45 @@ input, select{
 }
 
 
-#title {
-    position:relative;
-    left: 4%;
-    width:85%;
-    height: 40px;
+#general {
     font-size: 20px;
-}
-
-#category {
-    position:relative;
-    left: 4%;
-    width: 85%;
-    height: 40px;
-    font-size: 20px;
-}
-
-#price {
-    position:relative;
-    left: 4%;
-    width: 45%;
-    height: 40px;
-    font-size: 20px;
+    height: 100%;
+    width: 80%;
 }
 
 #interval {
-    position:relative;
-    left: 4%;
-    width: 37%;
-    height: 40px;
-    font-size: 20px;
-}
-#description{
-    position: relative;
-    width: 85%;
-    height: 100px;
-    font-size: 20px;
-    left: 4%;
-    bottom: 10px;
-}
-
-#photo {
-    position: relative;
-    font-size: 15px;
-    height: 100px;
-    left: 3%;
-
-}
-
-#preview{
-    font-size: 15px;
-    text-align: left;
-    position: relative;
-    width: 300px;
-    height: 300px;
-    left: 80px;
-
-}
-
-#address {
-    width: 90%;
-    position: relative;
-    left: 3%;
-}
-
-#country {
-    position: relative;
-    left: 13%;
+    height: 100%;
     width: 30%;
+    margin-left: 5%;
 }
 
-#zip {
-    position: relative;
-    left: 3%;
-    width: 20%;
-}
-#state {
-    position: relative;
-    left: 13%;
-    width:20%;
+#price {
+    width: 30%;
+    height:100%;
 }
 
-.example {
-    font-size: 12px;
-    color: white;
-    font-style: italic;
-    position: relative;
-    bottom: 15px;
-
+#description{
+    width: 80%;
 }
 
+#preview {
+    margin-top: 5%;
+    margin-left: 30%;
+    color: black;
+    background-color: white;
+    max-height: 300px;
+    max-width: 400px;
+}
+
+#address{
+    margin-right: 13%;
+}
+input[type=file] {
+    max-height: 60% !important;
+    background-color: lightgrey !important;
+    color: black !important;
+    font-size: 20px !important;
+}
 
 /************************************************************************************/
 /* BUTTON */

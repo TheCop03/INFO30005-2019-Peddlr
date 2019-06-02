@@ -27,11 +27,6 @@ input, select {
 }
 
 
-.dob {
-    font-weight: bold;
-    font-size: 18px;
-}
-
 #dob {
     text-indent: 5px;
     color: grey;
