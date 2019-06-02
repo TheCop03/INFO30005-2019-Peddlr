@@ -1,28 +1,19 @@
-body {
-	border: 0;
-	margin: 8px;
-	background-color:white;
-}
-/************************************************************************************/
-/* BUTTONS */
 
-.backbutton:hover {
-	opacity: 0.8;
+#dropdownMenuLink {
+    height: 70px;
+    font-size: 18px;
+    padding-right: 10px;
+    border-radius: 10px;
+    float:right;
+    background-color: white;
+    width: 30%;
 }
 
-.backbutton {
-	color:#4F5445;
-	display: inline-block;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	font-size: 16px;
-	width: 100px;
-	margin-left: 15px;
-	margin-top: 20px;
-	cursor: pointer;
-	border-radius: 20px;
+.text{
+	font-size: 30px;
+
 }
+
 /************************************************************************************/
 /* ZONES */
 
@@ -114,4 +105,3 @@ a.title {
 	color: black;
 	margin-top: 0;
 }
-

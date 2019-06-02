@@ -48,9 +48,13 @@ block content
                         a(href = `/listing/view/${listing._id}`)
                             img.card-img-top.image-custom(src=listing.photo, style="width:14rem;height:15rem;")
                             .card-body.flex-fill
-                                h5.card-title #{listing.title}
-                                p.card-text.listingprice $#{listing.price} #{listing.interval}
-                                p.listingdescription #{listing.description}
+                                .row
+                                    h5.card-title #{listing.title}
+                                .row
+                                    p.card-text.listingprice $#{listing.price} #{listing.interval}
+                                .row
+                                    p.listingdescription #{listing.description}
+
 
 
     script.

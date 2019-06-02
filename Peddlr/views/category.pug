@@ -13,11 +13,15 @@ block content
                 h2 #{category}
             .col-6
                 a(href='/listing/new')
-                    button.createbutton.btn.btn-light.btn-xs(type='submit') + Create listing
+                    button.createbutton.btn.btn-light(type='submit') + Create listing
         .row
             .col-3
-                a(href = '/')
-                    button.backbutton(type = 'submit') Back
+                .dropdown.show
+                    button#dropdownMenuLink.btn.dropdown-toggle(role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                        span.glyphicon.glyphicon-th-list
+                    .dropdown-menu
+                        each category in categories
+                            a.dropdown-item(href=`/listing/category/${category._id}`) #{category.title}
             .col-5
                 form(id = 'search', method = 'GET', action = "/search", autocomplete='off')
                     input(type='hidden', name = 'category', value = categoryID, autocomplete="off")
@@ -28,15 +32,19 @@ block content
                 button.searchbutton(type='submit' form = 'search') Search
 
     div.listingszone
-        each listing in listings
-            div.listing
-                a.photo(href = `/listing/view/${listing._id}`)
-                    img.listingphoto(src=listing.photo alt=listing.title)
-                a.title(href = `/listing/view/${listing._id}`)
-                    p.listingtitle #{listing.title}
-                p.listinglocation #{listing.location}
-                p.listingprice $#{listing.price} #{listing.interval}
-                p.listingdescription #{listing.description}
+        if (Object.keys(listings).length > 0)
+            each listing in listings
+                div.listing
+                    a.photo(href = `/listing/view/${listing._id}`)
+                        img.listingphoto(src=listing.photo alt=listing.title)
+                    a.title(href = `/listing/view/${listing._id}`)
+                        p.listingtitle #{listing.title}
+                    p.listinglocation #{listing.location}
+                    p.listingprice $#{listing.price} #{listing.interval}
+                    p.listingdescription #{listing.description}
+        else
+            .card
+                .card-body.text  No listings found here!
 
     script.
         document.getElementById("searchbar").addEventListener('keyup', () => {

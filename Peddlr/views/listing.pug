@@ -40,30 +40,36 @@ block content
             ol.breadcrumb
                 li.breadcrumb-item
                     a(href='/')
-                        p Home
+                        i Home
                 li.breadcrumb-item
                     a(href=`/listing/category/${listing.category}`)
                         each category in categories
                             if (category._id.equals(listing.category))
                                 i #{category.title}
-                li.breadcrumb-item.active(aria-current='page') #{listing.title}
+                li.breadcrumb-item.active(aria-current='page')
+                    i #{listing.title}
 
     .jumbotron.listingzone
         .row
             .col-9
-                h2.title #{listing.title}
+                .h1.font-weight-bold #{listing.title}
             .col-3
+                .row
+                    .col-4
+                        a(href = '#')
+                            button.btn.btn-light(type = 'submit') Bookmark
 
-                if (session && owner._id.equals(user._id))
-                    div.deleteBox
-                        button.btn.btn-light#deleteListing Delete
-                    div.editBox
-                        button.btn.btn-light#editListing Edit
+                    if (session && owner._id.equals(user._id))
+                        .col-4
+                            button.btn.btn-light#editListing Edit
+                        .col-4
+                            button.btn.btn-light#deleteListing Delete
+
 
                     div#confirmationModal.modal
                         div.modal-content
                             p#confirmMessage Are you sure you want to delete the listing?
-                            div.buttons
+                            div
                                 form(action='/listing/delete', method='post')
                                     input(type='hidden', name='listing_id', value=listing._id)
                                     button#confirm.confirm(type='submit') Yes
@@ -103,29 +109,45 @@ block content
 
         .row
             .col-9
-                .row.imagebox
-                    img.listingphoto(src=listing.photo alt=listing.title)
-                .row.descriptionbox
-                    p.details(style = "font-weight: bold") Description:
-                .row
-                    p.description #{listing.description}
+                .text
+                    .row
+                        .carousel.slide(data-ride='carousel').listingphoto
+                            .carousel-inner
+                                .carousel-item.active
+                                    img.d-block.w-100(src=listing.photo alt=listing.title)
+                            a.carousel-control-prev(href='#carouselExampleControls', role='button', data-slide='prev')
+                                span.carousel-control-prev-icon(aria-hidden='true')
+                                span.sr-only Previous
+                            a.carousel-control-next(href='#carouselExampleControls', role='button', data-slide='next')
+                                span.carousel-control-next-icon(aria-hidden='true')
+                                span.sr-only Next
+                    .row.textbox
+                        p.details Price:
+                    .row.textbox
+                        p.description $#{listing.price} #{listing.interval}
+                    .row.textbox
+                        p.details Description:
+                    .row.textbox
+                        p.description #{listing.description}
 
 
             .col-3
                 ul.list-group
                     li.list-group-item
                         p.details(style = "font-weight: bold") Location:
+
                             p.details
                                 | #{owner.address.split("|")[1]},
                                 | #{owner.address.split("|")[3]}
                     if (session)
                         li.list-group-item
                             p.details(style = "font-weight: bold") Owner:
-                                p.details
+                                p
                                     | #{owner.fname.substring(owner.fname)}
                                     | #{owner.lname.substring(owner.lname)}
                         li.list-group-item
                             p.details(style = "font-weight: bold") Contact:
+
                                 if (owner.phone)
                                     p.details
                                         | #{owner.phone}
@@ -134,7 +156,7 @@ block content
                                         | N/A
                         li.list-group-item
                             p.details(style = "font-weight: bold") Email:
-                                p.details
+                                p
                                     | #{owner.email}
                     else
                         li.list-group-item
