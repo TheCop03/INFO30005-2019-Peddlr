@@ -70,8 +70,9 @@ block content
                     .col-4
                         select#general(type='text', placeholder='Country' name='country', required)
                             option Australia
-            .row
-                input(type="hidden", name='b64')
+            div
+                input#b64(type="hidden", name='b64')
+
             a(href = '/listing/new')
                 button.pagebutton(type='submit') Post
 
