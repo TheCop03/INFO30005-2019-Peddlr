@@ -54,7 +54,7 @@ input{
 	margin: 0px 10px 0px 10px;
 	display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-	height: 100%;
+	height: fit-content;
 	position: relative;
 
 }
